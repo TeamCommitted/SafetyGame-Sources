@@ -25,13 +25,13 @@
 			
 			<form id="form_box" title="Form per effettuare il login" action="" onsubmit="" method="post">
 				<fieldset>
-					<legend>Effettua il login</legend>
-					<label for="account_email">Email</label>			
-					<input id="account_email" title="Casella di testo per l'indirizzo email" type="text" name="account_email" onfocus="" value=""/>
+					<legend class = "material">Effettua il login</legend>
+					<label for="account_username">Username</label>			
+					<input id="account_username" title="Casella di testo per lo username" type="text" name="account_username" onfocus="" value=""/>
 					<label for="account_password">Password</label>
 					<input id="account_password" title="Casella di testo per la password" type="password" name="account_password" onfocus=""/>
 					
-					<legend>Seleziona la tipologia di utente</legend>
+					<legend class = "material">Seleziona la tipologia di utente</legend>
 					<li>
 						<input id="attending" title="Seleziona se dipendente" type='radio' name="attending" value="si" checked="checked"/> 
 						<label class="option_label" for="attending">Dipendente</label>
@@ -52,7 +52,7 @@
 			
 			
 			<p class="form_info">
-				Inserisci l'indirizzo email e la password negli appositi spazi, per autenticarti. 
+				Inserisci lo username e la password negli appositi spazi, per autenticarti. 
 			</p>
 			<p class ="form_info">
 				Password dimenticata? <a href="" tabindex="5" accesskey="p">Recupera l'accesso</a>
