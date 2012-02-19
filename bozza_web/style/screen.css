@@ -39,6 +39,14 @@
 	padding: 0.4em 0 0.3em;
 }
 
+#content li {
+	
+	list-style: none;
+	margin-left: 3em;
+	padding-bottom: 0;
+	
+}
+
 /****** FORM ******/
 
 .form_info{

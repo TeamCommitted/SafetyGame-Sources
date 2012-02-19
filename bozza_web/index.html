@@ -13,7 +13,7 @@
 <body class = "index">
 
 	<div id = "header">
-		<h1>Safetygame - Benvenuti</h1>
+		<h1>SafetyGame - Benvenuti</h1>
 	</div>
 
 
@@ -30,7 +30,23 @@
 					<input id="account_email" title="Casella di testo per l'indirizzo email" type="text" name="account_email" onfocus="" value=""/>
 					<label for="account_password">Password</label>
 					<input id="account_password" title="Casella di testo per la password" type="password" name="account_password" onfocus=""/>
+					
+					<legend>Seleziona la tipologia di utente</legend>
+					<li>
+						<input id="attending" title="Seleziona se dipendente" type='radio' name="attending" value="si" checked="checked"/> 
+						<label class="option_label" for="attending">Dipendente</label>
+					</li>
+					<li>
+						<input id="not_attending" title="Seleziona se amministratore azienda" type='radio' name="attending" value="no"/> 
+						<label class="option_label" for="not_attending">Amministratore azienda</label>
+					</li>
+					<li>
+						<input id="not_attending" title="Seleziona se amministratore sicurezza" type='radio' name="attending" value="no"/> 
+						<label class="option_label" for="not_attending">Amministratore sicurezza</label>
+					</li>
+					
 					<input id="account_login" class="button" title="Pulsante per l&apos;invio dei dati inseriti" type="submit" name="account_login" value="Entra" />
+					
 				</fieldset>
 			</form>
 			
