@@ -42,7 +42,7 @@
 /****** FORM ******/
 
 .form_info{
-	width : 48%;
+	width : 80%;
 	float : left;
 	clear: both;
 	text-align : justify;
@@ -57,4 +57,15 @@
 	padding-left : 2%;
 	clear : both;
 	margin : 0 !important; 
+}
+
+#form_login{
+	
+	width : 60%;
+	border: 3px solid #ddd;
+	padding : 1%;
+	float : left;
+	clear : both;
+	margin-top : 1%;
+	
 }
