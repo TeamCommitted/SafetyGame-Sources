@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.SafetyGame" parent="Theme.Sherlock">
+        <item name="android:actionBarStyle">@style/Theme.SafetyGame.Actionbar</item>
+    </style>
+
+    <style name="Theme.SafetyGame.Actionbar" parent="Widget.Sherlock.ActionBar">
+        <item name="android:background">#ffb400</item>
+    </style>
+
+</resources>
