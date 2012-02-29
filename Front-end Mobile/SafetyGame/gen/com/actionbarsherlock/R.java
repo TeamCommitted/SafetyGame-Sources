@@ -676,9 +676,17 @@ containing a value of this type.
         public static final int abs__tab_unselected_focused_holo=0x7f02004f;
         public static final int abs__tab_unselected_holo=0x7f020050;
         public static final int abs__tab_unselected_pressed_holo=0x7f020051;
-        public static final int ic_launcher=0x7f020052;
+        public static final int badgeinfermiere=0x7f020052;
+        public static final int badgepompiere=0x7f020053;
+        public static final int ic_launcher=0x7f020054;
+        public static final int immginedati=0x7f020055;
     }
     public static final class id {
+        public static final int Dati=0x7f040025;
+        public static final int Domanda=0x7f040022;
+        public static final int Punteggi=0x7f040024;
+        public static final int Quest=0x7f040023;
+        public static final int TextView01=0x7f040034;
         public static final int abs__action_bar=0x7f04001b;
         public static final int abs__action_bar_container=0x7f04001a;
         public static final int abs__action_bar_subtitle=0x7f040011;
@@ -702,22 +710,32 @@ containing a value of this type.
         public static final int abs__textButton=0x7f040013;
         public static final int abs__title=0x7f040017;
         public static final int abs__up=0x7f04000b;
-        public static final int button1=0x7f040028;
+        public static final int button1=0x7f040032;
+        public static final int button2=0x7f04002d;
         public static final int disableHome=0x7f040009;
-        public static final int editText1=0x7f040026;
-        public static final int editText2=0x7f040027;
-        public static final int hello=0x7f040025;
+        public static final int editText1=0x7f04002a;
+        public static final int editText2=0x7f04002c;
+        public static final int editText3=0x7f04002b;
+        public static final int hello=0x7f040033;
         public static final int homeAsUp=0x7f040006;
-        public static final int imageView1=0x7f040021;
-        public static final int imageView2=0x7f040022;
-        public static final int imageView3=0x7f040023;
-        public static final int imageView4=0x7f040024;
+        public static final int home_root=0x7f040021;
+        public static final int imageView1=0x7f040028;
+        public static final int imageView2=0x7f040035;
         public static final int listMode=0x7f040002;
         public static final int normal=0x7f040001;
+        public static final int radio0=0x7f04002f;
+        public static final int radio1=0x7f040030;
+        public static final int radio2=0x7f040031;
+        public static final int radioGroup1=0x7f04002e;
+        public static final int scanna=0x7f040037;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
         public static final int tabMode=0x7f040003;
+        public static final int textView1=0x7f040026;
+        public static final int textView2=0x7f040027;
+        public static final int textView3=0x7f040029;
+        public static final int textView4=0x7f040036;
         public static final int useLogo=0x7f040004;
         public static final int wrap_content=0x7f040000;
     }
@@ -742,8 +760,14 @@ containing a value of this type.
         public static final int abs__screen_simple=0x7f03000e;
         public static final int abs__screen_simple_overlay_action_mode=0x7f03000f;
         public static final int dashboard=0x7f030010;
-        public static final int main=0x7f030011;
-        public static final int sherlock_spinner_item=0x7f030012;
+        public static final int dashboard_fragment=0x7f030011;
+        public static final int dati=0x7f030012;
+        public static final int domanda_rispostamultipla=0x7f030013;
+        public static final int domanda_sino=0x7f030014;
+        public static final int main=0x7f030015;
+        public static final int punteggi=0x7f030016;
+        public static final int quest=0x7f030017;
+        public static final int sherlock_spinner_item=0x7f030018;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -759,6 +783,7 @@ containing a value of this type.
         public static final int hello=0x7f090003;
     }
     public static final class style {
+        public static final int DashboardButton=0x7f0a0045;
         public static final int Sherlock___Theme=0x7f0a0038;
         public static final int Sherlock___Theme_DarkActionBar=0x7f0a003a;
         public static final int Sherlock___Theme_Light=0x7f0a0039;

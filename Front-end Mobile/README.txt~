@@ -12,14 +12,9 @@ Classe
 View/DashboardActivity.java
 	onCreate(Bundle): creo grafica e gestisco elementi Button
 View/DashboardLayout.java
-	Classe Google per la visualizzazione Dashboard a griglia con gestione dello spazio
 View/DatiActivity.java
-	onCreate(Bundle): creo grafica
 View/DomandaActivity.java
-	onCreate(Bundle): creo grafica a seconda che l'Extra "Domanda" sia true o false (Quest) e gestisco elementi Button
 View/LoginActivity.java
-	onCreate(Bundle): creo grafica e gestisco elementi Button
 View/PunteggiActivity.java
-	onCreate(Bundle): creo grafica
 View/TimerNotifica.java
 
