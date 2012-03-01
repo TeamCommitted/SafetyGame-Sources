@@ -710,8 +710,8 @@ containing a value of this type.
         public static final int abs__textButton=0x7f040013;
         public static final int abs__title=0x7f040017;
         public static final int abs__up=0x7f04000b;
-        public static final int button1=0x7f040032;
-        public static final int button2=0x7f04002d;
+        public static final int button1=0x7f04002d;
+        public static final int button2=0x7f04002e;
         public static final int disableHome=0x7f040009;
         public static final int editText1=0x7f04002a;
         public static final int editText2=0x7f04002c;
@@ -723,10 +723,10 @@ containing a value of this type.
         public static final int imageView2=0x7f040035;
         public static final int listMode=0x7f040002;
         public static final int normal=0x7f040001;
-        public static final int radio0=0x7f04002f;
-        public static final int radio1=0x7f040030;
-        public static final int radio2=0x7f040031;
-        public static final int radioGroup1=0x7f04002e;
+        public static final int radio0=0x7f040030;
+        public static final int radio1=0x7f040031;
+        public static final int radio2=0x7f040032;
+        public static final int radioGroup1=0x7f04002f;
         public static final int scanna=0x7f040037;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;

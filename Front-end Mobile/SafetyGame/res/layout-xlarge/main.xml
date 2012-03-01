@@ -9,31 +9,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:text="@string/hello"
+        android:textSize="35sp"
         android:textStyle="bold" >
     </TextView>
 
     <EditText
         android:id="@+id/editText1"
-        android:layout_width="200dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/hello"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:hint="username" >
+        android:layout_marginTop="220dp"
+        android:hint="username"
+        android:textSize="25sp" >
 
         <requestFocus />
     </EditText>
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="200dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:hint="password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/button1"
@@ -41,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="50dp"
         android:text="Login" />
 
 </RelativeLayout>

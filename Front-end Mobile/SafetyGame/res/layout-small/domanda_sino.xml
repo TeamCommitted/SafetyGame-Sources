@@ -15,22 +15,6 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/textView1"
-        android:text="NO" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/textView1"
-        android:text="SI" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -41,5 +25,23 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="32dp"
         android:text="In caso di incendio nella sala server la prima cosa da fare è staccare la corrente?" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="73dp"
+        android:layout_toLeftOf="@+id/textView1"
+        android:text="SI" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="NO" />
 
 </RelativeLayout>

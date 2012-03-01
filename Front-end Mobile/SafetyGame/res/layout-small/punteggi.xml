@@ -10,9 +10,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="15dp"
         android:text="I tuoi punteggi"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <TextView
@@ -21,8 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:text="Risposte date 30\nRisposte corrette 25\nRisposte errate 5\nPunti 250" />
+        android:layout_marginTop="12sp"
+        android:text="Risposte date 30\nRisposte corrette 25\nRisposte errate 5\nPunti 250"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/TextView01"
@@ -30,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="20dp"
         android:text="I tuoi Badge"
         android:textSize="30sp" />
 
@@ -38,34 +39,36 @@
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/TextView01"
-        android:layout_marginTop="46dp"
-        android:layout_toLeftOf="@+id/TextView01"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/badgeinfermiere" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_below="@+id/imageView1"
-        android:layout_marginTop="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="3dp"
         android:src="@drawable/badgepompiere" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView1"
-        android:layout_alignRight="@+id/textView1"
-        android:text="Sei un super-pro degli incendi" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView2"
-        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_alignParentRight="true"
         android:text="Sei un super-pro del primo soccorso" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_alignTop="@+id/imageView2"
+        android:text="Sei un super-pro degli incendi" />
 
 </RelativeLayout>

@@ -10,9 +10,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="40dp"
         android:text="Videoterminali"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:textStyle="bold" />
 
     <TextView
@@ -23,44 +23,48 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="32dp"
-        android:text="La distanza degli occhi corretta cui porre lo schermo del proprio terminale è:" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="78dp"
-        android:text="Invia" />
+        android:layout_marginTop="60dp"
+        android:text="La distanza degli occhi corretta cui porre lo schermo del proprio terminale è:"
+        android:textSize="25sp" />
 
     <RadioGroup
         android:id="@+id/radioGroup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_centerVertical="true" >
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="88dp" >
 
         <RadioButton
             android:id="@+id/radio0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="30cm" />
+            android:text="30cm"
+            android:textSize="25sp" />
 
         <RadioButton
             android:id="@+id/radio1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="60cm" />
+            android:text="60cm"
+            android:textSize="25sp" />
 
         <RadioButton
             android:id="@+id/radio2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="80cm" />
+            android:text="80cm"
+            android:textSize="25sp" />
     </RadioGroup>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="204dp"
+        android:text="Invia" />
 
 </RelativeLayout>

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="20dp"
         android:text="Videoterminali"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -23,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:text="La distanza degli occhi corretta cui porre lo schermo del proprio terminale è:" />
 
     <Button
@@ -32,16 +32,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="78dp"
+        android:layout_marginBottom="20dp"
         android:text="Invia" />
 
     <RadioGroup
         android:id="@+id/radioGroup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
         android:layout_alignLeft="@+id/textView2"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_centerVertical="true" >
+        android:layout_marginBottom="5dp" >
 
         <RadioButton
             android:id="@+id/radio0"
