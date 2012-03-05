@@ -45,16 +45,6 @@
         android:layout_marginTop="30dp"
         android:src="@drawable/badgeinfermiere" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="3dp"
-        android:src="@drawable/badgepompiere" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -63,11 +53,20 @@
         android:layout_alignParentRight="true"
         android:text="Sei un super-pro del primo soccorso" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="57dp"
+        android:src="@drawable/badgepompiere" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView01"
+        android:layout_alignLeft="@+id/textView4"
         android:layout_alignTop="@+id/imageView2"
         android:text="Sei un super-pro degli incendi" />
 

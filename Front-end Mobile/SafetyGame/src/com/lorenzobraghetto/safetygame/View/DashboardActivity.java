@@ -21,7 +21,10 @@ public class DashboardActivity extends SherlockActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
         
-        context = this;
+        context = getApplicationContext();
+        
+        Intent startServiceIntent = new Intent(context, TimerNotifica.class);
+        context.startService(startServiceIntent);	
         
         Button Domanda = (Button)findViewById(R.id.Domanda);
         Button Quest = (Button)findViewById(R.id.Quest);
