@@ -15,30 +15,34 @@
     </TextView>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/passwordE"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:hint="password"
+        android:imeOptions="actionDone"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/passwordE"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp"
         android:text="Login" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/userE"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText2"
         android:layout_below="@+id/hello"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:hint="username" />
+        android:hint="username"
+        android:imeOptions="actionNext"
+        android:singleLine="true" />
 
 </RelativeLayout>
