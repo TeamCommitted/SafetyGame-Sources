@@ -98,7 +98,7 @@ public class LoginActivity extends SherlockActivity {
 		protected void onPostExecute(String status)
 		{
 			dialog.dismiss();
-			if(status.equals("OK"))
+			if(status != null && status.equals("OK"))
 	        {
 				SharedPreferences prefs = getSharedPreferences("login", Context.MODE_PRIVATE);
 				Editor editor = prefs.edit();

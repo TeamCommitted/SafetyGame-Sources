@@ -136,7 +136,6 @@ public class ConnectionUtils
 			return null;
 		}
         Element root=docs.getDocumentElement();	 
-		Log.v("SAFETYGAME","Avvio parser root");
 
 		return root;		
 	}
