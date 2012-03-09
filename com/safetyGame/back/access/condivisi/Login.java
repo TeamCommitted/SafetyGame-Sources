@@ -14,6 +14,7 @@
  */
  
  package access.condivisi;
+ import controller.*;
 
 
 /**
@@ -26,7 +27,7 @@
 public class Login {
 	private String username;
 	private String password;
-	private com.safetyGame.DataOra dataOra;
+	private DataOra dataOra;
 	
 	/**
 	 * Costruttore della classe Login
@@ -34,7 +35,7 @@ public class Login {
 	 * @param p password
 	 * @param d oggetto DataOra
 	 */
-	public Login(String u,String p,com.safetyGame.DataOra d){
+	public Login(String u,String p,DataOra d){
 	   this.username = u;
 	   this.password = p;
 	   this.dataOra = d;

@@ -1,8 +1,8 @@
 #BlueJ package file
 package.editor.height=400
 package.editor.width=560
-package.editor.x=820
-package.editor.y=20
+package.editor.x=32
+package.editor.y=32
 package.numDependencies=0
 package.numTargets=6
 package.showExtends=true
@@ -14,6 +14,10 @@ target1.type=ClassTarget
 target1.width=80
 target1.x=10
 target1.y=90
+target2.editor.height=700
+target2.editor.width=900
+target2.editor.x=932
+target2.editor.y=7
 target2.height=50
 target2.name=Login
 target2.showInterface=false
