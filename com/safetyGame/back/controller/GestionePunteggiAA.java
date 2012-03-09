@@ -1,6 +1,7 @@
 package controller;
 import access.access.*;
-public class GestionePunteggiAA{
+
+public class GestionePunteggiAA{ 
     SqlDAOFactory accesso;
-    public GestionePunteggiAA(){}
+    public GestionePunteggiAA(SqlDAOFactory s){accesso=s;}
 }

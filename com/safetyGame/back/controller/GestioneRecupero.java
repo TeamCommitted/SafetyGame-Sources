@@ -3,5 +3,5 @@ import access.access.*;
 
 public class GestioneRecupero{ 
     SqlDAOFactory accesso;
-    public GestioneRecupero(){}
+    public GestioneRecupero(SqlDAOFactory s){accesso=s;}
 }

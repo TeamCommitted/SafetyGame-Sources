@@ -5,7 +5,7 @@ import access.condivisi.*;
 public class ApplicazioniConnection{
     GestioneDati dati;
     Parser parser;
-    public ApplicazioniConnection(){}
+    public ApplicazioniConnection(GestioneDati d){dati=d;}
     
     public boolean login(String username, String password){return true;}
     

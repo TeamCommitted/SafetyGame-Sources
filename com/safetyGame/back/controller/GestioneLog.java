@@ -1,6 +1,8 @@
 package controller;
+import access.access.*;
 
 public class GestioneLog{
     DataOra dataora;
-    public GestioneLog(){}
+    SqlDAOFactory accesso;
+    public GestioneLog(SqlDAOFactory s){accesso=s;}
 }

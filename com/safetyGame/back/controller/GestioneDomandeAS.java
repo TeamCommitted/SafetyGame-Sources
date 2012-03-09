@@ -1,6 +1,7 @@
 package controller;
 import access.access.*;
-public class GestioneDomandeAS{
+
+public class GestioneDomandeAS{ 
     SqlDAOFactory accesso;
-    public GestioneDomandeAS(){}
+    public GestioneDomandeAS(SqlDAOFactory s){accesso=s;}
 }

@@ -1,7 +1,7 @@
 package controller;
 import access.access.*;
 
-public class GestioneBadgeAS{
+public class GestioneBadgeAS{ 
     SqlDAOFactory accesso;
-    public GestioneBadgeAS(){}
+    public GestioneBadgeAS(SqlDAOFactory s){accesso=s;}
 }

@@ -4,7 +4,7 @@ import access.condivisi.*;
 
 public class WebConnection{
     GestioneDati dati;
-    public WebConnection(){}
+    public WebConnection(GestioneDati d){dati=d;}
     
     public boolean login(String username, String password){return true;}
     
