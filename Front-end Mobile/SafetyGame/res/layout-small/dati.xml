@@ -16,7 +16,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/Nome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
         android:text="Cambia Password"
         android:textSize="18sp" />
 
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="15dp"
         android:hint="Vecchia Password"
         android:inputType="textPassword"
         android:textSize="15sp" />
@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="15dp"
         android:hint="Nuova password"
         android:inputType="textPassword"
         android:textSize="15sp" />
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText3"
         android:layout_below="@+id/editText3"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="15dp"
         android:hint="Conferma password"
         android:inputType="textPassword"
         android:textSize="15sp" />
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="13dp"
         android:text="Invia" />
 
 </RelativeLayout>

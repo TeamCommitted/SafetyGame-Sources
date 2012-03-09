@@ -5,26 +5,24 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/Titolo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
-        android:text="Videoterminali"
         android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/Testo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/Titolo"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="32dp"
-        android:text="La distanza degli occhi corretta cui porre lo schermo del proprio terminale è:" />
+        android:layout_marginTop="32dp" />
 
     <Button
         android:id="@+id/button2"
@@ -39,28 +37,25 @@
         android:id="@+id/radioGroup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignRight="@+id/textView2"
+        android:layout_alignLeft="@+id/Testo"
+        android:layout_alignRight="@+id/Testo"
         android:layout_centerVertical="true" >
 
         <RadioButton
             android:id="@+id/radio0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="30cm" />
+            android:checked="true" />
 
         <RadioButton
             android:id="@+id/radio1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="60cm" />
+            android:layout_height="wrap_content" />
 
         <RadioButton
             android:id="@+id/radio2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="80cm" />
+            android:layout_height="wrap_content" />
     </RadioGroup>
 
 </RelativeLayout>

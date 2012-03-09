@@ -16,21 +16,20 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/Punti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:text="Risposte date 30\nRisposte corrette 25\nRisposte errate 5\nPunti 250" />
+        android:layout_marginTop="18dp" />
 
     <TextView
         android:id="@+id/TextView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="54dp"
+        android:layout_below="@+id/Punti"
+        android:layout_marginTop="30dp"
         android:text="I tuoi Badge"
         android:textSize="30sp" />
 
@@ -39,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/TextView01"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="35dp"
         android:layout_toLeftOf="@+id/TextView01"
         android:src="@drawable/badgeinfermiere" />
 
@@ -49,23 +48,21 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imageView1"
         android:layout_below="@+id/imageView1"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/badgepompiere" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/Badge1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView1"
-        android:layout_alignRight="@+id/textView1"
-        android:text="Sei un super-pro degli incendi" />
+        android:layout_alignRight="@+id/textView1" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/Badge2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView2"
-        android:layout_alignLeft="@+id/textView3"
-        android:text="Sei un super-pro del primo soccorso" />
+        android:layout_alignLeft="@+id/Badge1" />
 
 </RelativeLayout>

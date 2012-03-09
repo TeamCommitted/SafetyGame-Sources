@@ -16,13 +16,12 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/Punti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:text="Risposte date 30\nRisposte corrette 25\nRisposte errate 5\nPunti 250"
         android:textSize="25sp" />
 
     <TextView
@@ -30,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/Punti"
         android:layout_marginTop="70dp"
         android:text="I tuoi Badge"
         android:textSize="35sp" />
@@ -54,22 +53,20 @@
         android:src="@drawable/badgepompiere" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/Badge1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/TextView01"
         android:layout_alignTop="@+id/imageView1"
         android:layout_marginLeft="43dp"
-        android:text="Sei un super-pro degli incendi"
         android:textSize="25sp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/Badge2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView2"
-        android:layout_alignLeft="@+id/textView3"
-        android:text="Sei un super-pro del primo soccorso"
+        android:layout_alignLeft="@+id/Badge1"
         android:textSize="25sp" />
 
 </RelativeLayout>
