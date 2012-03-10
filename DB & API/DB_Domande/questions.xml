@@ -1,11 +1,11 @@
 <safetygame xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="questions_shema.xsd">
 	<questions>
 		<question>
+			<id>1234</id>
 			<title>Domanda_1</title>
 			<scope>Ambito domanda</scope>
 			<description>Descrizione domanda 1</description>
-			<type>Multipla</type>
-			<answers>
+			<answers type="Multipla">
 				<answer correct="yes">Risposta 1</answer>
 				<answer correct="yes">Risposta 2</answer>
 				<answer correct="no">Risposta 3</answer>
