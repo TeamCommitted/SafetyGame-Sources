@@ -2,13 +2,14 @@
 	<questions>
 		<question>
 			<title>Domanda_1</title>
+			<scope>Ambito domanda</scope>
 			<description>Descrizione domanda 1</description>
 			<type>Multipla</type>
 			<answers>
 				<answer correct="yes">Risposta 1</answer>
-				<answer correct="yes">Risposta 1</answer>
-				<answer correct="no">Risposta 1</answer>
-				<answer correct="no">Risposta 1</answer>
+				<answer correct="yes">Risposta 2</answer>
+				<answer correct="no">Risposta 3</answer>
+				<answer correct="no">Risposta 4</answer>
 			</answers>
 			<attachments></attachments>
 		</question>
