@@ -6,7 +6,7 @@ public class ApplicazioniConnection{
    private GestioneDati dati;
    private Parser parser; //non c'è un oggetto ma semplicemente funzioni da richiamare da libreria (Parser.funzione();)
    
-   public ApplicazioniConnection(GestioneDati d){dati = d;}
+   public ApplicazioniConnection(GestioneDati d, Parser p){dati = d; parser = p;}
     
    public boolean login(String username, String password){
       dati.loginLimitato(username, password);
