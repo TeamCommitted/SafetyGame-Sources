@@ -13,7 +13,7 @@
  * |   2012/03/02   |    AlesCorn   | +DataOra()              |		
  */
  
- package controller;
+ package condivisi;
 
 /**
  * Classe che rappresenta una data ed un'orario
@@ -137,4 +137,3 @@ public class DataOra {
       return ""+anno+"/"+"mese"+"/"+giorno+" "+ora+":"+minuti+":"+secondi;
    }   
 }
-

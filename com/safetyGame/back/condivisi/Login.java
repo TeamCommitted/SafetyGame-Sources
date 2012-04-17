@@ -13,7 +13,7 @@
  * |   2012/03/02   |    AlesCorn   | +Login()                |		
  */
  
- package access.condivisi;
+ package condivisi;
  import controller.*;
 
 
@@ -41,4 +41,6 @@ public class Login {
 	   this.dataOra = d;
 	}
 	
+	
 }
+	

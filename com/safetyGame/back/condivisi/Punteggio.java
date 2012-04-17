@@ -1,21 +1,21 @@
-package access.condivisi;
+package condivisi;
 
 
 /**
- * Write a description of class Domanda here.
+ * Write a description of class Punteggio here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Domanda
+public class Punteggio
 {
     // instance variables - replace the example below with your own
     private int x;
 
     /**
-     * Constructor for objects of class Domanda
+     * Constructor for objects of class Punteggio
      */
-    public Domanda()
+    public Punteggio()
     {
         // initialise instance variables
         x = 0;

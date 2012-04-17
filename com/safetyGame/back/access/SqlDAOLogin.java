@@ -1,4 +1,4 @@
-package access.access;
+package access;
 
 
 public class SqlDAOLogin implements DAOLogin{

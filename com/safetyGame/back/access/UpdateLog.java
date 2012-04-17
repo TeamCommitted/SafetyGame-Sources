@@ -1,4 +1,4 @@
-package access.access;
+package access;
 
 public class UpdateLog{
    public UpdateLog(){}

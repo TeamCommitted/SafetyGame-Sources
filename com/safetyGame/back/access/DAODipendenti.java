@@ -1,5 +1,5 @@
-package access.access;
-import access.condivisi.*;
+package access;
+import condivisi.*;
 
 public interface DAODipendenti{
    public Dipendente getInfo(String username);

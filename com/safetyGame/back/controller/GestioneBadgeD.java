@@ -1,6 +1,6 @@
 package controller;
-import access.access.*;
-import access.condivisi.*;
+import access.*;
+import condivisi.*;
 
 public class GestioneBadgeD{
    SqlDAOFactory accesso;

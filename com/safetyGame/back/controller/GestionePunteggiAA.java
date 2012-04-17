@@ -1,5 +1,6 @@
 package controller;
-import access.access.*;
+import access.*;
+import condivisi.*;
 
 public class GestionePunteggiAA{ 
    SqlDAOFactory accesso;

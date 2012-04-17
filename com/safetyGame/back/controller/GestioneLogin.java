@@ -1,5 +1,6 @@
 package controller;
-import access.access.*;
+import access.*;
+import condivisi.*;
 
 //gestire i controlli in ogni funzione per ogni cosa
 

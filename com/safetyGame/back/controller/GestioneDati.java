@@ -1,5 +1,6 @@
 package controller;
-import access.condivisi.*;
+import access.*;
+import condivisi.*;
 
 public class GestioneDati{
    //private GestioneLog log;

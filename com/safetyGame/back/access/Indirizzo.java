@@ -1,4 +1,4 @@
-package access.access;
+package access;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

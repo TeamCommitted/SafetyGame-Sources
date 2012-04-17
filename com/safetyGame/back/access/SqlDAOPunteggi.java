@@ -1,5 +1,5 @@
-package access.access;
-import access.condivisi.*;
+package access;
+import condivisi.*;
 
 public class SqlDAOPunteggi implements DAOPunteggi{
    public SqlDAOPunteggi(){}

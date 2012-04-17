@@ -1,6 +1,6 @@
 package connection;
 import controller.*;
-import access.condivisi.*;
+import condivisi.*;
 
 public class ApplicazioniConnection{
    private GestioneDati dati;

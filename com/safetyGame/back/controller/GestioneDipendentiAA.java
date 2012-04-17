@@ -1,6 +1,7 @@
 package controller;
-import access.access.*;
-import access.condivisi.*;
+import access.*;
+import condivisi.*;
+
 public class GestioneDipendentiAA{
    SqlDAOFactory accesso;
    GestioneLog log;

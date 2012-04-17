@@ -1,5 +1,5 @@
-package access.access;
-import access.condivisi.*;
+package access;
+import condivisi.*;
 
 public interface DAOPunteggi{
    public Punteggio getStat(String username);

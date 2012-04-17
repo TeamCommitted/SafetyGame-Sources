@@ -1,5 +1,5 @@
-package access.access;
-import access.condivisi.*;
+package access;
+import condivisi.*;
 
 public class SqlDAOFactory extends DAOFactory{
    Indirizzo serverDomande;
