@@ -1,7 +1,5 @@
 package com.safetyGame.back.condivisi;
 
-
-
 /**
  * Write a description of class Domanda here.
  * 

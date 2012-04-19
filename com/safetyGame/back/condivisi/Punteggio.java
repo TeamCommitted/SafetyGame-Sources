@@ -2,25 +2,30 @@ package com.safetyGame.back.condivisi;
 
 
 /**
- * Write a description of class Punteggio here.
+ * Classe che rappresenta un generico punteggio. Può essere associata
+ * sia ad una domanda che ad un dipendente
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author acornagl 
+ * @version 0.1
  */
-public class Punteggio
-{
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Punteggio
-     */
-    public Punteggio()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
+public class Punteggio {
+  private int punti;
+  
+  /**
+   * Costruttore senza parametri della classe Punteggio
+   */
+  public Punteggio() {
+    this.punti = 0;
+  }
+  
+  /**
+   * Costruttore della classe Punteggio
+   * 
+   * @param punti punti da assegnare al nuovo oggetto 
+   */
+  public Punteggio( int punti ){
+	  this.punti = punti;
+  }
     /**
      * An example of a method - replace this comment with your own
      * 
@@ -30,6 +35,7 @@ public class Punteggio
     public int sampleMethod(int y)
     {
         // put your code here
-        return x + y;
+        //return x + y;
+    	return 1;
     }
 }
