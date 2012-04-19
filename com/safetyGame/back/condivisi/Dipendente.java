@@ -99,7 +99,7 @@ public class Dipendente {
    * metodo che consente di aggiungere un trofeo ad un dipendente
    *  
    * @param trofeo trofeo da aggiungere
-   * @throws Error
+   * @throws ErrDipendente
    */
   public void addTrofeo(Trofeo trofeo) throws ErrDipendente{
     boolean inserito = false;

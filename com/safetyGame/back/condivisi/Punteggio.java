@@ -26,16 +26,21 @@ public class Punteggio {
   public Punteggio( int punti ){
 	  this.punti = punti;
   }
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        //return x + y;
-    	return 1;
-    }
+
+  /**
+   * metodo che consente di recuperare i punti
+   * @return punti
+   */
+  public int getPunti() {
+    return punti;
+  }
+
+  /**
+   * metodo che consente di modificare i punti
+   * 
+   * @param punti punti da assegnare all'oggetto
+   */
+  public void setPunti(int punti) {
+    this.punti = punti;
+  }
 }
