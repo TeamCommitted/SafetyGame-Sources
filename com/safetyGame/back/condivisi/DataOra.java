@@ -13,7 +13,7 @@
  * |   2012/03/02   |    AlesCorn   | +DataOra()              |		
  */
  
- package condivisi;
+ package com.safetyGame.back.condivisi;
 
 /**
  * Classe che rappresenta una data ed un'orario

@@ -13,8 +13,8 @@
  * |   2012/03/02   |    AlesCorn   | +Login()                |		
  */
  
- package condivisi;
- import controller.*;
+ package com.safetyGame.back.condivisi;
+ import com.safetyGame.back.controller.*;
 
 
 /**

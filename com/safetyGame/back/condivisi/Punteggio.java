@@ -1,4 +1,4 @@
-package condivisi;
+package com.safetyGame.back.condivisi;
 
 
 /**
