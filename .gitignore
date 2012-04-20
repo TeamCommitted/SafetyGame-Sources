@@ -1,3 +1,6 @@
 *.ctxt
 *.ctxt
 *.class
+.metadata
+.classpath
+.
