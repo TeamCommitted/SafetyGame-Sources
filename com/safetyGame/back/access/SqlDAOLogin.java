@@ -1,5 +1,4 @@
-package access;
-
+package com.safetyGame.back.access;
 
 public class SqlDAOLogin implements DAOLogin{
    public SqlDAOLogin(){}

@@ -1,10 +1,10 @@
-package connection;
-import controller.*;
-import condivisi.*;
+package com.safetyGame.back.connection;
+import com.safetyGame.back.controller.*;
+import com.safetyGame.back.condivisi.*;
 
 public class ApplicazioniConnection{
    private GestioneDati dati;
-   private Parser parser; //non c'è un oggetto ma semplicemente funzioni da richiamare da libreria (Parser.funzione();)
+   private Parser parser; //non c'ï¿½ un oggetto ma semplicemente funzioni da richiamare da libreria (Parser.funzione();)
    
    public ApplicazioniConnection(GestioneDati d, Parser p){dati = d; parser = p;}
     

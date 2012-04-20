@@ -132,8 +132,30 @@ public class DataOra {
       this.secondi = secondi;
    }
    
+   /**
+    * Metodo che aggiusta un elemento che compone la data per far si che tutti i 
+    * numeri siano composti da due cifre
+    * 
+    * @param parteData numero da controllare
+    * @return risultato numero come stringa formato da due cifre
+    */
+   public static String aggiusta(int parteData){
+     if ( parteData < 10 ) {
+	   return "0"+parteData;
+     }
+     return ""+parteData;
+   }
    @Override
-   public String toString() {
-      return ""+anno+"/"+"mese"+"/"+giorno+" "+ora+":"+minuti+":"+secondi;
+   public String toString() { // da modificare
+     String sMese = null;
+     String sGiorno = null;
+     String sOra = null;
+     String sMinuti = null;
+     String sSecondi = null;
+	 if (mese < 10){
+      sMese = "0"+mese;  
+     }
+	 
+     return ""+anno+"/"+mese+"/"+giorno+" "+ora+":"+minuti+":"+secondi;
    }   
 }

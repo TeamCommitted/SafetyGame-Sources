@@ -1,4 +1,4 @@
-package access;
+package com.safetyGame.back.access;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

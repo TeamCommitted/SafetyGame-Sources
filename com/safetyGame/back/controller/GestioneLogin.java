@@ -1,6 +1,6 @@
-package controller;
-import access.*;
-import condivisi.*;
+package com.safetyGame.back.controller;
+import com.safetyGame.back.access.*;
+import com.safetyGame.back.condivisi.*;
 
 //gestire i controlli in ogni funzione per ogni cosa
 

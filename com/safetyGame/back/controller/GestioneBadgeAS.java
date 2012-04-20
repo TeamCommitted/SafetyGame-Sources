@@ -1,6 +1,6 @@
-package controller;
-import access.*;
-import condivisi.*;
+package com.safetyGame.back.controller;
+import com.safetyGame.back.access.*;
+import com.safetyGame.back.access.condivisi.*;
 //inutile?
 public class GestioneBadgeAS{ 
     SqlDAOFactory accesso;

@@ -1,3 +1,5 @@
+package com.safetyGame.back;
+
 public class Inizializzatore{
    private Inizializzatore(){}
    public void main (String[] args){

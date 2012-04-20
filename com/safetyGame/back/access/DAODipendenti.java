@@ -1,5 +1,5 @@
-package access;
-import condivisi.*;
+package com.safetyGame.back.access;
+import com.safetyGame.back.condivisi.*;
 
 public interface DAODipendenti{
    public Dipendente getInfo(String username);

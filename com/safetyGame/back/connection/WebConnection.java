@@ -1,7 +1,7 @@
-package connection;
-import controller.*;
-import access.*;
-import condivisi.*;
+package com.safetyGame.back.connection;
+import com.safetyGame.back.controller.*;
+import com.safetyGame.back.access.*;
+import com.safetyGame.back.condivisi.*;
 
 public class WebConnection{
    private GestioneDati dati;
