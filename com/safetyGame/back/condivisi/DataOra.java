@@ -47,6 +47,12 @@ public class DataOra {
       minuti = mi;
       secondi = s;
    }
+
+   /**
+    * deve prendere l'orario di oggi dall'orologio di sistema
+    */
+   public DataOra(){}
+   
    /**
     * metodo get per ottenere l'anno
     * @return anno 
