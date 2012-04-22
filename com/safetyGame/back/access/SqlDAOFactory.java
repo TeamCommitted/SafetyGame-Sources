@@ -121,10 +121,10 @@ public class SqlDAOFactory extends DAOFactory{
    }
    
    public void setLogin(SqlDAOLogin dao){login=dao;}
-   public void setLogin(SqlDAODipendenti dao){dipendenti=dao;}
-   public void setLogin(SqlDAODomande dao){domande=dao;}
-   public void setLogin(SqlDAOPunteggi dao){punteggi=dao;}
-   public void setLogin(SqlDAOBadge dao){badge=dao;}
+   public void setDipendenti(SqlDAODipendenti dao){dipendenti=dao;}
+   public void setDomande(SqlDAODomande dao){domande=dao;}
+   public void setPunteggi(SqlDAOPunteggi dao){punteggi=dao;}
+   public void setBadge(SqlDAOBadge dao){badge=dao;}
    public void setIndDomande(Indirizzo domande){serverDomande=domande;}
    public void setIndAzienda(Indirizzo azienda){serverAzienda=azienda;}
 }

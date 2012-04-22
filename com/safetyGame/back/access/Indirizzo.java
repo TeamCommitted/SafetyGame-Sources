@@ -6,9 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.xml.parsers.*;
-import org.w3c.dom.*;
-import org.xml.sax.*;
 
 
 public class Indirizzo{
@@ -23,9 +20,6 @@ public class Indirizzo{
       catch(SQLException e){System.out.println("Impossibile creare la connessione al database: "+database);}
    }
    
-   public Indirizzo(String indirizzo){
-   }
-   
    public void finalize(){
       try {
          connettore.close();
@@ -34,7 +28,7 @@ public class Indirizzo{
       catch(SQLException e){System.out.println("Errore nella chiusura del database");}
    }  
    
-   public boolean inserisciRigaSql(String tabella, String colonne, String [] valori){
+   public boolean inserisciRiga(String tabella, String colonne, String [] valori){
       String val="(?";
       for(int i=1;i<valori.length;i++)
          val+=",?";
@@ -50,7 +44,7 @@ public class Indirizzo{
       return true;
    }
        
-   public boolean modificaRigaSql(String tabella, String colonnevalori, String controlli){
+   public boolean modificaRiga(String tabella, String colonnevalori, String controlli){
       try{
          connettore.executeQuery("UPDATE "+ tabella +" SET "+ colonnevalori +" WHERE "+ controlli);
       }
@@ -58,7 +52,7 @@ public class Indirizzo{
       return true;
    }
        
-   public boolean cancellaRigaSql(String tabella, String controlli){
+   public boolean cancellaRiga(String tabella, String controlli){
       try{
          connettore.executeQuery("DELETE FROM "+ tabella +" WHERE "+ controlli);
       }
@@ -66,7 +60,7 @@ public class Indirizzo{
       return true;
    }
        
-   public ResultSet selezioneSql(String colonne, String tabella, String controlli){
+   public ResultSet selezione(String colonne, String tabella, String controlli){
       String where="";
       ResultSet rs;
       if (controlli!=""){
@@ -78,20 +72,4 @@ public class Indirizzo{
       catch(SQLException e){return null;}
       return rs;
    }
-      
-   public boolean inserisciRigaXml(String tabella, String colonne, String [] valori){
-      return true;
-   }
-   
-   public boolean modificaRigaXml(String tabella, String colonnevalori, String controlli){
-      return true;
-   }
-   
-   public boolean cancellaRigaXml(String tabella, String controlli){
-      return true;
-   }
-   
-   public ResultSet selezioneXml(String colonne, String tabella, String controlli){
-      return null;
-   }   
 }

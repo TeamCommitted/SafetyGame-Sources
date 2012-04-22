@@ -1,10 +1,12 @@
 package com.safetyGame.back.access;
 import com.safetyGame.back.condivisi.*;
+import java.sql.ResultSet;
 
 public class SqlDAODipendenti implements DAODipendenti{
    public SqlDAODipendenti(){}
    public Dipendente getInfo(String username){
       //preleva dal database tutte le info del dipendente
+      ResultSet rs=null;
       return new Dipendente();
    }
    public void passD(String pass, String username){
