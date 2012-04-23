@@ -25,22 +25,66 @@
  * 
  */
 public class Login {
-	private String username;
-	private String password;
-	private DataOra dataOra;
 	
-	/**
-	 * Costruttore della classe Login
-	 * @param u username
-	 * @param p password
-	 * @param d oggetto DataOra
-	 */
-	public Login(String u,String p,DataOra d){
-	   this.username = u;
-	   this.password = p;
-	   this.dataOra = d;
-	}
+  private Dipendente dipendente;	
+  private DataOra dataOra;
 	
-	
+  /**
+   * Costruttore con parametri della classe Login
+   * 
+   * @param dipendente dipendente che ha effettuato il login
+   * @param dataOra data e ora in cui è stato effettuato il login
+   * 
+   */
+  public Login(Dipendente dipendente, DataOra dataora) {
+    this.dipendente = dipendente; 
+    this.dataOra = dataora;
+  }
+		
+  /**
+   * Costruttore senza parametri della classe Login
+   * 
+   */
+  public Login() {
+    dipendente = null;
+    dataOra = null;
+  }
+
+  /**
+   * metodo che consente di recuperare il dipendente
+   * 
+   * @return dipendente
+   */
+  public Dipendente getDipendente() {
+    return dipendente;
+  }
+
+  /**
+   * metodo che consente di impostare un dipendente
+   * 
+   * @param dipendente dipendente da impostare
+   */
+  public void setDipendente(Dipendente dipendente) {
+    this.dipendente = dipendente;
+  }
+
+  /**
+   * metodo che consente di recuperare l'ora e la data del login
+   * 
+   * @return data e ora del login
+   */
+  public DataOra getDataOra() {
+    return dataOra;
+  }
+
+  /**
+   * metodo che consente di impostare la data e l'ora
+   * 
+   * @param dataOra data e ora da impostare
+   */
+  public void setDataOra(DataOra dataOra) {
+    this.dataOra = dataOra;
+  }  
+  
 }
 	

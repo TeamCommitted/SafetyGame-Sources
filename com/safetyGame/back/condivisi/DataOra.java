@@ -51,7 +51,14 @@ public class DataOra {
    /**
     * deve prendere l'orario di oggi dall'orologio di sistema
     */
-   public DataOra(){}
+   public DataOra(){
+     anno = -1;
+     mese = -1;
+     giorno = -1;
+     ora = -1;
+     minuti = -1;
+     secondi = -1;
+   }
    
    /**
     * metodo get per ottenere l'anno
@@ -153,7 +160,7 @@ public class DataOra {
    }
    
    @Override
-   public String toString() { // da modificare
+   public String toString() { 
      String sMese = null;
      String sGiorno = null;
      String sOra = null;
