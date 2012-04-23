@@ -151,6 +151,7 @@ public class DataOra {
      }
      return ""+parteData;
    }
+   
    @Override
    public String toString() { // da modificare
      String sMese = null;
@@ -158,10 +159,13 @@ public class DataOra {
      String sOra = null;
      String sMinuti = null;
      String sSecondi = null;
-	 if (mese < 10){
-      sMese = "0"+mese;  
-     }
 	 
-     return ""+anno+"/"+mese+"/"+giorno+" "+ora+":"+minuti+":"+secondi;
+     sMese = aggiusta(this.mese);
+     sGiorno = aggiusta(this.giorno);
+     sOra = aggiusta(this.ora);
+     sMinuti = aggiusta(this.minuti);
+     sSecondi = aggiusta(this.secondi);
+	 
+     return ""+anno+"/"+sMese+"/"+sGiorno+" "+sOra+":"+sMinuti+":"+sSecondi;
    }   
 }
