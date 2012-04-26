@@ -15,6 +15,7 @@
  
  package com.safetyGame.back.condivisi;
 
+ import java.util.*;
 /**
  * Classe che rappresenta una data ed un'orario
  * 
@@ -51,13 +52,15 @@ public class DataOra {
    /**
     * deve prendere l'orario di oggi dall'orologio di sistema
     */
-   public DataOra(){
-     anno = -1;
-     mese = -1;
-     giorno = -1;
-     ora = -1;
-     minuti = -1;
-     secondi = -1;
+   public DataOra() {//devo farglielo fare in maniera intelligente
+     GregorianCalendar gc = new GregorianCalendar();
+     this.giorno = gc.get(Calendar.DAY_OF_MONTH);
+     this.mese = gc.get(Calendar.MONTH);
+     this.anno = gc.get(Calendar.YEAR);
+     this.ora = gc.get(Calendar.HOUR_OF_DAY);
+     this.minuti = gc.get(Calendar.MINUTE);
+     this.secondi = gc.get(Calendar.SECOND);
+     System.out.println("Giorno: " + gc.get(Calendar.DAY_OF_MONTH) );
    }
    
    /**
