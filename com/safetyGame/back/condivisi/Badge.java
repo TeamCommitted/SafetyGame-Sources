@@ -1,35 +1,46 @@
 package com.safetyGame.back.condivisi;
 
-
 /**
- * Write a description of class Badge here.
+ * Classe che rappresenta un badge del sistema
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author acornagl 
+ * @version v0.1
  */
-public class Badge
-{
-    // instance variables - replace the example below with your own
-    private int x;
 
-    /**
-     * Constructor for objects of class Badge
-     */
-    public Badge()
-    {
-        // initialise instance variables
-        x = 0;
-    }
+public class Badge {
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+  private String nome;
+  
+  /**
+   * Costruttore con parametri della classe Badge
+   * 
+   * @param nome nome del trofeo
+   */
+  public Badge(String nome) {
+    this.nome = nome;	  
+  }
+  
+  /**
+   * Costruttore senza parametri della classe Badge
+   */
+  public Badge() {
+	  this.nome = null;
+  }
+
+  /**
+   * metodo che consente di recuperare il nome di un badge
+   * @return nome del badge
+   */
+  public String getNome() {
+    return nome;
+  }
+
+  /**
+   * metodo che consente di impostare il nome di un badge
+   * @param nome nome che si vuole assegnare ad un badge
+   */
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+  
 }

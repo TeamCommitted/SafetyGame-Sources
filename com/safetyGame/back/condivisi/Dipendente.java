@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class Dipendente {
 	
   private String codFiscale;
-  private ArrayList<Trofeo> trofei;
+  private ArrayList<Badge> badges;
   private Punteggio punteggio;
   private String nome;
   private String cognome;
@@ -35,7 +35,7 @@ public class Dipendente {
    */
   public Dipendente() {
     this.codFiscale = null;
-    this.trofei = new ArrayList<Trofeo>();
+    this.badges = new ArrayList<Badge>();
     this.punteggio = null;
     this.nome = null;
     this.cognome = null;
@@ -64,7 +64,7 @@ public class Dipendente {
     this.nickname = nn;
     this.password = p;
     this.ruolo = r;
-    this.trofei = new ArrayList<Trofeo>();
+    this.badges = new ArrayList<Badge>();
     this.punteggio = new Punteggio(pu);
   }
 
@@ -87,23 +87,23 @@ public class Dipendente {
   }
 
   /**
-   * metodo che restituisce la lista di trofei di un dipendente
+   * metodo che restituisce la lista di badge di un dipendente
    * 
-   * @return lista di trofei
+   * @return lista di badge
    */
-  public ArrayList<Trofeo> getTrofei() {
-    return trofei;
+  public ArrayList<Badge> getBadges() {
+    return this.badges;
   }
 
   /**
-   * metodo che consente di aggiungere un trofeo ad un dipendente
+   * metodo che consente di aggiungere un badge ad un dipendente
    *  
-   * @param trofeo trofeo da aggiungere
+   * @param badge badge da aggiungere
    * @throws ErrDipendente
    */
-  public void addTrofeo(Trofeo trofeo) throws ErrDipendente{
+  public void addBadge(Badge badge) throws ErrDipendente{
     boolean inserito = false;
-    inserito = this.trofei.add(trofeo);
+    inserito = this.badges.add(badge);
     if ( !inserito ) {  //se non è stato inserito allora sollevo eccezz.
     	throw new ErrDipendente(1){};
     }	
