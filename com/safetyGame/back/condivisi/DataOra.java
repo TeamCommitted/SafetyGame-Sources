@@ -52,15 +52,14 @@ public class DataOra {
    /**
     * deve prendere l'orario di oggi dall'orologio di sistema
     */
-   public DataOra() {//devo farglielo fare in maniera intelligente
+   public DataOra() {     
      GregorianCalendar gc = new GregorianCalendar();
      this.giorno = gc.get(Calendar.DAY_OF_MONTH);
-     this.mese = gc.get(Calendar.MONTH);
+     this.mese = gc.get(Calendar.MONTH)+1;//i mesi partono dallo 0
      this.anno = gc.get(Calendar.YEAR);
      this.ora = gc.get(Calendar.HOUR_OF_DAY);
      this.minuti = gc.get(Calendar.MINUTE);
      this.secondi = gc.get(Calendar.SECOND);
-     System.out.println("Giorno: " + gc.get(Calendar.DAY_OF_MONTH) );
    }
    
    /**
