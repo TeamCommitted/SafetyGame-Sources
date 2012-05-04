@@ -12,10 +12,9 @@
  * +----------------+---------------+-------------------------+
  * |   2012/03/02   |    AlesCorn   | +DataOra()              |		
  */
- 
- package com.safetyGame.back.condivisi;
 
- import java.util.*;
+package com.safetyGame;
+
 /**
  * Classe che rappresenta una data ed un'orario
  * 
@@ -29,7 +28,8 @@ public class DataOra {
    private int giorno;
    private int ora;
    private int minuti;
-   private int secondi;   
+   private int secondi;
+   
    /**
     * Costruttore della classe DataOra
     * @param a anno
@@ -48,20 +48,6 @@ public class DataOra {
       minuti = mi;
       secondi = s;
    }
-
-   /**
-    * deve prendere l'orario di oggi dall'orologio di sistema
-    */
-   public DataOra() {     
-     GregorianCalendar gc = new GregorianCalendar();
-     this.giorno = gc.get(Calendar.DAY_OF_MONTH);
-     this.mese = gc.get(Calendar.MONTH)+1;//i mesi partono dallo 0
-     this.anno = gc.get(Calendar.YEAR);
-     this.ora = gc.get(Calendar.HOUR_OF_DAY);
-     this.minuti = gc.get(Calendar.MINUTE);
-     this.secondi = gc.get(Calendar.SECOND);
-   }
-   
    /**
     * metodo get per ottenere l'anno
     * @return anno 
@@ -147,34 +133,8 @@ public class DataOra {
       this.secondi = secondi;
    }
    
-   /**
-    * Metodo che aggiusta un elemento che compone la data per far si che tutti i 
-    * numeri siano composti da due cifre
-    * 
-    * @param parteData numero da controllare
-    * @return risultato numero come stringa formato da due cifre
-    */
-   public static String aggiusta(int parteData){
-     if ( parteData < 10 ) {
-	   return "0"+parteData;
-     }
-     return ""+parteData;
-   }
-   
    @Override
-   public String toString() { 
-     String sMese = null;
-     String sGiorno = null;
-     String sOra = null;
-     String sMinuti = null;
-     String sSecondi = null;
-	 
-     sMese = aggiusta(this.mese);
-     sGiorno = aggiusta(this.giorno);
-     sOra = aggiusta(this.ora);
-     sMinuti = aggiusta(this.minuti);
-     sSecondi = aggiusta(this.secondi);
-	 
-     return ""+anno+"/"+sMese+"/"+sGiorno+" "+sOra+":"+sMinuti+":"+sSecondi;
+   public String toString() {
+      return ""+anno+"/"+"mese"+"/"+giorno+" "+ora+":"+minuti+":"+secondi;
    }   
 }
