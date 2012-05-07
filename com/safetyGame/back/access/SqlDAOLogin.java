@@ -4,6 +4,7 @@ public class SqlDAOLogin implements DAOLogin{
    public SqlDAOLogin(){}
     
    public boolean loginLimitato(String username, String password){
+      
       //prende le credenziali dipendente e le controlla
       return true;
    }

@@ -10,15 +10,7 @@ public class SqlDAOFactory extends DAOFactory{
    SqlDAOPunteggi punteggi;
    SqlDAOBadge badge;
    public SqlDAOFactory(){}
-   /*
-    * while(rs.next())
-            {
-                System.out.println("id: " + rs.getString("id"));
-                System.out.println("firstname: " + rs.getString("firstname"));
-                System.out.println("lastname: " + rs.getString("lastname"));
-                System.out.println("--------------------------------------");
-            }
-    */
+
    public boolean loginLimitato(String username, String password){
       //prende le credenziali dipendente e le controlla
       return login.loginLimitato(username,password);
@@ -57,7 +49,7 @@ public class SqlDAOFactory extends DAOFactory{
    }
    public Punteggio getStat(String username){
       //prende i punteggi dipendente
-      return punteggi.getStat(username);
+      return punteggi.getStat(username, serverAzienda);
    }
    public Dipendente[] elencoDipendenti(){
       //prende i vari dipendenti e li ritorna
@@ -93,7 +85,7 @@ public class SqlDAOFactory extends DAOFactory{
    }
    public boolean trofei(String username, int n){
       //modifica il totale dei trofei di un dipendente
-      return punteggi.trofei(username, n);
+      return punteggi.trofei(username, n, serverAzienda);
    }
    public void reset(String username, String codfis, String mail){
       //modifica la password generandola randomicamente
@@ -101,7 +93,7 @@ public class SqlDAOFactory extends DAOFactory{
    }
    public Badge[] badgeD(String username){
       //mostra le badge le badge
-      return badge.badgeD(username);
+      return badge.badgeD(username, serverAzienda);
    }
    public Domanda[] domandeA(boolean interne){
       //mostra le domande all'AS
