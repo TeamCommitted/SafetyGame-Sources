@@ -31,6 +31,8 @@ public class Badge {
    */
   public Badge() {
 	  this.nome = null;
+	  this.descrizione = null;
+	  this.soglia = null;
   }
 
   /**
