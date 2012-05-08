@@ -10,14 +10,20 @@ package com.safetyGame.back.condivisi;
 public class Badge {
 
   private String nome;
+  private String descrizione;
+  private Punteggio soglia;
   
   /**
    * Costruttore con parametri della classe Badge
    * 
-   * @param nome nome del trofeo
+   * @param nome nome del badge
+   * @param d descrizione del badge
+   * @param p punteggio di soglia
    */
-  public Badge(String nome) {
-    this.nome = nome;	  
+  public Badge(String nome, String d, Punteggio p) {
+    this.nome = nome;
+    this.descrizione = d;
+    this.soglia = p;
   }
   
   /**
@@ -41,6 +47,38 @@ public class Badge {
    */
   public void setNome(String nome) {
     this.nome = nome;
+  }
+  
+  /**
+   * metodo che consente di recuperare la descrizione di un badge
+   * @return descrizione del badge
+   */
+  public String getDescrizione() {
+    return descrizione;
+  }
+
+  /**
+   * metodo che consente di impostare la descrizione di un badge
+   * @param descrizione che si vuole assegnare
+   */
+  public void setDescrizione(String descrizione) {
+    this.descrizione = descrizione;
+  }
+
+  /**
+   * metodo che consente di recuperare il punteggio di soglia del badge
+   * @return punteggio di soglia per aggiudicarsi il badge
+   */
+  public Punteggio getSoglia() {
+    return soglia;
+  }
+
+  /**
+   * metodo che consente di impostare il punteggio minimo di soglia 
+   * @param soglia che si vuole impostare
+   */
+  public void setSoglia(Punteggio soglia) {
+    this.soglia = soglia;
   }
   
 }
