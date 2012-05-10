@@ -16,6 +16,9 @@ public class Domanda{
   private int corretta;
   private String testo;
   private int rispostaData;
+  private boolean mobile;
+  private int tempo; //in secondi
+  private String ambito;
   
   /**
    * Costruttore con parametri della classe Domanda
@@ -27,8 +30,11 @@ public class Domanda{
    * @param c numero risposta corretta
    * @param te testo della domanda
    * @param rd risposta data dal dipendente alla domanda
+   * @param m identificativo per domande dispositivi fissi o mobili
+   * @param sec tempo eventuale per la risposta
+   * @param a ambito della domanda
    */
-  public Domanda(int i, Punteggio p, String ti, ArrayList<String> r, int c, String te, int rd) {
+  public Domanda(int i, Punteggio p, String ti, ArrayList<String> r, int c, String te, int rd, boolean m, int sec, String a) {
     this.id = i;
     this.punteggio = p;
     this.tipologia = ti;
@@ -36,6 +42,12 @@ public class Domanda{
     this.corretta = c;
     this.testo = te;
     this.rispostaData = rd;
+    this.mobile = m;
+    this.tempo = sec;//se mi viene passato 0 lo setto a -1 per indicare che la domanda non imposta tempo
+    if (this.tempo == 0)
+      this.tempo = -1;
+    this.ambito = a;
+    
   }
   
   /**
@@ -50,6 +62,9 @@ public class Domanda{
     this.corretta = -1;
     this.testo = null;
     this.rispostaData = -1;
+    this.mobile = false; // una domanda per default è per dispositivi fissi
+    this.tempo = -1; //di default la domanda non è a tempo
+    this.ambito = null;
   }
 
 /**
@@ -179,4 +194,58 @@ public class Domanda{
     this.rispostaData = rispostaData;
   }
 
+  /**
+   * metodo che consente di individuare se una domanda è per dispositivi mobili o fissi
+   * 
+   * @return true se è per dispositivi mobili, false altrimenti
+   */
+  public boolean isMobile() {
+    return mobile;
+  }
+
+  /**
+   * metodo che consente di impostare se la domanda è per dispositivi fissi o mobili
+   * 
+   * @param mobile campo booleano se la domanda è per dispositivi mobili
+   */
+  public void setMobile(boolean mobile) {
+    this.mobile = mobile;
+  }
+
+  /**
+   * metodo che consente di recuperare il tempo a disposizione di un dipendente per rispondere alla domanda
+   * 
+   * @return tempo a disposizione per rispondere ad una domanda
+   */
+  public int getTempo() {
+    return tempo;
+  }
+
+  /**
+   * metodo che consente di impostare il tempo a disposizione per un dipendente di rispondere ad una domanda
+   * 
+   * @param tempo tempo a disposizione per rispondere ad una domanda
+   */
+  public void setTempo(int tempo) {
+    this.tempo = tempo;
+  }
+
+  /**
+   * metodo che consente di recuperare l'ambito della domanda
+   * 
+   * @return ambito della domanda
+   */
+  public String getAmbito() {
+    return ambito;
+  }
+
+  /**
+   * metodo che consente di impostare l'ambito di una domanda
+   * 
+   * @param ambito ambito della domanda
+   */
+  public void setAmbito(String ambito) {
+    this.ambito = ambito;
+  }
+  
 }

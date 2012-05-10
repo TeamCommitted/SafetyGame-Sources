@@ -2,8 +2,63 @@ package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
+/**
+ * Classe che si occupa di gestire i log del sistema
+ * 
+ * @author acornagl 
+ * @version v0.1
+ */
 public class GestioneLog{
-   DataOra dataora;
+
+  private UpdateLog updateLog;
+  
+  /**
+   * Costruttore con parametri della classe GestioneLog
+   * 
+   * @param u riferimento all'oggetto UpdateLog del package access
+   */
+  public GestioneLog(UpdateLog u) {
+    this.updateLog = u;
+  }
+  
+  /**
+   * Costruttore senza parametri della classe GestioneLog
+   * 
+   */
+  public GestioneLog() {
+    this.updateLog = null;
+  }
+  
+  /**
+   * metodo che consente di recuperare il riferimento all'oggetto di tipo UpdateLog
+   * @return riferimento all'oggetto di tipo UpdateLog
+   */
+  public UpdateLog getUpdateLog() {
+    return updateLog;
+  }
+
+  /**
+   * metodo che consente di impostare il riferimento all'oggetto di tipo UpdateLog
+   * @param updateLog riferimento all'oggetto di tipo UpdateLog
+   */
+  public void setUpdateLog(UpdateLog updateLog) {
+    this.updateLog = updateLog;
+  }
+  
+  /**
+   * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
+   * nel file di log
+   * 
+   * @param l oggetto Login dovuto dall'effettuazione del login da parte di un dipendente
+   */
+  public void scriviLogin(Login l) {
+    DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+    Dipendente dipendente = l.getDipendente(); //ricavo il dipendente
+    String log = "LOGIN" + dataOra.toString() + dipendente.toStringID();
+    updateLog.scrivi(log);//passo la stringa creata a updateLog
+  }
+
+/*   DataOra dataora;
    UpdateLog logGenerale; //o uno per tipo "generale" login / logout / domande / mod...
    UpdateLog utente;
    public GestioneLog(){}
@@ -128,5 +183,5 @@ public class GestioneLog{
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   
+*/   
 }
