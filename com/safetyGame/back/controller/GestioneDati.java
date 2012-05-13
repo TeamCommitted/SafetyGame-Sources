@@ -4,7 +4,8 @@ import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
 public class GestioneDati{
-   //private GestioneLog log;
+   
+   private GestioneLog log;
    private GestioneRecupero recupero;
    private GestioneLogin login;
    private GestioneDomandeD domandeD;
@@ -16,7 +17,22 @@ public class GestioneDati{
    private GestionePunteggiD punteggiD;
    private GestionePunteggiAA punteggiAA;
    
-   public GestioneDati(){}
+   /**
+    * Costruttore della classe GestioneDati
+    */
+   public GestioneDati() {
+     //il facade crea tutti gli oggetti del package
+	 this.log = new GestioneLog();
+	 this.recupero = new GestioneLogin();
+	 
+   }
+   /*
+    * metodi preparati dal facco
+    * !!!!! volta per volta scriviamo "fatto" per quelli realizzati!!!!!
+    * 
+    * 
+    public GestioneDati(){} !!!FATTO!!!
+    
    
    public boolean login(String username, String password){
       login.login(username, password);
@@ -106,4 +122,5 @@ public class GestioneDati{
    public void setBadgeD(GestioneBadgeD b){badgeD=b;}
    public void setBadgeAS(GestioneBadgeAS b){badgeAS=b;}
    public void setPunteggiAA(GestionePunteggiAA p){punteggiAA=p;}
+   */
 }

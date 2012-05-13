@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class Dipendente {
 	
+  private int id;
   private String codFiscale;
   private ArrayList<Badge> badges;
   private Punteggio punteggio;
@@ -34,6 +35,7 @@ public class Dipendente {
    * Costruttore della classe Dipendente, senza parametri
    */
   public Dipendente() {
+	this.id = -1;
     this.codFiscale = null;
     this.badges = new ArrayList<Badge>();
     this.punteggio = null;
@@ -48,6 +50,7 @@ public class Dipendente {
   /**
    * Costruttore della classe Dipendente con parametri
    * 
+   * @param id id dipendente
    * @param cf codice fiscale
    * @param n nome
    * @param c cognome
@@ -56,7 +59,8 @@ public class Dipendente {
    * @param p password
    * @param r ruolo 
    */
-  public Dipendente(String cf, String n, String c, String e, String nn, String p, String r, int pu) {
+  public Dipendente(int id,String cf, String n, String c, String e, String nn, String p, String r, int pu) {
+	this.id = id;  
     this.codFiscale = cf;
     this.nome = n;
     this.cognome = c;
@@ -66,6 +70,24 @@ public class Dipendente {
     this.ruolo = r;
     this.badges = new ArrayList<Badge>();
     this.punteggio = new Punteggio(pu);
+  }
+
+  /**
+   * metodo get per ricavare l'id del dipendente
+   * 
+   * @return id dipendente
+   */
+  public int getId() {
+    return id;
+  }
+
+  /**
+   * metodo per inserire o modificare l'id del dipendente
+   * 
+   * @param id id che si vuole impostare
+   */
+  public void setId(int id) {
+    this.id = id;
   }
 
   /**
@@ -233,5 +255,11 @@ public class Dipendente {
    */
   public void setRuolo(String ruolo) {
     this.ruolo = ruolo;
+  }
+  
+  public String toStringID() {
+    String ritorno = "";
+    ritorno += "ID:" + this.id + "Cognome Nome:" + this.cognome + " " + this.nome;
+    return ritorno;
   }
 }

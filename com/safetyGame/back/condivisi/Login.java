@@ -26,9 +26,9 @@
  */
 public class Login {
 	
-  private Dipendente dipendente;	
+  private Dipendente dipendente;// se non è ancora autenticato avrà solo i campi nick e password	
   private DataOra dataOra;
-	
+  private boolean autenticato;	//serve a sapere se un utente è attualmente autenticato nel sistema
   /**
    * Costruttore con parametri della classe Login
    * 
@@ -36,9 +36,10 @@ public class Login {
    * @param dataOra data e ora in cui è stato effettuato il login
    * 
    */
-  public Login(Dipendente dipendente, DataOra dataora) {
+  public Login(Dipendente dipendente, DataOra dataora, boolean autenticato) {
     this.dipendente = dipendente; 
     this.dataOra = dataora;
+    this.autenticato = autenticato;
   }
 		
   /**
@@ -46,8 +47,8 @@ public class Login {
    * 
    */
   public Login() {
-    dipendente = null;
-    dataOra = null;
+    this.dipendente = null;
+    this.dataOra = null;
   }
 
   /**
@@ -86,5 +87,23 @@ public class Login {
     this.dataOra = dataOra;
   }  
   
+  /**
+   * metodo che consente di conoscere se l'utente è attualmente autenticato
+   * 
+   * @return booleano se utente è attualmente autenticato
+   */
+  public boolean isAutenticato() {
+	return autenticato;
+  }
+
+  /**
+   * metodo che consente di impostare se un utente è attualmente autenticato
+   * 
+   * @param autenticato booleano se utente è attualmente autenticato
+   */
+  public void setAutenticato(boolean autenticato) {
+    this.autenticato = autenticato;
+  }
+
 }
 	
