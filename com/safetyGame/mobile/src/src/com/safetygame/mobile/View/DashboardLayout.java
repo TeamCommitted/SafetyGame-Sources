@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.safetygame.android.View;
+package com.safetygame.mobile.View;
 
 import android.content.Context;
 import android.util.AttributeSet;

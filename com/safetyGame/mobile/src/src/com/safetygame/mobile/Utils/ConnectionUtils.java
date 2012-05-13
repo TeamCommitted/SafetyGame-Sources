@@ -16,7 +16,7 @@
  * +----------+------------------+---------------------
  *
 */
-package com.safetygame.android.Utils;
+package com.safetygame.mobile.Utils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -38,10 +38,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.safetygame.android.condivisi.Dati;
-import com.safetygame.android.condivisi.Domanda;
-import com.safetygame.android.condivisi.Punteggi;
-import com.safetygame.android.condivisi.Quest;
+import com.safetygame.mobile.condivisi.Dati;
+import com.safetygame.mobile.condivisi.Domanda;
+import com.safetygame.mobile.condivisi.Punteggi;
+import com.safetygame.mobile.condivisi.Quest;
 
 import android.util.Log;
 

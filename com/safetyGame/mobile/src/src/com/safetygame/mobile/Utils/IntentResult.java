@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.safetygame.android.Utils;
+package com.safetygame.mobile.Utils;
 
 /**
  * <p>Encapsulates the result of a barcode scan invoked through {@link IntentIntegrator}.</p>
