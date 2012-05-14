@@ -64,7 +64,7 @@ public class GestioneLog{
 	try {
 	  this.updateLog = new UpdateLog(percorso);
 	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
+	catch (IOException e) {System.out.println("non va"); }//bisogna decidere cosa fare se si verifica errore
     
     String log = "LOGIN " + dataOra.toString() + " " + dipendente.toStringID(); //stringa contenente il log
     updateLog.scriviChiudi(log);//passo la stringa creata a updateLog

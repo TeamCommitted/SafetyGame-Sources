@@ -1,18 +1,35 @@
 /*
  * Name: DataOra.java
- * Package: com.safetyGame
- * Author: TeamCommitted
- * Date:
+ * Package: com.safetygame.back.condivisi
+ * Author: Alessandro Cornaglia
+ * Date: {Data di approvazione del file}
  * Version: 0.1
- * Copyright: 
+ * Copyright: see COPYRIGHT
  * 
  * Changes:
- * +----------------+---------------+-------------------------+
- * |      Date      |   Programmer  |         Changes         |
- * +----------------+---------------+-------------------------+
- * |   2012/03/02   |    AlesCorn   | +DataOra()              |		
- */
- 
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120419 |Alessandro Cornaglia | + DataOra
+ * |          |                     | + Badge
+ * |          |                     | + getAnno
+ * |          |                     | + setAnno
+ * |          |                     | + getMese
+ * |          |                     | + setMese
+ * |          |                     | + getGiorno
+ * |          |                     | + setGiorno
+ * |          |                     | + getOra
+ * |          |                     | + setOra
+ * |          |                     | + getMinuti
+ * |          |                     | + setMinuti
+ * |          |                     | + getSecondi
+ * |          |                     | + setSecondi
+ * +----------+---------------------|---------------------
+ * | 20120420 |Alessandro Cornaglia | +aggiusta
+ * |          |                     | +toString
+ * +----------+---------------------+---------------------
+ *
+ */ 
  package com.safetyGame.back.condivisi;
 
  import java.util.*;
