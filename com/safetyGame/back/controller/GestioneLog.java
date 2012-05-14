@@ -240,7 +240,6 @@ public class GestioneLog{
    * @param d dipendente che ha ottenuto un badge
    * @param b badge ottenuto
    */
-
   public void scriviOttenimentoBadge(Dipendente d, Badge b) {
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
@@ -257,127 +256,232 @@ public class GestioneLog{
     updateLog.scriviChiudi(log);
   }
   
+  /**
+   * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
+   * nel file di log dopo che l'AA aggiunge un dipendente
+   * 
+   * @param d dipendente aggiunto
+   */
+  public void scriviAddDip(Dipendente d) {
+	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+    
+    //creo path del file da scrivere e creo UpdateLog
+    String percorso = "/log/AA/AA.txt";
+	try {
+	  this.updateLog = new UpdateLog(percorso);
+	}
+	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
+	
+	String log = "AGGIUNTO DIPENDENTE " + dataOra.toString() + " id dip=" + d.getId();
+    updateLog.scriviChiudi(log);
+  }
+  
+  /**
+   * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
+   * nel file di log dopo che l'AA rimuove un dipendente
+   * 
+   * @param d dipendente rimosso
+   */
+  public void scriviDelDip(Dipendente d) {
+	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+    
+    //creo path del file da scrivere e creo UpdateLog
+    String percorso = "/log/AA/AA.txt";
+	try {
+	  this.updateLog = new UpdateLog(percorso);
+	}
+	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
+	
+	String log = "RIMOSSO DIPENDENTE " + dataOra.toString() + " id dip=" + d.getId();
+    updateLog.scriviChiudi(log);
+  }
+  
+  /**
+   * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
+   * nel file di log dopo che l'AA modifica un dipendente
+   * 
+   * @param d dipendente modificato
+   */
+  public void scriviModDip(Dipendente d) {
+	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+    
+    //creo path del file da scrivere e creo UpdateLog
+    String percorso = "/log/AA/AA.txt";
+	try {
+	  this.updateLog = new UpdateLog(percorso);
+	}
+	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
+	
+	String log = "MODIFICATO DIPENDENTE " + dataOra.toString() + " id dip=" + d.getId();
+    updateLog.scriviChiudi(log);
+  }
+  
+  /**
+   * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
+   * nel file di log dopo che l'AS aggiunge una o più domande
+   * 
+   * @param d domande aggiunte
+   */
+  public void scriviAddDomande(Domanda [] d) {
+	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+    
+    //creo path del file da scrivere e creo UpdateLog
+    String percorso = "/log/AS/AS.txt";
+	try {
+	  this.updateLog = new UpdateLog(percorso);
+	}
+	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
+	
+	//scrivo una riga per ogni domanda aggiunta
+	for (int i = 0; i < d.length; i++) {
+	  String log = "AGGIUNTA DOMANDA " + dataOra.toString() + " id dom=" + d[i].getId();
+	  updateLog.scriviChiudi(log);
+	}
+  }
+  
+  /**
+   * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
+   * nel file di log dopo che l'AS rimuove una o più domande
+   * 
+   * @param d domande rimosse
+   */
+  public void scriviDelDomande(Domanda [] d) {
+	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+    
+    //creo path del file da scrivere e creo UpdateLog
+    String percorso = "/log/AS/AS.txt";
+	try {
+	  this.updateLog = new UpdateLog(percorso);
+	}
+	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
+	
+	//scrivo una riga per ogni domanda aggiunta
+	for (int i = 0; i < d.length; i++) {
+	  String log = "RIMOSSA DOMANDA " + dataOra.toString() + " id dom=" + d[i].getId();
+	  updateLog.scriviChiudi(log);
+	}
+  }
 /*   DataOra dataora;
    UpdateLog logGenerale; //o uno per tipo "generale" login / logout / domande / mod...
    UpdateLog utente;
    public GestioneLog(){}
    
-   public void login(String username, char u){
+   public void login(String username, char u){	FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void chiediDomanda(String username){
+   public void chiediDomanda(String username){	FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void posticipa(String username){
+   public void posticipa(String username){	FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void rispondi(String username, String risposta){
+   public void rispondi(String username, String risposta){ FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }   
-   public void datiD(String username){
+   public void datiD(String username){	FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void passD(String username){
+   public void passD(String username){  FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void mailD(String username){
+   public void mailD(String username){  FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void getStat(String username){
+   public void getStat(String username){ SERVE????
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void passA(String username){
+   public void passA(String username){ PUÒ MODIFICARE LA PASS???
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void listaD(){
+   public void listaD(){  SERVE???
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void addD(String username){
+   public void addD(String username){ FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void delD(String username){
+   public void delD(String username){ FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void nome(String username){
+   public void nome(String username){ SOSP
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void cognome(String username){
+   public void cognome(String username){ SOSP
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void codfis(String username){
+   public void codfis(String username){ SOSP
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void username(String username){
+   public void username(String username){ SOSP
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void impiego(String username){
+   public void impiego(String username){ SOSP
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void trofei(String username){
+   public void trofei(String username){ SOSP
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void reset(String username){
+   public void reset(String username){ COSA SAREBBE???
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void badgeD(String username){
+   public void badgeD(String username){ FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void domandeA(){
+   public void domandeA(){	SERVE???
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void addDomanda(){
+   public void addDomanda(){	FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void remDomanda(){
+   public void remDomanda(){	FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
    }
-   public void logout(String username){
+   public void logout(String username){ FATTO
       String s="";
       logGenerale.scrivi(s);
       utente.scriviChiudi(s);
