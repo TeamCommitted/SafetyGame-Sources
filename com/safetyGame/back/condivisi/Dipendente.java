@@ -116,19 +116,23 @@ public class Dipendente {
   public ArrayList<Badge> getBadges() {
     return this.badges;
   }
-
+  /**
+   * metodo che consente di impostare i badges di un dipendente
+   * 
+   * @param badges da aggiungere
+   */
+  public void setBadges(ArrayList<Badge> badges) {
+    this.badges = badges;
+  }
+  
   /**
    * metodo che consente di aggiungere un badge ad un dipendente
    *  
    * @param badge badge da aggiungere
    * @throws ErrDipendente
    */
-  public void addBadge(Badge badge) throws ErrDipendente{
-    boolean inserito = false;
-    inserito = this.badges.add(badge);
-    if ( !inserito ) {  //se non è stato inserito allora sollevo eccezz.
-    	throw new ErrDipendente(1){};
-    }	
+  public void addBadge(Badge badge) {
+    this.badges.add(badge);
   }
 
   /**
@@ -262,4 +266,6 @@ public class Dipendente {
     ritorno += "ID:" + this.id + "Cognome Nome:" + this.cognome + " " + this.nome;
     return ritorno;
   }
+
+
 }

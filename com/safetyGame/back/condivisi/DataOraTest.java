@@ -39,8 +39,8 @@ public class DataOraTest {
   public void testCostruttoreV() {
     initV();
     int anno = 2012;//anno attuale
-    int mese = 04;//mese attuale
-    int giorno = 27;//giorno attuale
+    int mese = 05;//mese attuale
+    int giorno = 15;//giorno attuale
     assertTrue("L'anno non è quello atteso", d.getAnno() == anno);
     assertTrue("Il mese non è quello atteso", d.getMese() == mese);
     assertTrue("Il giorno non è quello atteso", d.getGiorno() == giorno);

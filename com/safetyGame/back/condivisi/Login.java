@@ -14,8 +14,6 @@
  */
  
  package com.safetyGame.back.condivisi;
- import com.safetyGame.back.controller.*;
-
 
 /**
  * Classe contenitrice dei dati di autenticazione di un utente
