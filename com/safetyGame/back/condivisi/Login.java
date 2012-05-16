@@ -1,18 +1,25 @@
 /*
  * Name: Login.java
- * Package: com.safetyGame.back.condivisi
+ * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
- * Date:
+ * Date: {Data di approvazione del file}
  * Version: 0.1
- * Copyright: 
+ * Copyright: see COPYRIGHT
  * 
  * Changes:
- * +----------------+---------------+-------------------------+
- * |      Date      |   Programmer  |         Changes         |
- * +----------------+---------------+-------------------------+
- * |   2012/03/02   |    AlesCorn   | +Login()                |		
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120424 |Alessandro Cornaglia | + Login
+ * |          |                     | + getDipendente
+ * |          |                     | + setDipendente
+ * |          |                     | + getDataOra
+ * |          |                     | + setDataOra
+ * |          |                     | + isAutenticato
+ * |          |                     | + setAutenticato
+ * +----------+---------------------|---------------------
+ *
  */
- 
  package com.safetyGame.back.condivisi;
 
 /**

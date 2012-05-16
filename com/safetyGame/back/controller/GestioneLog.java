@@ -1,3 +1,38 @@
+/*
+ * Name: GestioneLog.java
+ * Package: com.safetygame.back.controller
+ * Author: Alessandro Cornaglia
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120511 |Alessandro Cornaglia | +getLog
+ * |          |                     | +getPercorso
+ * +----------+---------------------+---------------------
+ * | 20120510 |Alessandro Cornaglia | + GestioneLog
+ * |          |                     | + getUpdateLog
+ * |          |                     | + setUpdateLog
+ * |          |                     | + scriviLogin
+ * |          |                     | + scriviLogout
+ * |          |                     | + scriviDomRic
+ * |          |                     | + scriviDomProp
+ * |          |                     | + scriviDomPost
+ * |          |                     | + scriviDomRisp
+ * |          |                     | + scriviModPassD
+ * |          |                     | + scriviModEmailD
+ * |          |                     | + scriviOttenimentoBadge
+ * |          |                     | + scriviAddDip
+ * |          |                     | + scriviDelDip
+ * |          |                     | + scriviModDip
+ * |          |                     | + scriviAddDomande
+ * |          |                     | + scriviDelDomande
+ * +----------+---------------------|---------------------
+ *
+ */ 
 package com.safetyGame.back.controller;
 import java.io.IOException;
 

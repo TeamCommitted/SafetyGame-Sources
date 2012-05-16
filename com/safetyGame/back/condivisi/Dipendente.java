@@ -1,11 +1,40 @@
 /*
- * Name: Dipendente.java
- * Package: com.safetyGame.back.condivisi
- * Author: 
- * Date: 
- * Version: 0.1
- * Copyright:
- */
+ * Name: DataOra.java
+ * Package: com.safetygame.back.condivisi
+ * Author: Alessandro Cornaglia
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120421 |Alessandro Cornaglia | +setBadges
+ * |          |                     | +toStringID
+ * +----------+---------------------+---------------------
+ * | 20120419 |Alessandro Cornaglia | + Dipendente
+ * |          |                     | + getId
+ * |          |                     | + setId
+ * |          |                     | + getCodFiscale
+ * |          |                     | + setCodFiscale
+ * |          |                     | + getBadges
+ * |          |                     | + addBadge
+ * |          |                     | + getPunteggio
+ * |          |                     | + setPunteggio
+ * |          |                     | + getNome
+ * |          |                     | + setNome
+ * |          |                     | + getCognome
+ * |          |                     | + setCognome
+ * |          |                     | + getEmail
+ * |          |                     | + setEmail
+ * |          |                     | + getPassword
+ * |          |                     | + setPassword
+ * |          |                     | + getRuolo
+ * |          |                     | + setRuolo
+ * +----------+---------------------|---------------------
+ *
+ */ 
 
 package com.safetyGame.back.condivisi;
 
