@@ -1,8 +1,104 @@
+/*
+ * Name: GestioneDipendentiD.java
+ * Package: com.safetygame.back.controller
+ * Author: Alessandro Cornaglia
+ * Date: {Data di approvazione del file}
+ * Version: 0.1
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120519 |Alessandro Cornaglia | +GestioneDipendentiD
+ * |          |                     | +getDaoFacory
+ * |          |                     | +setDaoFactory
+ * |          |                     | +getGestioneLog
+ * |          |                     | +setGestioneLog 
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
-public class GestioneDipendentiD{ 
+public class GestioneDipendentiD{
+  private DAOFactory daoFactory;
+  private GestioneLog gestioneLog;
+  
+  /**
+   * Costruttore con parametri della classe GestioneDipendentiD
+   * 
+   * @param d riferimento all'iggetto di tipo DAOFactory
+   * @param g riferimento alla classe di tipo GestioneLog
+   */
+  public GestioneDipendentiD(DAOFactory d, GestioneLog g) {
+    this.daoFactory = d;
+    this.gestioneLog = g;
+  }
+  
+  /**
+   * Costruttore senza parametri della classe GestioneDipendentiD
+   */
+  public GestioneDipendentiD() {
+    this.daoFactory = null;
+    this.gestioneLog = null;
+  }
+
+  /**
+   * metodo che consente di recuperare il riferimento all'oggetto di tipo statico
+   * DAOFactory
+   * 
+   * @return riferimento all'oggetto statico DAOFactory
+   */
+  public DAOFactory getDaoFactory() {
+    return daoFactory;
+  }
+
+  /**
+   * metodo che consente di impostare il riferimento all'oggetto di tipo statico 
+   * DAOFactory
+   * 
+   * @param daoFactory riferimento all'oggetto di tipo DAOFactory
+   */
+  public void setDaoFactory(DAOFactory daoFactory) {
+    this.daoFactory = daoFactory;
+  }
+
+  /**
+   * metodo che consente di recuperare il riferimento all'oggetto di tipo GestioneLog
+   * 
+   * @return riferimento all'oggetto GestioneLog
+   */
+  public GestioneLog getGestioneLog() {
+    return gestioneLog;
+  }
+
+  /**
+   * metodo che consente di impostare il riferimento all'oggetto di GestioneLog 
+   * 
+   * @param gestioneLog riferimento all'oggetto di tipo GestioneLog
+   */
+  public void setGestioneLog(GestioneLog gestioneLog) {
+    this.gestioneLog = gestioneLog;
+  }
+
+  public Dipendente getDati() {
+  //cosa bisogna passargli????
+	  //o meglio cosa deve ritornare????
+  }
+  
+  public boolean modificaPass(Dipendente dip) {
+	//dip contiene la nuova password 
+	//scrivo la nuova password
+    daoFactory.modificaPassword(dip,dip.getPassword());
+    
+    //scrivo il log
+    gestioneLog.scriviModPassD(dip);
+  }
+  
+/*   CODICE FACCO
+ * 	
    SqlDAOFactory accesso;
    GestioneLog log;
    public GestioneDipendentiD(SqlDAOFactory s){accesso=s;}
@@ -20,4 +116,5 @@ public class GestioneDipendentiD{
       log.mailD(username);
       accesso.mailD(mail,username);
    }
+*/
 }
