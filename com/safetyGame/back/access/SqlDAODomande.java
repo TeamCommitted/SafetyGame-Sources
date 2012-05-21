@@ -4,7 +4,7 @@ import com.safetyGame.back.condivisi.*;
 public class SqlDAODomande implements DAODomande{
    public SqlDAODomande(){}
     
-   public Domanda getDomanda(String username){
+   public Domanda getDomanda(Dipendente d){
       //ritorna una domanda
       return new Domanda();
    }
@@ -24,5 +24,8 @@ public class SqlDAODomande implements DAODomande{
    }
    public void remDomanda(int id){
       //rimuove una domanda
+   }
+   public void scriviSottoposta(Domanda dom, Dipendente dip){
+     //che scrive sul DB che la domanda dom è stata sottoposta al Dipendente dip  
    }
 }

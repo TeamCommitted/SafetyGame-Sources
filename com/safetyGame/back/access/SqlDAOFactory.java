@@ -1,5 +1,7 @@
 package com.safetyGame.back.access;
 import com.safetyGame.back.condivisi.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SqlDAOFactory extends DAOFactory{
    Indirizzo serverDomande;
@@ -23,9 +25,9 @@ public class SqlDAOFactory extends DAOFactory{
       //preleva dal database tutte le info del dipendente
       return dipendenti.getInfo(username);
    }
-   public Domanda getDomanda(String username){
+   public Domanda getDomanda(Dipendente d){
       //ritorna una domanda
-      return domande.getDomanda(username);
+      return domande.getDomanda(d);
    }
    public void posticipa(String username){
       //posticipa il timer e salva la domanda
@@ -91,7 +93,7 @@ public class SqlDAOFactory extends DAOFactory{
       //modifica la password generandola randomicamente
       dipendenti.reset(username, codfis, mail);
    }
-   public Badge[] badgeD(String username){
+   public ArrayList<Badge> badgeD(String username){
       //mostra le badge le badge
       return badge.badgeD(username, serverAzienda);
    }
