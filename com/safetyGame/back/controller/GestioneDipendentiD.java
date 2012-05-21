@@ -15,6 +15,8 @@
  * |          |                     | +setDaoFactory
  * |          |                     | +getGestioneLog
  * |          |                     | +setGestioneLog 
+ * |          |                     | +getDati
+ * |          |                     | +modificaPass
  * +----------+---------------------|---------------------
  *
  */
@@ -83,18 +85,19 @@ public class GestioneDipendentiD{
     this.gestioneLog = gestioneLog;
   }
 
-  public Dipendente getDati() {
-  //cosa bisogna passargli????
-	  //o meglio cosa deve ritornare????
+  public Dipendente getDati(Login l) {
+	  //che dati deve ritornare??? solo il dipendente?
+	  return l.getDipendente();
   }
   
   public boolean modificaPass(Dipendente dip) {
-	//dip contiene la nuova password 
+	//dip contiene la nuova password (il web deve controllare che la pass sia ok
 	//scrivo la nuova password
     daoFactory.modificaPassword(dip,dip.getPassword());
     
     //scrivo il log
     gestioneLog.scriviModPassD(dip);
+    return true;
   }
   
 /*   CODICE FACCO
