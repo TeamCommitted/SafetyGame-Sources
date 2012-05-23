@@ -5,7 +5,8 @@ import java.sql.SQLException;
 
 public class SqlDAOPunteggi implements DAOPunteggi{
   public SqlDAOPunteggi(){}
-    
+    //scusa facco, l'indirizzo non lo metti dentro al costruttore?
+    //come faccio a saperlo io?, corny
   public Punteggio getStat(String username, Indirizzo serverAzienda){
     ResultSet rs = serverAzienda.selezione("punteggio","Storico","IDdipendente="+username);
     int totale=0;

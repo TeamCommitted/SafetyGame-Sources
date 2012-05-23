@@ -3,12 +3,15 @@
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Version: 0.2
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120523 |Alessandro Cornaglia | +getStatistiche
+ * |          |                     | +getBadgeD
  * +----------+---------------------+---------------------
  * | 20120521 |Alessandro Cornaglia | +GestionePunteggiD
  * +----------+---------------------|---------------------
@@ -17,6 +20,8 @@
 package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
+
+import java.util.ArrayList;
 
 public class GestionePunteggiD{ 
 
@@ -49,12 +54,22 @@ public class GestionePunteggiD{
    * 
    * @return statistiche del dipendente
    */
-  public Punteggio[] getStatistiche(Login l) {
-    /*
-     * Ordine dei dati delle statistiche
-     * 0 : proprio Punteggio
-     * 1 :  
-     */
+  public Punteggio getStatistiche(Login l) {
+    Dipendente dip = l.getDipendente();
+    Punteggio ritorno = this.daoPunteggi.getPunteggio(dip);
+    return ritorno;
+  }
+  
+  /**
+   * metodo che consente di recuperare i badge guadagnati dal dipendente
+   *   
+   * @param l login del dipendente
+   * @return badge guadagnati dal dipendente
+   */
+  public ArrayList<Badge> getBadgeD(Login l) {
+    Dipendente dip = l.getDipendente();
+    ArrayList<Badge> badges = dip.getBadges();
+    return badges;
   }
 /*PARTE CREATA DAL FACCO
    SqlDAOFactory accesso;
