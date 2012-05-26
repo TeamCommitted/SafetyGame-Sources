@@ -1,9 +1,9 @@
 package com.safetyGame.back.access;
 import com.safetyGame.back.condivisi.*;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.SQLException;
 
 public class SqlDAOBadge implements DAOBadge{
   private Indirizzo serverAzienda;
@@ -13,7 +13,7 @@ public class SqlDAOBadge implements DAOBadge{
   }
    
   public ArrayList<Badge> badgeD(Dipendente d){
-    ResultSet rs = serverAzienda.selezione("Assegnati","IDBadge, descrizione, soglia","IDutente="+d.getId());
+    ResultSet rs = serverAzienda.selezione("Assegnato","IDBadge, descrizione, soglia","IDutente="+d.getId());
     ArrayList<Badge> b = new ArrayList<Badge>();
     boolean trovato = false;
     String nomeB="";
