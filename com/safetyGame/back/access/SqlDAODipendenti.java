@@ -8,56 +8,86 @@ public class SqlDAODipendenti implements DAODipendenti{
   public SqlDAODipendenti(Indirizzo azienda){
     serverAzienda=azienda;
   }
-  public Dipendente getInfo(String username){
+  
+  public Dipendente getInfoD(Login l){
     //preleva dal database tutte le info del dipendente
-    ResultSet rs=null;
     return new Dipendente();
   }
-  public void passD(String pass, String username){
+  
+  public Dipendente getInfoA(Login l){
+    //preleva dal database tutte le info dell'amministratore
+    return new Dipendente();
+  }
+  
+  public boolean passD(Dipendente d, String pass){
     //cambia la password dipendente
+    return true;
   }
-  public void passA(String pass, String username){
+  
+  public boolean passA(Dipendente d, String pass){
     //cambia la password amministratore
+    return true;
   }
-  public void mailD(String mail, String username){
+  
+  public boolean mailD(Dipendente d, String mail){
     //cambia la mail dipendente
+    return true;
   }
-  public Punteggio getStat(String username){
-    //prende i punteggi dipendente
-    return new Punteggio();
-  }
+  
   public Dipendente[] elencoDipendenti(){
     //prende i vari dipendenti e li ritorna
     Dipendente[] d=new Dipendente[1];
     return d;
   }
-  public boolean aggiungiDipendente(String nome, String cognome, String codfis, String mail, String impiego){
+  
+  public boolean aggiungiDipendente(Dipendente d){
+  //String nome, String cognome, String codfis, String mail, String impiego
     //aggiunge un dipendente
     return true;
   }
-  public boolean cancellaDipendente(String username){
+  
+  public boolean cancellaDipendente(Dipendente d){
     //cancella un dipendente
     return true;
   }
-  public void modNome(String username, String nome){
+  
+  public boolean modNome(Dipendente d, String nome){
     //modifica il nome di un dipendente
+    return true;
   }
-  public void modCognome(String username, String cognome){
+  
+  public boolean modCognome(Dipendente d, String cognome){
     //modifica il cognome di un dipendente
+    return true;
   }
-  public void modCodFis(String username, String codfis){
+  
+  public boolean modCodFis(Dipendente d, String codfis){
     //modifica il codfis di un dipendente
+    return true;
   }
-  public void modUsername(String usernameOld, String username){
+
+  public boolean modUsername(Dipendente d, String username){
     //modifica il l'username di un dipendente
+    return true;
   }
-  public void modImpiego(String username, String impiego){
+  
+  public boolean modImpiego(Dipendente d, String impiego){
     //modifica il l'impiego di un dipendente
+    return true;
   }
-  public void trofei(String username, int n){
-    //modifica il totale dei trofei di un dipendente
+  
+  public boolean setTrofei(Dipendente d, int n){
+    boolean b= serverAzienda.modificaRiga("Dipendente","trofei="+n,"ID="+d.getId());
+    return b;
   }
-  public void reset(String username, String codfis, String mail){
+  
+  public boolean resetD(Recupero r){
     //modifica la password generandola randomicamente
+    return true;
+  }
+  
+  public boolean resetA(Recupero r){
+    //modifica la password generandola randomicamente
+    return true;
   }
 }

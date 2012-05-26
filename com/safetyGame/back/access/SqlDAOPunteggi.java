@@ -9,8 +9,8 @@ public class SqlDAOPunteggi implements DAOPunteggi{
     serverAzienda=azienda;
   }
   
-  public Punteggio getStat(String username){
-    ResultSet rs = serverAzienda.selezione("punteggio","Storico","IDdipendente="+username);
+  public Punteggio getStat(Dipendente d){
+    ResultSet rs = serverAzienda.selezione("Storico","punteggio","IDDipendente="+d.getId());
     int totale=0;
     boolean finito = false;
     while(!finito){
@@ -23,9 +23,9 @@ public class SqlDAOPunteggi implements DAOPunteggi{
     return new Punteggio(totale);
   }
   
-  public boolean trofei(String username, int n){
-    boolean b= serverAzienda.modificaRiga("Dipendente","trofei="+n,"nickname="+username);
-    return b;
+  public Punteggio getGlobalStat(Dipendente d){
+    //prende i punteggi dipendente (statistiche)
+    return new Punteggio(1);
   }
 }
 

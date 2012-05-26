@@ -14,24 +14,29 @@ public class SqlDAODomande implements DAODomande{
     //ritorna una domanda
     return new Domanda();
   }
-  public void posticipa(String username){
+  public boolean posticipa(Dipendente d, Domanda dom){
     //posticipa il timer e salva la domanda
+    return true;
   }
-  public void rispondi(String username, String risposta){
+  public boolean rispondi(Dipendente d, Domanda dom){
     //imposta la risposta data
+    return true;
   }
-  public Domanda[] domandeA(boolean interne){
-    //mostra le domande all'AS
+  public Domanda[] domandeA(){
+    //mostra le domande all'AS se sono interne all'azienda = true altrimenti = false
     Domanda[] d=new Domanda[1];
     return d;
   }
-  public void addDomanda(int id){
+  public boolean addDomanda(Domanda d){
     //aggiunge una domanda
+    return true;
   }
-  public void remDomanda(int id){
+  public boolean remDomanda(Domanda d){
     //rimuove una domanda
+    return true;
   }
-  public void scriviSottoposta(Domanda dom, Dipendente dip){
+  public boolean scriviSottoposta(Dipendente dip, Domanda dom){
     //che scrive sul DB che la domanda dom è stata sottoposta al Dipendente dip  
+    return true;
   }
 }

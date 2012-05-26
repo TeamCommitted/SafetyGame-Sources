@@ -12,8 +12,8 @@ public class SqlDAOBadge implements DAOBadge{
     serverAzienda=azienda;
   }
    
-  public ArrayList<Badge> badgeD(String username){
-    ResultSet rs = serverAzienda.selezione("IDBadge, descrizione, soglia","Assegnati","IDutente="+username);
+  public ArrayList<Badge> badgeD(Dipendente d){
+    ResultSet rs = serverAzienda.selezione("Assegnati","IDBadge, descrizione, soglia","IDutente="+d.getId());
     ArrayList<Badge> b = new ArrayList<Badge>();
     boolean trovato = false;
     String nomeB="";
@@ -24,11 +24,13 @@ public class SqlDAOBadge implements DAOBadge{
         nomeB = rs.getString("IDbadge");
         descr = rs.getString("descrizione");
         punti = rs.getInt("soglia");
-        Badge temp=new Badge(nomeB,descr, new Punteggio(punti));
+        Badge temp=new Badge(nomeB, descr, new Punteggio(punti));
         b.add(temp);      
+        rs.next();
       }
       catch(SQLException e){trovato=true;}  
     }
+    if (b.size()==0){b=null;}
     return b;
   }
 }
