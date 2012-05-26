@@ -4,10 +4,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SqlDAOPunteggi implements DAOPunteggi{
-  public SqlDAOPunteggi(){}
-    //scusa facco, l'indirizzo non lo metti dentro al costruttore?
-    //come faccio a saperlo io?, corny
-  public Punteggio getStat(String username, Indirizzo serverAzienda){
+  private Indirizzo serverAzienda;
+  public SqlDAOPunteggi(Indirizzo azienda){
+    serverAzienda=azienda;
+  }
+  
+  public Punteggio getStat(String username){
     ResultSet rs = serverAzienda.selezione("punteggio","Storico","IDdipendente="+username);
     int totale=0;
     boolean finito = false;
@@ -21,7 +23,7 @@ public class SqlDAOPunteggi implements DAOPunteggi{
     return new Punteggio(totale);
   }
   
-  public boolean trofei(String username, int n, Indirizzo serverAzienda){
+  public boolean trofei(String username, int n){
     boolean b= serverAzienda.modificaRiga("Dipendente","trofei="+n,"nickname="+username);
     return b;
   }

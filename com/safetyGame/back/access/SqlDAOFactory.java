@@ -1,124 +1,98 @@
+/*
+ * Name: SqlDAOFactory.java
+ * Package: com.safetygame.back.access
+ * Author: Gabriele Facchin
+ * Date: {Data di approvazione del file}
+ * Version: 0.1
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120526 | Gabriele Facchin    | + SqlDAOFactory
+ * |          |                     | + creaDAOLogin
+ * |          |                     | + creaDAODipendenti
+ * |          |                     | + creaDAODomande
+ * |          |                     | + creaDAOBadge
+ * |          |                     | + creaDAOPunteggi
+ * +----------+---------------------|---------------------
+ *
+ */
+
 package com.safetyGame.back.access;
-import com.safetyGame.back.condivisi.*;
-import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * Classe che implementa le sottoclassi per la gestione del database SQL
+ * 
+ * @author gfacchin
+ * @version 0.1
+ */
 public class SqlDAOFactory extends DAOFactory{
-   Indirizzo serverDomande;
-   Indirizzo serverAzienda;
-   SqlDAOLogin login;
-   SqlDAODipendenti dipendenti;
-   SqlDAODomande domande;
-   SqlDAOPunteggi punteggi;
-   SqlDAOBadge badge;
-   public SqlDAOFactory(){}
-
-   public boolean loginLimitato(String username, String password){
-      //prende le credenziali dipendente e le controlla
-      return login.loginLimitato(username,password);
-   }
-   public boolean login(String username, String password){
-      //prende le credenziali utente e le controlla
-      return login.login(username,password);
-   }
-   public Dipendente getInfo(String username){
-      //preleva dal database tutte le info del dipendente
-      return dipendenti.getInfo(username);
-   }
-   public Domanda getDomanda(Dipendente d){
-      //ritorna una domanda
-      return domande.getDomanda(d);
-   }
-   public void posticipa(String username){
-      //posticipa il timer e salva la domanda
-      domande.posticipa(username);
-   }
-   public void rispondi(String username, String risposta){
-      //imposta la risposta data
-      domande.rispondi(username, risposta);
-   }
-   public void passD(String pass, String username){
-      //cambia la password dipendente
-      dipendenti.passD(pass, username);
-   }
-   public void passA(String pass, String username){
-      //cambia la password amministratore
-      dipendenti.passA(pass, username);
-   }
-   public void mailD(String mail, String username){
-      //cambia la mail dipendente
-      dipendenti.mailD(mail, username);
-   }
-   public Punteggio getStat(String username){
-      //prende i punteggi dipendente
-      return punteggi.getStat(username, serverAzienda);
-   }
-   public Dipendente[] elencoDipendenti(){
-      //prende i vari dipendenti e li ritorna
-      return dipendenti.elencoDipendenti();
-   }
-   public boolean aggiungiDipendente(String nome, String cognome, String codfis, String mail, String impiego){
-      //aggiunge un dipendente
-     return  dipendenti.aggiungiDipendente(nome, cognome, codfis, mail, impiego);
-   }
-   public boolean cancellaDipendente(String username){
-      //cancella un dipendente
-      return dipendenti.cancellaDipendente(username);
-   }
-   public void modNome(String username, String nome){
-      //modifica il nome di un dipendente
-      dipendenti.modNome(username, nome);
-   }
-   public void modCognome(String username, String cognome){
-      //modifica il cognome di un dipendente    
-      dipendenti.modCognome(username, cognome);
-   }
-   public void modCodFis(String username, String codfis){
-      //modifica il codfis di un dipendente
-      dipendenti.modCodFis(username, codfis);
-   }
-   public void modUsername(String usernameOld, String username){
-      //modifica il l'username di un dipendente
-      dipendenti.modUsername(usernameOld, username);
-   }
-   public void modImpiego(String username, String impiego){
-      //modifica il l'impiego di un dipendente
-      dipendenti.modImpiego(username, impiego);
-   }
-   public boolean trofei(String username, int n){
-      //modifica il totale dei trofei di un dipendente
-      return punteggi.trofei(username, n, serverAzienda);
-   }
-   public void reset(String username, String codfis, String mail){
-      //modifica la password generandola randomicamente
-      dipendenti.reset(username, codfis, mail);
-   }
-   public ArrayList<Badge> badgeD(String username){
-      //mostra le badge le badge
-      return badge.badgeD(username, serverAzienda);
-   }
-   public Domanda[] domandeA(boolean interne){
-      //mostra le domande all'AS
-      return domande.domandeA(interne);
-   }
-   public void addDomanda(int id){
-      //aggiunge una domanda
-      domande.addDomanda(id);
-   }
-   public void remDomanda(int id){
-      //rimuove una domanda
-      domande.remDomanda(id);
-   }
-   public void logout(String username){
-      //slogga l'utente
-      login.logout(username);
-   }
+  /**
+   * Costruttore della classe Indirizzo
+   * 
+   */
+  public SqlDAOFactory(){}
    
-   public void setLogin(SqlDAOLogin dao){login=dao;}
-   public void setDipendenti(SqlDAODipendenti dao){dipendenti=dao;}
-   public void setDomande(SqlDAODomande dao){domande=dao;}
-   public void setPunteggi(SqlDAOPunteggi dao){punteggi=dao;}
-   public void setBadge(SqlDAOBadge dao){badge=dao;}
-   public void setIndDomande(Indirizzo domande){serverDomande=domande;}
-   public void setIndAzienda(Indirizzo azienda){serverAzienda=azienda;}
+  /**
+   * Metodo ridefinito dalla classe astratta che crea l'oggetto SqlDAOLogin, 
+   * implementazione della classe interfaccia DAOLogin
+   * 
+   * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
+   * @return l'oggetto SqlDAOLogin istanziato
+   * 
+   */   
+  public DAOLogin creaDAOLogin(Indirizzo azienda){
+    return new SqlDAOLogin(azienda);
+  }
+
+  /**
+   * Metodo ridefinito dalla classe astratta che crea l'oggetto SqlDAODipendenti, 
+   * implementazione della classe interfaccia DAODipendenti
+   * 
+   * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
+   * @return l'oggetto SqlDAODipendenti istanziato
+   * 
+   */   
+  public DAODipendenti creaDAODipendenti(Indirizzo azienda){
+     return new SqlDAODipendenti(azienda);
+  }
+  
+  /**
+   * Metodo ridefinito dalla classe astratta che crea l'oggetto SqlDAODomande, 
+   * implementazione della classe interfaccia DAODomande
+   * 
+   * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
+   * @param domande oggetto Indirizzo contenente i recapiti per il server contenente le domande
+   * @return l'oggetto SqlDAODomande istanziato
+   * 
+   */   
+  public DAODomande creaDAODomande(Indirizzo azienda, Indirizzo domande){
+     return new SqlDAODomande(azienda,domande);
+  }
+  
+  /**
+   * Metodo ridefinito dalla classe astratta che crea l'oggetto SqlDAOBadge, 
+   * implementazione della classe interfaccia DAOBadge
+   * 
+   * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
+   * @return l'oggetto SqlDAOBadge istanziato
+   * 
+   */   
+  public DAOBadge creaDAOBadge(Indirizzo azienda){
+     return new SqlDAOBadge(azienda);
+  }
+  
+  /**
+   * Metodo ridefinito dalla classe astratta che crea l'oggetto SqlDAOPunteggi, 
+   * implementazione della classe interfaccia DAOPunteggi
+   * 
+   * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
+   * @return l'oggetto SqlDAOPunteggi istanziato
+   * 
+   */   
+  public DAOPunteggi creaDAOPunteggi(Indirizzo azienda){
+     return new SqlDAOPunteggi(azienda);
+  }
 }

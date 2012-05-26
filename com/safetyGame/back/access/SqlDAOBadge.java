@@ -6,9 +6,13 @@ import java.util.List;
 import java.sql.SQLException;
 
 public class SqlDAOBadge implements DAOBadge{
-  public SqlDAOBadge(){}
+  private Indirizzo serverAzienda;
+  
+  public SqlDAOBadge(Indirizzo azienda){
+    serverAzienda=azienda;
+  }
    
-  public ArrayList<Badge> badgeD(String username, Indirizzo serverAzienda){
+  public ArrayList<Badge> badgeD(String username){
     ResultSet rs = serverAzienda.selezione("IDBadge, descrizione, soglia","Assegnati","IDutente="+username);
     ArrayList<Badge> b = new ArrayList<Badge>();
     boolean trovato = false;
