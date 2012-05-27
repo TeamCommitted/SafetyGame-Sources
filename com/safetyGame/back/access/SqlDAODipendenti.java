@@ -17,19 +17,20 @@ public class SqlDAODipendenti implements DAODipendenti{
     String username = l.getUsername();
     String password = l.getPassword();
     ResultSet rs = serverAzienda.selezione("Dipendente as dip INNER JOIN Ruolo as r ON dip.ruolo=r.ruolo ","*", "nickname="+username); 
-    String nome,cognome,codfis,email,ruolo;
+    String nome,cognome,codfis,email,ruolo,passmod;
     int ID,trofeo;
     try{
       ID = rs.getInt("ID");
       nome = rs.getString("nome");
       cognome = rs.getString("cognome");
       codfis = rs.getString("codfis");
+      passmod = rs.getString("passmod");
       email = rs.getString("email");
       ruolo = rs.getString("ruolo");
       trofeo = rs.getInt("trofeo");
     }
     catch (SQLException e){return null;} 
-    return new Dipendente(ID,codfis, nome,cognome,email,username,password,ruolo,trofeo);
+    return new Dipendente(ID,codfis, nome,cognome,email,username,password,ruolo,trofeo,passmod);
   }
   
   public Dipendente getInfoA(Login l){
@@ -82,7 +83,7 @@ public class SqlDAODipendenti implements DAODipendenti{
     ResultSet rs=serverAzienda.selezione("Dipendenti","*","");
     ArrayList<Dipendente> d = new ArrayList<Dipendente>();
     boolean trovato = false;
-    String nome,cognome,codfis,email,ruolo,username,password;
+    String nome,cognome,codfis,email,ruolo,username,password,passmod;
     int ID,trofeo;
     while(!trovato){
       try{
@@ -93,9 +94,10 @@ public class SqlDAODipendenti implements DAODipendenti{
         email = rs.getString("email");
         username = rs.getString("nickname");
         password = rs.getString("password");
+        passmod = rs.getString("passmod");
         ruolo = rs.getString("ruolo");
         trofeo = rs.getInt("trofeo");
-        Dipendente temp=new Dipendente(ID,codfis, nome,cognome,email,username,password,ruolo,trofeo);
+        Dipendente temp=new Dipendente(ID,codfis, nome,cognome,email,username,password,ruolo,trofeo,passmod);
         d.add(temp);      
         rs.next();
       }
