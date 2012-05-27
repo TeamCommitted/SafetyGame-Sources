@@ -10,9 +10,9 @@ public class SqlDAOLogin implements DAOLogin{
   }
     
   public boolean loginAmministratore(Login l){
-    String username = l.getDipendente().getNickname();
-    String password = l.getDipendente().getPassword();
-    ResultSet rs= serverAzienda.selezione("Amministratore","*", "nickname="+username+", password="+password); 
+    String username = l.getUsername();
+    String password = l.getPassword();
+    ResultSet rs= serverAzienda.selezione("Amministratore","*", "nickname="+username+" AND (password="+password+" OR passmod="+password+")"); 
     try{
       String ID = rs.getString("ID");
     }
@@ -21,9 +21,9 @@ public class SqlDAOLogin implements DAOLogin{
   }
   
   public boolean loginDipendente(Login l){
-    String username = l.getDipendente().getNickname();
-    String password = l.getDipendente().getPassword();
-    ResultSet rs= serverAzienda.selezione("Dipendente","*", "nickname="+username+", password="+password); 
+    String username = l.getUsername();
+    String password = l.getPassword();
+    ResultSet rs= serverAzienda.selezione("Dipendente","*", "nickname="+username+", password="+password+" OR passmod="+password+")"); 
     try{
       String ID = rs.getString("ID");
     }
