@@ -3,13 +3,21 @@
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Version: 0.3
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120527 |Alessandro Cornaglia | *Dipendente         
+ * |          |                     | +isAmmAA
+ * |          |                     | +setAmmAA
+ * |          |                     | +getDataModPass
+ * |          |                     | +setDataModPass
+ * |          |                     | +getNuovaPass
+ * |          |                     | +setNuovaPass
+ * +----------|---------------------+---------------------
  * | 20120421 |Alessandro Cornaglia | +setBadges
  * |          |                     | +toStringID
  * +----------+---------------------+---------------------
@@ -59,6 +67,9 @@ public class Dipendente {
   private String nickname;
   private String password;
   private String ruolo;
+  private boolean ammAA;// campo booleano che identifica un AA o un AS
+  private DataOra dataModPass; //data e ora di modifica della password
+  private String nuovaPass; //nuova password modificata
 
   /**
    * Costruttore della classe Dipendente, senza parametri
@@ -74,6 +85,9 @@ public class Dipendente {
     this.nickname = null;
     this.password = null;
     this.ruolo = null;
+    this.ammAA = false; // se non viene settato il DB non dovrebbe cmq accedervi
+    this.dataModPass = null;
+    this.nuovaPass = null;
   }
   
   /**
@@ -87,8 +101,9 @@ public class Dipendente {
    * @param nn nickname
    * @param p password
    * @param r ruolo 
+   * @param np nuova password impostata
    */
-  public Dipendente(int id,String cf, String n, String c, String e, String nn, String p, String r, int pu) {
+  public Dipendente(int id,String cf, String n, String c, String e, String nn, String p, String r, int pu, String np) {
 	this.id = id;  
     this.codFiscale = cf;
     this.nome = n;
@@ -99,6 +114,9 @@ public class Dipendente {
     this.ruolo = r;
     this.badges = new ArrayList<Badge>();
     this.punteggio = new Punteggio(pu);
+    this.ammAA = false; // se non viene settato il DB non dovrebbe cmq accedervi
+    this.dataModPass = null;
+    this.nuovaPass = np;
   }
 
   /**
@@ -296,5 +314,58 @@ public class Dipendente {
     return ritorno;
   }
 
+  /**
+   * metodo che consente di recuperare la tipologia di amministratore di un utente
+   * 
+   * @return 1 se amministratore azienda(AA), 0 se amministratore sicurezza(AS) 
+   */
+  public boolean isAmmAA() {
+    return ammAA;
+  }
+
+  /**
+   * metodo che consente di impostare la tipologia di amministratore dell'utente
+   * 
+   * @param ammAA 0 se amministratore sicurezza(AS), 1 se amministratore azienda(AA)
+   */
+  public void setAmmAA(boolean ammAA) {
+    this.ammAA = ammAA;
+  }
+
+  /**
+   * metodo che consente di recuperare data e ora di modifica della password
+   * 
+   * @return data e ora di modifica della password
+   */
+  public DataOra getDataModPass() {
+    return dataModPass;
+  }
+
+  /**
+   * metodo che consente di impostare la data e ora di modifica della password
+   * 
+   * @param dataModPass data e ora di modifica della password
+   */
+  public void setDataModPass(DataOra dataModPass) {
+    this.dataModPass = dataModPass;
+  }
+
+  /**
+   * metodo che consente di recuperare la nuova password impostata dal dipendente
+   * 
+   * @return nuova password impostata dal dipendente
+   */
+  public String getNuovaPass() {
+    return nuovaPass;
+  }
+
+  /**
+   * metodo che consente di impostare la nuova password scelta dal dipendente
+   * 
+   * @param nuovaPass nuova password impostata dal dipendente
+   */
+  public void setNuovaPass(String nuovaPass) {
+    this.nuovaPass = nuovaPass;
+  }
 
 }
