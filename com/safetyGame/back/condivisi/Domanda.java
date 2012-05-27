@@ -1,14 +1,18 @@
 /*
- * Name: DataOra.java
+ * Name: Domanda.java
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Version: 0.2
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120527 |Alessandro Cornaglia | * Domanda
+ * |          |                     | + isInternaAzienda
+ * |          |                     | + setInternaAzienda
  * +----------+---------------------+---------------------
  * | 20120422 |Alessandro Cornaglia | + Domanda
  * |          |                     | + getId
@@ -55,6 +59,7 @@ public class Domanda{
   private boolean mobile;
   private int tempo; //in secondi
   private String ambito;
+  private boolean internaAzienda;//variabile che identifica se una domanda è interna x AS
   
   /**
    * Costruttore con parametri della classe Domanda
@@ -69,8 +74,9 @@ public class Domanda{
    * @param m identificativo per domande dispositivi fissi o mobili
    * @param sec tempo eventuale per la risposta
    * @param a ambito della domanda
+   * @param inA identificativo per domande interne o esterne all'azienda
    */
-  public Domanda(int i, Punteggio p, String ti, ArrayList<String> r, int c, String te, int rd, boolean m, int sec, String a) {
+  public Domanda(int i, Punteggio p, String ti, ArrayList<String> r, int c, String te, int rd, boolean m, int sec, String a, boolean inA) {
     this.id = i;
     this.punteggio = p;
     this.tipologia = ti;
@@ -83,6 +89,7 @@ public class Domanda{
     if (this.tempo == 0)
       this.tempo = -1;
     this.ambito = a;
+    this.internaAzienda = inA;
     
   }
   
@@ -101,6 +108,7 @@ public class Domanda{
     this.mobile = false; // una domanda per default è per dispositivi fissi
     this.tempo = -1; //di default la domanda non è a tempo
     this.ambito = null;
+    this.internaAzienda = false;
   }
 
 /**
@@ -282,6 +290,24 @@ public class Domanda{
    */
   public void setAmbito(String ambito) {
     this.ambito = ambito;
+  }
+
+  /**
+   * metodo che consente di verificare se la domanda è interna all'azienda
+   * 
+   * @return valore booleano indicante se domanda è interna all'azienda
+   */
+  public boolean isInternaAzienda() {
+    return internaAzienda;
+  }
+
+  /**
+   * metodo che consente di impostare se una domanda è interna all'azienda o meno
+   * 
+   * @param internaAzienda valore booleano da impostare
+   */
+  public void setInternaAzienda(boolean internaAzienda) {
+    this.internaAzienda = internaAzienda;
   }
   
 }

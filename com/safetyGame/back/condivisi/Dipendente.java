@@ -1,5 +1,5 @@
 /*
- * Name: DataOra.java
+ * Name: Dipendente.java
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
