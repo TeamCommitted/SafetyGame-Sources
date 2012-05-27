@@ -1,3 +1,23 @@
+/*
+ * Name: SqlDAOPunteggi.java
+ * Package: com.safetygame.back.access
+ * Author: Gabriele Facchin
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120519 | Gabriele Facchin    | + SqlDAOPunteggi
+ * |          |                     | + getStat
+ * +----------+---------------------|---------------------
+ * | 201205   | Gabriele Facchin    | + getGlobalStat
+ * +----------+---------------------|---------------------
+ *
+ */
+
 package com.safetyGame.back.access;
 import com.safetyGame.back.condivisi.*;
 import java.sql.ResultSet;

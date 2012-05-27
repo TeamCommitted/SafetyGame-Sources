@@ -1,3 +1,39 @@
+/*
+ * Name: SqlDAODipendenti.java
+ * Package: com.safetygame.back.access
+ * Author: Gabriele Facchin
+ * Date: {Data di approvazione del file}
+ * Version: 0.1
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120527 | Gabriele Facchin    | + SqlDAODipendenti
+ * |          |                     | + getInfoD
+ * |          |                     | + getInfoA
+ * |          |                     | + resetPassD                
+ * |          |                     | + resetPassA
+ * |          |                     | + passD
+ * |          |                     | + passA
+ * |          |                     | + mailD
+ * |          |                     | + elencoDipendenti
+ * |          |                     | + aggiungiDipendente
+ * |          |                     | + cancellaDipendente
+ * |          |                     | + modNome
+ * |          |                     | + modCognome
+ * |          |                     | + modCodFis
+ * |          |                     | + modUsername
+ * |          |                     | + modImpiego
+ * |          |                     | + setTrofei
+ * |          |                     | + generaPassCasuale
+ * |          |                     | + resetA
+ * |          |                     | + resetD
+ * +----------+---------------------|---------------------
+ *
+ */
+
 package com.safetyGame.back.access;
 import com.safetyGame.back.condivisi.*;
 import java.sql.ResultSet;
@@ -62,7 +98,7 @@ public class SqlDAODipendenti implements DAODipendenti{
   public boolean passD(Dipendente d, String pass){
     return serverAzienda.modificaRiga("Dipendente", "password="+pass,"ID="+d.getId());
   }
-  
+
   public boolean passA(Dipendente d, String pass){
     DataOra data=new DataOra();
     boolean b = serverAzienda.modificaRiga("Amministratore", "password="+pass,"ID="+d.getId());
@@ -78,7 +114,7 @@ public class SqlDAODipendenti implements DAODipendenti{
   public boolean mailD(Dipendente d, String mail){
     return serverAzienda.modificaRiga("Dipendente", "email="+mail,"ID="+d.getId());
   }
-  
+
   public ArrayList<Dipendente> elencoDipendenti(){
     ResultSet rs=serverAzienda.selezione("Dipendenti","*","");
     ArrayList<Dipendente> d = new ArrayList<Dipendente>();
@@ -140,7 +176,7 @@ public class SqlDAODipendenti implements DAODipendenti{
   public boolean modUsername(Dipendente d, String username){
     return serverAzienda.modificaRiga("Dipendente","nickname="+username,"ID="+d.getId());
   }
-  
+
   public boolean modImpiego(Dipendente d, String impiego){
     return serverAzienda.modificaRiga("Dipendente","ruolo="+impiego,"ID="+d.getId());
   }
@@ -156,7 +192,7 @@ public class SqlDAODipendenti implements DAODipendenti{
   public boolean resetA(Recupero r){
     return serverAzienda.modificaRiga("Amministratore","passmod="+generaPassCasuale(),"email="+r.getEmail()+" AND codice fiscale= "+r.getCodFiscale());
   }
-  
+
   private String generaPassCasuale(){
     String lettere[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}; //toLowerCase
     String numeri[] = {"1","2","3","4","5","6","7","8","9","0"};
