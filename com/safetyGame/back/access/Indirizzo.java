@@ -132,17 +132,18 @@ public class Indirizzo{
    * @param tabella tabella da esaminare
    * @param colonne le colonne di cui interessano i valori (indicate con col1, col2...)
    * @param controlli criteri su cui effettuare la visita
+   * @param extra contiene tutte le clausole aggiuntive per una query
    * @return rs insieme delle righe ottenute dal risultato della query, null se non esistono risultati
    * 
    */  
-  public ResultSet selezione(String tabella, String colonne, String controlli){
+  public ResultSet selezione(String tabella, String colonne, String controlli, String extra){
     String where="";
     ResultSet rs=null;
     if (controlli!=""){
       where="WHERE " +controlli;
     }
     try{
-      rs = connettore.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where);
+      rs = connettore.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where + extra);
     }
     catch(SQLException e){return null;}
     return rs;

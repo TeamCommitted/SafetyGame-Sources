@@ -30,7 +30,7 @@ public class SqlDAOPunteggi implements DAOPunteggi{
   }
   
   public Punteggio getStat(Dipendente d){
-    ResultSet rs = serverAzienda.selezione("Storico","punteggio","IDDipendente="+d.getId());
+    ResultSet rs = serverAzienda.selezione("Storico","punteggio","IDDipendente="+d.getId(),"");
     int totale=0;
     boolean finito = false;
     while(!finito){

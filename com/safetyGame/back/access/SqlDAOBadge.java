@@ -31,7 +31,7 @@ public class SqlDAOBadge implements DAOBadge{
   }
    
   public ArrayList<Badge> badgeD(Dipendente d){
-    ResultSet rs = serverAzienda.selezione("Assegnato","IDBadge, descrizione, soglia","IDutente="+d.getId());
+    ResultSet rs = serverAzienda.selezione("Assegnato","IDBadge, descrizione, soglia","IDutente="+d.getId(),"");
     ArrayList<Badge> b = new ArrayList<Badge>();
     boolean trovato = false;
     String nomeB="";

@@ -52,7 +52,7 @@ public class SqlDAODipendenti implements DAODipendenti{
   public Dipendente getInfoD(Login l){
     String username = l.getUsername();
     String password = l.getPassword();
-    ResultSet rs = serverAzienda.selezione("Dipendente as dip INNER JOIN Ruolo as r ON dip.ruolo=r.ruolo ","*", "nickname="+username); 
+    ResultSet rs = serverAzienda.selezione("Dipendente as dip INNER JOIN Ruolo as r ON dip.ruolo=r.ruolo ","*", "nickname="+username,""); 
     String nome,cognome,codfis,email,ruolo,passmod;
     int ID,trofeo;
     try{
@@ -72,7 +72,7 @@ public class SqlDAODipendenti implements DAODipendenti{
   public Dipendente getInfoA(Login l){
     String username = l.getUsername();
     String password = l.getPassword();
-    ResultSet rs = serverAzienda.selezione("Amministratore","*", "nickname="+username); 
+    ResultSet rs = serverAzienda.selezione("Amministratore","*", "nickname="+username,""); 
     int ID;
     String email,codfis,data;
     boolean amm;
@@ -116,7 +116,7 @@ public class SqlDAODipendenti implements DAODipendenti{
   }
 
   public ArrayList<Dipendente> elencoDipendenti(){
-    ResultSet rs=serverAzienda.selezione("Dipendenti","*","");
+    ResultSet rs=serverAzienda.selezione("Dipendenti","*","","");
     ArrayList<Dipendente> d = new ArrayList<Dipendente>();
     boolean trovato = false;
     String nome,cognome,codfis,email,ruolo,username,password,passmod;
