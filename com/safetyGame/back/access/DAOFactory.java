@@ -65,5 +65,5 @@ public abstract class DAOFactory{
    * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
    * 
    */   
-  public abstract DAOPunteggi creaDAOPunteggi(Indirizzo azienda);
+  public abstract DAOPunteggi creaDAOPunteggi(Indirizzo azienda, Indirizzo Domande);
 }

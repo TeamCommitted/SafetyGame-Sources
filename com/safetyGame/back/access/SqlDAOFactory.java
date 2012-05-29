@@ -92,7 +92,7 @@ public class SqlDAOFactory extends DAOFactory{
    * @return l'oggetto SqlDAOPunteggi istanziato
    * 
    */   
-  public DAOPunteggi creaDAOPunteggi(Indirizzo azienda){
-     return new SqlDAOPunteggi(azienda);
+  public DAOPunteggi creaDAOPunteggi(Indirizzo azienda,Indirizzo domande){
+     return new SqlDAOPunteggi(azienda, domande);
   }
 }
