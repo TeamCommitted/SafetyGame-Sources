@@ -77,7 +77,7 @@ public class SqlDAODipendenti implements DAODipendenti{
       ID = rs.getInt("ID");
       nome = rs.getString("nome");
       cognome = rs.getString("cognome");
-      codfis = rs.getString("codfis");
+      codfis = rs.getString("codice_fiscale");
       passmod = rs.getString("passmod");
       email = rs.getString("email");
       ruolo = rs.getString("ruolo");
@@ -105,8 +105,8 @@ public class SqlDAODipendenti implements DAODipendenti{
       ID = rs.getInt("ID");
       email = rs.getString("email");
       data = rs.getString("datapass");
-      codfis = rs.getString("codice fiscale");
-      amm=rs.getBoolean("tipo amministratore");
+      codfis = rs.getString("codice_fiscale");
+      amm=rs.getBoolean("tipo_amministratore");
     }
     catch (SQLException e){return null;}
     return new Dipendente();
@@ -195,7 +195,7 @@ public class SqlDAODipendenti implements DAODipendenti{
         ID = rs.getInt("ID");
         nome = rs.getString("nome");
         cognome = rs.getString("cognome");
-        codfis = rs.getString("codfis");
+        codfis = rs.getString("codice_fiscale");
         email = rs.getString("email");
         username = rs.getString("nickname");
         password = rs.getString("password");

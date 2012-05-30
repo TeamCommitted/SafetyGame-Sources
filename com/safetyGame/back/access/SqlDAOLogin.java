@@ -53,7 +53,7 @@ public class SqlDAOLogin implements DAOLogin{
     String password = l.getPassword();
     ResultSet rs= serverAzienda.selezione("Amministratore","*", "nickname="+username+" AND (password="+password+" OR passmod="+password+")",""); 
     try{
-      String ID = rs.getString("ID");
+      int ID = rs.getInt("ID");
     }
     catch(SQLException e){return false;} 
     return true;
@@ -71,7 +71,7 @@ public class SqlDAOLogin implements DAOLogin{
     String password = l.getPassword();
     ResultSet rs= serverAzienda.selezione("Dipendente","*", "nickname="+username+", password="+password+" OR passmod="+password+")",""); 
     try{
-      String ID = rs.getString("ID");
+      int ID = rs.getInt("ID");
     }
     catch(SQLException e){return false;} 
     return true;

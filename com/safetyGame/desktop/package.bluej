@@ -1,8 +1,8 @@
 #BlueJ package file
-package.editor.height=714
+package.editor.height=470
 package.editor.width=1478
-package.editor.x=32
-package.editor.y=32
+package.editor.x=-62
+package.editor.y=256
 package.numDependencies=0
 package.numTargets=2
 package.showExtends=true
@@ -11,11 +11,11 @@ target1.height=62
 target1.name=view
 target1.type=PackageTarget
 target1.width=80
-target1.x=70
-target1.y=130
+target1.x=260
+target1.y=50
 target2.height=62
 target2.name=logic
 target2.type=PackageTarget
 target2.width=80
-target2.x=340
-target2.y=20
+target2.x=560
+target2.y=30

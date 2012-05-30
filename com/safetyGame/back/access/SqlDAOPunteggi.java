@@ -58,7 +58,7 @@ public class SqlDAOPunteggi implements DAOPunteggi{
     boolean finito = false;
     while(!finito){
       try{
-        totale+= rs.getInt("IDbadge");
+        totale+= rs.getInt("punteggio");
         rs.next();
       }
       catch (SQLException e){finito = true;}

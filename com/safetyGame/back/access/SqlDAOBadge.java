@@ -50,7 +50,7 @@ public class SqlDAOBadge implements DAOBadge{
    * 
    */     
   public ArrayList<Badge> badgeD(Dipendente d){
-    ResultSet rs = serverAzienda.selezione("Assegnato","IDBadge, descrizione, soglia","IDutente="+d.getId(),"");
+    ResultSet rs = serverAzienda.selezione("Assegnato INNER JOIN Badge ON IDBadge=ID","nome, descrizione, soglia","IDutente="+d.getId(),"");
     ArrayList<Badge> b = new ArrayList<Badge>();
     boolean trovato = false;
     String nomeB="";
@@ -58,10 +58,10 @@ public class SqlDAOBadge implements DAOBadge{
     int punti=0;
     while(!trovato){
       try{
-        nomeB = rs.getString("IDbadge");
+        nomeB = rs.getString("nome");
         descr = rs.getString("descrizione");
         punti = rs.getInt("soglia");
-        Badge temp=new Badge(nomeB, descr, new Punteggio(punti));
+        Badge temp=new Badge(nomeB, descr,new Punteggio(punti));
         b.add(temp);      
         rs.next();
       }

@@ -70,7 +70,7 @@ public class SqlDAODomande implements DAODomande{
       d.setPunteggio(p);
       tipologia= rs.getString("tipologia");
       d.setTipologia(tipologia);
-      testod= rs.getString("testo domanda");
+      testod= rs.getString("testo_domanda");
       d.setTesto(testod);
       mobile= rs.getBoolean("mobile");
       d.setMobile(mobile);
@@ -80,7 +80,7 @@ public class SqlDAODomande implements DAODomande{
       d.setAmbito(ambito);
     }
     catch(SQLException e){return null;}  
-    rs=serverDomande.selezione("Risposta INNER JOIN Domanda-Risposta ON ID=IDr","*","ID="+id,"ORDER BY IDr ASC");
+    rs=serverDomande.selezione("Risposta INNER JOIN Domanda_Risposta ON ID=IDr","*","ID="+id,"ORDER BY IDr ASC");
     Boolean trovato = false;
     ArrayList <String> risposte=new ArrayList<String>();
     String testor;
@@ -90,8 +90,8 @@ public class SqlDAODomande implements DAODomande{
     corretta=false;
     while (!trovato){
       try{
-        corretta= rs.getBoolean("risposta corretta");
-        testor=rs.getString("testo");
+        corretta= rs.getBoolean("risposta_corretta");
+        testor=rs.getString("testo_risposta");
         risposte.add(testor);
       }
       catch(SQLException e){trovato=true;}

@@ -1,10 +1,10 @@
 SET FOREIGN_KEY_CHECKS=0;
 
-DROP TABLE IF EXISTS AmministratorE;
+DROP TABLE IF EXISTS Amministratore;
 DROP TABLE IF EXISTS Storico;
 DROP TABLE IF EXISTS Dipendente;
 DROP TABLE IF EXISTS Domanda;
-DROP TABLE IF EXISTS RuolO;
+DROP TABLE IF EXISTS Ruolo;
 DROP TABLE IF EXISTS Badge;
 DROP TABLE IF EXISTS Assegnato;
 
@@ -14,22 +14,22 @@ CREATE TABLE Amministratore(
 	nickname VARCHAR(25) NOT NULL,
 	password CHAR(32) NOT NULL,
 	passmod CHAR(32),
-	datapass DATE,
-	codfisc INT(11) NOT NULL,
-	tipoamm BOOL DEFAULT FALSE
+	datapass VARCHAR(10),
+	codice_fiscale INT(11) NOT NULL,
+	tipo_amministratore BOOL DEFAULT FALSE
 )ENGINE=InnoDB;
 
 CREATE TABLE Dipendente(
 	ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(255) NOT NULL,
 	cognome VARCHAR(255) NOT NULL,
-	codfisc CHAR(16) NOT NULL,
+	codice_fiscale CHAR(16) NOT NULL,
 	email VARCHAR(255) NOT NULL,
 	nickname VARCHAR(25) NOT NULL,
 	password CHAR(32) NOT NULL,
-	passmod CHAR(32) NOT NULL,
+	passmod CHAR(32),
 	ruolo VARCHAR(255),
-	badge INT DEFAULT '0',
+	trofeo INT DEFAULT '0',
 	
 	FOREIGN KEY ruolo REFERENCES Ruolo(ruolo)
 						ON UPDATE CASCADE
@@ -41,7 +41,7 @@ CREATE TABLE Storico(
 	IDdipendente INT NOT NULL,
 	risposta BOOL DEFAULT FALSE,
 	corretta BOOL DEFAULT FALSE,
-	punteggio INT DEFAULT '0',
+	punteggio INT NOT NULL,
 	
 	FOREIGN KEY(IDdomanda) REFERENCES Domanda(ID)
 							ON UPDATE CASCADE,
@@ -62,7 +62,7 @@ CREATE TABLE Ruolo(
 CREATE TABLE Assegnato(
 	IDDipendente INT PRIMARY KEY NOT NULL,
 	IDBadge INT PRIMARY KEY NOT NULL,
-	data DATE NOT NULL,
+	data VARCHAR(10) NOT NULL,
 	
 	FOREIGN KEY(IDDipendente) REFERENCES Dipendente(ID)
 								ON UPDATE CASCADE,
@@ -75,7 +75,8 @@ CREATE TABLE Assegnato(
 CREATE TABLE Badge(
 	ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(255) NOT NULL,
-	descrizione VARCHAR(max) NOT NULL
+	descrizione VARCHAR(255) NOT NULL,
+	soglia INT NOT NULL DEFAULT '10'
 )ENGINE=InnoDB;
 
 SET FOREIGN_KEY_CHECKS=1;
