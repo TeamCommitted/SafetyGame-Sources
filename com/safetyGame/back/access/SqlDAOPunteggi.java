@@ -25,15 +25,33 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe che gestisce i Punteggi, implementa i metodi pubblici dell'interfaccia
+ * 
+ * @author gfacchin
+ * @version 0.2
+ */
+
 public class SqlDAOPunteggi implements DAOPunteggi{
   private Indirizzo serverAzienda;
   private Indirizzo serverDomande;
   
+  /**
+   * Costruttore della classe SqlDAOPunteggi
+   * 
+   */
   public SqlDAOPunteggi(Indirizzo azienda, Indirizzo domande){
     serverAzienda=azienda;
     serverDomande=domande;
   }
   
+  /**
+   * Metodo che prende il punteggio di un Dipendente dal database
+   * 
+   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @return l'oggetto Punteggio contenente il totale del punteggio del Dipendente
+   * 
+   */    
   public Punteggio getStat(Dipendente d){
     ResultSet rs = serverAzienda.selezione("Storico","punteggio","IDDipendente="+d.getId(),"");
     int totale=0;
@@ -48,6 +66,13 @@ public class SqlDAOPunteggi implements DAOPunteggi{
     return new Punteggio(totale);
   }
   
+  /**
+   * Metodo che genera le statistiche dato un Dipendente
+   * 
+   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @return l'oggetto Punteggio contenente le statistiche dei dipendenti (e dell'azienda) a lui vicini
+   * 
+   */    
   public Punteggio getGlobalStat(Dipendente dip){
     int punteggio=dip.getPunteggio().getPunti();
     ResultSet rs = serverAzienda.selezione("Dipendente","ID","","");

@@ -119,6 +119,9 @@ public class Dipendente {
     this.nuovaPass = np;
   }
 
+  // ho bisogno di un costruttore Dipendente(ammAA dataModPass nuova pass email nick pass codfis id) per l'amministratore
+  //dal costruttore quì sopra rimuovi i dati dell'amministratore (ammAA dataModPass) e aggiungi un altro campo trofei
+  
   /**
    * metodo get per ricavare l'id del dipendente
    * 

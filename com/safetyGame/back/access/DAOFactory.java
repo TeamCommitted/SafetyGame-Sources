@@ -11,7 +11,7 @@ package com.safetyGame.back.access;
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120526 | Gabriele Facchin    | + creaDAOLogin
+ * | 20120512 | Gabriele Facchin    | + creaDAOLogin
  * |          |                     | + creaDAODipendenti
  * |          |                     | + creaDAODomande
  * |          |                     | + creaDAOBadge

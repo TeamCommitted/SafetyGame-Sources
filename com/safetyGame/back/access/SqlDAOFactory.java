@@ -10,7 +10,7 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120526 | Gabriele Facchin    | + SqlDAOFactory
+ * | 20120512 | Gabriele Facchin    | + SqlDAOFactory
  * |          |                     | + creaDAOLogin
  * |          |                     | + creaDAODipendenti
  * |          |                     | + creaDAODomande

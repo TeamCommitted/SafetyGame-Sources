@@ -1,5 +1,5 @@
 /*
- * Name: SqlDAODomande.java
+ * Name: DAODomande.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
  * Date: {Data di approvazione del file}
@@ -31,15 +31,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Classe che gestisce le Domande, implementa i metodi pubblici dell'interfaccia
+ * 
+ * @author gfacchin
+ * @version 0.1
+ */
+
 public class SqlDAODomande implements DAODomande{
   private Indirizzo serverDomande;
   private Indirizzo serverAzienda;
-   
+  
+  /**
+   * Costruttore della classe SqlDAODomande
+   */
   public SqlDAODomande(Indirizzo azienda, Indirizzo domande){
     serverAzienda=azienda;
     serverDomande=domande;
   }
   
+  /**
+   * Metodo che prende i campi di una Domanda
+   * 
+   * @param id intero che identifica la domanda
+   * @return l'oggetto Domanda con i campi corretti
+   * 
+   */   
   private Domanda prendiCampiDomanda(int id){
     ResultSet rs=serverDomande.selezione("Tipologia as t INNER JOIN Domanda as d ON d.tipologia=t.tipologia","*","ID="+id,"");
     Domanda d=new Domanda();
@@ -87,7 +104,14 @@ public class SqlDAODomande implements DAODomande{
     d.setRisposte(risposte);
     return d;
   }
-
+  
+  /**
+   * Metodo che preleva una domanda per il Dipendente
+   * 
+   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @return l'oggetto Domanda che contiene una domanda
+   * 
+   */   
   public Domanda getDomanda(Dipendente d){
     ResultSet rs=serverAzienda.selezione("Storico","ID","IDdipendente="+d.getId()+" AND punteggio=-1","");
     int id=-1;
@@ -115,10 +139,26 @@ public class SqlDAODomande implements DAODomande{
     return prendiCampiDomanda(id);
   }
   
+  /**
+   * Metodo che posticipa una domanda sottoposta ad un dipendente
+   * 
+   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
+   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * 
+   */   
   public boolean posticipa(Dipendente d, Domanda dom){
     return serverAzienda.modificaRiga("Storico","punteggio=-1","IDdipendente="+d.getId()+" AND IDdomanda="+dom.getId());
   }
   
+  /**
+   * Metodo che imposta la risposta di una domanda sottoposta ad un dipendente
+   * 
+   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
+   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * 
+   */   
   public boolean rispondi(Dipendente d, Domanda dom){
     int punti;
     if(dom.getRispostaData()==-1){
@@ -135,6 +175,12 @@ public class SqlDAODomande implements DAODomande{
     return serverAzienda.modificaRiga("Storico","punteggio="+punti,"IDdipendente="+d.getId()+" AND IDdomanda="+dom.getId());
   }
 
+  /**
+   * Metodo che ritorna l'elenco di Domande dell'azienda
+   * 
+   * @return ArrayList che contiene l'elenco di tutte le Domande
+   * 
+   */   
   public ArrayList<Domanda> domandeA(){
     ResultSet rs=serverAzienda.selezione("Domanda","ID","","ORDER BY ID ASC");
     ArrayList<Integer> id = new ArrayList<Integer>();
@@ -170,16 +216,38 @@ public class SqlDAODomande implements DAODomande{
     return domande;
   }
 
+  /**
+   * Metodo che aggiunge una Domanda al database dell'azienda
+   * 
+   * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
+   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * 
+   */   
   public boolean addDomanda(Domanda d){
     String s[]=new String[0];
     s[0]=""+d.getId();
     return serverAzienda.inserisciRiga("Domanda","ID",s);
   }
   
+  /**
+   * Metodo che rimuove una Domanda dal database dell'azienda
+   * 
+   * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
+   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * 
+   */   
   public boolean remDomanda(Domanda d){
     return serverAzienda.cancellaRiga("Domanda","ID="+d.getId());
   }
   
+  /**
+   * Metodo che scrive sul database che una domanda è stata proposta al Dipendente
+   * 
+   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
+   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * 
+   */   
   public boolean scriviSottoposta(Dipendente dip, Domanda dom){
     return serverAzienda.modificaRiga("Storico","punteggio=0","IDdipendente="+dip.getId()+" AND IDdomanda="+dom.getId());
   }

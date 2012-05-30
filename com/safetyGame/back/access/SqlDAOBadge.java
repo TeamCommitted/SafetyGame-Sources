@@ -23,13 +23,32 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe che gestisce le Badge, implementa i metodi pubblici dell'interfaccia
+ * 
+ * @author gfacchin
+ * @version 0.1
+ */
+
 public class SqlDAOBadge implements DAOBadge{
   private Indirizzo serverAzienda;
+  
+  /**
+   * Costruttore della classe SqlDAOBadge
+   * 
+   */
   
   public SqlDAOBadge(Indirizzo azienda){
     serverAzienda=azienda;
   }
-   
+  
+  /**
+   * Metodo che prende le badge ottenute da un Dipendente dal database
+   * 
+   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @return un ArrayList di Badge che contiene le Badge di quel Dipendente
+   * 
+   */     
   public ArrayList<Badge> badgeD(Dipendente d){
     ResultSet rs = serverAzienda.selezione("Assegnato","IDBadge, descrizione, soglia","IDutente="+d.getId(),"");
     ArrayList<Badge> b = new ArrayList<Badge>();
