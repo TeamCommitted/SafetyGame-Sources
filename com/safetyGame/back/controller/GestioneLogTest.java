@@ -30,23 +30,22 @@ public class GestioneLogTest {
 	public void testLogin() { //verifico cosa succede quando uso scriviLogin()
 		init(); //inizializzo il test
 	
-		Dipendente d = new Dipendente();
-		d.setId(idDip);
-		boolean b = true;
-
-		Login login = new Login(d,dataOra,b);
+		Login login = new Login();
+		login.setUsername("usr");
+		
 		gestioneLog.scriviLogin(login);
+		
 		//controllo percorso
 		String percorso = gestioneLog.getPercorso();
-		String percorsoCorretto = "/log/"+ login.getDipendente().getId() + "/login.txt";
+		String percorsoCorretto = "/log/"+ login.getUsername() + "/login.txt";
 		assertTrue("percorso errato", percorso.equals(percorsoCorretto));
 		
 		//controllo log
 		String log = gestioneLog.getLog();
-		String logCorretto = "LOGIN "+ this.dataOra.toString()+ " " + d.toStringID();
+		String logCorretto = "LOGIN "+ this.dataOra.toString()+ " " + login.getUsername();
 		assertTrue("log errato", log.equals(logCorretto));
 	}
-	
+/*
 	@Test
 	public void testLogout() { //verifico cosa succede quando uso scriviLogout()
 		init();//inizializzo il test
@@ -297,7 +296,7 @@ public class GestioneLogTest {
 	  assertTrue("log errato", log.equals(logCorretto));
 	}
 	
-
+*/
 }
 
 /*

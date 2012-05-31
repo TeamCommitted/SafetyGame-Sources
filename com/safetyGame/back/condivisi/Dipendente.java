@@ -3,12 +3,16 @@
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Version: 0.4
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Alessandro Cornaglia | +getTrofei
+ * |          |                     | +setTrofei
+ * |          |                     | *Dipendente         
  * +----------+---------------------+---------------------
  * | 20120527 |Alessandro Cornaglia | *Dipendente         
  * |          |                     | +isAmmAA
@@ -70,6 +74,7 @@ public class Dipendente {
   private boolean ammAA;// campo booleano che identifica un AA o un AS
   private DataOra dataModPass; //data e ora di modifica della password
   private String nuovaPass; //nuova password modificata
+  private int trofei;
 
   /**
    * Costruttore della classe Dipendente, senza parametri
@@ -88,6 +93,7 @@ public class Dipendente {
     this.ammAA = false; // se non viene settato il DB non dovrebbe cmq accedervi
     this.dataModPass = null;
     this.nuovaPass = null;
+    this.trofei = 0;
   }
   
   /**
@@ -102,8 +108,9 @@ public class Dipendente {
    * @param p password
    * @param r ruolo 
    * @param np nuova password impostata
+   * @param trf trofei del dipendente
    */
-  public Dipendente(int id,String cf, String n, String c, String e, String nn, String p, String r, int pu, String np) {
+  public Dipendente(int id,String cf, String n, String c, String e, String nn, String p, String r, int pu, String np, int trf) {
 	this.id = id;  
     this.codFiscale = cf;
     this.nome = n;
@@ -114,13 +121,42 @@ public class Dipendente {
     this.ruolo = r;
     this.badges = new ArrayList<Badge>();
     this.punteggio = new Punteggio(pu);
-    this.ammAA = false; // se non viene settato il DB non dovrebbe cmq accedervi
-    this.dataModPass = null;
     this.nuovaPass = np;
+    this.trofei = trf;
+    this.ammAA = false;
+    this.dataModPass = null;
   }
 
+  /**
+   * Costruttore con parametri per costruire Dipendenti-Amministratori
+   * 
+   * @param aA identificativo booleano del tipo di amministratore, 0 se  amministratore sicurezza(AS), 1 se amministratore azienda(AA)
+   * @param dmp data di modifica della password
+   * @param np nuova password
+   * @param mail email dell'amministratore
+   * @param nick nickname dell'amministratore
+   * @param pass password dell'amministratore
+   * @param codfisc codifce fiscale dell'amministratore
+   * @param i id dell'amministratore
+   */
+  public Dipendente(boolean aA, DataOra dmp, String np, String mail, String nick, String pass, String codfisc, int i) {
+    this.id = i;
+    this.codFiscale = codfisc;
+    this.nome = null;
+    this.cognome = null;
+    this.email = mail;
+    this.nickname = nick;
+    this.password = pass;
+    this.ruolo = null;
+    this.badges = new ArrayList<Badge>();
+    this.punteggio = new Punteggio();
+    this.nuovaPass = np;
+    this.trofei = 0;
+    this.ammAA = aA;
+    this.dataModPass = dmp;
+  }
   // ho bisogno di un costruttore Dipendente(ammAA dataModPass nuova pass email nick pass codfis id) per l'amministratore
-  //dal costruttore quì sopra rimuovi i dati dell'amministratore (ammAA dataModPass) e aggiungi un altro campo trofei
+  //dal costruttore quï¿½ sopra rimuovi i dati dell'amministratore (ammAA dataModPass) e aggiungi un altro campo trofei
   
   /**
    * metodo get per ricavare l'id del dipendente
@@ -371,4 +407,23 @@ public class Dipendente {
     this.nuovaPass = nuovaPass;
   }
 
+  /**
+   * metodo che consente di recuperare i trofei di un dipendente
+   * 
+   * @return trofei del dipendente
+   */
+  public int getTrofei() {
+    return trofei;
+  }
+
+  /**
+   * metodo che consente di impostare i trofei di un dipendente
+   * 
+   * @param trofei numero di trofei da impostare
+   */
+  public void setTrofei(int trofei) {
+    this.trofei = trofei;
+  }
+
+  
 }
