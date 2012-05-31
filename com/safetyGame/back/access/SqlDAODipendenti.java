@@ -99,17 +99,18 @@ public class SqlDAODipendenti implements DAODipendenti{
     String password = l.getPassword();
     ResultSet rs = serverAzienda.selezione("Amministratore","*", "nickname="+username,""); 
     int ID;
-    String email,codfis,data;
+    String email,codfis,data,passmod;
     boolean amm;
     try{
       ID = rs.getInt("ID");
       email = rs.getString("email");
       data = rs.getString("datapass");
+      passmod = rs.getString("passmod");
       codfis = rs.getString("codice_fiscale");
       amm=rs.getBoolean("tipo_amministratore");
     }
     catch (SQLException e){return null;}
-    return new Dipendente();
+    return new Dipendente(amm, data, passmod, email, username, password, codfis, ID);
   }
   
   /**
@@ -347,7 +348,7 @@ public class SqlDAODipendenti implements DAODipendenti{
   private String generaPassCasuale(){
     String lettere[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}; //toLowerCase
     String numeri[] = {"1","2","3","4","5","6","7","8","9","0"};
-    String caratteri[] = {"@","#","�","*","+","?","^","�","%","&","/","$","!","+","-","�"};
+    String caratteri[] = {"@","#","*","+","?","^","%","&","/","$","!","+","-"};
     String pass="";
     Random rand= new Random();
     while (pass.length()<17){
