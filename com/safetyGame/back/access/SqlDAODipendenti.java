@@ -116,7 +116,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * Metodo che resetta il campo password modificata di un Dipendente
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean resetPassD(Dipendente d){
@@ -127,7 +127,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * Metodo che resetta il campo password modificata di un Amministratore
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean resetPassA(Dipendente d){
@@ -139,7 +139,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param pass la stringa della nuova password del Dipendente
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean passD(Dipendente d, String pass){
@@ -151,7 +151,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param pass la stringa della nuova password dell'Amministratore
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean passA(Dipendente d, String pass){
@@ -171,7 +171,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param mail la stringa della nuova email del Dipendente
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean mailD(Dipendente d, String mail){
@@ -216,7 +216,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * Metodo che aggiunge un Dipendente al database
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean aggiungiDipendente(Dipendente d){
@@ -237,7 +237,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * Metodo che cancella un Dipendente al database
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean cancellaDipendente(Dipendente d){
@@ -249,7 +249,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param nome stringa contenente il nuovo nome
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean modNome(Dipendente d, String nome){
@@ -261,7 +261,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param cognome stringa contenente il nuovo cognome
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean modCognome(Dipendente d, String cognome){
@@ -273,7 +273,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param codfis stringa contenente il nuovo codice fiscale
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean modCodFis(Dipendente d, String codfis){
@@ -285,7 +285,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param username stringa contenente il nuovo username
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean modUsername(Dipendente d, String username){
@@ -297,7 +297,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param impiego stringa contenente il nuovo impiego
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean modImpiego(Dipendente d, String impiego){
@@ -309,7 +309,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param n intero contenente il nuovo ammontare trofei
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean setTrofei(Dipendente d, int n){
@@ -320,7 +320,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * Metodo che resetta la password (casuale) di un Dipendente
    * 
    * @param r Oggetto Recupero da cui si prendono le informazioni
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean resetD(Recupero r){
@@ -331,7 +331,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * Metodo che resetta la password (casuale) di un Amministratore
    * 
    * @param r Oggetto Recupero da cui si prendono le informazioni
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione ï¿½ andata o meno a buon fine
    * 
    */   
   public boolean resetA(Recupero r){
@@ -347,7 +347,7 @@ public class SqlDAODipendenti implements DAODipendenti{
   private String generaPassCasuale(){
     String lettere[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}; //toLowerCase
     String numeri[] = {"1","2","3","4","5","6","7","8","9","0"};
-    String caratteri[] = {"@","#","°","*","+","?","^","£","%","&","/","$","!","+","-","§"};
+    String caratteri[] = {"@","#","ï¿½","*","+","?","^","ï¿½","%","&","/","$","!","+","-","ï¿½"};
     String pass="";
     Random rand= new Random();
     while (pass.length()<17){

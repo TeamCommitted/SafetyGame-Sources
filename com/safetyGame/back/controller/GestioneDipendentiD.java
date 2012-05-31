@@ -3,7 +3,7 @@
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Version: 0.2
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -15,6 +15,9 @@
  * |          |                     | - setDaoFactory
  * |          |                     | + getDaoDipendenti
  * |          |                     | + setDaoDipendenti
+ * |          |                     | * getDati
+ * |          |                     | * modificaPass
+ * |          |                     | + modificaEmail
  * +----------+---------------------+---------------------
  * | 20120519 |Alessandro Cornaglia | + GestioneDipendentiD
  * |          |                     | + getDaoFacory
@@ -92,19 +95,57 @@ public class GestioneDipendentiD{
     this.gestioneLog = gestioneLog;
   }
 
+  /**
+   * metodo che consente di reperire le informazioni di un dipendente a partire
+   * dal suo login
+   * 
+   * @param l login del dipendente
+   * @return informazioni sul dipendente
+   */
   public Dipendente getDati(Login l) {//DA RIFARE
-	  //che dati deve ritornare??? solo il dipendente?
-	  return l.getDipendente();//DA RIFARE
+    Dipendente ritorno = this.daoDipendenti.getInfoD(l);
+	if (ritorno != null) {
+	  return ritorno;  
+	}
+	return null;//COME CI COMPORTIAMO SE MI VIENE RETITUITO NULL???
+	  
   }
   
+  /**
+   * metodo che consente la modifica della password da parte di un dipendente
+   *
+   * @param dip dipendente che chiede di modificare la password
+   * 
+   * @return true se operazione riuscita con successo, false altrimenti
+   */
   public boolean modificaPass(Dipendente dip) {
 	//dip contiene la nuova password (il web deve controllare che la pass sia ok
 	//scrivo la nuova password
-    daoDipendenti.modificaPassword(dip,dip.getPassword());
-    
-    //scrivo il log
-    gestioneLog.scriviModPassD(dip);
-    return true;
+	boolean esito = this.daoDipendenti.passD(dip,dip.getNuovaPass());
+    if(esito) {// se tutto ok
+	  //scrivo il log
+      gestioneLog.scriviModPassD(dip);
+      return true;
+    }
+    return false;//non sono riuscito a modificare la passwrod
+  }
+  
+  /**
+   * metodo che consente la modifica della mail da parte di un dipendente
+   * 
+   * @param dip che chiede di modificare la mail
+   * @param nEmail nuovo indirizzo mail da inserire
+   * 
+   * @return true se operazione riuscita con successo, false altrimenti
+   */
+  public boolean modificaEmail(Dipendente dip, String nEmail) {
+    boolean esito = this.daoDipendenti.mailD(dip,nEmail);
+    if (esito) {// se tutto ok
+      //scrivo il log
+      gestioneLog.scriviModEmailD(dip);
+      return true;
+    }
+    return false;
   }
   
 /*   CODICE FACCO
