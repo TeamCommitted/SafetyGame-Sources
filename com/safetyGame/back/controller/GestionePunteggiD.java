@@ -3,17 +3,20 @@
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Version: 0.3
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120523 |Alessandro Cornaglia | +getStatistiche
- * |          |                     | +getBadgeD
+ * | 20120531 |Alessandro Cornaglia | * GestionePunteggiD
+ * |          |                     | * getStatistiche
  * +----------+---------------------+---------------------
- * | 20120521 |Alessandro Cornaglia | +GestionePunteggiD
+ * | 20120523 |Alessandro Cornaglia | + getStatistiche
+ * |          |                     | + getBadgeD
+ * +----------+---------------------+---------------------
+ * | 20120521 |Alessandro Cornaglia | + GestionePunteggiD
  * +----------+---------------------|---------------------
  *
  */
@@ -25,16 +28,16 @@ import java.util.ArrayList;
 
 public class GestionePunteggiD{ 
 
-  private DAOFactory daoPunteggi;
-  private DAOFactory daoBadge;
+  private DAOPunteggi daoPunteggi;
+  private DAOBadge daoBadge;
   
   /**
    * Costruttore con paramentri della classe GestionePunteggiD
    * 
-   * @param dP riferimento all'oggetto di tipo SqlDAOPunteggi
-   * @param dB riferimento all'oggetto di tipo SqlDAOBadge
+   * @param dP riferimento all'oggetto di tipo DAOPunteggi
+   * @param dB riferimento all'oggetto di tipo DAOBadge
    */
-  public GestionePunteggiD(DAOFactory dP, DAOFactory dB) {
+  public GestionePunteggiD(DAOPunteggi dP, DAOBadge dB) {
     this.daoPunteggi = dP;
 	this.daoBadge = dB;
   }
@@ -55,8 +58,7 @@ public class GestionePunteggiD{
    * @return statistiche del dipendente
    */
   public Punteggio getStatistiche(Login l) {
-    Dipendente dip = l.getDipendente();
-    Punteggio ritorno = this.daoPunteggi.getPunteggio(dip);
+    Punteggio ritorno = this.daoPunteggi.getPunteggio(l.getUsername());
     return ritorno;
   }
   
@@ -66,7 +68,7 @@ public class GestionePunteggiD{
    * @param l login del dipendente
    * @return badge guadagnati dal dipendente
    */
-  public ArrayList<Badge> getBadgeD(Login l) {
+  public ArrayList<Badge> getBadgeD(Login l) {//DA MODIFICARE
     Dipendente dip = l.getDipendente();
     ArrayList<Badge> badges = dip.getBadges();
     return badges;

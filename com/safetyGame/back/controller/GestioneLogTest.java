@@ -32,7 +32,6 @@ public class GestioneLogTest {
 	
 		Login login = new Login();
 		login.setUsername("usr");
-		
 		gestioneLog.scriviLogin(login);
 		
 		//controllo percorso

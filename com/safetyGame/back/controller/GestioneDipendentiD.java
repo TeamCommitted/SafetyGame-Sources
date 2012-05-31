@@ -10,13 +10,19 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120519 |Alessandro Cornaglia | +GestioneDipendentiD
- * |          |                     | +getDaoFacory
- * |          |                     | +setDaoFactory
- * |          |                     | +getGestioneLog
- * |          |                     | +setGestioneLog 
- * |          |                     | +getDati
- * |          |                     | +modificaPass
+ * | 20120531 |Alessandro Cornaglia | * GestioneDipendentiD
+ * |          |                     | - getDaoFactory
+ * |          |                     | - setDaoFactory
+ * |          |                     | + getDaoDipendenti
+ * |          |                     | + setDaoDipendenti
+ * +----------+---------------------+---------------------
+ * | 20120519 |Alessandro Cornaglia | + GestioneDipendentiD
+ * |          |                     | + getDaoFacory
+ * |          |                     | + setDaoFactory
+ * |          |                     | + getGestioneLog
+ * |          |                     | + setGestioneLog 
+ * |          |                     | + getDati
+ * |          |                     | + modificaPass
  * +----------+---------------------|---------------------
  *
  */
@@ -25,7 +31,8 @@ import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
 public class GestioneDipendentiD{
-  private DAOFactory daoFactory;
+  //private DAOFactory daoFactory;
+  private DAODipendenti daoDipendenti;
   private GestioneLog gestioneLog;
   
   /**
@@ -34,8 +41,8 @@ public class GestioneDipendentiD{
    * @param d riferimento all'iggetto di tipo DAOFactory
    * @param g riferimento alla classe di tipo GestioneLog
    */
-  public GestioneDipendentiD(DAOFactory d, GestioneLog g) {
-    this.daoFactory = d;
+  public GestioneDipendentiD(DAODipendenti d, GestioneLog g) {
+    this.daoDipendenti = d;
     this.gestioneLog = g;
   }
   
@@ -43,18 +50,18 @@ public class GestioneDipendentiD{
    * Costruttore senza parametri della classe GestioneDipendentiD
    */
   public GestioneDipendentiD() {
-    this.daoFactory = null;
+    this.daoDipendenti = null;
     this.gestioneLog = null;
   }
 
   /**
    * metodo che consente di recuperare il riferimento all'oggetto di tipo statico
-   * DAOFactory
+   * DAODipendenti
    * 
-   * @return riferimento all'oggetto statico DAOFactory
+   * @return riferimento all'oggetto statico DAODipendenti
    */
-  public DAOFactory getDaoFactory() {
-    return daoFactory;
+  public DAODipendenti getDaoDipendenti() {
+    return daoDipendenti;
   }
 
   /**
@@ -63,8 +70,8 @@ public class GestioneDipendentiD{
    * 
    * @param daoFactory riferimento all'oggetto di tipo DAOFactory
    */
-  public void setDaoFactory(DAOFactory daoFactory) {
-    this.daoFactory = daoFactory;
+  public void setDaoDipendenti(DAODipendenti daoDip) {
+    this.daoDipendenti = daoDip;
   }
 
   /**
@@ -85,15 +92,15 @@ public class GestioneDipendentiD{
     this.gestioneLog = gestioneLog;
   }
 
-  public Dipendente getDati(Login l) {
+  public Dipendente getDati(Login l) {//DA RIFARE
 	  //che dati deve ritornare??? solo il dipendente?
-	  return l.getDipendente();
+	  return l.getDipendente();//DA RIFARE
   }
   
   public boolean modificaPass(Dipendente dip) {
 	//dip contiene la nuova password (il web deve controllare che la pass sia ok
 	//scrivo la nuova password
-    daoFactory.modificaPassword(dip,dip.getPassword());
+    daoDipendenti.modificaPassword(dip,dip.getPassword());
     
     //scrivo il log
     gestioneLog.scriviModPassD(dip);

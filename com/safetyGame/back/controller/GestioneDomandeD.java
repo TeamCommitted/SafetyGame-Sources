@@ -3,22 +3,30 @@
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Version: 0.3
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120518 |Alessandro Cornaglia | + GestioneDomandeD
- * |          |                     | +getDaoFactory
- * |          |                     | +setDaoFactory
- * |          |                     | +getGestionePunteggiD
- * |          |                     | +setGestionePunteggiD
- * |          |                     | +getGestioneLog
- * |          |                     | +setGestioneLog
+ * | 20120531 |Alessandro Cornaglia | * GestioneDomandeD
+ * |          |                     | - getDaoFactory
+ * |          |                     | - setDaoFactory
+ * |          |                     | - getDaoDomande
+ * |          |                     | - setDaoDomande
+ * |          |                     | * getDomanda
+ * |          |                     | * setRisposta
  * +----------+---------------------+---------------------
- * | 20120519 |Alessandro Cornaglia | +setRisposta
+ * | 20120518 |Alessandro Cornaglia | + GestioneDomandeD
+ * |          |                     | + getDaoFactory
+ * |          |                     | + setDaoFactory
+ * |          |                     | + getGestionePunteggiD
+ * |          |                     | + setGestionePunteggiD
+ * |          |                     | + getGestioneLog
+ * |          |                     | + setGestioneLog
+ * +----------+---------------------+---------------------
+ * | 20120519 |Alessandro Cornaglia | + setRisposta
  * +----------+---------------------|---------------------
  *
  */
@@ -27,19 +35,23 @@ import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
 public class GestioneDomandeD{
-  private DAOFactory daoFactory;
+  private DAODomande daoDomande;
+  private DAOPunteggi daoPunteggi;
   private GestionePunteggiD gestionePunteggiD;
   private GestioneLog gestioneLog;
+  
   
   /**
    * Costruttore con parametri della classe GestioneDomandeD
    * 
-   * @param d implementazione daoFactory a seconda del database
+   * @param d implementazione daoDomande a seconda del database
+   * @param dp implementazione daoPunteggi a seconda del database
    * @param g riferimento alla classe GestionePunteggiD
    * @param gl riferimento alla classe GestioneLog
    */
-  public GestioneDomandeD(DAOFactory d, GestionePunteggiD g, GestioneLog gl) {
-    this.daoFactory = d;
+  public GestioneDomandeD(DAODomande d, DAOPunteggi dp, GestionePunteggiD g, GestioneLog gl) {
+    this.daoDomande = d;
+    this.daoPunteggi = dp;
     this.gestionePunteggiD = g;
     this.gestioneLog = gl;
   }
@@ -48,27 +60,28 @@ public class GestioneDomandeD{
    * Costruttore senza parametri della classe GestioneDomandeD
    */
   public GestioneDomandeD() {
-    this.daoFactory = null;
+    this.daoDomande = null;
+    this.daoPunteggi = null;
     this.gestionePunteggiD = null;
     this.gestioneLog = null;
   }
   
   /**
-   * metodo che consente di recuperare il riferimento all'oggetto DAOFactory
+   * metodo che consente di recuperare il riferimento all'oggetto DAODomande
    * 
-   * @return daoFactory
+   * @return daoDomande
    */
-  public DAOFactory getDaoFactory() {
-    return daoFactory;
+  public DAODomande getDaoDomande() {
+    return daoDomande;
   }
 
   /**
-   * metodo che consente di impostare il riferimento all'oggetto DAOFactory
+   * metodo che consente di impostare il riferimento all'oggetto DAODomande
    * 
-   * @param daoFactory oggetto di tipo statico DAOFActory
+   * @param daoFactory oggetto di tipo statico DAODomande
    */
-  public void setDaoFactory(DAOFactory daoFactory) {
-    this.daoFactory = daoFactory;
+  public void setDaoDomande(DAODomande daoDom) {
+    this.daoDomande = daoDom;
   }
 
   /**
@@ -113,11 +126,11 @@ public class GestioneDomandeD{
    * @param l oggetto Login del dipendente che deve ricevere la domanda
    * @return domanda per il login proposto
    */
-  public Domanda getDomanda(Login l) {
+  public Domanda getDomanda(Login l) {//DA MODIFICARE
 	Dipendente dip = l.getDipendente();//recupero il dipendente 
-    Domanda ritorno = this.daoFactory.getDomanda(dip);//recupero la domanda passandogli il dip così posso scrivere sul db che gli è stata presentata
+    Domanda ritorno = this.daoDomande.getDomanda(dip);//recupero la domanda passandogli il dip così posso scrivere sul db che gli è stata presentata
     //scrivo che la domanda è stata sottoposta al dipendente sul DB
-    this.daoFactory.scriviSottoposta(ritorno,dip);
+    this.daoDomande.scriviSottoposta(ritorno,dip);
     this.gestioneLog.scriviDomRic(l, ritorno); // scrivo il log
     return ritorno; 
   }
@@ -130,7 +143,7 @@ public class GestioneDomandeD{
    * @param l Login del dipendente che ha risposto
    * @param risposta Domanda posta al dipendente contenente la risposta data
    */
-  public void setRisposta(Login l,Domanda risposta) {
+  public void setRisposta(Login l,Domanda risposta) {//DA MODIFICARE
     //Dal login ricavo il dipendente
 	Dipendente dip = l.getDipendente();
 	//Ricavo Punteggio della domanda
@@ -141,13 +154,13 @@ public class GestioneDomandeD{
 	gestioneLog.scriviDomRisp(l, risposta);
 	
 	//scrivo sul DB che l'utente ha risposto alla domanda
-	daoFactory.scriviHaRisposto(dip.risposta);
+	daoDomande.scriviHaRisposto(dip.risposta);
 	
 	//controllo se la risposta è corretta
 	if ( rispostaData == risposta.getCorretta()) {
 	  //se la risposta è corretta, allora devo assegnare il punteggio al dipendente
 	  //->assegno punteggio al dipendente
-	  daoFactory.addPunteggio(dip,punti);//o metodo opportuno
+	  daoPunteggi.addPunteggio(dip,punti);//o metodo opportuno
 	}
   }
   

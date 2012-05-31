@@ -105,7 +105,7 @@ public class GestioneLog{
    	
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/log/" + l.getUsername() + "/login.txt";
-   System.out.println(percorso);
+   
 	try {
 	  this.updateLog = new UpdateLog(percorso);
 	}
