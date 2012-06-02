@@ -215,6 +215,21 @@ public class SqlDAODomande implements DAODomande{
     }
     return domande;
   }
+  
+  /**
+   * Metodo che ritorna l'elenco di Domande di un Dipendente 
+   * (eventualmente parziali per tipoin caso che venga 
+   * specificata una domanda dom)
+   * 
+   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dom Oggetto Domanda per il controllo del parziale
+   * @return ArrayList che contiene l'elenco di tutte le Domande
+   * 
+   */   
+  public ArrayList<Domanda> domande(Dipendente d, Domanda dom){
+    ArrayList <Domanda> domande=new ArrayList<Domanda>();
+    return domande;
+  }
 
   /**
    * Metodo che aggiunge una Domanda al database dell'azienda
