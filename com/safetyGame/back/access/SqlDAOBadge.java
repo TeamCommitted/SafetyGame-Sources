@@ -13,6 +13,8 @@
  * | 20120520 | Gabriele Facchin    | + SqlDAOBadge
  * |          |                     | + badgeD
  * +----------+---------------------|---------------------
+ * | 20120602 | Gabriele Facchin    | + badgeAS
+ * +----------+---------------------|---------------------
  *
  */
 
@@ -51,6 +53,34 @@ public class SqlDAOBadge implements DAOBadge{
    */     
   public ArrayList<Badge> badgeD(Dipendente d){
     ResultSet rs = serverAzienda.selezione("Assegnato INNER JOIN Badge ON IDBadge=ID","nome, descrizione, soglia","IDutente="+d.getId(),"");
+    ArrayList<Badge> b = new ArrayList<Badge>();
+    boolean trovato = false;
+    String nomeB="";
+    String descr="";
+    int punti=0;
+    while(!trovato){
+      try{
+        nomeB = rs.getString("nome");
+        descr = rs.getString("descrizione");
+        punti = rs.getInt("soglia");
+        Badge temp=new Badge(nomeB, descr,new Punteggio(punti));
+        b.add(temp);      
+        rs.next();
+      }
+      catch(SQLException e){trovato=true;}  
+    }
+    if (b.size()==0){b=null;}
+    return b;
+  }
+  
+  /**
+   * Metodo che prende le badge dal database
+   * 
+   * @return un ArrayList di Badge che contiene le Badge di quell'azienda
+   * 
+   */     
+  public ArrayList<Badge> badgeAS(){
+    ResultSet rs = serverAzienda.selezione("Badge","*","","");
     ArrayList<Badge> b = new ArrayList<Badge>();
     boolean trovato = false;
     String nomeB="";

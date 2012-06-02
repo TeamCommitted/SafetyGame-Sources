@@ -37,4 +37,12 @@ public interface DAOBadge{
    * 
    */     
   public ArrayList<Badge> badgeD(Dipendente d);
+
+  /**
+   * Metodo che prende le badge dal database
+   * 
+   * @return un ArrayList di Badge che contiene le Badge di quell'azienda
+   * 
+   */     
+  public ArrayList<Badge> badgeAS();
 }
