@@ -100,4 +100,21 @@ public class SqlDAOBadge implements DAOBadge{
     if (b.size()==0){b=null;}
     return b;
   }
+  
+  /**
+   * Metodo che assegna una Badge ad un Dipendente
+   * 
+   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param b Oggetto Badge che deve essere assegnata
+   * @return un ArrayList di Badge che contiene le Badge di quell'azienda
+   * 
+   */     
+  public boolean assegna(Dipendente d, Badge b){
+    String valori[]=new String [2];
+    valori[0]=""+d.getId();
+    valori[1]=b.getId();
+    DataOra data=new DataOra();
+    valori[2]=dataora.toString();
+    return serverAzienda.inserisciRiga("Assegnato","IDDipendente, IDBadge, data",valori);
+  }
 }

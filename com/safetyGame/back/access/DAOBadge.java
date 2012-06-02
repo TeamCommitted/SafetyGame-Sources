@@ -45,4 +45,14 @@ public interface DAOBadge{
    * 
    */     
   public ArrayList<Badge> badgeAS();
+  
+  /**
+   * Metodo che assegna una Badge ad un Dipendente
+   * 
+   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param b Oggetto Badge che deve essere assegnata
+   * @return un ArrayList di Badge che contiene le Badge di quell'azienda
+   * 
+   */     
+  public boolean assegna(Dipendente d, Badge b);
 }
