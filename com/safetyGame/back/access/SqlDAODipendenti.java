@@ -84,7 +84,17 @@ public class SqlDAODipendenti implements DAODipendenti{
       trofeo = rs.getInt("trofeo");
     }
     catch (SQLException e){return null;} 
-    return new Dipendente(ID,codfis, nome,cognome,email,username,password,ruolo,trofeo,passmod);
+    rs = serverAzienda.selezione("Storico","punteggio","IDDipendente="+ID,"");
+    int punti=0;
+    boolean finito = false;
+    while(!finito){
+      try{
+        punti+= rs.getInt("punteggio");
+        rs.next();
+      }
+      catch (SQLException e){finito = true;}
+    }
+    return new Dipendente(ID,codfis, nome,cognome,email,username,password,ruolo,punti, passmod, trofeo);
   }
   
   /**
@@ -110,7 +120,8 @@ public class SqlDAODipendenti implements DAODipendenti{
       amm=rs.getBoolean("tipo_amministratore");
     }
     catch (SQLException e){return null;}
-    return new Dipendente(amm, data, passmod, email, username, password, codfis, ID);
+    //return new Dipendente(amm, data, passmod, email, username, password, codfis, ID);
+    return new Dipendente();
   }
   
   /**
@@ -193,17 +204,9 @@ public class SqlDAODipendenti implements DAODipendenti{
     int ID,trofeo;
     while(!trovato){
       try{
-        ID = rs.getInt("ID");
-        nome = rs.getString("nome");
-        cognome = rs.getString("cognome");
-        codfis = rs.getString("codice_fiscale");
-        email = rs.getString("email");
         username = rs.getString("nickname");
         password = rs.getString("password");
-        passmod = rs.getString("passmod");
-        ruolo = rs.getString("ruolo");
-        trofeo = rs.getInt("trofeo");
-        Dipendente temp=new Dipendente(ID,codfis, nome,cognome,email,username,password,ruolo,trofeo,passmod);
+        Dipendente temp=getInfoD(new Login(username,password));
         d.add(temp);      
         rs.next();
       }
