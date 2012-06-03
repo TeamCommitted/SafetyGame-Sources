@@ -227,7 +227,38 @@ public class SqlDAODomande implements DAODomande{
    * 
    */   
   public ArrayList<Domanda> domande(Dipendente d, Domanda dom){
+    ResultSet rs=serverAzienda.selezione("Domanda as d INNER JOIN Storico as s ON d.ID=s.IDdomanda","d.ID","","GROUP BY d.ID");
+    ArrayList<Integer> id = new ArrayList<Integer>();
+    boolean trovato = false;
+    int ID;
+    while(!trovato){
+      try{
+        ID = rs.getInt("ID");
+        id.add(ID);      
+        rs.next();
+      }
+      catch(SQLException e){trovato=true;}  
+    }
+    //ho preso tutte le domande risposte da un utente
     ArrayList <Domanda> domande=new ArrayList<Domanda>();
+    int i=0;
+    Domanda domanda=prendiCampiDomanda(i);
+    while(d!=null){
+      domande.add(domanda);
+      i++;
+      domanda=prendiCampiDomanda(i);
+    }
+    if (dom!=null){
+      i=0;
+      while(i<domande.size()){
+        if (domande.get(i).getTipologia()==dom.getTipologia()){
+          i++;
+        }
+        else{
+          domande.remove(i);
+        }
+      }
+    }
     return domande;
   }
 
