@@ -3,12 +3,18 @@
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Version: 0.2
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120603 |Alessandro Cornaglia | * Badge
+ * |          |                     | + getId
+ * |          |                     | + setId
+ * |          |                     | * getSoglia
+ * |          |                     | * setSoglia
  * +----------+---------------------+---------------------
  * | 20120419 |Alessandro Cornaglia | + Badge
  * |          |                     | + Badge
