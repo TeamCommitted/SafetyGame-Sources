@@ -64,27 +64,30 @@ public class GestioneBadgeD{
 	   ArrayList<Badge> badge = accessB.badgeAS();
 	   boolean trovato = false;
 	   int i = 0;
-	   while(i<badge.size() && trovato == false){
+	   boolean result = false;
+	   while(i < badge.size() && trovato == false){
 	       Badge test = badge.get(i);
 		   if(test.getDescrizione().equals("TotaleRisposte"))
 		       if(test.getSoglia().getPunti() == risposte.size()){
 		           accessB.assegna(dip,test);
 		           trovato = true;
+		           result = true;
 		       }
 		   i++;
 	   }
 	   risposte = accessDom.domande(dip,D);
 	   trovato = false;
 	   i = 0;
-	   while(i<badge.size() && trovato == false){
+	   while(i < badge.size() && trovato == false){
 	       Badge test = badge.get(i);
 		   if(test.getDescrizione().equals(D.getTipologia()))
 		       if(test.getSoglia().getPunti() == risposte.size()){
 		           accessB.assegna(dip,test);
 		           trovato = true;
+		           result = true;
 		       }
 		   i++;
 	   }
-	   return true;
+	   return result;
    }
 }
