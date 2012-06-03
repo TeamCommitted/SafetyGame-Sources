@@ -16,12 +16,12 @@ public class GestioneLogin{
    /**
     * Costruttore con parametri della classe GestioneLogin
     * 
-    * @param a riferimento alla classe che implementa l'interfaccia DAOLogin
-    * 		 l riferimento alla classe GestioneLog
+    * @param access riferimento alla classe che implementa l'interfaccia DAOLogin
+    * 		 log riferimento alla classe GestioneLog
     */
-   public GestioneLogin(DAOLogin a, GestioneLog l){
-	   access = a;
-	   log = l;
+   public GestioneLogin(DAOLogin access, GestioneLog log){
+	   this.access = access;
+	   this.log = log;
    }
    
    /**
@@ -30,7 +30,7 @@ public class GestioneLogin{
     * @param login oggetto contenente i dati di login inseriti dall'utente
     */
    public boolean loginAdmin(Login login){
-      return access.loginLimitato(login);
+      return access.loginAmministratore(login);
    }
    
    /**
@@ -39,9 +39,9 @@ public class GestioneLogin{
     * @param login oggetto contenente i dati di login inseriti dall'utente
     */
    public boolean loginUser(Login login){
-	   boolean result = access.loginLimitato(login);
+	   boolean result = access.loginDipendente(login);
 	   if(result)
-		   log.login(login);
+		   log.scriviLogin(login);
 	   return result; 
    }
 }
