@@ -327,8 +327,8 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione � andata o meno a buon fine
    * 
    */   
-  public boolean resetD(Recupero r){
-    return serverAzienda.modificaRiga("Dipendente","passmod="+generaPassCasuale(),"email="+r.getEmail()+" AND codice fiscale= "+r.getCodFiscale());
+  public boolean resetD(Recupero r, String p){
+    return serverAzienda.modificaRiga("Dipendente","passmod="+p,"email="+r.getEmail()+" AND codice fiscale= "+r.getCodFiscale());
   }
   
   /**
@@ -338,43 +338,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione � andata o meno a buon fine
    * 
    */   
-  public boolean resetA(Recupero r){
-    return serverAzienda.modificaRiga("Amministratore","passmod="+generaPassCasuale(),"email="+r.getEmail()+" AND codice fiscale= "+r.getCodFiscale());
-  }
-
-  /**
-   * Metodo che genera in modo casuale una password
-   * 
-   * @return stringa che contiene la nuova password generata casualmente
-   * 
-   */   
-  private String generaPassCasuale(){
-    String lettere[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}; //toLowerCase
-    String numeri[] = {"1","2","3","4","5","6","7","8","9","0"};
-    String caratteri[] = {"@","#","*","+","?","^","%","&","/","$","!","+","-"};
-    String pass="";
-    Random rand= new Random();
-    while (pass.length()<17){
-      int scelta = rand.nextInt(3);
-      if (scelta==0){
-        int maiusc=rand.nextInt(2);
-        int lettera=rand.nextInt(lettere.length);
-        if (maiusc==0)
-          pass+=lettere[lettera].toLowerCase();
-        else
-          pass+=lettere[lettera];
-      }
-      else{
-        if (scelta==1){
-          int numero=rand.nextInt(numeri.length);
-          pass+=numeri[numero];
-        }
-        else{ //scelta == 2
-          int carattere=rand.nextInt(caratteri.length);
-          pass+=caratteri[carattere];
-        }
-      }
-    }
-    return pass;
+  public boolean resetA(Recupero r, String p){
+    return serverAzienda.modificaRiga("Amministratore","passmod="+p,"email="+r.getEmail()+" AND codice fiscale= "+r.getCodFiscale());
   }
 }
