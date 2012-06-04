@@ -77,7 +77,7 @@ public class GestioneBadgeD{
        while(i < badge.size() && trovato == false){
            Badge test = badge.get(i);
            if(test.getDescrizione().equals("TotaleRisposte"))
-               if(test.getSoglia().getPunti() == risposte.size()){
+               if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
                    trovato = true;
                    result = true;
@@ -90,7 +90,7 @@ public class GestioneBadgeD{
        while(i < badge.size() && trovato == false){
            Badge test = badge.get(i);
            if(test.getDescrizione().equals(D.getTipologia()))
-               if(test.getSoglia().getPunti() == risposte.size()){
+               if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
                    trovato = true;
                    result = true;
