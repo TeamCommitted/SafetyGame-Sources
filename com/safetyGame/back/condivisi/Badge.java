@@ -3,12 +3,18 @@
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Version: 0.2
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120603 |Alessandro Cornaglia | * Badge
+ * |          |                     | + getId
+ * |          |                     | + setId
+ * |          |                     | * getSoglia
+ * |          |                     | * setSoglia
  * +----------+---------------------+---------------------
  * | 20120419 |Alessandro Cornaglia | + Badge
  * |          |                     | + Badge
@@ -34,19 +40,21 @@ public class Badge {
 
   private String nome;
   private String descrizione;
-  private Punteggio soglia;
+  private int soglia;
+  private int id;
   
   /**
    * Costruttore con parametri della classe Badge
    * 
    * @param nome nome del badge
    * @param d descrizione del badge
-   * @param p punteggio di soglia
+   * @param s punteggio intero di soglia
    */
-  public Badge(String nome, String d, Punteggio p) {
+  public Badge(String nome,int i, String d, int s) {
     this.nome = nome;
+    this.id  = i;
     this.descrizione = d;
-    this.soglia = p;
+    this.soglia = s;
   }
   
   /**
@@ -54,8 +62,9 @@ public class Badge {
    */
   public Badge() {
 	  this.nome = null;
+	  this.id = -1;
 	  this.descrizione = null;
-	  this.soglia = null;
+	  this.soglia = -1;
   }
 
   /**
@@ -66,12 +75,29 @@ public class Badge {
     return nome;
   }
 
-  /**
+/**
    * metodo che consente di impostare il nome di un badge
    * @param nome nome che si vuole assegnare ad un badge
    */
   public void setNome(String nome) {
     this.nome = nome;
+  }
+
+
+  /**
+   * metodo che consente di recuperare l'id di un badge
+   * @return id del badge
+   */
+  public int getId() {
+    return id;
+  }
+
+  /**
+   * metodo che consente di impostare l'id di un badge
+   * @param id id da impostare 
+   */
+  public void setId(int id) {
+    this.id = id;
   }
   
   /**
@@ -94,7 +120,7 @@ public class Badge {
    * metodo che consente di recuperare il punteggio di soglia del badge
    * @return punteggio di soglia per aggiudicarsi il badge
    */
-  public Punteggio getSoglia() {
+  public int getSoglia() {
     return soglia;
   }
 
@@ -102,7 +128,7 @@ public class Badge {
    * metodo che consente di impostare il punteggio minimo di soglia 
    * @param soglia che si vuole impostare
    */
-  public void setSoglia(Punteggio soglia) {
+  public void setSoglia(int soglia) {
     this.soglia = soglia;
   }
   
