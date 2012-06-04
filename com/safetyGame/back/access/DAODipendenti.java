@@ -205,7 +205,7 @@ public interface DAODipendenti{
    * @return boolean che indica se l'operazione è andata o meno a buon fine
    * 
    */   
-  public boolean resetD(Recupero r);
+  public boolean resetD(Recupero r, String p);
   
   /**
    * Metodo che resetta la password (casuale) di un Amministratore
@@ -214,5 +214,5 @@ public interface DAODipendenti{
    * @return boolean che indica se l'operazione è andata o meno a buon fine
    * 
    */   
-  public boolean resetA(Recupero r);
+  public boolean resetA(Recupero r, String p);
 }
