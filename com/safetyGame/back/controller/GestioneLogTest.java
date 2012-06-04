@@ -26,6 +26,14 @@ public class GestioneLogTest {
 		idDom = fDom;
 	}
 	
+/* 	@Test
+ 	public void dioBoia() {
+ 		init();
+ 		String s = this.gestioneLog.getLog();
+ 		System.out.println(s);
+ 		assertTrue("percorso errato", 1==1);
+ 	}
+*/ 	
 	@Test
 	public void testLogin() { //verifico cosa succede quando uso scriviLogin()
 		init(); //inizializzo il test
