@@ -31,7 +31,9 @@
  * |          |                     | + resetA
  * |          |                     | + resetD
  * +----------+---------------------|---------------------
- *
+ * | 20120604 | Gabriele Facchin    | - generaPassCasuale
+ * +----------+---------------------|---------------------
+ * 
  */
 
 package com.safetyGame.back.access;
