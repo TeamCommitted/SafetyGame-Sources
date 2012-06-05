@@ -21,6 +21,7 @@
 
 	<div id = "header">
 		<h1>SafetyGame - Pannello Amministratore</h1>
+        <a href="logout.jsp" class="logout">Logout</a>
 	</div>
 
 
