@@ -102,13 +102,9 @@ public class GestioneDipendentiD{
    * @param l login del dipendente
    * @return informazioni sul dipendente
    */
-  public Dipendente getDati(Login l) {//DA RIFARE
+  public Dipendente getDati(Login l) {
     Dipendente ritorno = this.daoDipendenti.getInfoD(l);
-	if (ritorno != null) {
-	  return ritorno;  
-	}
-	return null;//COME CI COMPORTIAMO SE MI VIENE RETITUITO NULL???
-	  
+	return ritorno;    
   }
   
   /**

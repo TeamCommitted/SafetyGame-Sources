@@ -1,46 +1,78 @@
 package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
+import java.util.ArrayList;
 
+/**
+ * Classe che si occupa di gestire le modifiche dati dei Dipendenti da parte di un Amministratore Azienda
+ * 
+ * @author mdallapi 
+ * @version v0.1
+ */
 public class GestioneDipendentiAA{
-   SqlDAOFactory accesso;
-   GestioneLog log;
-   public GestioneDipendentiAA(SqlDAOFactory s){accesso=s;}
+   DAODipendenti accessDip;
    
-   public void setPass(String pass, String username){
-      accesso.passA(pass, username);
-      log.passA(username);
+   /**
+    * Costruttore con parametri della classe GestioneDipendentiAA
+    * 
+    * @param accessDip riferimento alla classe che implementa l'interfaccia DAODipendenti
+    *        
+    */
+   public GestioneDipendentiAA(DAODipendenti accessDip){
+       this.accessDip = accessDip;
+    }
+   
+    /**
+    * Metodo per ottenere i dati dei dipendenti dell'azienda
+    * @return un ArrayList<Dipendente> contenente i dipendenti dell'azienda      
+    */
+   public ArrayList<Dipendente> getElencoDipendenti(){
+      return accessDip.elencoDipendenti(); 
    }
-   public Dipendente[] getElencoDipendenti(){
-      log.listaD();
-      return accesso.elencoDipendenti(); 
+   
+   /**
+    * Metodo per aggiungere un dipendente
+    * 
+    * @param Dip, oggetto contenente i dati del nuovo dipendente
+    * @return true se l'operazione viene completata con successo, altrimenti false    
+    */
+   public boolean aggiungiDipendente(Dipendente Dip){
+      return accessDip.aggiungiDipendente(Dip);
    }
-   public boolean aggiungiDipendente(String nome, String cognome, String codfis, String mail, String impiego){
-      log.addD(nome);
-      return accesso.aggiungiDipendente(nome,cognome,codfis,mail,impiego);
+   
+   /**
+    * Metodo per eliminare
+    * 
+    * @param Dip, oggetto contenente i dati del dipendente da eliminare
+    * @return true se l'operazione viene completata con successo, altrimenti false    
+    */
+   public boolean cancellaDipendente(Dipendente Dip){
+      return accessDip.cancellaDipendente(Dip);
    }
-   public boolean cancellaDipendente(String username){
-      log.delD(username);
-      return accesso.cancellaDipendente(username);
+   
+   /**
+    * Metodo per modificare i dati di un dipendente
+    * 
+    * @param Dip, oggetto contenente i nuovi dati del dipendente da modificare
+    * @return true se l'operazione viene completata con successo, altrimenti false
+    */
+   public boolean modDipendente(Dipendente Dip){
+        Login login = new Login(Dip.getNickname(),Dip.getPassword());
+        Dipendente old = accessDip.getInfoD(login);
+        boolean correct = true;
+        if(!Dip.getNome().equals(old.getNome()))
+            correct = accessDip.modNome(Dip, Dip.getNome());
+        if(!Dip.getCognome().equals(old.getCognome()) && correct)
+            correct = accessDip.modCognome(Dip, Dip.getCognome());
+        if(!Dip.getEmail().equals(old.getEmail()) && correct)
+            correct = accessDip.mailD(Dip, Dip.getEmail());
+        if(!Dip.getRuolo().equals(old.getRuolo()) && correct)
+            correct = accessDip.modImpiego(Dip, Dip.getRuolo());
+        if(!Dip.getNickname().equals(old.getNickname()) && correct)
+            correct = accessDip.modUsername(Dip, Dip.getNickname());
+        if(!Dip.getPassword().equals(old.getPassword()) && correct)
+            correct = accessDip.passD(Dip, Dip.getPassword());
+        return correct;
    }
-   public void modNome(String username, String nome){
-      accesso.modNome(username, nome);
-      log.nome(username);
-   }
-   public void modCognome(String username, String cognome){
-      accesso.modCognome(username, cognome);
-      log.cognome(username);
-   }
-   public void modCodFis(String username, String codfis){
-      accesso.modCodFis(username, codfis);
-      log.codfis(username);
-   }
-   public void modUsername(String usernameOld, String username){
-      accesso.modUsername(usernameOld, username);
-      log.username(username);
-   }
-   public void modImpiego(String username, String impiego){
-      accesso.modImpiego(username, impiego);
-      log.impiego(username);
-   }
+   
 }

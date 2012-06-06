@@ -66,6 +66,7 @@ public class DataOra {
       secondi = s;
    }
 
+   //da fare costruttore che da una stringa costruisca un dataOra 
    /**
     * deve prendere l'orario di oggi dall'orologio di sistema
     */

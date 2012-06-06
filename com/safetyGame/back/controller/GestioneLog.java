@@ -104,10 +104,11 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
    	
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/" + l.getUsername() + "/login.txt";
+    this.percorso = "SafetyGame-Sources/com/safetyGame/back/controller/log/" + l.getUsername() + "/login.txt";
    
 	try {
-	  this.updateLog = new UpdateLog(percorso);
+      System.out.println("percorso = " + this.percorso);
+	  this.updateLog = new UpdateLog(this.percorso);
 	}
 	catch (IOException e) {System.out.println("non va"); }//bisogna decidere cosa fare se si verifica errore
     

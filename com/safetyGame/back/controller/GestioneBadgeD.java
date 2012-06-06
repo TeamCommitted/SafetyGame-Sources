@@ -41,7 +41,7 @@ public class GestioneBadgeD{
     *        n numero di badge che si vuole selezionare
     * @return un ArrayList<Badge> contenente n badge ottenute dall'utente        
     */
-   public ArrayList<Badge> getBadge(Login l, int n){
+   public ArrayList<Badge> getBadgeD(Login l, int n){
       if(login.loginUser(l)){
           Dipendente d = accessDip.getInfoD(l);
           ArrayList<Badge> list = accessB.badgeD(d);
@@ -77,7 +77,7 @@ public class GestioneBadgeD{
        while(i < badge.size() && trovato == false){
            Badge test = badge.get(i);
            if(test.getDescrizione().equals("TotaleRisposte"))
-               if(test.getSoglia().getPunti() == risposte.size()){
+               if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
                    trovato = true;
                    result = true;
@@ -90,7 +90,7 @@ public class GestioneBadgeD{
        while(i < badge.size() && trovato == false){
            Badge test = badge.get(i);
            if(test.getDescrizione().equals(D.getTipologia()))
-               if(test.getSoglia().getPunti() == risposte.size()){
+               if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
                    trovato = true;
                    result = true;

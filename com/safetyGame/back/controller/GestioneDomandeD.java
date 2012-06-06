@@ -44,6 +44,7 @@ public class GestioneDomandeD{
   private DAODipendenti daoDipendenti;
   private GestionePunteggiD gestionePunteggiD;
   private GestioneLog gestioneLog;
+  private GestioneBadgeD gestioneBadge;
   
   
   /**
@@ -53,13 +54,15 @@ public class GestioneDomandeD{
    * @param dp implementazione daoPunteggi a seconda del database
    * @param g riferimento alla classe GestionePunteggiD
    * @param gl riferimento alla classe GestioneLog
+   * @param gbd riferimento alla classe GestioneBadgeD
    */
-  public GestioneDomandeD(DAODomande d, DAOPunteggi dp, DAODipendenti dd, GestionePunteggiD g, GestioneLog gl) {
+  public GestioneDomandeD(DAODomande d, DAOPunteggi dp, DAODipendenti dd, GestionePunteggiD g, GestioneLog gl, GestioneBadgeD gbd) {
     this.daoDomande = d;
     this.daoPunteggi = dp;
     this.daoDipendenti = dd;
     this.gestionePunteggiD = g;
     this.gestioneLog = gl;
+    this.gestioneBadge = gbd;
   }
   
   /**
@@ -71,6 +74,7 @@ public class GestioneDomandeD{
     this.daoDipendenti = null;
     this.gestionePunteggiD = null;
     this.gestioneLog = null;
+    this.gestioneBadge = null;
   }
   
   /**
@@ -173,7 +177,7 @@ public class GestioneDomandeD{
    * @param l oggetto Login del dipendente che deve ricevere la domanda
    * @return domanda per il login proposto
    */
-  public Domanda getDomanda(Login l) {//DA MODIFICARE
+  public Domanda getDomandaD(Login l) {
 	Dipendente dip = this.daoDipendenti.getInfoD(l);//recupero il dipendente
 	if ( dip == null) {
 	  return null;  // non sono stato in grado di recuperare il dipendente
@@ -210,7 +214,12 @@ public class GestioneDomandeD{
 	if (!controllo) { // non ho scritto sul DB
 	  return false; 
 	}
-	
+	else {
+	  if (risposta.getRispostaData() == risposta.getCorretta()) {
+		//se risposta esatta controllo se ha ottenuto badge 
+	    this.gestioneBadge.assegnaBadge(risposta, l);
+	  }
+	}
 	//scrivoil log che l'utente ha risposto
 	gestioneLog.scriviDomRisp(l, risposta);
 	return true;//andato tutto correttamente

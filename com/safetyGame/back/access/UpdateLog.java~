@@ -37,7 +37,8 @@ public class UpdateLog extends IOException {
    * 
    */
   public UpdateLog(String percorso) throws IOException {
-     out=new PrintWriter(new File("/log/"+percorso));
+	  System.out.println(percorso);
+     out=new PrintWriter(new File(percorso));
   }
 
   /**
