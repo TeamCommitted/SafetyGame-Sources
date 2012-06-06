@@ -84,6 +84,18 @@ public class GestioneBadgeD{
                }
            i++;
        }
+       trovato = false;
+       i = 0;
+       while(i < badge.size() && trovato == false){
+           Badge test = badge.get(i);
+           if(test.getDescrizione().equals("TotalePunti"))
+               if(test.getSoglia() == dip.getPunteggio().getPunti()){
+                   accessB.assegna(dip,test);
+                   trovato = true;
+                   result = true;
+               }
+           i++;
+       }
        risposte = accessDom.domande(dip,D);
        trovato = false;
        i = 0;

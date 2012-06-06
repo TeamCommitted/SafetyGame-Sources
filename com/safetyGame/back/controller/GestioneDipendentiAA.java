@@ -53,25 +53,24 @@ public class GestioneDipendentiAA{
    /**
     * Metodo per modificare i dati di un dipendente
     * 
-    * @param Dip, oggetto contenente i nuovi dati del dipendente da modificare
+    * @param newDip, oggetto contenente i nuovi dati del dipendente da modificare
+    * @param oldDip, oggetto contenente i vecchi dati del dipendente da modificare
     * @return true se l'operazione viene completata con successo, altrimenti false
     */
-   public boolean modDipendente(Dipendente Dip){
-        Login login = new Login(Dip.getNickname(),Dip.getPassword());
-        Dipendente old = accessDip.getInfoD(login);
+   public boolean modDipendente(Dipendente newDip, Dipendente oldDip){
         boolean correct = true;
-        if(!Dip.getNome().equals(old.getNome()))
-            correct = accessDip.modNome(Dip, Dip.getNome());
-        if(!Dip.getCognome().equals(old.getCognome()) && correct)
-            correct = accessDip.modCognome(Dip, Dip.getCognome());
-        if(!Dip.getEmail().equals(old.getEmail()) && correct)
-            correct = accessDip.mailD(Dip, Dip.getEmail());
-        if(!Dip.getRuolo().equals(old.getRuolo()) && correct)
-            correct = accessDip.modImpiego(Dip, Dip.getRuolo());
-        if(!Dip.getNickname().equals(old.getNickname()) && correct)
-            correct = accessDip.modUsername(Dip, Dip.getNickname());
-        if(!Dip.getPassword().equals(old.getPassword()) && correct)
-            correct = accessDip.passD(Dip, Dip.getPassword());
+        if(!newDip.getNome().equals(oldDip.getNome()))
+            correct = accessDip.modNome(newDip, newDip.getNome());
+        if(!newDip.getCognome().equals(oldDip.getCognome()) && correct)
+            correct = accessDip.modCognome(newDip, newDip.getCognome());
+        if(!newDip.getEmail().equals(oldDip.getEmail()) && correct)
+            correct = accessDip.mailD(newDip, newDip.getEmail());
+        if(!newDip.getRuolo().equals(oldDip.getRuolo()) && correct)
+            correct = accessDip.modImpiego(newDip, newDip.getRuolo());
+        if(!newDip.getNickname().equals(oldDip.getNickname()) && correct)
+            correct = accessDip.modUsername(newDip, newDip.getNickname());
+        if(!newDip.getPassword().equals(oldDip.getPassword()) && correct)
+            correct = accessDip.passD(newDip, newDip.getPassword());
         return correct;
    }
    
