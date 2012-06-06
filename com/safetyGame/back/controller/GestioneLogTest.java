@@ -1,6 +1,7 @@
 
 package com.safetyGame.back.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import com.safetyGame.back.access.*;
@@ -26,20 +27,16 @@ public class GestioneLogTest {
 		idDom = fDom;
 	}
 	
-/* 	@Test
- 	public void dioBoia() {
- 		init();
- 		String s = this.gestioneLog.getLog();
- 		System.out.println(s);
- 		assertTrue("percorso errato", 1==1);
- 	}
-*/ 	
+
 	@Test
 	public void testLogin() { //verifico cosa succede quando uso scriviLogin()
 		init(); //inizializzo il test
 	
 		Login login = new Login();
 		login.setUsername("usr");
+		login.setPassword("password");
+		File f = new File(".");
+		System.out.println(f.getAbsolutePath());
 		gestioneLog.scriviLogin(login);
 		
 		//controllo percorso
