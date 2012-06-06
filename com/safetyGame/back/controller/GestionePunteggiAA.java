@@ -31,7 +31,7 @@ public class GestionePunteggiAA{
     * e successivamente la lista dei punteggi di tutti i dipendenti.
     */
    public ArrayList<Dipendente> getPunteggi(){
-       ArrayList<Dipendente> dipendenti = null;
+       ArrayList<Dipendente> dipendenti = new ArrayList<Dipendente>();
        dipendenti.add(new Dipendente());
        dipendenti.addAll(accessDip.elencoDipendenti());
        int risposte = 0;

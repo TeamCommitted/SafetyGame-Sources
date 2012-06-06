@@ -41,7 +41,7 @@ public class GestioneBadgeD{
     *        n numero di badge che si vuole selezionare
     * @return un ArrayList<Badge> contenente n badge ottenute dall'utente        
     */
-   public ArrayList<Badge> getBadge(Login l, int n){
+   public ArrayList<Badge> getBadgeD(Login l, int n){
       if(login.loginUser(l)){
           Dipendente d = accessDip.getInfoD(l);
           ArrayList<Badge> list = accessB.badgeD(d);

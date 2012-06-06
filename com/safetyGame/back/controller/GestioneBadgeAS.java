@@ -2,7 +2,7 @@ package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 import java.util.ArrayList;
-//inutile? abbastanza
+
 /**
  * Classe che si occupa di gestire i badge da parte AS
  * 
@@ -27,7 +27,7 @@ public class GestioneBadgeAS{
     * @return un ArrayList<Badge> contenente tutte le badge nel database
     * 
     */
-    public ArrayList<Badge> getBadges(){
+    public ArrayList<Badge> getBadgesAS(){
         return accessB.badgeAS();
     }
 }
