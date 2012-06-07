@@ -66,7 +66,7 @@ public class SqlDAOBadge implements DAOBadge{
         nomeB = rs.getString("nome");
         descr = rs.getString("descrizione");
         punti = rs.getInt("soglia");
-        DataOra da = new DataOra(da);
+        DataOra da = new DataOra(data);
         Badge temp=new Badge(nomeB, ID, descr,punti);
         temp.setData(da);
         b.add(temp);      

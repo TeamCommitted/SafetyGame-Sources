@@ -1,110 +1,99 @@
 package com.safetyGame.back.connection;
 import com.safetyGame.back.controller.*;
 import com.safetyGame.back.condivisi.*;
+import java.util.ArrayList;
 
 public class WebConnection{
    private GestioneDati dati;
    public WebConnection(GestioneDati d){dati=d;}
     
-   public boolean login(String username, String password){
-      dati.login(username, password);
-      return true;
+   public boolean loginDip(String username, String password){
+      Login l=new Login(username,password);
+      return dati.loginUser(l);
+   }
+   
+   public boolean loginAdmin(String username, String password){
+      Login l=new Login(username,password);
+      return dati.loginAdmin(l);
    }
     
-   public Dipendente getDati(String username){
-      Dipendente d = dati.getDati(username);
-      return d;
+   public Dipendente getDati(Login l){
+      return dati.getDati(l); 
    }
    
-   public Punteggio getStat(String username){
-      Punteggio p = dati.getStat(username);
-      return p;
+   public Punteggio getPunteggio(Login l){
+     return dati.getStat(l);
    }
    
-   public Badge[] getBadge(String username){
-      return dati.getBadge(username);
+   public Punteggio getStat(Login l){
+      return dati.getStat(l);
+   }// MANCA
+   
+   public ArrayList<Badge> getBadge(Login l, int n){
+      return dati.getBadgeD(l,n);
    }
    
-   public void modPass(String pass, String username){
-      char u='d';//o a-->AA; s-->AS
-      dati.modPass(pass,username,u);
+   public boolean modPassD(Dipendente dip){
+      return dati.modPassD(dip);
    }
    
-   public void modMail(String mail, String username){
-      dati.modMail(mail,username);
+   public void modPassA(Dipendente dip){
+      return dati.modPassA(dip);
    }
    
-   public void resetPass(String username, String codfis, String mail){
-      dati.resetPass(username, codfis, mail);
+   public boolean modMail(Dipendente d, String mail){
+      return dati.modificaPass(mail,username);
    }
    
-   public Domanda mostraDomanda(String username){
-      Domanda d= dati.getDomanda(username);
-      return d;
+   public boolean resetPass(Recupero r){
+      return dati.recupero(r);
+   }
+   
+   public Domanda mostraDomanda(Login l){
+      return dati.getDomanda(l);
    }
    
    public void posticipa(String username){
       dati.posticipa(username);
+   }// MANCA
+   
+   public boolean rispondi(Login l, String risposta){
+      return dati.rispondi(l, risposta);
    }
    
-   public boolean rispondi(String username, String risposta){
-      dati.rispondi(username, risposta);
-      return true;
+   public boolean logout(Login l){
+      return dati.logout(l);
+   }// MANCA
+   
+   public ArrayList<Domanda> getElencoDomande(){
+      return dati.getElencoDomande();
    }
    
-   public void logout(String username){
-      dati.logout(username);
+   public boolean aggiungiDomanda(Domanda d){
+      return dati.addDomanda(d);
    }
    
-   public Domanda[] getElencoDomande(boolean interne){
-      Domanda[] d=dati.getElencoDomande(interne); 
-      return d;
-   } 
-   
-   public void aggiungiDomanda(int id){
-      dati.aggiungiDomanda(id);
+   public boolean cancellaDomanda(Domanda d){
+      return dati.remDomanda(d);
    }
    
-   public void cancellaDomanda(int id){
-      dati.cancellaDomanda(id);
+   public ArrayList<Dipendente> getElencoDipendenti(){
+      return dati.getElencoDipendenti();
    }
    
-   public Dipendente[] getElencoDipendenti(){
-      Dipendente[] d=dati.getElencoDipendenti(); 
-      return d;
+   public boolean setTrofei(Dipendente d, int n){
+      return dati.setTrofei(d, n);
    }
    
-   public void setTrofei(String dipendente, int n){
-      dati.setTrofei(dipendente, n);
+   public boolean aggiungiDipendente(Dipendente d){
+      return dati.aggiungiDipendente(d);
    }
    
-   public boolean aggiungiDipendente(String nome, String cognome, String codfis, String mail, String impiego){
-      dati.aggiungiDipendente(nome,cognome,codfis,mail,impiego);
-      return true;
+   public boolean cancellaDipendente(Dipendente d){
+     return dati.cancellaDipendente(d);
    }
    
-   public boolean cancellaDipendente(String username){
-      dati.cancellaDipendente(username);
-      return true;
-   }
-   
-   public void modNome(String username, String nome){
-      dati.modNome(username, nome);
-   }
-   
-   public void modCognome(String username, String cognome){
-      dati.modCognome(username, cognome);
-   }
-   
-   public void modCodFis(String username, String codfis){
-      dati.modCodFis(username, codfis);
-   }
-   
-   public void modUsername(String usernameOld, String username){
-      dati.modUsername(usernameOld, username);
-   }
-   
-   public void modImpiego(String username, String impiego){
-      dati.modImpiego(username, impiego);
+   public boolean modInfoDipendente(Dipendente dOld, Dipendente dNew){
+      return dati.modDipendente(nDip, dOld);
    }
 }
