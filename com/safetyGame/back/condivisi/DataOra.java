@@ -3,12 +3,14 @@
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Version: 0.3
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120607 |Alessandro Cornaglia | *DataOra
  * +----------+---------------------+---------------------
  * | 20120420 |Alessandro Cornaglia | +aggiusta
  * |          |                     | +toString
@@ -34,10 +36,10 @@
 
  import java.util.*;
 /**
- * Classe che rappresenta una data ed un'orario
+ * Classe che rappresenta una data ed un'orario nella seguente formato: aaaa/mm/gg hh:mm:ss
  * 
  * @author TeamCommitted
- * @version 0.1
+ * @version 0.3
  * 
  */
 public class DataOra {
@@ -66,7 +68,21 @@ public class DataOra {
       secondi = s;
    }
 
-   //da fare costruttore che da una stringa costruisca un dataOra 
+   //da fare costruttore che da una stringa costruisca un dataOra
+   /**
+    * Costruttore della classe DataOra che crea l'oggetto a partire da una stringa
+    * @param stringa DataOra in formato stringa
+    * 
+    */
+   public DataOra(String stringa) {
+	   //aaaa/mm/gg hh:mm:ss
+	 this.anno = Integer.parseInt(stringa.substring(0,4));
+	 this.mese = Integer.parseInt(stringa.substring(5,7));
+	 this.giorno = Integer.parseInt(stringa.substring(8,10));
+	 this.ora = Integer.parseInt(stringa.substring(11,13));
+	 this.minuti = Integer.parseInt(stringa.substring(14,16));
+	 this.secondi = Integer.parseInt(stringa.substring(17,19));
+   }
    /**
     * deve prendere l'orario di oggi dall'orologio di sistema
     */
@@ -192,7 +208,7 @@ public class DataOra {
      sOra = aggiusta(this.ora);
      sMinuti = aggiusta(this.minuti);
      sSecondi = aggiusta(this.secondi);
-	 
+	 //formato: aaaa/mm/gg hh:mm:ss
      return ""+anno+"/"+sMese+"/"+sGiorno+" "+sOra+":"+sMinuti+":"+sSecondi;
    }   
 }

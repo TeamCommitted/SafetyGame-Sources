@@ -28,6 +28,9 @@ public class DataOraTest {
 	  d = new DataOra();
   }
   
+  private void initS() {
+	 d = new DataOra("1989/10/11 12:06:58");
+  }
 	
   @Test 
   public void testCostruttoreP() {
@@ -39,10 +42,17 @@ public class DataOraTest {
   public void testCostruttoreV() {
     initV();
     int anno = 2012;//anno attuale
-    int mese = 05;//mese attuale
-    int giorno = 15;//giorno attuale
+    int mese = 06;//mese attuale
+    int giorno = 07;//giorno attuale
     assertTrue("L'anno non è quello atteso", d.getAnno() == anno);
     assertTrue("Il mese non è quello atteso", d.getMese() == mese);
     assertTrue("Il giorno non è quello atteso", d.getGiorno() == giorno);
+  }
+  
+  @Test
+  public void testCostruttoreStringa(){
+	initS();
+	String corretta = "1989/10/11 12:06:58";
+	assertTrue("La creazione da stringa non è corretto",d.toString().equals(corretta));
   }
 }
