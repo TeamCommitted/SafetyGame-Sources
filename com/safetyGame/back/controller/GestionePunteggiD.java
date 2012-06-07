@@ -79,15 +79,5 @@ public class GestionePunteggiD{
     ArrayList<Badge> badges = this.daoBadge.badgeD(dip);
     return badges;
   }
-/*PARTE CREATA DAL FACCO
-   SqlDAOFactory accesso;
-   GestioneLog log;
-   public GestionePunteggiD(SqlDAOFactory s){accesso=s;}
-    
-   public Punteggio getStat(String username){
-      log.getStat(username);
-      return accesso.getStat(username);
-   }
-   */
 }
 
