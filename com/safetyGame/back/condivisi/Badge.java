@@ -3,12 +3,16 @@
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Version: 0.3
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120607 |Alessandro Cornaglia | * Badge
+ * |          |                     | + getDataOra
+ * |          |                     | + setData
  * +----------+---------------------+---------------------
  * | 20120603 |Alessandro Cornaglia | * Badge
  * |          |                     | + getId
@@ -42,6 +46,7 @@ public class Badge {
   private String descrizione;
   private int soglia;
   private int id;
+  private DataOra dataora;
   
   /**
    * Costruttore con parametri della classe Badge
@@ -55,6 +60,7 @@ public class Badge {
     this.id  = i;
     this.descrizione = d;
     this.soglia = s;
+    this.dataora = null;
   }
   
   /**
@@ -65,8 +71,24 @@ public class Badge {
 	  this.id = -1;
 	  this.descrizione = null;
 	  this.soglia = -1;
+	  this.dataora = null;
   }
 
+  /**
+   * Metodo che consente di recuperare quando è stato assegnato un badge
+   * @return data e ora di assegnazione di un badge
+   */
+  public DataOra getDataOra() {
+	return this.dataora;
+  }
+  
+  /**
+   * Metodo che consente di impostare la data e l'ora di assegnazione del badge
+   * @param dora data e ora da impostare
+   */
+  public void setData(DataOra dora) {
+	this.dataora = dora;
+  }
   /**
    * metodo che consente di recuperare il nome di un badge
    * @return nome del badge

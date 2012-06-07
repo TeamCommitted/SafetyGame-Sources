@@ -33,6 +33,8 @@
  * |          |                     | + setTrofei
  * |          |                     | + getStatisticheD
  * |          |                     | + getBadgeD
+ * |          |                     | + posticipa
+ * +----------+---------------------+----------------------
  * 
  */ 
 package com.safetyGame.back.controller;
@@ -309,5 +311,15 @@ public class GestioneDati{
     */
    public ArrayList<Badge> getBadgeD(Login l) {
 	 return this.gestionePunteggiD.getBadgeD(l);
+   }
+   
+   /**
+    * Metodo che si occupa di controllare quando una domanda viene posticipata
+    * @param l login del dipendente
+    * @param d domanda posticipata
+    * @return true se la domanda è stata posticipata correttamente, false altrimenti
+    */
+   public boolean posticipa(Login l, Domanda d) {
+	 return this.gestioneDomandeD.posticipa(l, d);
    }
 }

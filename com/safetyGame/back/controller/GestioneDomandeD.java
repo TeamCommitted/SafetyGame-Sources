@@ -10,6 +10,8 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120531 |Alessandro Cornaglia | + posticipa
+ * +----------+---------------------+---------------------
  * | 20120531 |Alessandro Cornaglia | * GestioneDomandeD
  * |          |                     | - getDaoFactory
  * |          |                     | - setDaoFactory
@@ -223,6 +225,21 @@ public class GestioneDomandeD{
 	//scrivoil log che l'utente ha risposto
 	gestioneLog.scriviDomRisp(l, risposta);
 	return true;//andato tutto correttamente
+  }
+  
+  /**
+   * Metodo che si occupa di controllare quando una domanda viene posticipata
+   * @param l login del dipendente
+   * @param d domanda posticipata
+   * @return true se la domanda è stata posticipata correttamente, false altrimenti
+   */
+  public boolean posticipa(Login l, Domanda d) {
+	Dipendente dip = this.daoDipendenti.getInfoD(l);
+	
+	boolean eseguito = this.daoDomande.posticipa(dip, d);
+	if (eseguito)
+      this.gestioneLog.scriviDomPost(l, d);
+	return eseguito;
   }
   
 }
