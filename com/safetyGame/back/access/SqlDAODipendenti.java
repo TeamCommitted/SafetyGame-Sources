@@ -98,7 +98,7 @@ public class SqlDAODipendenti implements DAODipendenti{
     }
     return new Dipendente(ID,codfis, nome,cognome,email,username,password,ruolo,punti, passmod, trofeo);
   }
-  
+
   /**
    * Metodo che prende le informazioni di un Amministratore dal database
    * 
@@ -122,8 +122,8 @@ public class SqlDAODipendenti implements DAODipendenti{
       amm=rs.getBoolean("tipo_amministratore");
     }
     catch (SQLException e){return null;}
-    //return new Dipendente(amm, data, passmod, email, username, password, codfis, ID);
-    return new Dipendente();
+    DataOra d=new DataOra(data);
+    return new Dipendente(amm, d, passmod, email, username, password, codfis, ID);
   }
   
   /**

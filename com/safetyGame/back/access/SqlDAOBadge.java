@@ -52,18 +52,23 @@ public class SqlDAOBadge implements DAOBadge{
    * 
    */     
   public ArrayList<Badge> badgeD(Dipendente d){
-    ResultSet rs = serverAzienda.selezione("Assegnato INNER JOIN Badge ON IDBadge=ID","nome, descrizione, soglia","IDutente="+d.getId(),"");
+    ResultSet rs = serverAzienda.selezione("Assegnato INNER JOIN Badge ON IDBadge=ID","ID, il, nome, descrizione, soglia","IDutente="+d.getId(),"");
     ArrayList<Badge> b = new ArrayList<Badge>();
     boolean trovato = false;
     String nomeB="";
     String descr="";
-    int punti=0;
+    String data="";
+    int punti=0, ID=0;
     while(!trovato){
       try{
+        ID= rs.getInt("ID");
+        data=rs.getString("il");
         nomeB = rs.getString("nome");
         descr = rs.getString("descrizione");
         punti = rs.getInt("soglia");
-        Badge temp=new Badge(nomeB, descr,new Punteggio(punti));
+        DataOra da = new DataOra(da);
+        Badge temp=new Badge(nomeB, ID, descr,punti);
+        temp.setData(da);
         b.add(temp);      
         rs.next();
       }
@@ -85,13 +90,14 @@ public class SqlDAOBadge implements DAOBadge{
     boolean trovato = false;
     String nomeB="";
     String descr="";
-    int punti=0;
+    int punti=0, ID=0;
     while(!trovato){
       try{
+        ID=rs.getInt("ID");  
         nomeB = rs.getString("nome");
         descr = rs.getString("descrizione");
         punti = rs.getInt("soglia");
-        Badge temp=new Badge(nomeB, descr,new Punteggio(punti));
+        Badge temp=new Badge(nomeB, ID, descr,punti);
         b.add(temp);      
         rs.next();
       }
@@ -112,9 +118,9 @@ public class SqlDAOBadge implements DAOBadge{
   public boolean assegna(Dipendente d, Badge b){
     String valori[]=new String [2];
     valori[0]=""+d.getId();
-    valori[1]=b.getId();
+    valori[1]=""+b.getId();
     DataOra data=new DataOra();
-    valori[2]=dataora.toString();
+    valori[2]=data.toString();
     return serverAzienda.inserisciRiga("Assegnato","IDDipendente, IDBadge, data",valori);
   }
 }

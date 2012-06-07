@@ -14,7 +14,7 @@ CREATE TABLE Amministratore(
 	nickname VARCHAR(25) NOT NULL,
 	password CHAR(32) NOT NULL,
 	passmod CHAR(32),
-	datapass VARCHAR(10),
+	datapass VARCHAR(19),
 	codice_fiscale INT(11) NOT NULL,
 	tipo_amministratore BOOL DEFAULT FALSE
 )ENGINE=InnoDB;
@@ -62,7 +62,7 @@ CREATE TABLE Ruolo(
 CREATE TABLE Assegnato(
 	IDDipendente INT PRIMARY KEY NOT NULL,
 	IDBadge INT PRIMARY KEY NOT NULL,
-	data VARCHAR(10) NOT NULL,
+	il VARCHAR(19) NOT NULL,
 	
 	FOREIGN KEY(IDDipendente) REFERENCES Dipendente(ID)
 								ON UPDATE CASCADE,
