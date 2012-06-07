@@ -1,13 +1,53 @@
+/*
+ * Name: GestionePunteggiD.java
+ * Package: com.safetygame.back.controller
+ * Author: Alessandro Cornaglia
+ * Date: {Data di approvazione del file}
+ * Version: 0.1
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120607 |Alessandro Cornaglia | + GestioneDati
+ * |          |                     | + getBadgeAS
+ * |          |                     | + getBadgeD
+ * |          |                     | + assegnaBadgeD
+ * |          |                     | + getElencoDipendenti
+ * |          |                     | + aggiungiDipendente
+ * |          |                     | + cancellaDipendente
+ * |          |                     | + modDipendente
+ * |          |                     | + getBadgeASgetDati
+ * |          |                     | + modificaPass
+ * |          |                     | + modificaEmail
+ * |          |                     | + getElencoDomande
+ * |          |                     | + getBadgeAS
+ * |          |                     | + addDomanda
+ * |          |                     | + remDomanda
+ * |          |                     | + getDomandaD
+ * |          |                     | + setRisposta
+ * |          |                     | + loginAdmin
+ * |          |                     | + loginUser
+ * |          |                     | + getPunteggi
+ * |          |                     | + setTrofei
+ * |          |                     | + getStatisticheD
+ * |          |                     | + getBadgeD
+ * 
+ */ 
 package com.safetyGame.back.controller;
 
 import java.util.ArrayList;
 
-import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
+/**
+ * Classe GestioneDati, facade del package controller del back-end
+ * @author acornagl
+ * @version = 0.1
+ */
 public class GestioneDati{
    
-  private GestioneLog gestioneLog;
   private GestioneRecupero gestioneRecupero;
   private GestioneLogin gestioneLogin;
   private GestioneDomandeD gestioneDomandeD;
@@ -19,6 +59,48 @@ public class GestioneDati{
   private GestionePunteggiD gestionePunteggiD;
   private GestionePunteggiAA gestionePunteggiAA;
 
+  /**
+   * Costruttore, con parametri, della classe GestioneDati 
+   * 
+   * @param gr riferimento ad oggetto di tipo GestioneRecupero
+   * @param gl riferimento ad oggetto di tipo GestioneLogin
+   * @param gdd riferimento ad oggetto di tipo GestioneDomandeD
+   * @param gda riferimento ad oggetto di tipo GestioneDomandeAS
+   * @param gdip riferimento ad oggetto di tipo GestioneDipendentiD
+   * @param gdipa riferimento ad oggetto di tipo GestioneDipendentiAA
+   * @param gbd riferimento ad oggetto di tipo GestioneBadgeD
+   * @param gba riferimento ad oggetto di tipo GestioneBadgeAS
+   * @param gpd riferimento ad oggetto di tipo GestionePunteggiD
+   * @param gpaa riferimento ad oggetto di tipo GestionePunteggiAA
+   */
+  public GestioneDati(GestioneRecupero gr,GestioneLogin gl, GestioneDomandeD gdd, GestioneDomandeAS gda, GestioneDipendentiD gdip, GestioneDipendentiAA gdipa, GestioneBadgeD gbd, GestioneBadgeAS gba, GestionePunteggiD gpd, GestionePunteggiAA gpaa) {
+	this.gestioneRecupero = gr;
+	this.gestioneLogin = gl;
+	this.gestioneDomandeD = gdd;
+	this.gestioneDomandeAS = gda;
+	this.gestioneDipendentiD = gdip;
+	this.gestioneDipendentiAA = gdipa;
+	this.gestioneBadgeD = gbd;
+	this.gestioneBadgeAS = gba;
+	this.gestionePunteggiD = gpd;
+	this.gestionePunteggiAA = gpaa;
+  }
+  
+  /**
+   * Costruttore senza parametri della classe GestioneDati
+   */
+  public GestioneDati() {
+	this.gestioneRecupero = null;
+	this.gestioneLogin = null;
+	this.gestioneDomandeD = null;
+	this.gestioneDomandeAS = null;
+	this.gestioneDipendentiD = null;
+	this.gestioneDipendentiAA = null;
+	this.gestioneBadgeD = null;
+	this.gestioneBadgeAS = null;
+	this.gestionePunteggiD = null;
+	this.gestionePunteggiAA = null;  
+  }
   /**
   * Metodo per ottenere tutti i badge possibili
   * @return un ArrayList<Badge> contenente tutte le badge nel database
@@ -177,111 +259,55 @@ public class GestioneDati{
   public boolean loginAdmin(Login login){
 	return this.gestioneLogin.loginAdmin(login);
   }
-   /*   
-   /**
-    * Costruttore della classe GestioneDati
-    
-   public GestioneDati() {
-     //il facade crea tutti gli oggetti del package
-	 this.log = new GestioneLog();
-	 this.recupero = new GestioneLogin();
-	 
-   }
-   
-    * metodi preparati dal facco
-    * !!!!! volta per volta scriviamo "fatto" per quelli realizzati!!!!!
-    * 
-    * 
-    public GestioneDati(){} !!!FATTO!!!
-    
-   
-   public boolean login(String username, String password){
-      login.login(username, password);
-      return true;
-   }
-   public boolean loginLimitato(String username, String password){
-      login.loginLimitato(username, password);
-      return true;
-   }
-   public Dipendente getDati(String username){
-      return dipendentiD.getDati(username);
-   }
-   public Punteggio getStat(String username){
-      return punteggiD.getStat(username);
-   }
-   public void modPass(String pass, String username, char u){
-      if (u=='d')
-         dipendentiD.setPass(pass,username);
-      else
-         dipendentiAA.setPass(pass,username);
-   }
-   public void modMail(String pass, String username){
-      dipendentiD.setMail(pass,username);
-   }
-   public void resetPass(String username, String codfis, String mail){
-      recupero.resetPass(username, codfis, mail);
-   }
-   public Domanda getDomanda(String username){
-      return domandeD.getDomanda(username);
-   }
-   public void posticipa(String username){
-      domandeD.posticipa(username);
-   }
-   public boolean rispondi(String username, String risposta){
-      return domandeD.rispondi(username, risposta);
-   }
-   public void logout(String username){
-      login.logout(username);
-   }
-   public Domanda[] getElencoDomande(boolean interne){
-      return domandeAS.getElencoDomande(interne); 
-   }
-   public void aggiungiDomanda(int id){
-      domandeAS.addDomanda(id); 
-   }
-   public void cancellaDomanda(int id){
-      domandeAS.remDomanda(id);     
-   }   
-   public Dipendente[] getElencoDipendenti(){
-      return dipendentiAA.getElencoDipendenti(); 
-   }
-   public void setTrofei(String dipendente, int n){
-      punteggiAA.setTrofei(dipendente, n);
-   }
-   public Badge[] getBadge(String username){
-      return badgeD.getBadge(username);
-   }
-   public boolean aggiungiDipendente(String nome, String cognome, String codfis, String mail, String impiego){
-      return dipendentiAA.aggiungiDipendente(nome,cognome,codfis,mail,impiego);
-   }
-   public boolean cancellaDipendente(String username){
-      return dipendentiAA.cancellaDipendente(username);
-   }
-   public void modNome(String username, String nome){
-      dipendentiAA.modNome(username, nome);
-   }
-   public void modCognome(String username, String cognome){
-      dipendentiAA.modCognome(username, cognome);
-   }
-   public void modCodFis(String username, String codfis){
-      dipendentiAA.modCodFis(username, codfis);
-   }
-   public void modUsername(String usernameOld, String username){
-      dipendentiAA.modUsername(usernameOld, username);
-   }
-   public void modImpiego(String username, String impiego){
-      dipendentiAA.modImpiego(username, impiego);
-   }
-   
-   //public void setLog(GestioneLog l){log=l;}
-   public void setRecupero(GestioneRecupero r){recupero=r;}
-   public void setLogin(GestioneLogin l){login=l;}
-   public void setDomandeD(GestioneDomandeD d){domandeD=d;}
-   public void setDomandeAS(GestioneDomandeAS d){domandeAS=d;}
-   public void setDipendentiD(GestioneDipendentiD d){dipendentiD=d;}
-   public void setDipendentiAA(GestioneDipendentiAA d){dipendentiAA=d;}
-   public void setBadgeD(GestioneBadgeD b){badgeD=b;}
-   public void setBadgeAS(GestioneBadgeAS b){badgeAS=b;}
-   public void setPunteggiAA(GestionePunteggiAA p){punteggiAA=p;}
+  
+  /**
+   * Metodo per il login dei dipendenti
+   * 
+   * @param login oggetto contenente i dati di login inseriti dall'utente
    */
+  public boolean loginUser(Login login) {
+	return this.gestioneLogin.loginUser(login);		
+  }
+  
+  /**
+   * Metodo per ottenere i punteggi medi dell'azienda e i punteggi di tutti i dipendenti
+   * 
+   * @return un ArrayList<Punteggio> contenente in posizione 0 un oggetto Punteggio contenente i dati medi dell'azienda
+   * e successivamente la lista dei punteggi di tutti i dipendenti.
+   */
+  public ArrayList<Dipendente> getPunteggi() {
+	return this.gestionePunteggiAA.getPunteggi();
+  }
+  
+  /**
+   * Metodo per modificare i trofei di un dipendente
+   * 
+   * @param Dip il dipendente che si vuole modificare
+   *        n numero di trofei che si vuole assegnare
+   * @return true se l'operazione ha successo, altrimenti false  
+   */
+   public boolean setTrofei(Dipendente Dip, int n) {
+	 return this.gestionePunteggiAA.setTrofei(Dip, n);
+   }
+   
+   /**
+    * Metodo che consente di recuperare le statistiche di un determinato dipendente
+    * 
+    * @param l login del dipendente che richiede di conoscere le statistiche
+    * 
+    * @return statistiche del dipendente
+    */
+   public Punteggio getStatisticheD(Login l) {
+	 return this.gestionePunteggiD.getStatisticheD(l);
+   }
+   
+   /**
+    * Metodo che consente di recuperare i badge guadagnati dal dipendente
+    *   
+    * @param l login del dipendente
+    * @return badge guadagnati dal dipendente
+    */
+   public ArrayList<Badge> getBadgeD(Login l) {
+	 return this.gestionePunteggiD.getBadgeD(l);
+   }
 }

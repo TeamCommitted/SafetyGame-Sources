@@ -56,7 +56,7 @@ public class GestionePunteggiD{
   }
   
   /**
-   * metodo che consente di recuperare le statistiche di un determinato dipendente
+   * Metodo che consente di recuperare le statistiche di un determinato dipendente
    * 
    * @param l login del dipendente che richiede di conoscere le statistiche
    * 
@@ -69,7 +69,7 @@ public class GestionePunteggiD{
   }
   
   /**
-   * metodo che consente di recuperare i badge guadagnati dal dipendente
+   * Metodo che consente di recuperare i badge guadagnati dal dipendente
    *   
    * @param l login del dipendente
    * @return badge guadagnati dal dipendente
