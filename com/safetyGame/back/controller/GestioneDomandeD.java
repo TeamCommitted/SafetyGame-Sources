@@ -172,7 +172,7 @@ public class GestioneDomandeD{
   }
 
   /**
-   * metodo che consente di recuperare una domanda 
+   * Metodo che consente di recuperare una domanda 
    * 
    * @param l oggetto Login del dipendente che deve ricevere la domanda
    * @return domanda per il login proposto
@@ -198,14 +198,14 @@ public class GestioneDomandeD{
   }
   
   /**
-   * metodo che si occupa di controllare la risposta data da un dipendente ad una
+   * Metodo che si occupa di controllare la risposta data da un dipendente ad una
    * domanda e tenta di scrivere tali informazioni sul DB. Se la risposta è corretta
    * assegna il punteggio al dipendente
    * 
    * @param l Login del dipendente che ha risposto
    * @param risposta Domanda posta al dipendente contenente la risposta data
    */
-  public boolean setRisposta(Login l,Domanda risposta) {//DA MODIFICARE
+  public boolean setRisposta(Login l,Domanda risposta) {
     //Dal login ricavo il dipendente
 	Dipendente dip = this.daoDipendenti.getInfoD(l);
 

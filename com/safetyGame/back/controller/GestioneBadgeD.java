@@ -38,7 +38,7 @@ public class GestioneBadgeD{
     * Metodo per ottenere i dati delle badge per un dato utente
     * 
     * @param login dati dell'utente che effettua la richiesta
-    *        n numero di badge che si vuole selezionare
+    * @param n numero di badge che si vuole selezionare
     * @return un ArrayList<Badge> contenente n badge ottenute dall'utente        
     */
    public ArrayList<Badge> getBadgeD(Login l, int n){
@@ -64,7 +64,7 @@ public class GestioneBadgeD{
     * Metodo per controllare se l'utente ha soddisfatto dei requisiti per ottenere un badge
     * 
     * @param l dati dell'utente che si deve controllare
-    *        D domanda risposta dall'utente
+    * @param D domanda risposta dall'utente
     * @return true se l'utente ha ricevuto un badge, altrimenti false    
     */
    public boolean assegnaBadge(Domanda D, Login l){

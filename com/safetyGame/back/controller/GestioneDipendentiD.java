@@ -96,7 +96,7 @@ public class GestioneDipendentiD{
   }
 
   /**
-   * metodo che consente di reperire le informazioni di un dipendente a partire
+   * Metodo che consente di reperire le informazioni di un dipendente a partire
    * dal suo login
    * 
    * @param l login del dipendente
@@ -108,7 +108,7 @@ public class GestioneDipendentiD{
   }
   
   /**
-   * metodo che consente la modifica della password da parte di un dipendente
+   * Metodo che consente la modifica della password da parte di un dipendente
    *
    * @param dip dipendente che chiede di modificare la password
    * 
@@ -127,7 +127,7 @@ public class GestioneDipendentiD{
   }
   
   /**
-   * metodo che consente la modifica della mail da parte di un dipendente
+   * Metodo che consente la modifica della mail da parte di un dipendente
    * 
    * @param dip che chiede di modificare la mail
    * @param nEmail nuovo indirizzo mail da inserire

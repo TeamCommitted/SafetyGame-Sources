@@ -33,7 +33,7 @@ public class GestioneDipendentiAA{
    /**
     * Metodo per aggiungere un dipendente
     * 
-    * @param Dip, oggetto contenente i dati del nuovo dipendente
+    * @param Dip oggetto contenente i dati del nuovo dipendente
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
    public boolean aggiungiDipendente(Dipendente Dip){
@@ -43,7 +43,7 @@ public class GestioneDipendentiAA{
    /**
     * Metodo per eliminare
     * 
-    * @param Dip, oggetto contenente i dati del dipendente da eliminare
+    * @param Dip oggetto contenente i dati del dipendente da eliminare
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
    public boolean cancellaDipendente(Dipendente Dip){
@@ -53,8 +53,8 @@ public class GestioneDipendentiAA{
    /**
     * Metodo per modificare i dati di un dipendente
     * 
-    * @param newDip, oggetto contenente i nuovi dati del dipendente da modificare
-    * @param oldDip, oggetto contenente i vecchi dati del dipendente da modificare
+    * @param newDip oggetto contenente i nuovi dati del dipendente da modificare
+    * @param oldDip oggetto contenente i vecchi dati del dipendente da modificare
     * @return true se l'operazione viene completata con successo, altrimenti false
     */
    public boolean modDipendente(Dipendente newDip, Dipendente oldDip){

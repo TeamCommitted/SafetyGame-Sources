@@ -1,32 +1,193 @@
 package com.safetyGame.back.controller;
 
+import java.util.ArrayList;
+
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
 public class GestioneDati{
    
-   private GestioneLog log;
-   private GestioneRecupero recupero;
-   private GestioneLogin login;
-   private GestioneDomandeD domandeD;
-   private GestioneDomandeAS domandeAS;
-   private GestioneDipendentiD dipendentiD;
-   private GestioneDipendentiAA dipendentiAA;
-   private GestioneBadgeD badgeD;
-   private GestioneBadgeAS badgeAS;
-   private GestionePunteggiD punteggiD;
-   private GestionePunteggiAA punteggiAA;
-   
+  private GestioneLog gestioneLog;
+  private GestioneRecupero gestioneRecupero;
+  private GestioneLogin gestioneLogin;
+  private GestioneDomandeD gestioneDomandeD;
+  private GestioneDomandeAS gestioneDomandeAS;
+  private GestioneDipendentiD gestioneDipendentiD;
+  private GestioneDipendentiAA gestioneDipendentiAA;
+  private GestioneBadgeD gestioneBadgeD;
+  private GestioneBadgeAS gestioneBadgeAS;
+  private GestionePunteggiD gestionePunteggiD;
+  private GestionePunteggiAA gestionePunteggiAA;
+
+  /**
+  * Metodo per ottenere tutti i badge possibili
+  * @return un ArrayList<Badge> contenente tutte le badge nel database
+  * 
+  */
+  public ArrayList<Badge> getBadgesAS() {
+    return this.gestioneBadgeAS.getBadgesAS();
+  }
+  
+  /**
+    * Metodo per ottenere i dati delle badge per un dato utente
+    * 
+    * @param login dati dell'utente che effettua la richiesta
+    * @param n numero di badge che si vuole selezionare
+    * @return un ArrayList<Badge> contenente n badge ottenute dall'utente 
+   */
+  public ArrayList<Badge> getBadgeD(Login l, int n) {
+    return this.gestioneBadgeD.getBadgeD(l, n);  
+  }
+  
+  /**
+   * Metodo per controllare se l'utente ha soddisfatto dei requisiti per ottenere un badge
+   * 
+   * @param l dati dell'utente che si deve controllare
+   * @param D domanda risposta dall'utente
+   * @return true se l'utente ha ricevuto un badge, altrimenti false    
+   */
+  public boolean assegnaBadge(Domanda D, Login l) {
+    return this.gestioneBadgeD.assegnaBadge(D, l);
+  }
+  
+  /**
+   * Metodo per ottenere i dati dei dipendenti dell'azienda
+   * @return un ArrayList<Dipendente> contenente i dipendenti dell'azienda      
+   */
+  public ArrayList<Dipendente> getElencoDipendenti() {
+    return this.gestioneDipendentiAA.getElencoDipendenti();
+  }
+  
+  /**
+   * Metodo per aggiungere un dipendente
+   * 
+   * @param Dip oggetto contenente i dati del nuovo dipendente
+   * @return true se l'operazione viene completata con successo, altrimenti false    
+   */
+  public boolean aggiungiDipendente(Dipendente Dip) {
+    return this.gestioneDipendentiAA.aggiungiDipendente(Dip);
+  }
+  
+  /**
+   * Metodo per eliminare
+   * 
+   * @param Dip oggetto contenente i dati del dipendente da eliminare
+   * @return true se l'operazione viene completata con successo, altrimenti false    
+   */
+  public boolean cancellaDipendente(Dipendente Dip) {
+	return this.gestioneDipendentiAA.cancellaDipendente(Dip);
+  }
+  
+  /**
+   * Metodo per modificare i dati di un dipendente
+   * 
+   * @param newDip oggetto contenente i nuovi dati del dipendente da modificare
+   * @param oldDip oggetto contenente i vecchi dati del dipendente da modificare
+   * @return true se l'operazione viene completata con successo, altrimenti false
+   */
+  public boolean modDipendente(Dipendente newDip, Dipendente oldDip) {
+	return this.gestioneDipendentiAA.modDipendente(newDip, oldDip);
+  }
+  
+  /**
+   * Metodo che consente di reperire le informazioni di un dipendente a partire
+   * dal suo login
+   * 
+   * @param l login del dipendente
+   * @return informazioni sul dipendente
+   */
+  public Dipendente getDati(Login l) {
+    return this.gestioneDipendentiD.getDati(l);
+  }
+  
+  /**
+   * Metodo che consente la modifica della password da parte di un dipendente
+   *
+   * @param dip dipendente che chiede di modificare la password
+   * 
+   * @return true se operazione riuscita con successo, false altrimenti
+   */
+  public boolean modificaPass(Dipendente dip) {
+	return this.gestioneDipendentiD.modificaPass(dip);
+  }
+  
+  /**
+   * Metodo che consente la modifica della mail da parte di un dipendente
+   * 
+   * @param dip che chiede di modificare la mail
+   * @param nEmail nuovo indirizzo mail da inserire
+   * 
+   * @return true se operazione riuscita con successo, false altrimenti
+   */
+  public boolean modificaEmail(Dipendente dip, String nEmail) {
+	return this.gestioneDipendentiD.modificaEmail(dip, nEmail);
+  }
+  
+  /**
+   * Metodo per ottenere la lista di tutte le domande
+   * @return un ArrayList<Domande> contenente tutte le domande
+   */
+  public ArrayList<Domanda> getElencoDomande() {
+	return this.gestioneDomandeAS.getElencoDomande();
+  }
+  
+  /**
+   * Metodo per inserire una domanda dal server domande al server dell'azienda
+   * @return true se l'operazione è stata completata, altrimenti false   
+   */
+  public boolean addDomanda(Domanda Dom) {
+    return this.gestioneDomandeAS.addDomanda(Dom);
+  }
+  
+  /**
+   * Metodo per eliminare una domanda dal server dell'azienda
+   * @return true se l'operazione è stata completata, altrimenti false       
+   */
+  public boolean remDomanda(Domanda Dom) {
+	return this.gestioneDomandeAS.remDomanda(Dom);
+  }
+  
+  /**
+   * Metodo che consente di recuperare una domanda 
+   * 
+   * @param l oggetto Login del dipendente che deve ricevere la domanda
+   * @return domanda per il login proposto
+   */
+  public Domanda getDomandaD(Login l) {
+	return this.gestioneDomandeD.getDomandaD(l);
+  }
+  
+  /**
+   * Metodo che si occupa di controllare la risposta data da un dipendente ad una
+   * domanda e tenta di scrivere tali informazioni sul DB. Se la risposta è corretta
+   * assegna il punteggio al dipendente
+   * 
+   * @param l Login del dipendente che ha risposto
+   * @param risposta Domanda posta al dipendente contenente la risposta data
+   */
+  public boolean setRisposta(Login l,Domanda risposta) {
+	return this.gestioneDomandeD.setRisposta(l, risposta);
+  }
+  
+  /**
+   * Metodo per il login degli utenti amministratori
+   * 
+   * @param login oggetto contenente i dati di login inseriti dall'utente
+   */
+  public boolean loginAdmin(Login login){
+	return this.gestioneLogin.loginAdmin(login);
+  }
+   /*   
    /**
     * Costruttore della classe GestioneDati
-    */
+    
    public GestioneDati() {
      //il facade crea tutti gli oggetti del package
 	 this.log = new GestioneLog();
 	 this.recupero = new GestioneLogin();
 	 
    }
-   /*
+   
     * metodi preparati dal facco
     * !!!!! volta per volta scriviamo "fatto" per quelli realizzati!!!!!
     * 
