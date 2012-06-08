@@ -71,10 +71,11 @@
 			else response.sendRedirect("login.jsp");
 			if ((ambito.equals("Dipendente"))) response.sendRedirect("user_page.jsp");			
 			
-				out.println("Benvenuto ");
+				out.println("<p>Benvenuto ");
 				out.println(username);
-				out.println("<br />Hai effettuato il login come ");
+				out.println("</p><p>Hai effettuato il login come ");
 				out.println(ambito);
+				out.println("</p>");
 		%>
         
 		

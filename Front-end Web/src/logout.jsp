@@ -36,5 +36,9 @@
 		}
 	}
 	
+	//
+	// Qua va richiamata la funziona che avvisa il back-end di un avvenuto Logout
+	//
+	
 	response.sendRedirect("index.jsp");
 %>

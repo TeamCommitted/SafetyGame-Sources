@@ -22,10 +22,11 @@
 		<h2>Informazioni sull'account</h2>
         <% 
 			if (session.getAttribute("username") != null) {
-				out.println("Benvenuto ");
+				out.println("<p>Benvenuto ");
 				out.println(session.getAttribute("username"));
-				out.println("<br />Hai effettuato il login come ");
+				out.println("</p><p>Hai effettuato il login come ");
 				out.println(session.getAttribute("ambito"));
+				out.println("</p>");
 			}
 			else {
 				String redirectURL = "http://localhost/examples/project/user_page.jsp";

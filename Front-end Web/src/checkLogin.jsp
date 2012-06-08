@@ -35,7 +35,7 @@
 		response.addCookie(passwordCookie);
 		response.addCookie(ambitoCookie);
 	}
-	else out.println("<h1>Errore</h1>I dati che hai inserito non corrispondono. <br />Controlla che i dati inseriti siano corretti");
+	else out.println("<h1>Errore</h1>I dati che hai inserito non corrispondono. Controlla che i dati inseriti siano corretti");
 	
 	/*
 	// Ricavo i dati dai cookies
