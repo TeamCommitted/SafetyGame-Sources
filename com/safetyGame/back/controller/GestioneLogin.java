@@ -44,4 +44,13 @@ public class GestioneLogin{
 		   log.scriviLogin(login);
 	   return result; 
    }
+   
+   /**
+    * Metodo per segnalare al sistema il logout di un utente
+    * 
+    * @param l login del dipendente che ha effettuato il logout
+    */
+   public void logout(Login l) {
+	 this.log.scriviLogout(l);
+   }
 }

@@ -10,6 +10,8 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120608 |Alessandro Cornaglia | + logout
+ * +----------+---------------------+---------------------
  * | 20120607 |Alessandro Cornaglia | + GestioneDati
  * |          |                     | + getBadgeAS
  * |          |                     | + getBadgeD
@@ -321,5 +323,14 @@ public class GestioneDati{
     */
    public boolean posticipa(Login l, Domanda d) {
 	 return this.gestioneDomandeD.posticipa(l, d);
+   }
+   
+   /**
+    * Metodo per segnalare al sistema il logout di un utente
+    * 
+    * @param l login del dipendente che ha effettuato il logout
+    */
+   public void logout(Login l) {
+	 this.gestioneLogin.logout(l);
    }
 }
