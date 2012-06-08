@@ -104,10 +104,9 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
    	
     //creo path del file da scrivere e creo UpdateLog
-    this.percorso = "SafetyGame-Sources/com/safetyGame/back/controller/log/" + l.getUsername() + "/login.txt";
+    this.percorso = "" + l.getUsername() + "/login.txt";
    
 	try {
-      System.out.println("percorso = " + this.percorso);
 	  this.updateLog = new UpdateLog(this.percorso);
 	}
 	catch (IOException e) {System.out.println("non va"); }//bisogna decidere cosa fare se si verifica errore
@@ -126,7 +125,7 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/" + l.getUsername() + "/logout.txt";
+    percorso = "" + l.getUsername() + "/logout.txt";
 
     try {
 	  this.updateLog = new UpdateLog(percorso);
@@ -148,7 +147,7 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/" + l.getUsername() + "/dRic.txt";
+    percorso = "" + l.getUsername() + "/dRic.txt";
 
     try {
 	  this.updateLog = new UpdateLog(percorso);
@@ -170,7 +169,7 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
 
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/" + l.getUsername() + "/dProp.txt";
+    percorso = "" + l.getUsername() + "/dProp.txt";
 
     try {
 	  this.updateLog = new UpdateLog(percorso);
@@ -192,7 +191,7 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
 
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/" + l.getUsername() + "/dPost.txt";
+    percorso = "" + l.getUsername() + "/dPost.txt";
     
 	try {
 	  this.updateLog = new UpdateLog(percorso);
@@ -214,7 +213,7 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
 
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/" + l.getUsername() + "dRisp.txt";
+    percorso = "" + l.getUsername() + "dRisp.txt";
 
     try {
 	  this.updateLog = new UpdateLog(percorso);
@@ -235,7 +234,7 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/";
+    percorso = "";
     String usr = d.getNickname(); //ricavo il nick del dipendente, utile per il path
     percorso += usr + "/" + "modPassD.txt";
 	
@@ -258,7 +257,7 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/";
+    percorso = "";
     String usr = d.getNickname(); //ricavo il nick del dipendente, utile per il path
     percorso += usr + "/" + "modEmailD.txt";
     
@@ -282,7 +281,7 @@ public class GestioneLog{
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/";
+    percorso = "";
     String usr = d.getNickname(); //ricavo il nick del dipendente, utile per il path
     percorso += usr + "/" + "modOttB.txt";
 	try {
@@ -304,7 +303,7 @@ public class GestioneLog{
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/AA/AA.txt";
+    percorso = "AA/AA.txt";
 	try {
 	  this.updateLog = new UpdateLog(percorso);
 	}
@@ -324,7 +323,7 @@ public class GestioneLog{
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/AA/AA.txt";
+    percorso = "AA/AA.txt";
 	try {
 	  this.updateLog = new UpdateLog(percorso);
 	}
@@ -344,7 +343,7 @@ public class GestioneLog{
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/AA/AA.txt";
+    percorso = "AA/AA.txt";
 	try {
 	  this.updateLog = new UpdateLog(percorso);
 	}
@@ -364,7 +363,7 @@ public class GestioneLog{
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/AS/AS.txt";
+    percorso = "AS/AS.txt";
 	try {
 	  this.updateLog = new UpdateLog(percorso);
 	}
@@ -387,7 +386,7 @@ public class GestioneLog{
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "/log/AS/AS.txt";
+    percorso = "AS/AS.txt";
 	try {
 	  this.updateLog = new UpdateLog(percorso);
 	}

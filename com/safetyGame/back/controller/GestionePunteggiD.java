@@ -10,6 +10,7 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120608 |Alessandro Cornaglia | - gestioneBadgeD
  * | 20120531 |Alessandro Cornaglia | * GestionePunteggiD
  * |          |                     | * getStatisticheD
  * |          |                     | * getBadgeD
@@ -69,15 +70,15 @@ public class GestionePunteggiD{
   }
   
   /**
-   * Metodo che consente di recuperare i badge guadagnati dal dipendente
-   *   
-   * @param l login del dipendente
-   * @return badge guadagnati dal dipendente
+   * Metodo che consente di recuperare le statistiche globali
+   * 
+   * @param l login del dipendente che richiede di conoscere le statistiche
+   * @return statistiche globali
    */
-  public ArrayList<Badge> getBadgeD(Login l) {
-    Dipendente dip = this.daoDipendenti.getInfoD(l);
-    ArrayList<Badge> badges = this.daoBadge.badgeD(dip);
-    return badges;
+  public Punteggio getStatisticheGlob(Login l) {
+	  Dipendente dip = this.daoDipendenti.getInfoD(l);
+	  Punteggio ritorno = this.daoPunteggi.getGlobalStat(dip);
+	  return ritorno;
   }
 }
 

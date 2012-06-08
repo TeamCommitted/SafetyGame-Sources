@@ -3,7 +3,7 @@
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Version: 0.2
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -11,6 +11,8 @@
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
  * | 20120608 |Alessandro Cornaglia | + logout
+ * |          |                     | * getBadgeD
+ * |          |                     | + getStatisticheGlob
  * +----------+---------------------+---------------------
  * | 20120607 |Alessandro Cornaglia | + GestioneDati
  * |          |                     | + getBadgeAS
@@ -34,7 +36,6 @@
  * |          |                     | + getPunteggi
  * |          |                     | + setTrofei
  * |          |                     | + getStatisticheD
- * |          |                     | + getBadgeD
  * |          |                     | + posticipa
  * +----------+---------------------+----------------------
  * 
@@ -305,16 +306,7 @@ public class GestioneDati{
 	 return this.gestionePunteggiD.getStatisticheD(l);
    }
    
-   /**
-    * Metodo che consente di recuperare i badge guadagnati dal dipendente
-    *   
-    * @param l login del dipendente
-    * @return badge guadagnati dal dipendente
-    */
-   public ArrayList<Badge> getBadgeD(Login l) {
-	 return this.gestionePunteggiD.getBadgeD(l);
-   }
-   
+  
    /**
     * Metodo che si occupa di controllare quando una domanda viene posticipata
     * @param l login del dipendente
@@ -332,5 +324,15 @@ public class GestioneDati{
     */
    public void logout(Login l) {
 	 this.gestioneLogin.logout(l);
+   }
+   
+   /**
+    * Metodo che consente di recuperare le statistiche globali
+    * 
+    * @param l login del dipendente che richiede di conoscere le statistiche
+    * @return statistiche globali
+    */
+   public Punteggio getStatisticheGlob(Login l) {
+	 return this.gestionePunteggiD.getStatisticheGlob(l);
    }
 }
