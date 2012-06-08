@@ -22,11 +22,11 @@ public class WebConnection{
    }
    
    public Punteggio getPunteggio(Login l){
-     return dati.getStat(l);
+     return dati.getStatisticheD(l);
    }
    
    public Punteggio getStat(Login l){
-      return dati.getStat(l);
+      return dati.getStatisticheGlob(l);
    }// MANCA
    
    public ArrayList<Badge> getBadge(Login l, int n){
@@ -34,15 +34,17 @@ public class WebConnection{
    }
    
    public boolean modPassD(Dipendente dip){
-      return dati.modPassD(dip);
+      //return dati.modPassD(dip);
+	 return dati.modificaPass(dip);
    }
    
-   public void modPassA(Dipendente dip){
-      return dati.modPassA(dip);
+   public boolean modPassA(Dipendente newDip, Dipendente oldDip){
+      //return dati.modPassA(dip);
+	 return dati.modDipendente(newDip, oldDip);
    }
    
    public boolean modMail(Dipendente d, String mail){
-      return dati.modificaPass(mail,username);
+      return dati.modificaEmail(d,mail);
    }
    
    public boolean resetPass(Recupero r){
@@ -50,7 +52,7 @@ public class WebConnection{
    }
    
    public Domanda mostraDomanda(Login l){
-      return dati.getDomanda(l);
+      return dati.getDomandaD(l);
    }
    
    public void posticipa(String username){
