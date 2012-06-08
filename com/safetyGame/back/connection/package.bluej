@@ -2,10 +2,10 @@
 dependency1.from=ApplicazioniConnection
 dependency1.to=Parser
 dependency1.type=UsesDependency
-package.editor.height=908
-package.editor.width=826
-package.editor.x=-1920
-package.editor.y=0
+package.editor.height=714
+package.editor.width=1482
+package.editor.x=-8
+package.editor.y=-8
 package.numDependencies=1
 package.numTargets=3
 package.showExtends=true
