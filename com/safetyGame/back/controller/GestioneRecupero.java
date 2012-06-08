@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-import javax.mail.*;
+/*import javax.mail.*;
 import javax.mail.internet.*;
-import java.util.Properties;
+import java.util.Properties;*/
 
 public class GestioneRecupero{ 
    DAODipendenti accessDip;
