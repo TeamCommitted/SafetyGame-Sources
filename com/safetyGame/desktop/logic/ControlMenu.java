@@ -7,29 +7,34 @@ package com.safetyGame.desktop.logic;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ControlMenu
-{
-    // instance variables - replace the example below with your own
-    private int x;
+public class ControlMenu{
+  ConnBack connessione;
+  public ControlMenu(ConnBack cb){
+    //crea una System Tray e i menù ad essa correlati
+    connessione=cb;
+  }
+  
+  public boolean login(String username, String password) {
+    return connessione.login(username,password);
+  }
 
-    /**
-     * Constructor for objects of class ControlMenu
-     */
-    public ControlMenu()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+  public boolean logout(String username){
+    return connessione.logout(username);
+  }
+  
+  public void richiediDomanda(){
+    //apre il browser con la pagina di richiesta della domanda
+  }
+  
+  public void visualizzaPunteggio(){
+    //apre il browser con la pagina di visualizzazione dei propri punteggi
+  }
+  
+  public void visualizzaDati(){
+    //apre il browser con la pagina di visualizzazione dei dati personali
+  }
+  
+  public void modificaDati(){
+    //apre il browser con la pagina della modifica dei dati
+  }
 }

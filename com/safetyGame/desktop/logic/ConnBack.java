@@ -1,35 +1,24 @@
 package com.safetyGame.desktop.logic;
+import com.safetyGame.desktop.condivisi.*;
 
+public class ConnBack{
 
-/**
- * Write a description of class ConnBack here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class ConnBack
-{
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class ConnBack
-     */
-    public ConnBack()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+  public ConnBack(){
+    //istanzia le variabili per la connessione al back
+  }
+  
+  public boolean login(String username, String password){
+    //chiama le funzioni del back - end
+    return false;
+  }
+  
+  public boolean logout(String username){
+    //chiama le funzioni del back - end
+    return false;
+  }
+  
+  public boolean posticipa(){
+    //chiama le funzioni del back - end
+    return false;
+  }
 }

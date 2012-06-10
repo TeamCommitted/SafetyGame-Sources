@@ -1,35 +1,47 @@
 package com.safetyGame.desktop.logic;
 
+public class Timer extends Thread{
+  int tempo;
+  boolean logout=false;
+  boolean finito=false;
 
-/**
- * Write a description of class Timer here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Timer
-{
-    // instance variables - replace the example below with your own
-    private int x;
+  public Timer(int t){
+    tempo = t;
+  }
 
-    /**
-     * Constructor for objects of class Timer
-     */
-    public Timer()
-    {
-        // initialise instance variables
-        x = 0;
+  public void run(){
+    while (true){
+      while(!logout){
+        finito = false;
+        int tempocopia=tempo;
+        while(tempocopia<=0){
+          try{wait(10000);}
+          catch(InterruptedException e){}
+          tempocopia-=10000;
+        }
+        finito=true;
+        while (finito)
+          try{wait();}
+          catch(InterruptedException e){}
+      }
+      try{sleep(10000);}
+      catch(InterruptedException e){}
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+  }
+  
+  public void setLogout(){
+    logout=true;
+  }
+  
+  public void resetLogout(){
+    logout=true;
+  }
+  
+  public void setTempo(int t){
+    tempo=t;
+  }
+  
+  public int getTempo(){
+    return tempo;
+  }
 }
