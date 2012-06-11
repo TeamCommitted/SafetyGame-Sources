@@ -74,4 +74,14 @@ public class GestioneDipendentiAA{
         return correct;
    }
    
+   /**
+    * Metodo per modificare la password di un amministratore
+    * 
+    * @param admin oggetto contenente i dati dell'amministratore
+    * @return true se l'operazione viene completata con successo, altrimenti false
+    */
+   public boolean modPassA(Dipendente admin){
+       return accessDip.passA(admin,admin.getPassword());
+    }
+   
 }

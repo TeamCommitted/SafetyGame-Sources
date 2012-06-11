@@ -11,17 +11,15 @@ import java.util.Properties;*/
 
 public class GestioneRecupero{ 
    private DAODipendenti accessDip;
-   private GestioneLog log;
    
-   public GestioneRecupero(DAODipendenti accessDip, GestioneLog log){
+   public GestioneRecupero(DAODipendenti accessDip){
        this.accessDip = accessDip;
-       this.log = log;
    }
    
-   public boolean recupero(String username, String codfis, String mail){
-      //log.reset(username);
-      //accesso.reset(username, codfis, mail);
-      return true;
+   public boolean recupero(Recupero dip){
+      String pass = generaPassCasuale();
+      // send mail
+      return accessDip.resetD(dip, pass);
    }
    
    /**
