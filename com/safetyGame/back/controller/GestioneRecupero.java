@@ -10,8 +10,8 @@ import javax.mail.internet.*;
 import java.util.Properties;*/
 
 public class GestioneRecupero{ 
-   DAODipendenti accessDip;
-   GestioneLog log;
+   private DAODipendenti accessDip;
+   private GestioneLog log;
    
    public GestioneRecupero(DAODipendenti accessDip, GestioneLog log){
        this.accessDip = accessDip;

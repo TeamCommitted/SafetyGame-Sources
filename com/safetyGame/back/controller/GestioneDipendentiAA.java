@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @version v0.1
  */
 public class GestioneDipendentiAA{
-   DAODipendenti accessDip;
+   private DAODipendenti accessDip;
    
    /**
     * Costruttore con parametri della classe GestioneDipendentiAA

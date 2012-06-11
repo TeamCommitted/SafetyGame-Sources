@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * @version v0.1
  */
 public class GestionePunteggiAA{ 
-   DAOPunteggi accessP;
-   DAODipendenti accessDip;
+   private DAOPunteggi accessP;
+   private DAODipendenti accessDip;
    
    /**
     * Costruttore con parametri della classe GestionePunteggiAA

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @version v0.1
  */
 public class GestioneDomandeAS{ 
-   DAODomande accessDom;
+   private DAODomande accessDom;
    
    /**
     * Costruttore con parametri della classe GestioneDomandeAs
@@ -32,7 +32,7 @@ public class GestioneDomandeAS{
    
    /**
     * Metodo per inserire una domanda dal server domande al server dell'azienda
-    * @return true se l'operazione è stata completata, altrimenti false   
+    * @return true se l'operazione ï¿½ stata completata, altrimenti false   
     */
    public boolean addDomanda(Domanda Dom){
       return accessDom.addDomanda(Dom);
@@ -40,7 +40,7 @@ public class GestioneDomandeAS{
    
    /**
     * Metodo per eliminare una domanda dal server dell'azienda
-    * @return true se l'operazione è stata completata, altrimenti false       
+    * @return true se l'operazione ï¿½ stata completata, altrimenti false       
     */
    public boolean remDomanda(Domanda Dom){
       return accessDom.remDomanda(Dom);
