@@ -1,3 +1,39 @@
+<%@ page import= "java.sql.*"%>
+<%@ page import= "java.util.*"%>
+<%@ page import= "java.lang.*"%>
+<%@ page import= "javax.servlet.*"%>
+<%@ page import= "java.io.*"%>
+<%@ page language= "java" import="java.util.Date"%>
+
+<%
+
+	Cookie cookies [] = request.getCookies();
+	String cookieName = null;
+	String username = null;
+	String ambito = null;
+	
+	if (cookies != null){
+		cookieName = "username";
+		for (int i = 0; i < cookies.length; i++) {
+			if (cookies [i].getName().equals(cookieName)) {
+				username = cookies[i].getValue();
+				break;
+			}
+		}
+		cookieName = "ambito";
+		for (int i = 0; i < cookies.length; i++) {
+			if (cookies [i].getName().equals(cookieName)) {
+				ambito = cookies[i].getValue();
+				break;
+			}
+		}
+	}
+	
+	if ((username == null) || (ambito == null)) response.sendRedirect("login.jsp");
+	else if (!(ambito.equals("Dipendente"))) response.sendRedirect("admin_page.jsp");
+	else {
+	
+%>
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//IT"
 	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -18,48 +54,10 @@
 
 
 	<div id = "content">
-    	<% // Stampo le informazioni sul tipo di account %>
-		<h2>Informazioni sull'account</h2>
-        <% 
-			if (session.getAttribute("username") != null) {
-				out.println("<p>Benvenuto ");
-				out.println(session.getAttribute("username"));
-				out.println("</p><p>Hai effettuato il login come ");
-				out.println(session.getAttribute("ambito"));
-				out.println("</p>");
-			}
-			else {
-				String redirectURL = "http://localhost/examples/project/user_page.jsp";
-    			response.sendRedirect(redirectURL);
-			}
+		<h2>Stai rispondendo ad una nuova domanda</h2>
+		<%
+			// Qua bisogna ricavare le informazioni di una nuova domanda per l'utente.
 		%>
-        
-        <h2>Punteggi</h2>
-        <%
-			// Funzione per ottenere il punteggio di un dato utente
-			// getPunteggio(session.getAttribute("username"));
-			int punteggio = 2046;
-			//
-			
-			out.println("Il tuo punteggio &egrave; ");
-			out.println(punteggio);
-		%>
-        
-        <h2>Trofei e Badge</h2>
-        <%
-			// Funzione per ottenere l'elenco dei trovei e dei badge
-			// getPunteggio(session.getAttribute("username"));
-			String elencoTrofei = null;
-			//
-			if (elencoTrofei == null) {
-				out.println("Non hai guadagnato nessun trofeo.");
-			}
-			else {
-				out.println("Segue l'elenco dei tuoi trofei:");
-				// Elenco dei badge / Trofei
-			}
-		%>
-		
 	</div>
 
 
@@ -70,3 +68,4 @@
 
 </body>
 </html>
+<% } %>

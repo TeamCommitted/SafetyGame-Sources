@@ -38,6 +38,7 @@
 	
 	//
 	// Qua va richiamata la funziona che avvisa il back-end di un avvenuto Logout
+	// logout(username);
 	//
 	
 	response.sendRedirect("index.jsp");

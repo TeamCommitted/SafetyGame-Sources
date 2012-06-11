@@ -84,3 +84,15 @@
 	margin-top : 1%;
 	
 }
+
+.nuovadomanda {
+	font-size:140%;
+	font-weight:bold;
+	color:#ff5500;
+	float:right;
+}
+
+.nuovadomanda:hover {
+	color:#C30;
+	text-decoration:none;
+}
