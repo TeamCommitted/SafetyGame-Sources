@@ -1,3 +1,30 @@
+/*
+ * Name: ApplicazioniConnection.java
+ * Package: com.safetygame.back.connection
+ * Author: Lorenzo Braghetto
+ * Date: {Data di approvazione del file}
+ * Version: 0.1
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120611 | Lorenzo Braghetto   | ApplicazioniConnection
+ * |          |                     | login
+ * |          |                     | getDati
+ * |          |                     | getStat
+ * |          |                     | modPass
+ * |          |                     | modMail
+ * |          |                     | resetPass
+ * |          |                     | mostraDomanda
+ * |          |                     | posticipa
+ * |          |                     | rispondi
+ * |          |                     | logout
+ * |          |                     | getBadge
+ * +----------+---------------------+----------------------
+ * 
+ */ 
 package com.safetyGame.back.connection;
 import com.safetyGame.back.controller.*;
 import com.safetyGame.back.condivisi.*;
@@ -9,8 +36,8 @@ public class ApplicazioniConnection{
    public ApplicazioniConnection(GestioneDati d, Parser p){dati = d; parser = p;}
     
    public boolean login(String username, String password){
-      dati.loginLimitato(username, password);
-      return true;
+    Login l=new Login(username,password);
+    return dati.loginUser(l);
    }
     
    public Dipendente getDati(String username){
@@ -52,4 +79,15 @@ public class ApplicazioniConnection{
    public void logout(String username){
       dati.logout(username);
    }
+
+  /**
+    * Metodo per ottenere i dati delle badge per un dato utente
+    * 
+    * @param login dati dell'utente che effettua la richiesta
+    * @param n numero di badge che si vuole selezionare
+    * @return un ArrayList<Badge> contenente n badge ottenute dall'utente 
+  */
+  public ArrayList<Badge> getBadge(Login l, int n){
+    return dati.getBadgeD(l,n);
+  }
 }
