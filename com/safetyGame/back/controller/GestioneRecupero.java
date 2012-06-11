@@ -16,10 +16,26 @@ public class GestioneRecupero{
        this.accessDip = accessDip;
    }
    
-   public boolean recupero(Recupero dip){
+   /**
+    * Metodo che consente ad un dipendente di resettare la propria password
+    * @param dip dipendente che chiede il resete della password
+    * @return true se l'operazione è andata a buon fine, false altrimenti
+    */
+   public boolean recuperoD(Recupero dip){
       String pass = generaPassCasuale();
       // send mail
       return accessDip.resetD(dip, pass);
+   }
+   
+   /**
+    * Metodo che consente ad un amministratore di resettare la propria password
+    * @param amm amministratore che chiede il resete della password
+    * @return true se l'operazione è andata a buon fine, false altrimenti
+    */
+   public boolean recuperoA(Recupero amm){
+      String pass = generaPassCasuale();
+      // send mail
+      return accessDip.resetA(amm, pass);
    }
    
    /**

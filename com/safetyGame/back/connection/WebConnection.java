@@ -120,7 +120,7 @@ public class WebConnection{
    * @return true se operazione riuscita con successo, false altrimenti
    */
   public boolean modPassD(Dipendente dip){
-    return dati.modificaPassD(dip);
+    return dati.modificaPass(dip);
   }
    
   /**
@@ -131,7 +131,7 @@ public class WebConnection{
    */
   public boolean modPassA(Dipendente dip){
     return dati.modPassA(dip);
-  } //MANCA NEL FACADE
+  } //MANCA NEL FACADE --->non manca più
    
   /**
    * Metodo che consente la modifica della mail da parte di un dipendente
@@ -152,7 +152,7 @@ public class WebConnection{
    */
   public boolean resetPassD(Recupero r){
     return dati.recuperoD(r);
-  } //MANCA NEL FACADE
+  } //MANCA NEL FACADE --->adesso dovrebbe esserci
    
   /**
    * Metodo che consente la rigenerazione della password per un amministratore
@@ -162,7 +162,7 @@ public class WebConnection{
    */
   public boolean resetPassA(Recupero r){
     return dati.recuperoA(r);
-  } //MANCA NEL FACADE
+  } //MANCA NEL FACADE -->adesso dovrebbe esserci
    
   /**
    * Metodo che consente di recuperare una domanda 
@@ -278,8 +278,8 @@ public class WebConnection{
    * @param oldDip oggetto contenente i vecchi dati del dipendente da modificare
    * @return true se l'operazione viene completata con successo, altrimenti false
    */
-  public boolean modInfoDipendente(Dipendente dOld, Dipendente dNew){
-    return dati.modDipendente(nDip, dOld);
+  public boolean modDipendente(Dipendente dOld, Dipendente dNew){
+    return dati.modDipendente(dNew, dOld);
   }
    
   /**

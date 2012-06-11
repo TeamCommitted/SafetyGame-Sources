@@ -34,7 +34,6 @@ import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
 public class GestioneDipendentiD{
-  //private DAOFactory daoFactory;
   private DAODipendenti daoDipendenti;
   private GestioneLog gestioneLog;
   
