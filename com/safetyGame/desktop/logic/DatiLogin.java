@@ -53,4 +53,12 @@ public class DatiLogin{
   public String getPassword(){
     return l.getPassword();
   }
+  
+  /**
+   * metodo che consente di ottenere l'oggetto Login per passarlo al back-end
+   * @return login
+   */
+  public Login getLogin(){
+    return l;
+  }
 }

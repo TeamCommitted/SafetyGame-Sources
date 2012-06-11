@@ -28,6 +28,7 @@
 package com.safetyGame.back.connection;
 import com.safetyGame.back.controller.*;
 import com.safetyGame.back.condivisi.*;
+import java.util.ArrayList;
 
 public class ApplicazioniConnection{
    private GestioneDati dati;

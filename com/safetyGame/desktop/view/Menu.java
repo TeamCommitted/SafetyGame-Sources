@@ -34,6 +34,7 @@ public class Menu{
   
   public void main (String args []){
     //crea un oggetto menu
+    //recupera i dati dal file txt, se non esiste chiede all'utente di inserirli
     //istanzia la connessione al back end
     //istanzia la sistem tray
     //chiede il login
