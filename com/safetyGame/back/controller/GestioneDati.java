@@ -3,12 +3,15 @@
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Version: 0.3
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120611 |Alessandro Cornaglia | + recupero
+ * |          |                     | + modPassA
  * +----------+---------------------+---------------------
  * | 20120608 |Alessandro Cornaglia | + logout
  * |          |                     | * getBadgeD
@@ -49,7 +52,7 @@ import com.safetyGame.back.condivisi.*;
 /**
  * Classe GestioneDati, facade del package controller del back-end
  * @author acornagl
- * @version = 0.1
+ * @version = 0.3
  */
 public class GestioneDati{
    
@@ -335,4 +338,32 @@ public class GestioneDati{
    public Punteggio getStatisticheGlob(Login l) {
 	 return this.gestionePunteggiD.getStatisticheGlob(l);
    }
+   
+   /**
+    * Metodo che consente ad un dipendente di resettare la propria password
+    * @param dip dipendente che chiede il resete della password
+    * @return true se l'operazione è andata a buon fine, false altrimenti
+    */
+   public boolean recuperoD(Recupero dip) {
+	 return this.gestioneRecupero.recuperoD(dip);
+   }
+   
+   /**
+    * Metodo che consente ad un amministratore di resettare la propria password
+    * @param amm amministratore che chiede il resete della password
+    * @return true se l'operazione è andata a buon fine, false altrimenti
+    */
+   public boolean recuperoA(Recupero amm) {
+	 return this.gestioneRecupero.recuperoA(amm);
+   }
+   
+   /**
+    * Metodo per modificare la password di un amministratore
+    * 
+    * @param admin oggetto contenente i dati dell'amministratore
+    * @return true se l'operazione viene completata con successo, altrimenti false
+    */
+   public boolean modPassA(Dipendente admin){
+       return this.gestioneDipendentiAA.modPassA(admin);
+    }
 }
