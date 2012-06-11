@@ -3,7 +3,7 @@
  * Package: com.safetygame.desktop.logic
  * Author: Gabriele Facchin
  * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Version: 0.2
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -13,6 +13,8 @@
  * | 20120610 | Gabriele Facchin    | + DatiLogin
  * |          |                     | + getUsername
  * |          |                     | + getPassword
+ * +----------+---------------------|---------------------
+ * | 20120611 | Gabriele Facchin    | + getLogin
  * +----------+---------------------|---------------------
  *
  */
@@ -25,7 +27,7 @@ import com.safetyGame.desktop.condivisi.Login;
  * Classe wrapper della classe condivisa Login che gestisce i dati di login di un Dipendente
  * 
  * @author gfacchin
- * @version 0.1
+ * @version 0.2
  */
 public class DatiLogin{
   private Login l;
