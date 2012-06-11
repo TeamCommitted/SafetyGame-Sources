@@ -26,7 +26,6 @@ package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
-import java.util.ArrayList;
 
 public class GestionePunteggiD{ 
 

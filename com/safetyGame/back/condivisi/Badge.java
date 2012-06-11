@@ -37,7 +37,7 @@ package com.safetyGame.back.condivisi;
  * Classe che rappresenta un badge del sistema
  * 
  * @author acornagl 
- * @version v0.2
+ * @version v0.3
  */
 
 public class Badge {
