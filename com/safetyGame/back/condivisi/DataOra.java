@@ -49,6 +49,20 @@ public class DataOra {
    private int ora;
    private int minuti;
    private int secondi;   
+   
+   /**
+    * deve prendere l'orario di oggi dall'orologio di sistema
+    */
+   public DataOra() {     
+     GregorianCalendar gc = new GregorianCalendar();
+     this.giorno = gc.get(Calendar.DAY_OF_MONTH);
+     this.mese = gc.get(Calendar.MONTH)+1;//i mesi partono dallo 0
+     this.anno = gc.get(Calendar.YEAR);
+     this.ora = gc.get(Calendar.HOUR_OF_DAY);
+     this.minuti = gc.get(Calendar.MINUTE);
+     this.secondi = gc.get(Calendar.SECOND);
+   }
+   
    /**
     * Costruttore della classe DataOra
     * @param a anno
@@ -83,18 +97,7 @@ public class DataOra {
 	 this.minuti = Integer.parseInt(stringa.substring(14,16));
 	 this.secondi = Integer.parseInt(stringa.substring(17,19));
    }
-   /**
-    * deve prendere l'orario di oggi dall'orologio di sistema
-    */
-   public DataOra() {     
-     GregorianCalendar gc = new GregorianCalendar();
-     this.giorno = gc.get(Calendar.DAY_OF_MONTH);
-     this.mese = gc.get(Calendar.MONTH)+1;//i mesi partono dallo 0
-     this.anno = gc.get(Calendar.YEAR);
-     this.ora = gc.get(Calendar.HOUR_OF_DAY);
-     this.minuti = gc.get(Calendar.MINUTE);
-     this.secondi = gc.get(Calendar.SECOND);
-   }
+   
    
    /**
     * metodo get per ottenere l'anno

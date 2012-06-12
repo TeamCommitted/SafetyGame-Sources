@@ -53,7 +53,7 @@ import com.safetyGame.back.condivisi.*;
  * Classe che si occupa di gestire i log del sistema
  * 
  * @author acornagl 
- * @version v0.1
+ * @version v0.3
  */
 public class GestioneLog{
 

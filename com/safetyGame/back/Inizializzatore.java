@@ -5,46 +5,83 @@ import com.safetyGame.back.controller.*;
 import com.safetyGame.back.access.*;
 
 public class Inizializzatore{
+	
+	 private Indirizzo indirizzoAz;
+	 private Indirizzo indirizzoDom;
+	 private DAODipendenti daoDipendenti;
+	 private DAOPunteggi daoPunteggi;
+	 private DAOLogin daoLogin;
+	 private UpdateLog updateLog;
+	 private DAODomande daoDomande;
+	 private DAOBadge daoBadge;
+	 
+	 private GestioneRecupero gestioneRecupero;
+	 
+	 private GestionePunteggiD gestionePunteggiD;
+	 
+	 private GestionePunteggiAA gestionePunteggiAA;
+	 
+	 private GestioneLog gestioneLog;
+	 
+	 private GestioneLogin gestioneLogin;
+	 
+	 private GestioneBadgeD gestioneBadgeD;
+	 
+	 private GestioneDomandeD gestioneDomandeD;
+	 
+	 private GestioneDomandeAS gestioneDomandeAS;
+	 
+	 private GestioneDipendentiD gestioneDipendentiD;
+	 
+	 private GestioneDipendentiAA gestioneDipendentiAA;
+	 
+	 private GestioneBadgeAS gestioneBadgeAS;
+	 
+	 private GestioneDati gestioneDati;
+	 
    public Inizializzatore() { 
-	 Indirizzo indirizzoAz = new Indirizzo("aziendasafetygam.altervista.org","aziendasafetygam","gifgiresmo40");
-	 Indirizzo indirizzoDom = new Indirizzo("domandesafetygam.altervista.org","domandesafetgam","beptusafco87");
-	 DAODipendenti daoDipendenti = new SqlDAODipendenti(indirizzoAz);
-	 DAOPunteggi daoPunteggi = new SqlDAOPunteggi(indirizzoAz,indirizzoDom);
-	 DAOLogin daoLogin = new SqlDAOLogin(indirizzoAz);
-	 UpdateLog updateLog = null;
+	 indirizzoAz = new Indirizzo("aziendasafetygam.altervista.org","aziendasafetygam","gifgiresmo40");
+	 indirizzoDom = new Indirizzo("domandesafetygam.altervista.org","domandesafetgam","beptusafco87");
+	 daoDipendenti = new SqlDAODipendenti(indirizzoAz);
+	 daoPunteggi = new SqlDAOPunteggi(indirizzoAz,indirizzoDom);
+	 daoLogin = new SqlDAOLogin(indirizzoAz);
+	 updateLog = null;
 	 try{ updateLog = new UpdateLog("attenzione/attenzione.txt");} catch (Exception e){}
-	 DAODomande daoDomande = new SqlDAODomande(indirizzoAz,indirizzoDom);
-	 DAOBadge daoBadge = new SqlDAOBadge(indirizzoAz);
+	 daoDomande = new SqlDAODomande(indirizzoAz,indirizzoDom);
+	 daoBadge = new SqlDAOBadge(indirizzoAz);
 	 
-	// DAODipendenti daoDipendenti = new SqlDAODipendenti(indirizzoAz);
+	 gestioneRecupero = new GestioneRecupero(daoDipendenti);
 	 
-	 GestioneRecupero gestioneRecupero = new GestioneRecupero(daoDipendenti);
+	 gestionePunteggiD = new GestionePunteggiD(daoPunteggi,daoDipendenti);
 	 
-	 GestionePunteggiD gestionePunteggiD = new GestionePunteggiD(daoPunteggi,daoDipendenti);
+	 gestionePunteggiAA = new GestionePunteggiAA(daoPunteggi,daoDipendenti);
 	 
-	 GestionePunteggiAA gestionePunteggiAA = new GestionePunteggiAA(daoPunteggi,daoDipendenti);
+	 gestioneLog = new GestioneLog(updateLog);
 	 
-	 GestioneLog gestioneLog = new GestioneLog(updateLog);
+	 gestioneLogin = new GestioneLogin(daoLogin,gestioneLog);
 	 
-	 GestioneLogin gestioneLogin = new GestioneLogin(daoLogin,gestioneLog);
+	 gestioneBadgeD = new GestioneBadgeD(daoBadge,daoDipendenti,daoDomande, gestioneLog, gestioneLogin);
 	 
-	 GestioneBadgeD gestioneBadgeD = new GestioneBadgeD(daoBadge,daoDipendenti,daoDomande, gestioneLog, gestioneLogin);
+	 gestioneDomandeD = new GestioneDomandeD(daoDomande,daoPunteggi,daoDipendenti,gestionePunteggiD, gestioneLog, gestioneBadgeD);
 	 
-	 GestioneDomandeD gestioneDomandeD = new GestioneDomandeD(daoDomande,daoPunteggi,daoDipendenti,gestionePunteggiD, gestioneLog, gestioneBadgeD);
+	 gestioneDomandeAS = new GestioneDomandeAS(daoDomande);
 	 
-	 GestioneDomandeAS gestioneDomandeAS = new GestioneDomandeAS(daoDomande);
+	 gestioneDipendentiD = new GestioneDipendentiD(daoDipendenti, gestioneLog);
 	 
-	 GestioneDipendentiD gestioneDipendentiD = new GestioneDipendentiD(daoDipendenti, gestioneLog);
+	 gestioneDipendentiAA = new GestioneDipendentiAA(daoDipendenti);
 	 
-	 GestioneDipendentiAA gestioneDipendentiAA = new GestioneDipendentiAA(daoDipendenti);
+	 gestioneBadgeAS = new GestioneBadgeAS(daoBadge);
 	 
-	 GestioneBadgeAS gestioneBadgeAS = new GestioneBadgeAS(daoBadge);
-	 
-	 GestioneDati gestioneDati = new GestioneDati(gestioneRecupero,gestioneLogin,gestioneDomandeD,gestioneDomandeAS,gestioneDipendentiD,gestioneDipendentiAA,gestioneBadgeD, gestioneBadgeAS,gestionePunteggiD, gestionePunteggiAA);
+	 gestioneDati = new GestioneDati(gestioneRecupero,gestioneLogin,gestioneDomandeD,gestioneDomandeAS,gestioneDipendentiD,gestioneDipendentiAA,gestioneBadgeD, gestioneBadgeAS,gestionePunteggiD, gestionePunteggiAA);
+   }
+   
+   public GestioneDati getDati() {
+     return this.gestioneDati;
    }
    public void main (String[] args){
       // inizializzatore degli oggetti da passare ad ogni oggetto partendo dal basso
       //System.out.println("ciao");
 	   Inizializzatore i = new Inizializzatore();
+	   System.out.println("ciao");
    }
 }
