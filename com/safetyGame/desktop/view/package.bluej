@@ -1,8 +1,8 @@
 #BlueJ package file
 package.editor.height=698
 package.editor.width=666
-package.editor.x=0
-package.editor.y=0
+package.editor.x=152
+package.editor.y=152
 package.numDependencies=0
 package.numTargets=3
 package.showExtends=true
@@ -19,10 +19,10 @@ target1.type=ClassTarget
 target1.width=80
 target1.x=170
 target1.y=120
-target2.editor.height=700
-target2.editor.width=900
-target2.editor.x=371
-target2.editor.y=48
+target2.editor.height=886
+target2.editor.width=1616
+target2.editor.x=-8
+target2.editor.y=-8
 target2.height=50
 target2.name=Menu
 target2.naviview.expanded=true

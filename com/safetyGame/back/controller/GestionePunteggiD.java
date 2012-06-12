@@ -30,7 +30,6 @@ import com.safetyGame.back.condivisi.*;
 public class GestionePunteggiD{ 
 
   private DAOPunteggi daoPunteggi;
-  private DAOBadge daoBadge;
   private DAODipendenti daoDipendenti;
   
   /**
@@ -40,9 +39,8 @@ public class GestionePunteggiD{
    * @param dB riferimento all'oggetto di tipo DAOBadge
    * @param dD riferimento all'oggetto di tipo DAODipendenti
    */
-  public GestionePunteggiD(DAOPunteggi dP, DAOBadge dB, DAODipendenti dD) {
+  public GestionePunteggiD(DAOPunteggi dP, DAODipendenti dD) {
     this.daoPunteggi = dP;
-	this.daoBadge = dB;
 	this.daoDipendenti = dD;
   }
   
@@ -51,7 +49,6 @@ public class GestionePunteggiD{
    */
   public GestionePunteggiD() {
     this.daoPunteggi = null;
-    this.daoBadge = null;
     this.daoDipendenti = null;
   }
   

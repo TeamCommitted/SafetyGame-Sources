@@ -1,8 +1,8 @@
 #BlueJ package file
 package.editor.height=611
 package.editor.width=1252
-package.editor.x=-80
-package.editor.y=57
+package.editor.x=20
+package.editor.y=20
 package.numDependencies=0
 package.numTargets=5
 package.showExtends=true
@@ -41,5 +41,5 @@ target5.naviview.expanded=false
 target5.showInterface=false
 target5.type=ClassTarget
 target5.width=100
-target5.x=90
-target5.y=310
+target5.x=280
+target5.y=170

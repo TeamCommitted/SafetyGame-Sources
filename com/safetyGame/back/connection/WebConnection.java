@@ -131,7 +131,7 @@ public class WebConnection{
    */
   public boolean modPassA(Dipendente dip){
     return dati.modPassA(dip);
-  } //MANCA NEL FACADE --->non manca più
+  }
    
   /**
    * Metodo che consente la modifica della mail da parte di un dipendente
@@ -152,7 +152,7 @@ public class WebConnection{
    */
   public boolean resetPassD(Recupero r){
     return dati.recuperoD(r);
-  } //MANCA NEL FACADE --->adesso dovrebbe esserci
+  }
    
   /**
    * Metodo che consente la rigenerazione della password per un amministratore
@@ -162,7 +162,7 @@ public class WebConnection{
    */
   public boolean resetPassA(Recupero r){
     return dati.recuperoA(r);
-  } //MANCA NEL FACADE -->adesso dovrebbe esserci
+  }
    
   /**
    * Metodo che consente di recuperare una domanda 
