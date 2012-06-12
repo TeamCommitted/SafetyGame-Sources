@@ -48,7 +48,7 @@ public class GestioneBadgeD{
           if(list.isEmpty())
               return null;
           else{
-              ArrayList<Badge> result = null;
+              ArrayList<Badge> result = new ArrayList<Badge>();
               int i = 0;
               while(i<list.size() && i<n){
                   result.add(list.get(i));
@@ -79,6 +79,7 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals("TotaleRisposte"))
                if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
+                   log.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
@@ -91,6 +92,7 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals("TotalePunti"))
                if(test.getSoglia() == dip.getPunteggio().getPunti()){
                    accessB.assegna(dip,test);
+                   log.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
@@ -104,6 +106,7 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals(D.getTipologia()))
                if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
+                   log.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
