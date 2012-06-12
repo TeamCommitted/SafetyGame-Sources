@@ -22,7 +22,8 @@ ApplicazioniConnection appC;
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
 boolean response = appC.login(user, passw);
-Domanda d = mostraDomanda(user);
+Login l = Login(user, passw)
+Domanda d = mostraDomanda(l);
 %>
 <response>
 <%

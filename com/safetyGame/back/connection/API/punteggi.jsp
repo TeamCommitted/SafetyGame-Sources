@@ -22,8 +22,9 @@ ApplicazioniConnection appC;
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
 boolean response = appC.login(user, passw);
-Punteggio p = appC.getStat(user);
-ArrayList<Badge> b = appC.getBadge(user, 2);
+Login l = Login(user, passw)
+Punteggio p = appC.getStat(l);
+ArrayList<Badge> b = appC.getBadge(l, 2);
 %>
 <response>
 <%

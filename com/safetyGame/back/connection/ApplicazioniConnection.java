@@ -41,44 +41,44 @@ public class ApplicazioniConnection{
     return dati.loginUser(l);
    }
     
-   public Dipendente getDati(String username){
-      Dipendente d = dati.getDati(username);
+   public Dipendente getDati(Login l){
+      Dipendente d = dati.getDati(l);
       return d;
    }
    
-   public Punteggio getStat(String username){
-      Punteggio p = dati.getStat(username);
+   public Punteggio getStat(Login l){
+      Punteggio p = dati.getStat(l);
       return p;
    }
    
-   public void modPass(String pass, String username){
-      dati.modPass(pass,username,'d');
+   public void modPass(Dipendente d){
+      dati.modPass(d);
    }
    
-   public void modMail(String mail, String username){
-      dati.modMail(mail,username);
+   public void modMail(Dipendente d, String mail){
+      dati.modMail(d,mail);
    }
    
-   public void resetPass(String username, String codfis, String mail){
-      dati.resetPass(username, codfis, mail);
+   public void resetPass(Recupero r){
+      dati.resetPass(r);
    }
    
-   public Domanda mostraDomanda(String username){
-      Domanda d= dati.getDomanda(username);
+   public Domanda mostraDomanda(Login l){
+      Domanda d= dati.getDomanda(l);
       return d;
    }
    
-   public void posticipa(String username){
-      dati.posticipa(username);
+   public void posticipa(Login l, Domanda d){
+      dati.posticipa(l, d);
    }
    
-   public boolean rispondi(String username, String risposta){
-      dati.rispondi(username, risposta);
+   public boolean rispondi(Login l, Domanda d){
+      dati.rispondi(l, d);
       return true;
    }
    
-   public void logout(String username){
-      dati.logout(username);
+   public void logout(Login l){
+      dati.logout(l);
    }
 
   /**
