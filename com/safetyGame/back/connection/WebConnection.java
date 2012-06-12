@@ -45,8 +45,20 @@ import com.safetyGame.back.controller.*;
 import com.safetyGame.back.condivisi.*;
 import java.util.ArrayList;
 
+  /**
+   * Classe che si occupa di gestire i log del sistema
+   * 
+   * @author gfacchin 
+   * @version v0.1
+   */
 public class WebConnection{
   private GestioneDati dati;
+  
+  /**
+   * Costruttore della classe WebConnection
+   * 
+   * @param d riferimento al facade GestioneDati 
+   */
   public WebConnection(GestioneDati d){dati=d;}
     
   /**

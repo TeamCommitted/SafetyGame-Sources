@@ -3,4 +3,6 @@
 *.class
 .metadata
 .classpath
+.java~
+*.java~
 .
