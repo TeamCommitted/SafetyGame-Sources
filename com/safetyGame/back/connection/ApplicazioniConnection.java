@@ -42,39 +42,35 @@ public class ApplicazioniConnection{
    }
     
    public Dipendente getDati(Login l){
-      Dipendente d = dati.getDati(l);
-      return d;
+      return dati.getDati(l);
    }
    
    public Punteggio getStat(Login l){
-      Punteggio p = dati.getStat(l);
-      return p;
+      return dati.getStatisticheGlob(l);
    }
    
-   public void modPass(Dipendente d){
-      dati.modPass(d);
+   public boolean modPass(Dipendente d){
+      return dati.modificaPass(d);
    }
    
-   public void modMail(Dipendente d, String mail){
-      dati.modMail(d,mail);
+   public boolean modMail(Dipendente d, String mail){
+      return dati.modificaEmail(d,mail);
    }
    
-   public void resetPass(Recupero r){
-      dati.resetPass(r);
+   public boolean resetPass(Recupero r){
+      return dati.recuperoD(r);
    }
    
    public Domanda mostraDomanda(Login l){
-      Domanda d= dati.getDomanda(l);
-      return d;
+      return dati.getDomandaD(l);
    }
    
-   public void posticipa(Login l, Domanda d){
-      dati.posticipa(l, d);
+   public boolean posticipa(Login l, Domanda d){
+      return dati.posticipa(l, d);
    }
    
    public boolean rispondi(Login l, Domanda d){
-      dati.rispondi(l, d);
-      return true;
+     return dati.setRisposta(l, d);
    }
    
    public void logout(Login l){
