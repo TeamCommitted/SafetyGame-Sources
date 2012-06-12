@@ -4,9 +4,10 @@ import com.safetyGame.back.condivisi.*;
 import java.util.Random;
 
 
-/*import javax.mail.*;
+import javax.mail.*;
 import javax.mail.internet.*;
-import java.util.Properties;*/
+import javax.mail.Message.*;
+import java.util.Properties;
 
 public class GestioneRecupero{ 
    private DAODipendenti accessDip;
@@ -33,8 +34,60 @@ public class GestioneRecupero{
     */
    public boolean recuperoA(Recupero amm){
       String pass = generaPassCasuale();
-      // send mail
+      /* send mail
+       * Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "465");
+ 
+		Session mailSession = Session.getInstance(props);
+		Message simpleMessage = new MimeMessage(mailSession);
+ 
+		InternetAddress fromAddress = "teamcommitted@gmail.com";
+		InternetAddress toAddress = "massimo.dallapieta@hotmail.it";
+ 
+		try {
+			simpleMessage.setFrom(fromAddress);
+			simpleMessage.setRecipient(RecipientType.TO, toAddress);
+			simpleMessage.setSubject("onto");
+			simpleMessage.setText("onto de merda");
+ 
+			Transport.send(simpleMessage);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+       */
       return accessDip.resetA(amm, pass);
+   }
+   // funzione di testo, giorgio non rompere i maroni
+   public void sendmailwtf() throws AddressException{
+	   Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "465");
+
+		Session mailSession = Session.getInstance(props);
+		Message simpleMessage = new MimeMessage(mailSession);
+
+		InternetAddress fromAddress = new InternetAddress("teamcommitted@gmail.com");
+		InternetAddress toAddress = new InternetAddress("massimo.dallapieta@hotmail.it");
+
+		try {
+			simpleMessage.setFrom(fromAddress);
+			simpleMessage.setRecipient(RecipientType.TO, toAddress);
+			simpleMessage.setSubject("onto");
+			simpleMessage.setText("onto de merda");
+
+			Transport.send(simpleMessage);
+		}
+		catch (SendFailedException e) {
+			// TODO Auto-generated catch block
+						e.printStackTrace();
+		}
+		catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
    }
    
    /**
