@@ -33,13 +33,18 @@ public class UpdateLog extends IOException {
   /**
    * Costruttore della classe UpdateLog
    * 
-   * @param percorso percorso di creazione/apertura file dalla cartella log 
+   * @param dir percorso della directory da creare ("nomeutente")
+   * @param file nome del file ("/nomefile.txt")
    * 
    */
-  public UpdateLog(String percorso) throws IOException {
-     out=new PrintWriter(new File("./log/"+percorso));
+  public UpdateLog(String dir, String file) throws IOException {
+     File f= new File("com/safetyGame/back/access/log/"+dir);
+     f.mkdir();
+     f.setWritable(true);
+     f.setReadable(true);
+     out=new PrintWriter(new File("com/safetyGame/back/access/log/"+dir+file));
   }
-
+  
   /**
    * Distruttore della classe UpdateLog:
    * chiude lo stream quando l'oggetto viene distrutto.
