@@ -136,7 +136,7 @@ public class ApplicazioniConnection{
    * 
    * @param l Login del dipendente che ha risposto
    * @param risposta Domanda posta al dipendente contenente la risposta data
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    */
   public boolean rispondi(Login l, Domanda d){
     return dati.setRisposta(l, d);

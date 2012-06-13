@@ -2,15 +2,18 @@
 package com.safetyGame.back.controller;
 
 import java.io.File;
-import java.util.ArrayList;
 
-import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
+/**
+ * Classe di test per oggetti di tipo GestioneLog
+ * 
+ * @author acornagl
+ *
+ */
 public class GestioneLogTest {
 
 	private GestioneLog gestioneLog;

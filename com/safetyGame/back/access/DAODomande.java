@@ -50,7 +50,7 @@ public interface DAODomande{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean posticipa(Dipendente d, Domanda dom);
@@ -60,7 +60,7 @@ public interface DAODomande{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean rispondi(Dipendente d, Domanda dom);
@@ -89,7 +89,7 @@ public interface DAODomande{
    * Metodo che aggiunge una Domanda al database dell'azienda
    * 
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean addDomanda(Domanda d);
@@ -98,17 +98,17 @@ public interface DAODomande{
    * Metodo che rimuove una Domanda dal database dell'azienda
    * 
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean remDomanda(Domanda d);
   
   /**
-   * Metodo che scrive sul database che una domanda è stata proposta al Dipendente
+   * Metodo che scrive sul database che una domanda e` stata proposta al Dipendente
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean scriviSottoposta(Dipendente dip, Domanda dom);

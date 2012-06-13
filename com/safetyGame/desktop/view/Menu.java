@@ -8,7 +8,7 @@ public class Menu{
   boolean loggato=false;
 
   public Menu(){
-    //inizializza tutti gli oggetti per il menù grafico
+    //inizializza tutti gli oggetti per il menu' grafico
   }
  
   public boolean creaIcon(){
@@ -17,7 +17,7 @@ public class Menu{
   }
   
   private void creaMenu(){
-    //crea le varie voci del menù (sia da loggato che da non loggato) e le connette alle corrette funzioni nella classe ControlMenu
+    //crea le varie voci del menu' (sia da loggato che da non loggato) e le connette alle corrette funzioni nella classe ControlMenu
   }
   
   public void chiediLogin(){
@@ -25,7 +25,7 @@ public class Menu{
   }
   
   public void creaNotifica(){
-    //istanzia l'oggetto grafico per la notifica (dopo che è stata generata l'eccezione di termine tempo
+    //istanzia l'oggetto grafico per la notifica (dopo che e` stata generata l'eccezione di termine tempo
   }
   
   public void actionPerformed(ActionEvent e){
@@ -39,7 +39,7 @@ public class Menu{
     //istanzia la sistem tray
     //chiede il login
     //fa partire il timer
-    //quando il timer è attivo:
+    //quando il timer e` attivo:
     //se timer = 0 chiedi domanda con una notifica
     //invia posticipa al back-end oppure apri il browser con la domanda
   }

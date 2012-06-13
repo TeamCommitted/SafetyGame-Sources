@@ -120,7 +120,7 @@ public class SqlDAODomande implements DAODomande{
       id=rs.getInt("ID");
     }
     catch(SQLException e){domanda=false;}  
-    if (!domanda){//non c'è una domanda non risposta, devo prelevare una nuova domanda, mi costruisco un insieme di domande corrette per l'utente (errate + non risposte)
+    if (!domanda){//non c'e' una domanda non risposta, devo prelevare una nuova domanda, mi costruisco un insieme di domande corrette per l'utente (errate + non risposte)
       rs=serverAzienda.selezione("Storico as s RIGHT JOIN Domanda as d ON s.IDdomanda=d.ID","d.ID","IDdipendente="+d.getId()+" AND (punteggio=0 OR punteggio=null)","");
       ArrayList<Integer> idQuery = new ArrayList<Integer>();
       boolean trovato=false;
@@ -135,7 +135,7 @@ public class SqlDAODomande implements DAODomande{
       id=r.nextInt(idQuery.size());
       id=idQuery.get(id);
     }
-    //c'è una domanda all'interno dello storico a cui l'utente non ha ancora risposto (id non modificato) oppure ne ho prelevata una (id modificato)
+    //c'e` una domanda all'interno dello storico a cui l'utente non ha ancora risposto (id non modificato) oppure ne ho prelevata una (id modificato)
     return prendiCampiDomanda(id);
   }
   
@@ -144,7 +144,7 @@ public class SqlDAODomande implements DAODomande{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean posticipa(Dipendente d, Domanda dom){
@@ -156,7 +156,7 @@ public class SqlDAODomande implements DAODomande{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean rispondi(Dipendente d, Domanda dom){
@@ -266,7 +266,7 @@ public class SqlDAODomande implements DAODomande{
    * Metodo che aggiunge una Domanda al database dell'azienda
    * 
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean addDomanda(Domanda d){
@@ -279,7 +279,7 @@ public class SqlDAODomande implements DAODomande{
    * Metodo che rimuove una Domanda dal database dell'azienda
    * 
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean remDomanda(Domanda d){
@@ -287,11 +287,11 @@ public class SqlDAODomande implements DAODomande{
   }
   
   /**
-   * Metodo che scrive sul database che una domanda è stata proposta al Dipendente
+   * Metodo che scrive sul database che una domanda e` stata proposta al Dipendente
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean scriviSottoposta(Dipendente dip, Domanda dom){

@@ -112,7 +112,7 @@ public class SqlDAOBadge implements DAOBadge{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param b Oggetto Badge che deve essere assegnato
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */     
   public boolean assegna(Dipendente d, Badge b){

@@ -6,7 +6,7 @@ public class ControlNotifica{
   public ControlNotifica(String s, ConnBack cb){
     testo= s;
     connessione=cb;
-    testo="Ti è stata proposta una domanda, vuoi rispondere?";
+    testo="Ti e` stata proposta una domanda, vuoi rispondere?";
   }
 
   public void posticipa(){

@@ -32,7 +32,7 @@ public interface DAOLogin{
    * Metodo che prova il login di un Amministratore
    * 
    * @param l Oggetto Login da cui si prendono le informazioni
-   * @return un boolean che indica se il login è avvenuto con successo o no
+   * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */  
   public boolean loginAmministratore(Login l);
@@ -41,7 +41,7 @@ public interface DAOLogin{
    * Metodo che prova il login di un Dipendente
    * 
    * @param l Oggetto Login da cui si prendono le informazioni
-   * @return un boolean che indica se il login è avvenuto con successo o no
+   * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */    
   public boolean loginDipendente(Login l);

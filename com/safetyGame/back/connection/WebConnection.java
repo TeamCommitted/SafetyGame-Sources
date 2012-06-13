@@ -191,7 +191,7 @@ public class WebConnection{
    * 
    * @param l Login del dipendente che ha risposto
    * @param risposta Domanda posta al dipendente contenente la risposta data
-   * @return boolean che indica se l'operazione è andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    */
   public boolean setRisposta(Login l,Domanda risposta) {
 	return dati.setRisposta(l, risposta);

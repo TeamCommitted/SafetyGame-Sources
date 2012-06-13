@@ -144,7 +144,7 @@ public class Inizializzatore implements ActionListener{
    */  
   private void tastiera(){
     // Stampa a video
-    System.out.println("L'applicazione è in esecuzione.");
+    System.out.println("L'applicazione e` in esecuzione.");
     System.out.println("Premere Q quindi INVIO per terminare l'applicazione");
     // Lettura input
     int carattere=-1;

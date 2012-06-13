@@ -4,8 +4,8 @@ import com.safetyGame.back.condivisi.*;
 import java.util.ArrayList;
 
 /**
- * Classe che si occupa di gestire le modifiche dati dei Dipendenti da parte di un Amministratore Azienda
- * 
+ * Classe che si occupa di gestire tutte le azioni dovute dall'interazione 
+ * fra un AmministratoreSicurezza ed una domanda del sistema
  * @author mdallapi 
  * @version v0.1
  */

@@ -26,7 +26,11 @@ package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
-
+/**
+ * Classe che si occupa di gestire i punteggi dei dipendenti
+ * @author acornagl
+ *
+ */
 public class GestionePunteggiD{ 
 
   private DAOPunteggi daoPunteggi;

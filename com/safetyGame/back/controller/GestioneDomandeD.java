@@ -1,5 +1,5 @@
 /*
- * Name: GestioneDomabdeD.java
+ * Name: GestioneDomandeD.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}
@@ -40,6 +40,13 @@ package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
+
+/**
+ * Classe che si occupa di gestire tutte le azioni dovute dall'interazione 
+ * fra un dipendente ed una domanda del sistema
+ * @author acornagl
+ *
+ */
 public class GestioneDomandeD{
   private DAODomande daoDomande;
   private DAOPunteggi daoPunteggi;

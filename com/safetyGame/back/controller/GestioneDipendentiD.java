@@ -33,6 +33,14 @@ package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
 
+/**
+ * Classe che si occupa di gestire le interazioni che un dipendente 
+ * puo' avere con il sistema
+ * 
+ * @author acornagl
+ * @version 0.2
+ *
+ */
 public class GestioneDipendentiD{
   private DAODipendenti daoDipendenti;
   private GestioneLog gestioneLog;

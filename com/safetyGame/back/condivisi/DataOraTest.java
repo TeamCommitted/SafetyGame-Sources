@@ -3,7 +3,11 @@ package com.safetyGame.back.condivisi;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
+/**
+ * Classe di test per oggetti di tipo DataOra
+ * @author ale
+ *
+ */
 public class DataOraTest {
 	
   DataOra d; 

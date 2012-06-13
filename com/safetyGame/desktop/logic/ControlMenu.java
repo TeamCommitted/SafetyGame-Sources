@@ -10,7 +10,7 @@ package com.safetyGame.desktop.logic;
 public class ControlMenu{
   ConnBack connessione;
   public ControlMenu(ConnBack cb){
-    //crea una System Tray e i menù ad essa correlati
+    //crea una System Tray e i menu' ad essa correlati
     connessione=cb;
   }
   
