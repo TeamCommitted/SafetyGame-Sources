@@ -60,16 +60,7 @@ public class GestioneLog{
   private UpdateLog updateLog;
   private String percorso;
   private String log;
-  
-  /**
-   * Costruttore con parametri della classe GestioneLog
-   * 
-   * @param u riferimento all'oggetto UpdateLog del package access
-   */
-  public GestioneLog(UpdateLog u) {
-    this.updateLog = u;
-  }
-  
+    
   /**
    * Costruttore senza parametri della classe GestioneLog
    * 
