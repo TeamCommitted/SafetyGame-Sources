@@ -23,30 +23,30 @@ public class GestioneLogTest {
 	private final int fDom = 10;//id dom per test
  	private DataOra dataOra = new DataOra();
 	//metodo per inizializzare l'oggetto
-	
+
  	private void init() {
 		gestioneLog = new GestioneLog();
 		idDip = fDip;
 		idDom = fDom;
 	}
-	
+
 
 	@Test
 	public void testLogin() { //verifico cosa succede quando uso scriviLogin()
 		init(); //inizializzo il test
-	
+
 		Login login = new Login();
 		login.setUsername("usr");
 		login.setPassword("password");
 		File f = new File(".");
 		System.out.println(f.getAbsolutePath());
 		gestioneLog.scriviLogin(login);
-		
+
 		//controllo percorso
 		String percorso = gestioneLog.getPercorso();
 		String percorsoCorretto = "/log/"+ login.getUsername() + "/login.txt";
 		assertTrue("percorso errato", percorso.equals(percorsoCorretto));
-		
+
 		//controllo log
 		String log = gestioneLog.getLog();
 		String logCorretto = "LOGIN "+ this.dataOra.toString()+ " " + login.getUsername();
