@@ -7,3 +7,5 @@
 *.java~
 .
 *package.bluej
+package.bluej
+*.bluej
