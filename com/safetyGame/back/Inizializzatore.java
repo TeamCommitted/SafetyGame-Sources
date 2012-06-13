@@ -18,6 +18,8 @@
  * |          |                     | main 
  * |          |                     | actionPerformed 
  * +----------+---------------------+----------------------
+ * | 20120613 | Gabriele Facchin    | tastiera   
+ * +----------+---------------------+----------------------
  * 
  */ 
 
@@ -41,35 +43,34 @@ import java.io.*;
    */
 
 public class Inizializzatore implements ActionListener{
-   private Indirizzo indirizzoAz;
-   private Indirizzo indirizzoDom;
-   private DAODipendenti daoDipendenti;
-   private DAOPunteggi daoPunteggi;
-   private DAOLogin daoLogin;
-   private UpdateLog updateLog;   
-   private DAODomande daoDomande;   
-   private DAOBadge daoBadge;   
+  private Indirizzo indirizzoAz;
+  private Indirizzo indirizzoDom;
+  private DAODipendenti daoDipendenti;
+  private DAOPunteggi daoPunteggi;
+  private DAOLogin daoLogin;
+  private UpdateLog updateLog;   
+  private DAODomande daoDomande;   
+  private DAOBadge daoBadge;   
 
-   private GestioneRecupero gestioneRecupero;
-   private GestionePunteggiD gestionePunteggiD;
-   private GestionePunteggiAA gestionePunteggiAA;
-   private GestioneLog gestioneLog;
-   private GestioneLogin gestioneLogin;
-   private GestioneBadgeD gestioneBadgeD;
-   private GestioneDomandeD gestioneDomandeD;
-   private GestioneDomandeAS gestioneDomandeAS;
-   private GestioneDipendentiD gestioneDipendentiD;
-   private GestioneDipendentiAA gestioneDipendentiAA;
-   private GestioneBadgeAS gestioneBadgeAS;
-   private GestioneDati gestioneDati;
+  private GestioneRecupero gestioneRecupero;
+  private GestionePunteggiD gestionePunteggiD;
+  private GestionePunteggiAA gestionePunteggiAA;
+  private GestioneLog gestioneLog;
+  private GestioneLogin gestioneLogin;
+  private GestioneBadgeD gestioneBadgeD;
+  private GestioneDomandeD gestioneDomandeD;
+  private GestioneDomandeAS gestioneDomandeAS;
+  private GestioneDipendentiD gestioneDipendentiD;
+  private GestioneDipendentiAA gestioneDipendentiAA;
+  private GestioneBadgeAS gestioneBadgeAS;
+  private GestioneDati gestioneDati;
      
-   private Parser parser;
-   private static WebConnection webConnection;
-   private static ApplicazioniConnection appConnection;
+  private static WebConnection webConnection;
+  private static ApplicazioniConnection appConnection;
      
-   private JFrame frame;
-   private Label label;
-   private JButton bottone;
+  private JFrame frame;
+  private Label label;
+  private JButton bottone;
      
   /**
    * Costruttore della classe WebConnection
@@ -98,8 +99,7 @@ public class Inizializzatore implements ActionListener{
      gestioneDati = new GestioneDati(gestioneRecupero,gestioneLogin,gestioneDomandeD,gestioneDomandeAS,gestioneDipendentiD,gestioneDipendentiAA,gestioneBadgeD, gestioneBadgeAS,gestionePunteggiD, gestionePunteggiAA);
      
      webConnection= new WebConnection(gestioneDati);
-     parser= new Parser();
-     appConnection= new ApplicazioniConnection(gestioneDati, parser);
+     appConnection= new ApplicazioniConnection(gestioneDati);
      
      try{
        grafica();

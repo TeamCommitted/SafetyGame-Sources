@@ -63,12 +63,11 @@ Generating H:\uni\IS\git\SafetyGame-Sources\doc\com\safetyGame\desktop\logic\Tim
 Generating H:\uni\IS\git\SafetyGame-Sources\doc\com\safetyGame\back\Inizializzatore.html...
 H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\Inizializzatore.java:185: warning - @param argument "args[]" is not a parameter name.
 Generating H:\uni\IS\git\SafetyGame-Sources\doc\com\safetyGame\back\connection\ApplicazioniConnection.html...
-H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\connection\ApplicazioniConnection.java:162: warning - @param argument "login" is not a parameter name.
-H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\connection\ApplicazioniConnection.java:57: warning - @param argument "login" is not a parameter name.
-H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\connection\ApplicazioniConnection.java:89: warning - @param argument "dip" is not a parameter name.
-H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\connection\ApplicazioniConnection.java:110: warning - @param argument "d" is not a parameter name.
-H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\connection\ApplicazioniConnection.java:142: warning - @param argument "risposta" is not a parameter name.
-Generating H:\uni\IS\git\SafetyGame-Sources\doc\com\safetyGame\back\connection\Parser.html...
+H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\connection\ApplicazioniConnection.java:161: warning - @param argument "login" is not a parameter name.
+H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\connection\ApplicazioniConnection.java:56: warning - @param argument "login" is not a parameter name.
+H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\connection\ApplicazioniConnection.java:88: warning - @param argument "dip" is not a parameter name.
+H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\connection\ApplicazioniConnection.java:109: warning - @param argument "d" is not a parameter name.
+H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\connection\ApplicazioniConnection.java:141: warning - @param argument "risposta" is not a parameter name.
 Generating H:\uni\IS\git\SafetyGame-Sources\doc\com\safetyGame\back\connection\WebConnection.html...
 H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\connection\WebConnection.java:273: warning - @param argument "Dip" is not a parameter name.
 H:\uni\IS\git\SafetyGame-Sources\com\safetyGame\back\connection\WebConnection.java:283: warning - @param argument "Dip" is not a parameter name.

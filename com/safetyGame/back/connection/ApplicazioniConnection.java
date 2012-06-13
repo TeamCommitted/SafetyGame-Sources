@@ -37,8 +37,7 @@ import java.util.ArrayList;
    * @version v0.1
    */
 public class ApplicazioniConnection{
-   private GestioneDati dati;
-   private Parser parser; //non c'� un oggetto ma semplicemente funzioni da richiamare da libreria (Parser.funzione();)
+  private GestioneDati dati;
    
   
   /**
@@ -46,7 +45,7 @@ public class ApplicazioniConnection{
    * 
    * @param d riferimento al facade GestioneDati 
    */
-  public ApplicazioniConnection(GestioneDati d, Parser p){dati = d; parser = p;}
+  public ApplicazioniConnection(GestioneDati d){dati = d;}
     
   /**
    * Metodo per il login dei dipendenti
