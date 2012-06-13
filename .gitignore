@@ -1,11 +1,9 @@
 *.ctxt
 *.ctxt
 *.class
+*.bluej
+*.java~
 .metadata
 .classpath
 .java~
-*.java~
 .
-*package.bluej
-package.bluej
-*.bluej
