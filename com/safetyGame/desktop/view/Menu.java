@@ -5,7 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Menu{
-  boolean loggato=false;
+  private boolean loggato=false;
+  private ControlMenu control;
 
   public Menu(){
     //inizializza tutti gli oggetti per il menu' grafico

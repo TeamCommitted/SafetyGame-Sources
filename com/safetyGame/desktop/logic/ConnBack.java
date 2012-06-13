@@ -21,4 +21,9 @@ public class ConnBack{
     //chiama le funzioni del back - end
     return false;
   }
+  
+  public boolean recupera(String username){
+    //chiama le funzioni del back - end
+    return false;
+  }
 }

@@ -1,46 +1,95 @@
+/*
+ * Name: Timer.java
+ * Package: com.safetygame.desktop.logic
+ * Author: Gabriele Facchin
+ * Date: {Data di approvazione del file}
+ * Version: 0.1
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120610 | Gabriele Facchin    | + Timer
+ * |          |                     | + run
+ * |          |                     | + setTempo
+ * |          |                     | + getFinito
+ * |          |                     | + getTempo
+ * +----------+---------------------|---------------------
+ *
+ */
+
 package com.safetyGame.desktop.logic;
 
+/**
+ * Classe che gestisce il timer per le domande
+ * 
+ * @author gfacchin
+ * @version 0.1
+ */
 public class Timer extends Thread{
-  int tempo;
-  boolean logout=false;
-  boolean finito=false;
+  private int tempo;
+  private boolean finito=false;
+  private boolean cambiato=false;
 
+  /**
+   * Costruttore della classe Timer
+   * 
+   */
   public Timer(int t){
     tempo = t;
   }
 
+  /**
+   * metodo che fa partire il thread e quindi il conteggio
+   * 
+   */
   public void run(){
     while (true){
-      while(!logout){
-        finito = false;
+      while(!finito){
         int tempocopia=tempo;
-        while(tempocopia<=0){
-          try{wait(10000);}
-          catch(InterruptedException e){}
-          tempocopia-=10000;
+        int attesa=tempocopia/10;
+        while(tempocopia>0){
+          try{wait(attesa);}
+          catch(InterruptedException e){tempocopia+=attesa-1;}
+          tempocopia-=attesa;
+          if (cambiato){
+            tempocopia=0;
+          }
         }
         finito=true;
-        while (finito)
-          try{wait();}
-          catch(InterruptedException e){}
+        if (cambiato){
+          finito=false;
+          cambiato=false;
+        }
       }
       try{sleep(10000);}
       catch(InterruptedException e){}
     }
   }
   
-  public void setLogout(){
-    logout=true;
-  }
-  
-  public void resetLogout(){
-    logout=true;
-  }
-  
+  /**
+   * metodo che consente di reimpostare il tempo d'attesa
+   * @param t nuovo tempo di attesa
+   */
   public void setTempo(int t){
     tempo=t;
+    cambiato=true;
+    finito=false;
   }
   
+  /**
+   * metodo che consente di recuperare lo stato del conteggio
+   * @return finito
+   */
+  public boolean getFinito(){
+    return finito;
+  }
+  
+  /**
+   * metodo che consente di recuperare il tempo con cui è stato impostato il thread
+   * @return tempo
+   */
   public int getTempo(){
     return tempo;
   }

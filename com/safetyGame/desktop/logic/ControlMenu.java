@@ -1,21 +1,11 @@
 package com.safetyGame.desktop.logic;
 
 
-/**
- * Write a description of class ControlMenu here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class ControlMenu{
   ConnBack connessione;
   public ControlMenu(ConnBack cb){
     //crea una System Tray e i menu' ad essa correlati
     connessione=cb;
-  }
-  
-  public boolean login(String username, String password) {
-    return connessione.login(username,password);
   }
 
   public boolean logout(String username){

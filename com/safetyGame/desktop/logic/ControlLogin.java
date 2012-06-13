@@ -1,15 +1,19 @@
 package com.safetyGame.desktop.logic;
 
 public class ControlLogin{
-  String testo;
-  ConnBack connessione;
+  private String testo;
+  private ConnBack connessione;
   public ControlLogin(String s, ConnBack cb){
     testo= s;
     connessione=cb;
     testo="Inserisci username e password";
   }
   
-  public void tryLogin(String username, String password){
-    connessione.login(username,password);
+  public boolean tryLogin(String username, String password){
+    return connessione.login(username,password);
+  }
+  
+  public boolean recupera(String username){
+    return connessione.recupera(username);
   }
 }
