@@ -30,6 +30,7 @@ import com.safetyGame.back.connection.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.*;
 
   /**
    * Classe che si occupa di gestire i log del sistema
@@ -100,7 +101,12 @@ public class Inizializzatore implements ActionListener{
      parser= new Parser();
      appConnection= new ApplicazioniConnection(gestioneDati, parser);
      
-     grafica();
+     try{
+       grafica();
+     }
+     catch (Exception e){}
+     
+     tastiera();
   }
    
   /**
@@ -132,6 +138,25 @@ public class Inizializzatore implements ActionListener{
       System.exit(0);
   }
    
+  /**
+   * Metodo per gestire la tastiera qual'ora non esistesse la grafica
+   * 
+   */  
+  private void tastiera(){
+    // Stampa a video
+    System.out.println("L'applicazione è in esecuzione.");
+    System.out.println("Premere Q quindi INVIO per terminare l'applicazione");
+    // Lettura input
+    int carattere=-1;
+    while (!(carattere==81)) {
+      BufferedReader fBuff = new BufferedReader(new InputStreamReader(System.in));
+      try{
+        carattere = fBuff.read();
+      }
+      catch(IOException e){}
+    }  
+  }
+  
   /**
    * Metodo statico che ritorna il connettore web
    * 
