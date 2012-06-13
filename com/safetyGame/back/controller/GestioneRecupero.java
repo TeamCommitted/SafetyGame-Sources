@@ -8,12 +8,22 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import javax.mail.Message.*;
 import java.util.Properties;
-
+/**
+ * Classe che consente il recupero della password degli utenti, inviandogliela 
+ * attraverso posta elettronica
+ * 
+ * @author acornagl
+ * @author mdallapi
+ * @version 0.2
+ *
+ */
 public class GestioneRecupero{ 
    private DAODipendenti accessDip;
+   private String porta;
    
    public GestioneRecupero(DAODipendenti accessDip){
        this.accessDip = accessDip;
+       this.porta = "587"; //eventuale 465
    }
    
    /**
@@ -24,7 +34,11 @@ public class GestioneRecupero{
    public boolean recuperoD(Recupero dip){
       String pass = generaPassCasuale();
       // send mail
-      return accessDip.resetD(dip, pass);
+      boolean esito = accessDip.resetD(dip, pass);
+      if (esito) {
+    	this.sendMail(dip.getEmail(), pass);
+      }
+      return esito;
    }
    
    /**
@@ -34,96 +48,51 @@ public class GestioneRecupero{
     */
    public boolean recuperoA(Recupero amm){
       String pass = generaPassCasuale();
-      /* send mail
-       * Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "465");
- 
-		Session mailSession = Session.getInstance(props);
-		Message simpleMessage = new MimeMessage(mailSession);
- 
-		InternetAddress fromAddress = "teamcommitted@gmail.com";
-		InternetAddress toAddress = "massimo.dallapieta@hotmail.it";
- 
-		try {
-			simpleMessage.setFrom(fromAddress);
-			simpleMessage.setRecipient(RecipientType.TO, toAddress);
-			simpleMessage.setSubject("onto");
-			simpleMessage.setText("onto de merda");
- 
-			Transport.send(simpleMessage);
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-       */
-      return accessDip.resetA(amm, pass);
-   }
-   // funzione di testo, giorgio non rompere i maroni
-   public void sendmailwtf() throws AddressException{
-	   Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "465");
+      boolean esito = accessDip.resetA(amm, pass);
+      if (esito) {
+    	this.sendMail(amm.getEmail(), pass);
+      }
 
-		Session mailSession = Session.getInstance(props);
-		Message simpleMessage = new MimeMessage(mailSession);
-
-		InternetAddress fromAddress = new InternetAddress("teamcommitted@gmail.com");
-		InternetAddress toAddress = new InternetAddress("massimo.dallapieta@hotmail.it");
-
-		try {
-			simpleMessage.setFrom(fromAddress);
-			simpleMessage.setRecipient(RecipientType.TO, toAddress);
-			simpleMessage.setSubject("onto");
-			simpleMessage.setText("onto de merda");
-
-			Transport.send(simpleMessage);
-		}
-		catch (SendFailedException e) {
-			// TODO Auto-generated catch block
-						e.printStackTrace();
-		}
-		catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+      return esito;
    }
    
-   public void sendMailCorny(){
-	   final String username = "teamcommitted@gmail.com";
-		final String password = "Pr0jectse";
+   /**
+    * Metodo che si occupa di inviare una mail all'utente che ha richiesto il ripristino della password
+    * @param destinatario indirizzo email del dipendente che ha richiesto il recupero
+    * @param nuovaPass nuova password
+    */
+   public void sendMail(String destinatario, String nuovaPass){
+     final String username = "teamcommitted@gmail.com";
+	 final String password = "Pr0jectse";
+          
+	 Properties props = new Properties();
+	 props.put("mail.smtp.auth", "true");
+	 props.put("mail.smtp.starttls.enable", "true");
+	 props.put("mail.smtp.host", "smtp.gmail.com");
+	 props.put("mail.smtp.port", porta);//"587");
 
-		Properties props = new Properties();
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "587");
+	 Session session = Session.getInstance(props,
+	 new javax.mail.Authenticator() {
+	   protected PasswordAuthentication getPasswordAuthentication() {
+	     return new PasswordAuthentication(username, password);
+	   }
+	 });
 
-		Session session = Session.getInstance(props,
-		  new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(username, password);
-			}
-		  });
+	 try {
+       Message message = new MimeMessage(session);
+	   message.setFrom(new InternetAddress(username));
+	   message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(destinatario));
+	   message.setSubject("Recupero password");
+	   message.setText("Ecco la sua nuova password per l'accesso al sistema:"
+				+ "\n\n "+ nuovaPass);
 
-		try {
+	   Transport.send(message);
+       System.out.println("Done");
 
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("teamcommitted@gmail.com"));
-			message.setRecipients(Message.RecipientType.TO,
-				InternetAddress.parse("ale.corny@gmail.com"));
-			message.setSubject("Testing Subject");
-			message.setText("Dear Mail Crawler,"
-				+ "\n\n No spam to my email, please!");
-
-			Transport.send(message);
-
-			System.out.println("Done");
-
-		} catch (MessagingException e) {
-			throw new RuntimeException(e);
-		}
+	 } 
+	 catch (MessagingException e) {
+	  throw new RuntimeException(e);
+	 }
    }
    
    /**
