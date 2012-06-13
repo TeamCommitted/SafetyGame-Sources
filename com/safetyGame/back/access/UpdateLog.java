@@ -42,7 +42,7 @@ public class UpdateLog extends IOException {
      f.mkdir();
      f.setWritable(true);
      f.setReadable(true);
-     out=new PrintWriter(new File("com/safetyGame/back/access/log/"+dir+file));
+     out=new PrintWriter(new File("com/safetyGame/back/log"+dir+file));
   }
   
   /**

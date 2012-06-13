@@ -102,7 +102,7 @@ public class GestioneLog{
     this.percorso = "/login.txt";
    
 	try {
-	  this.updateLog = new UpdateLog(l.getUsername()+"/",this.percorso);
+	  this.updateLog = new UpdateLog("/"+l.getUsername(),this.percorso);
 	}
 	catch (IOException e) {System.out.println("non va"); }//bisogna decidere cosa fare se si verifica errore
     
@@ -123,7 +123,7 @@ public class GestioneLog{
     percorso = "/logout.txt";
 
     try {
-	  this.updateLog = new UpdateLog(l.getUsername()+"/",percorso);
+	  this.updateLog = new UpdateLog("/"+l.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -145,7 +145,7 @@ public class GestioneLog{
     percorso =  "/dRic.txt";
 
     try {
-	  this.updateLog = new UpdateLog(l.getUsername()+"/",percorso);
+	  this.updateLog = new UpdateLog("/"+l.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -167,7 +167,7 @@ public class GestioneLog{
     percorso = "/dProp.txt";
 
     try {
-	  this.updateLog = new UpdateLog(l.getUsername()+"/",percorso);
+	  this.updateLog = new UpdateLog("/"+l.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
@@ -189,7 +189,7 @@ public class GestioneLog{
     percorso = "/dPost.txt";
     
 	try {
-	  this.updateLog = new UpdateLog(l.getUsername()+"/",percorso);
+	  this.updateLog = new UpdateLog("/"+l.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
@@ -211,7 +211,7 @@ public class GestioneLog{
     percorso = "/dRisp.txt";
 
     try {
-	  this.updateLog = new UpdateLog(l.getUsername()+"/",percorso);
+	  this.updateLog = new UpdateLog("/"+l.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
