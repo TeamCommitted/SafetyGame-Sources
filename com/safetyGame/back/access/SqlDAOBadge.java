@@ -45,10 +45,10 @@ public class SqlDAOBadge implements DAOBadge{
   }
   
   /**
-   * Metodo che prende le badge ottenute da un Dipendente dal database
+   * Metodo che prende i badge ottenute da un Dipendente dal database
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
-   * @return un ArrayList di Badge che contiene le Badge di quel Dipendente
+   * @return un ArrayList di Badge che contiene i Badge di quel Dipendente
    * 
    */     
   public ArrayList<Badge> badgeD(Dipendente d){
@@ -79,9 +79,9 @@ public class SqlDAOBadge implements DAOBadge{
   }
   
   /**
-   * Metodo che prende le badge dal database
+   * Metodo che prende i badge dal database
    * 
-   * @return un ArrayList di Badge che contiene le Badge di quell'azienda
+   * @return un ArrayList di Badge che contiene i Badge di quell'azienda
    * 
    */     
   public ArrayList<Badge> badgeAS(){
@@ -111,8 +111,8 @@ public class SqlDAOBadge implements DAOBadge{
    * Metodo che assegna una Badge ad un Dipendente
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
-   * @param b Oggetto Badge che deve essere assegnata
-   * @return un ArrayList di Badge che contiene le Badge di quell'azienda
+   * @param b Oggetto Badge che deve essere assegnato
+   * @return boolean che indica se l'operazione è andata o meno a buon fine
    * 
    */     
   public boolean assegna(Dipendente d, Badge b){

@@ -46,7 +46,7 @@ import com.safetyGame.back.condivisi.*;
 import java.util.ArrayList;
 
   /**
-   * Classe che si occupa di gestire i log del sistema
+   * Classe che si occupa di gestire la connessione da parte del web
    * 
    * @author gfacchin 
    * @version v0.1
@@ -115,11 +115,11 @@ public class WebConnection{
   }
 
   /**
-    * Metodo per ottenere i dati delle badge per un dato utente
+    * Metodo per ottenere i dati dei badge per un dato utente
     * 
     * @param login dati dell'utente che effettua la richiesta
     * @param n numero di badge che si vuole selezionare
-    * @return un ArrayList<Badge> contenente n badge ottenute dall'utente 
+    * @return un ArrayList<Badge> contenente n badge ottenuti dall'utente 
   */
   public ArrayList<Badge> getBadge(Login l, int n){
     return dati.getBadgeD(l,n);
@@ -187,10 +187,11 @@ public class WebConnection{
   }
   
   /**
-   * Metodo che si occupa di comunicare la risposta corretta
+   * Metodo che si occupa di comunicare la risposta del Dipendente
    * 
    * @param l Login del dipendente che ha risposto
    * @param risposta Domanda posta al dipendente contenente la risposta data
+   * @return boolean che indica se l'operazione è andata o meno a buon fine
    */
   public boolean setRisposta(Login l,Domanda risposta) {
 	return dati.setRisposta(l, risposta);
@@ -296,7 +297,7 @@ public class WebConnection{
    
   /**
   * Metodo per ottenere tutti i badge possibili
-  * @return un ArrayList<Badge> contenente tutte le badge nel database
+  * @return un ArrayList<Badge> contenente tutti i badge nel database
   * 
   */
   public ArrayList<Badge> getBadgesAS() {
@@ -304,7 +305,7 @@ public class WebConnection{
   }
   
   /**
-   * Metodo per assegnare una badge
+   * Metodo per assegnare un badge
    * 
    * @param l dati dell'utente che si deve controllare
    * @param D domanda risposta dall'utente
