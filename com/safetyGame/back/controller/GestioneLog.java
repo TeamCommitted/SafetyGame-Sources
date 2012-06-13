@@ -122,7 +122,7 @@ public class GestioneLog{
 	  this.updateLog = new UpdateLog(percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-	
+
     log = "LOGOUT " + dataOra.toString() + " " + l.getUsername(); //stringa contenente il log
     updateLog.scriviChiudi(log);//passo la stringa creata a updateLog
   }
@@ -144,7 +144,7 @@ public class GestioneLog{
 	  this.updateLog = new UpdateLog(percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-	
+
     log = "DOMANDA RICEVUTA " + dataOra.toString() + " usr=" + l.getUsername() + " id dom=" + d.getId();
     updateLog.scriviChiudi(log);
   }
@@ -228,12 +228,12 @@ public class GestioneLog{
     percorso = "";
     String usr = d.getNickname(); //ricavo il nick del dipendente, utile per il path
     percorso += usr + "/" + "modPassD.txt";
-	
+
     try {
 	  this.updateLog = new UpdateLog(percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-	
+
 	log = "MODIFICA PASS D " + dataOra.toString() + " id dip=" + d.getId();
     updateLog.scriviChiudi(log);
   }
@@ -256,7 +256,7 @@ public class GestioneLog{
 	  this.updateLog = new UpdateLog(percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-	
+
     log = "MODIFICA EMAIL D " + dataOra.toString() + " id dip=" + d.getId();
     updateLog.scriviChiudi(log);
   }
@@ -279,7 +279,7 @@ public class GestioneLog{
 	  this.updateLog = new UpdateLog(percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-	
+
 	log = "OTTENIMENTO BADGE " + dataOra.toString() + " id dip=" + d.getId() + " badge=" + b.getNome();
     updateLog.scriviChiudi(log);
   }
@@ -299,7 +299,7 @@ public class GestioneLog{
 	  this.updateLog = new UpdateLog(percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-	
+
 	log = "AGGIUNTO DIPENDENTE " + dataOra.toString() + " id dip=" + d.getId();
     updateLog.scriviChiudi(log);
   }
@@ -319,7 +319,7 @@ public class GestioneLog{
 	  this.updateLog = new UpdateLog(percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-	
+
 	log = "RIMOSSO DIPENDENTE " + dataOra.toString() + " id dip=" + d.getId();
     updateLog.scriviChiudi(log);
   }
@@ -339,7 +339,7 @@ public class GestioneLog{
 	  this.updateLog = new UpdateLog(percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-	
+
 	log = "MODIFICATO DIPENDENTE " + dataOra.toString() + " id dip=" + d.getId();
     updateLog.scriviChiudi(log);
   }
@@ -359,7 +359,7 @@ public class GestioneLog{
 	  this.updateLog = new UpdateLog(percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-	
+
 	//scrivo una riga per ogni domanda aggiunta
 	for (int i = 0; i < d.length; i++) {
 	  log = "AGGIUNTA DOMANDA " + dataOra.toString() + " id dom=" + d[i].getId();
@@ -382,7 +382,7 @@ public class GestioneLog{
 	  this.updateLog = new UpdateLog(percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-	
+
 	//scrivo una riga per ogni domanda aggiunta
 	for (int i = 0; i < d.length; i++) {
 	  log = "RIMOSSA DOMANDA " + dataOra.toString() + " id dom=" + d[i].getId();
