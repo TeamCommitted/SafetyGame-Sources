@@ -4,6 +4,11 @@
 <%@ page import= "javax.servlet.*"%>
 <%@ page import= "java.io.*"%>
 <%@ page language="java" import="java.util.Date"%>
+<%@ page language="java" import="com.safetyGame.back.connection.*" %>
+<%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
+<%
+	// WebConnection connection = new WebConnection
+%>
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//IT"

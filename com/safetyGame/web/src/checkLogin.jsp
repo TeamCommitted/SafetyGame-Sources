@@ -89,8 +89,8 @@
 <%  // Redirect alla pagina successiva
 	String redirectURL = "";
 	// Se il login è di tipo Dipendente
-    if (ambito.equals("Dipendente")) redirectURL = "http://localhost/examples/project/user_page.jsp";
+    if (ambito.equals("Dipendente")) redirectURL = "http://localhost/examples/user_page.jsp";
 	// Altrimenti, se è di tipo amministratore:
-	else redirectURL = "http://localhost/examples/project/admin_page.jsp";
+	else redirectURL = "http://localhost/examples/admin_page.jsp";
     response.sendRedirect(redirectURL);
 %>
