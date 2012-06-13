@@ -38,7 +38,7 @@ public class UpdateLog extends IOException {
    * 
    */
   public UpdateLog(String dir, String file) throws IOException {
-     File f= new File("com/safetyGame/back/access/log/"+dir);
+     File f= new File("com/safetyGame/back/log"+dir);
      f.mkdir();
      f.setWritable(true);
      f.setReadable(true);

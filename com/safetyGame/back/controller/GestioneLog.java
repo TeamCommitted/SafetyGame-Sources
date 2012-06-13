@@ -66,6 +66,10 @@ public class GestioneLog{
    * 
    */
   public GestioneLog() {
+    try{
+      updateLog=new UpdateLog ("","");
+    }
+    catch(IOException e){}
     this.updateLog = null;
   }
   
@@ -98,7 +102,7 @@ public class GestioneLog{
     this.percorso = "/login.txt";
    
 	try {
-	  this.updateLog = new UpdateLog(l.getUsername(),this.percorso);
+	  this.updateLog = new UpdateLog(l.getUsername()+"/",this.percorso);
 	}
 	catch (IOException e) {System.out.println("non va"); }//bisogna decidere cosa fare se si verifica errore
     
@@ -119,7 +123,7 @@ public class GestioneLog{
     percorso = "/logout.txt";
 
     try {
-	  this.updateLog = new UpdateLog(l.getUsername(),percorso);
+	  this.updateLog = new UpdateLog(l.getUsername()+"/",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -141,7 +145,7 @@ public class GestioneLog{
     percorso =  "/dRic.txt";
 
     try {
-	  this.updateLog = new UpdateLog(l.getUsername(),percorso);
+	  this.updateLog = new UpdateLog(l.getUsername()+"/",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -163,7 +167,7 @@ public class GestioneLog{
     percorso = "/dProp.txt";
 
     try {
-	  this.updateLog = new UpdateLog(l.getUsername(),percorso);
+	  this.updateLog = new UpdateLog(l.getUsername()+"/",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
@@ -185,7 +189,7 @@ public class GestioneLog{
     percorso = "/dPost.txt";
     
 	try {
-	  this.updateLog = new UpdateLog(l.getUsername(),percorso);
+	  this.updateLog = new UpdateLog(l.getUsername()+"/",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
@@ -207,7 +211,7 @@ public class GestioneLog{
     percorso = "/dRisp.txt";
 
     try {
-	  this.updateLog = new UpdateLog(l.getUsername(),percorso);
+	  this.updateLog = new UpdateLog(l.getUsername()+"/",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
@@ -229,7 +233,7 @@ public class GestioneLog{
     percorso = "/modPassD.txt";
 
     try {
-	  this.updateLog = new UpdateLog(d.getNickname(),percorso);
+	  this.updateLog = new UpdateLog("/"+d.getNickname(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -251,7 +255,7 @@ public class GestioneLog{
     percorso = "/modEmailD.txt";
     
 	try {
-	  this.updateLog = new UpdateLog(d.getNickname(),percorso);
+	  this.updateLog = new UpdateLog("/"+d.getNickname(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -273,7 +277,7 @@ public class GestioneLog{
     String usr = d.getNickname(); //ricavo il nick del dipendente, utile per il path
     percorso = "/modOttB.txt";
 	try {
-	  this.updateLog = new UpdateLog(d.getNickname(),percorso);
+	  this.updateLog = new UpdateLog("/"+d.getNickname(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -293,7 +297,7 @@ public class GestioneLog{
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/AA.txt";
 	try {
-	  this.updateLog = new UpdateLog("AA",percorso);
+	  this.updateLog = new UpdateLog("/AA",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -313,7 +317,7 @@ public class GestioneLog{
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/AA.txt";
 	try {
-	  this.updateLog = new UpdateLog("AA",percorso);
+	  this.updateLog = new UpdateLog("/AA",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -333,7 +337,7 @@ public class GestioneLog{
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/AA.txt";
 	try {
-	  this.updateLog = new UpdateLog("AA",percorso);
+	  this.updateLog = new UpdateLog("/AA",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -353,7 +357,7 @@ public class GestioneLog{
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/AS.txt";
 	try {
-	  this.updateLog = new UpdateLog("AS",percorso);
+	  this.updateLog = new UpdateLog("/AS",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -376,7 +380,7 @@ public class GestioneLog{
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/AS.txt";
 	try {
-	  this.updateLog = new UpdateLog("AS",percorso);
+	  this.updateLog = new UpdateLog("/AS",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
