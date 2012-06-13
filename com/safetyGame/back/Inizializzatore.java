@@ -148,7 +148,7 @@ public class Inizializzatore implements ActionListener{
     System.out.println("Premere Q quindi INVIO per terminare l'applicazione");
     // Lettura input
     int carattere=-1;
-    while (!(carattere==81)) {
+    while (!(carattere==Character.getNumericValue('Q'))) {
       BufferedReader fBuff = new BufferedReader(new InputStreamReader(System.in));
       try{
         carattere = fBuff.read();
