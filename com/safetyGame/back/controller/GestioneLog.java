@@ -95,10 +95,10 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
    	
     //creo path del file da scrivere e creo UpdateLog
-    this.percorso = "" + l.getUsername() + "/login.txt";
+    this.percorso = "/login.txt";
    
 	try {
-	  this.updateLog = new UpdateLog(this.percorso);
+	  this.updateLog = new UpdateLog(l.getUsername(),this.percorso);
 	}
 	catch (IOException e) {System.out.println("non va"); }//bisogna decidere cosa fare se si verifica errore
     
@@ -116,10 +116,10 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "" + l.getUsername() + "/logout.txt";
+    percorso = "/logout.txt";
 
     try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog(l.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -138,10 +138,10 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "" + l.getUsername() + "/dRic.txt";
+    percorso =  "/dRic.txt";
 
     try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog(l.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -160,10 +160,10 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
 
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "" + l.getUsername() + "/dProp.txt";
+    percorso = "/dProp.txt";
 
     try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog(l.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
@@ -182,10 +182,10 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
 
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "" + l.getUsername() + "/dPost.txt";
+    percorso = "/dPost.txt";
     
 	try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog(l.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
@@ -204,10 +204,10 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
 
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "" + l.getUsername() + "dRisp.txt";
+    percorso = "/dRisp.txt";
 
     try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog(l.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
@@ -225,12 +225,11 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "";
     String usr = d.getNickname(); //ricavo il nick del dipendente, utile per il path
-    percorso += usr + "/" + "modPassD.txt";
+    percorso = "/modPassD.txt";
 
     try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog(d.getNickname(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -248,12 +247,11 @@ public class GestioneLog{
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "";
     String usr = d.getNickname(); //ricavo il nick del dipendente, utile per il path
-    percorso += usr + "/" + "modEmailD.txt";
+    percorso = "/modEmailD.txt";
     
 	try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog(d.getNickname(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -272,11 +270,10 @@ public class GestioneLog{
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "";
     String usr = d.getNickname(); //ricavo il nick del dipendente, utile per il path
-    percorso += usr + "/" + "modOttB.txt";
+    percorso = "/modOttB.txt";
 	try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog(d.getNickname(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -294,9 +291,9 @@ public class GestioneLog{
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "AA/AA.txt";
+    percorso = "/AA.txt";
 	try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog("AA",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -314,9 +311,9 @@ public class GestioneLog{
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "AA/AA.txt";
+    percorso = "/AA.txt";
 	try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog("AA",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -334,9 +331,9 @@ public class GestioneLog{
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "AA/AA.txt";
+    percorso = "/AA.txt";
 	try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog("AA",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -354,9 +351,9 @@ public class GestioneLog{
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "AS/AS.txt";
+    percorso = "/AS.txt";
 	try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog("AS",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
@@ -377,9 +374,9 @@ public class GestioneLog{
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    percorso = "AS/AS.txt";
+    percorso = "/AS.txt";
 	try {
-	  this.updateLog = new UpdateLog(percorso);
+	  this.updateLog = new UpdateLog("AS",percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 

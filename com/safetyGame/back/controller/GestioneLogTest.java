@@ -38,8 +38,8 @@ public class GestioneLogTest {
 		Login login = new Login();
 		login.setUsername("usr");
 		login.setPassword("password");
-		File f = new File(".");
-		System.out.println(f.getAbsolutePath());
+		//File f = new File(".");
+		//System.out.println(f.getAbsolutePath());
 		gestioneLog.scriviLogin(login);
 
 		//controllo percorso
