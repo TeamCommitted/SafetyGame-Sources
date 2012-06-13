@@ -48,7 +48,6 @@ package com.safetyGame.back.controller;
 import java.util.ArrayList;
 
 import com.safetyGame.back.condivisi.*;
-//prova che riprova
 /**
  * Classe GestioneDati, facade del package controller del back-end
  * @author acornagl
