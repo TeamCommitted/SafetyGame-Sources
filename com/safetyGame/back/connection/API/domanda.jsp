@@ -23,7 +23,7 @@ String user = request.getParameter("username");
 String passw = request.getParameter("password");
 boolean response = appC.login(user, passw);
 Login l = Login(user, passw)
-Domanda d = mostraDomanda(l);
+Domanda d = appC.mostraDomanda(l);
 %>
 <response>
 <%
