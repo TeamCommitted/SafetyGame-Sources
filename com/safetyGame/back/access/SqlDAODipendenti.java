@@ -222,21 +222,21 @@ public class SqlDAODipendenti implements DAODipendenti{
    * Metodo che aggiunge un Dipendente al database
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean aggiungiDipendente(Dipendente d){
     //String nome, String cognome, String codfis, String mail, String impiego
     String param[]=new String[8];
-    param[1]=d.getNome();
-    param[2]=d.getCognome();
-    param[3]=d.getCodFiscale();
-    param[4]=d.getEmail();
-    param[5]=d.getNickname();
-    param[6]=d.getPassword();
-    param[7]=d.getRuolo();
-    param[8]=""+d.getPunteggio().getPunti();
-    return serverAzienda.inserisciRiga("Dipendente","nome, cognome, codice fiscale, email, nickname, password, trofei",param);
+    param[0]="'"+d.getNome()+"'";
+    param[1]="'"+d.getCognome()+"'";
+    param[2]="'"+d.getCodFiscale()+"'";
+    param[3]="'"+d.getEmail()+"'";
+    param[4]="'"+d.getNickname()+"'";
+    param[5]="'"+d.getPassword()+"'";
+    param[6]="'"+d.getRuolo()+"'";
+    param[7]=""+d.getPunteggio().getPunti();
+    return serverAzienda.inserisciRiga("Dipendente","nome, cognome, codice_fiscale, email, nickname, password, ruolo, trofeo",param);
   }
   
   /**
