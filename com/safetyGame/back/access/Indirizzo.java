@@ -145,16 +145,11 @@ public class Indirizzo{
       where=" WHERE " +controlli;
     }
     try{
-    	System.out.println("SELECT "+ colonne+" FROM "+ tabella + where + extra+";");
     	rs = connettore.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where + extra+";");
+    	rs.next();
     }
-    catch(SQLException e){System.out.println("errori selezione"+e.getMessage());return null;}
-    try {
-		rs.next();
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+    catch(SQLException e){return null;}
+    
     return rs;
   }
 }
