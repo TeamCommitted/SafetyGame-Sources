@@ -270,7 +270,7 @@ public class SqlDAODomande implements DAODomande{
    * 
    */   
   public boolean addDomanda(Domanda d){
-    String s[]=new String[0];
+    String s[]=new String[1];
     s[0]=""+d.getId();
     return serverAzienda.inserisciRiga("Domanda","ID",s);
   }

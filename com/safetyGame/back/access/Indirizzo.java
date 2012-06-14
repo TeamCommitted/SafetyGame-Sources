@@ -94,6 +94,7 @@ public class Indirizzo{
     try{
     //System.out.println("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
       //PreparedStatement pstmt = conn.prepareStatement("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
+     System.out.println("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val); 
     PreparedStatement pstmt = conn.prepareStatement("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
       //for(int i=0; i<valori.length; i++)
       //pstmt.setString(i, valori[i]);
