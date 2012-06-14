@@ -69,7 +69,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return l'oggetto Dipendente istanziato se presente nel db, altrimenti null
    * 
    */     
-  public Dipendente getInfoD(Login l){
+  public Dipendente getInfoD(Login l){//
     String username = l.getUsername();
     String password = l.getPassword();
     ResultSet rs = serverAzienda.selezione("Dipendente as dip INNER JOIN Ruolo as r ON dip.ruolo=r.ruolo ","*", "nickname='"+username+"'",""); 
@@ -106,10 +106,10 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return l'oggetto Dipendente (amministratore) istanziato se presente nel db, altrimenti null
    * 
    */   
-  public Dipendente getInfoA(Login l){
+  public Dipendente getInfoA(Login l){//DA TESTARE
     String username = l.getUsername();
     String password = l.getPassword();
-    ResultSet rs = serverAzienda.selezione("Amministratore","*", "nickname="+username,""); 
+    ResultSet rs = serverAzienda.selezione("Amministratore","*", "nickname='"+username+"'",""); 
     int ID;
     String email,codfis,data,passmod;
     boolean amm;
@@ -130,10 +130,10 @@ public class SqlDAODipendenti implements DAODipendenti{
    * Metodo che resetta il campo password modificata di un Dipendente
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean resetPassD(Dipendente d){
+  public boolean resetPassD(Dipendente d){//DA TESTARE
     return serverAzienda.modificaRiga("Dipendente", "passmod=''","ID="+d.getId());
   }
   
@@ -141,10 +141,10 @@ public class SqlDAODipendenti implements DAODipendenti{
    * Metodo che resetta il campo password modificata di un Amministratore
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean resetPassA(Dipendente d){
+  public boolean resetPassA(Dipendente d){//DA TESTARE
     return serverAzienda.modificaRiga("Amministratore", "passmod=''","ID="+d.getId());
   }
   
@@ -153,11 +153,11 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param pass la stringa della nuova password del Dipendente
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean passD(Dipendente d, String pass){
-    return serverAzienda.modificaRiga("Dipendente", "password="+pass,"ID="+d.getId());
+  public boolean passD(Dipendente d, String pass){//DA TESTARE
+    return serverAzienda.modificaRiga("Dipendente", "password='"+pass+"'","ID="+d.getId());
   }
 
   /**
@@ -165,16 +165,16 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param pass la stringa della nuova password dell'Amministratore
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean passA(Dipendente d, String pass){
+  public boolean passA(Dipendente d, String pass){//DA TESTARE
     DataOra data=new DataOra();
-    boolean b = serverAzienda.modificaRiga("Amministratore", "password="+pass,"ID="+d.getId());
+    boolean b = serverAzienda.modificaRiga("Amministratore", "password='"+pass+"'","ID="+d.getId());
     if (b){
       b=false;
       while (!b){
-        b=serverAzienda.modificaRiga("Amministratore", "datapass="+data.toString(),"ID="+d.getId());
+        b=serverAzienda.modificaRiga("Amministratore", "datapass='"+data.toString()+"'","ID="+d.getId());
       }
     }
     return b;
@@ -185,11 +185,11 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param mail la stringa della nuova email del Dipendente
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean mailD(Dipendente d, String mail){
-    return serverAzienda.modificaRiga("Dipendente", "email="+mail,"ID="+d.getId());
+  public boolean mailD(Dipendente d, String mail){//DA TESTARE
+    return serverAzienda.modificaRiga("Dipendente", "email='"+mail+"'","ID="+d.getId());
   }
 
   /**
@@ -198,7 +198,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return un ArrayList che contiene tutti i dipendenti
    * 
    */   
-  public ArrayList<Dipendente> elencoDipendenti(){
+  public ArrayList<Dipendente> elencoDipendenti(){//DA TESTARE
     ResultSet rs=serverAzienda.selezione("Dipendenti","*","","");
     ArrayList<Dipendente> d = new ArrayList<Dipendente>();
     boolean trovato = false;
@@ -225,8 +225,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean aggiungiDipendente(Dipendente d){
-    //String nome, String cognome, String codfis, String mail, String impiego
+  public boolean aggiungiDipendente(Dipendente d){//
     String param[]=new String[8];
     param[0]="'"+d.getNome()+"'";
     param[1]="'"+d.getCognome()+"'";
@@ -243,11 +242,11 @@ public class SqlDAODipendenti implements DAODipendenti{
    * Metodo che cancella un Dipendente al database
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean cancellaDipendente(Dipendente d){
-    return serverAzienda.cancellaRiga("Dipendente","ID="+d.getId()+" AND username="+d.getNickname()+" AND password ="+d.getPassword());
+  public boolean cancellaDipendente(Dipendente d){//DA TESTARE
+    return serverAzienda.cancellaRiga("Dipendente","ID="+d.getId()+" AND username='"+d.getNickname()+"' AND password ='"+d.getPassword()+"'");
   }
   
   /**
@@ -258,7 +257,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean modNome(Dipendente d, String nome){
+  public boolean modNome(Dipendente d, String nome){//
     return serverAzienda.modificaRiga("Dipendente","nome='"+nome+"'","ID="+d.getId());
   }
   
@@ -270,7 +269,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean modCognome(Dipendente d, String cognome){
+  public boolean modCognome(Dipendente d, String cognome){//
     return serverAzienda.modificaRiga("Dipendente","cognome='"+cognome+"'","ID="+d.getId());
   }
   
@@ -282,7 +281,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean modCodFis(Dipendente d, String codfis){
+  public boolean modCodFis(Dipendente d, String codfis){//
     return serverAzienda.modificaRiga("Dipendente","codice_fiscale='"+codfis+"'","ID="+d.getId());
   }
 
@@ -294,7 +293,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean modUsername(Dipendente d, String username){
+  public boolean modUsername(Dipendente d, String username){//
     return serverAzienda.modificaRiga("Dipendente","nickname='"+username+"'","ID="+d.getId());
   }
 
@@ -306,7 +305,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean modImpiego(Dipendente d, String impiego){
+  public boolean modImpiego(Dipendente d, String impiego){//
     return serverAzienda.modificaRiga("Dipendente","ruolo='"+impiego+"'","ID="+d.getId());
   }
   
@@ -318,7 +317,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean setTrofei(Dipendente d, int n){
+  public boolean setTrofei(Dipendente d, int n){//
     return serverAzienda.modificaRiga("Dipendente","trofeo="+n,"ID="+d.getId());
   }
   
@@ -329,7 +328,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean resetD(Recupero r, String p){
+  public boolean resetD(Recupero r, String p){//
     boolean b = serverAzienda.modificaRiga("Dipendente","passmod='"+p+"'","email='"+r.getEmail()+"'"+" AND codice_fiscale='"+r.getCodFiscale()+"'");
     if (b){
       ResultSet rs= serverAzienda.selezione("Dipendente","passmod","email='"+r.getEmail()+"'"+" AND codice_fiscale='"+r.getCodFiscale()+"'","");
@@ -352,7 +351,19 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean resetA(Recupero r, String p){
-    return serverAzienda.modificaRiga("Amministratore","passmod='"+p+"'","email='"+r.getEmail()+" AND codice fiscale= "+r.getCodFiscale()+"'");
+  public boolean resetA(Recupero r, String p){//DA TESTARE
+    boolean b =serverAzienda.modificaRiga("Amministratore","passmod='"+p+"'","email='"+r.getEmail()+" AND codice fiscale='"+r.getCodFiscale()+"'");
+    if (b){
+      ResultSet rs= serverAzienda.selezione("Amministratore","passmod","email='"+r.getEmail()+"'"+" AND codice_fiscale='"+r.getCodFiscale()+"'","");
+      try{
+        String s = rs.getString("passmod");
+        if (s!="")
+          b=true;
+        else
+          b=false;
+      }
+      catch(SQLException e){return false;}
+    }
+    return b;
   }
 }

@@ -57,7 +57,7 @@ public class SqlDAODomande implements DAODomande{
    * @return l'oggetto Domanda con i campi corretti
    * 
    */   
-  private Domanda prendiCampiDomanda(int id){
+  private Domanda prendiCampiDomanda(int id){//DA TESTARE
     ResultSet rs=serverDomande.selezione("Tipologia as t INNER JOIN Domanda as d ON d.tipologia=t.tipologia","*","ID="+id,"");
     Domanda d=new Domanda();
     Punteggio p;
@@ -112,7 +112,7 @@ public class SqlDAODomande implements DAODomande{
    * @return l'oggetto Domanda che contiene una domanda
    * 
    */   
-  public Domanda getDomanda(Dipendente d){
+  public Domanda getDomanda(Dipendente d){//DA TESTARE
     ResultSet rs=serverAzienda.selezione("Storico","ID","IDdipendente="+d.getId()+" AND punteggio=-1","");
     int id=-1;
     boolean domanda=true;
@@ -147,7 +147,7 @@ public class SqlDAODomande implements DAODomande{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean posticipa(Dipendente d, Domanda dom){
+  public boolean posticipa(Dipendente d, Domanda dom){//DA TESTARE
     return serverAzienda.modificaRiga("Storico","punteggio=-1","IDdipendente="+d.getId()+" AND IDdomanda="+dom.getId());
   }
   
@@ -181,7 +181,7 @@ public class SqlDAODomande implements DAODomande{
    * @return ArrayList che contiene l'elenco di tutte le Domande
    * 
    */   
-  public ArrayList<Domanda> domandeA(){
+  public ArrayList<Domanda> domandeA(){//DA TESTARE
     ResultSet rs=serverAzienda.selezione("Domanda","ID","","ORDER BY ID ASC");
     ArrayList<Integer> id = new ArrayList<Integer>();
     boolean trovato = false;
@@ -226,7 +226,7 @@ public class SqlDAODomande implements DAODomande{
    * @return ArrayList che contiene l'elenco di tutte le Domande
    * 
    */   
-  public ArrayList<Domanda> domande(Dipendente d, Domanda dom){
+  public ArrayList<Domanda> domande(Dipendente d, Domanda dom){//DA TESTARE
     ResultSet rs=serverAzienda.selezione("Domanda as d INNER JOIN Storico as s ON d.ID=s.IDdomanda","d.ID","","GROUP BY d.ID");
     ArrayList<Integer> id = new ArrayList<Integer>();
     boolean trovato = false;
@@ -269,9 +269,9 @@ public class SqlDAODomande implements DAODomande{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean addDomanda(Domanda d){
+  public boolean addDomanda(Domanda d){//DA TESTARE
     String s[]=new String[1];
-    s[0]=""+d.getId();
+    s[0]="'"+d.getId()+"'";
     return serverAzienda.inserisciRiga("Domanda","ID",s);
   }
   
@@ -282,7 +282,7 @@ public class SqlDAODomande implements DAODomande{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean remDomanda(Domanda d){
+  public boolean remDomanda(Domanda d){//DA TESTARE
     return serverAzienda.cancellaRiga("Domanda","ID="+d.getId());
   }
   
@@ -294,7 +294,7 @@ public class SqlDAODomande implements DAODomande{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean scriviSottoposta(Dipendente dip, Domanda dom){
+  public boolean scriviSottoposta(Dipendente dip, Domanda dom){//DA TESTARE
     return serverAzienda.modificaRiga("Storico","punteggio=0","IDdipendente="+dip.getId()+" AND IDdomanda="+dom.getId());
   }
 }

@@ -48,10 +48,10 @@ public class SqlDAOLogin implements DAOLogin{
    * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */    
-  public boolean loginAmministratore(Login l){
+  public boolean loginAmministratore(Login l){//DA TESTARE
     String username = l.getUsername();
     String password = l.getPassword();
-    ResultSet rs= serverAzienda.selezione("Amministratore","*", "nickname="+username+" AND (password="+password+" OR passmod="+password+")",""); 
+    ResultSet rs= serverAzienda.selezione("Amministratore","*", "nickname='"+username+"' AND (password='"+password+"' OR passmod='"+password+"')",""); 
     try{
       int ID = rs.getInt("ID");
     }
@@ -66,10 +66,10 @@ public class SqlDAOLogin implements DAOLogin{
    * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */    
-  public boolean loginDipendente(Login l){
+  public boolean loginDipendente(Login l){//DA TESTARE
     String username = l.getUsername();
     String password = l.getPassword();
-    ResultSet rs= serverAzienda.selezione("Dipendente","*", "nickname="+username+", password="+password+" OR passmod="+password+")",""); 
+    ResultSet rs= serverAzienda.selezione("Dipendente","*", "nickname='"+username+"', password='"+password+"' OR passmod='"+password+"')",""); 
     try{
       int ID = rs.getInt("ID");
     }

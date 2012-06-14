@@ -44,7 +44,7 @@ public class SqlDAODipendentiTest {
 	
 	@Test
 	public void modificaDipendenteNome() {
-      //test per la modifica da parte di un dipendente  del proprio nome
+      //test per la modifica da parte di un amministratore  del proprio nome
 	  init();
 	  Dipendente dipV = new Dipendente(25,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
 	  String nome = "Paolo";
@@ -53,7 +53,7 @@ public class SqlDAODipendentiTest {
 	
 	@Test
 	public void modificaDipendenteCognome() {
-      //test per la modifica da parte di un dipendente  del proprio cognome
+      //test per la modifica da parte di un amministratore  del proprio cognome
 	  init();
 	  Dipendente dipV = new Dipendente(25,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
 	  String cognome = "Paolo";
@@ -62,7 +62,7 @@ public class SqlDAODipendentiTest {
 	
 	@Test
 	public void modificaDipendenteCodFisc() {
-      //test per la modifica da parte di un dipendente  del proprio codice fiscale
+      //test per la modifica da parte di un amministratore  del proprio codice fiscale
 	  init();
 	  Dipendente dipV = new Dipendente(25,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
 	  String codfisc = "crnlsn";
@@ -71,7 +71,7 @@ public class SqlDAODipendentiTest {
 	
 	@Test
 	public void modificaDipendenteUsername() {
-      //test per la modifica da parte di un dipendente  del proprio username
+      //test per la modifica da parte di un amministratore  del proprio username
 	  init();
 	  Dipendente dipV = new Dipendente(25,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
 	  String usern = "root";
@@ -80,7 +80,7 @@ public class SqlDAODipendentiTest {
 	
 	@Test
 	public void modificaDipendenteImpiego() {
-      //test per la modifica da parte di un dipendente  del proprio impiego
+      //test per la modifica da parte di un amministratore  del proprio impiego
 	  init();
 	  Dipendente dipV = new Dipendente(25,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
 	  String impiego = "Segretaria";
@@ -89,7 +89,7 @@ public class SqlDAODipendentiTest {
 	
 	@Test
 	public void modificaDipendenteSetTrofei() {
-      //test per la modifica da parte di un dipendente  del proprio numero di trofei
+      //test per la modifica da parte di un amministratore  del proprio numero di trofei
 	  init();
 	  Dipendente dipV = new Dipendente(25,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
 	  int trof = 100;

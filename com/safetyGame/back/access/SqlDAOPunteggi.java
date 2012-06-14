@@ -52,7 +52,7 @@ public class SqlDAOPunteggi implements DAOPunteggi{
    * @return l'oggetto Punteggio contenente il totale del punteggio del Dipendente
    * 
    */    
-  public Punteggio getStat(Dipendente d){
+  public Punteggio getStat(Dipendente d){//DA TESTARE
     ResultSet rs = serverAzienda.selezione("Storico","punteggio","IDDipendente="+d.getId(),"");
     int totale=0;
     boolean finito = false;
@@ -73,7 +73,7 @@ public class SqlDAOPunteggi implements DAOPunteggi{
    * @return l'oggetto Punteggio contenente le statistiche dei dipendenti (e dell'azienda) a lui vicini
    * 
    */    
-  public Punteggio getGlobalStat(Dipendente dip){
+  public Punteggio getGlobalStat(Dipendente dip){//DA TESTARE
     int punteggio=dip.getPunteggio().getPunti();
     ResultSet rs = serverAzienda.selezione("Dipendente","ID","","");
     boolean finito = false;
