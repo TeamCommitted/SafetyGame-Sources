@@ -17,7 +17,7 @@ public class SqlDAODipendentiTest {
 	
 	
 	private void init() {
-	  indirizzoAz = "127.0.0.1/ing";//"monossido.ath.cx/teamcommitted1";//"aziendasafetygam.altervista.org";//"monossido.ath.cx";
+	  indirizzoAz = "127.0.0.1/ingAz";//"monossido.ath.cx/teamcommitted1";//"aziendasafetygam.altervista.org";//"monossido.ath.cx";
 	  utente = "root";//"teamcommitted";//"aziendasafetygam";//"teamcommitted";
 	  pass = "root";//"team";//"gifgiresmo40";//""team";
 	  ind = new Indirizzo(indirizzoAz,utente,pass);
@@ -117,5 +117,13 @@ public class SqlDAODipendentiTest {
 	  Recupero recupero = new Recupero("xxx@xxx.xxx","dtrftyg");
 	  String pass = "pass1";
 	  assertTrue("password utente non modificato", (sqlD.resetA(recupero, pass)));  
+	}
+	
+	@Test
+	public void testGetInfoD(){
+	  init();
+	  Login l = new Login("nick","pass");
+	  Dipendente d = sqlD.getInfoD(l);
+	  System.out.println(d.getNome());
 	}
 }

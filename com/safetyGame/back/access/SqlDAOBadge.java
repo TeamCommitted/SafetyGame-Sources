@@ -61,11 +61,13 @@ public class SqlDAOBadge implements DAOBadge{
     int punti=0, ID=0;
     while(!trovato){
       try{
-//        ID= rs.getInt("ID");
-        data=rs.getString("il");
-//        nomeB = rs.getString("nome");
-//        descr = rs.getString("descrizione");
-//        punti = rs.getInt("soglia");
+    	  rs.absolute(1);
+        System.out.println(""+rs.getRow());
+        //ID= rs.getInt(0));
+        //data=rs.getString(1);
+        //nomeB = rs.getString(2);
+        //descr = rs.getString(3);
+        //punti = rs.getInt(4);
         DataOra da = new DataOra(data);
         Badge temp=new Badge(nomeB, ID, descr,punti);
         temp.setData(da);

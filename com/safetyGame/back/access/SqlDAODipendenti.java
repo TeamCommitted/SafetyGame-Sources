@@ -72,7 +72,7 @@ public class SqlDAODipendenti implements DAODipendenti{
   public Dipendente getInfoD(Login l){
     String username = l.getUsername();
     String password = l.getPassword();
-    ResultSet rs = serverAzienda.selezione("Dipendente as dip INNER JOIN Ruolo as r ON dip.ruolo=r.ruolo ","*", "nickname="+username,""); 
+    ResultSet rs = serverAzienda.selezione("Dipendente as dip INNER JOIN Ruolo as r ON dip.ruolo=r.ruolo ","*", "nickname='"+username+"'",""); 
     String nome,cognome,codfis,email,ruolo,passmod;
     int ID,trofeo;
     try{
