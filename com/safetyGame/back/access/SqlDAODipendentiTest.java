@@ -32,16 +32,6 @@ public class SqlDAODipendentiTest {
 	public void aggiuntaUtente() {
 	  //test per l'aggiunta di un dipendente al DB Azienda	
 	  init();
-	  Dipendente dip = new Dipendente();
-	  dip.setNickname("cetto");
-	  Punteggio punt = new Punteggio();
-	  dip.setPunteggio(punt);
-	  dip.setCodFiscale("tcryvgtu");
-	  dip.setCognome("caccola");
-	  dip.setEmail("aaa@aaa.com");
-	  dip.setBadges(new ArrayList<Badge>());
-	  dip.setNome("dio");
-	  dip.setId(1);
 	  Dipendente dipp = new Dipendente(1,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
 	  assertTrue("utente non aggiunto", (sqlD.aggiungiDipendente(dipp)));
 	  
