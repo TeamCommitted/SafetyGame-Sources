@@ -52,7 +52,7 @@ public class SqlDAOBadge implements DAOBadge{
    * 
    */     
   public ArrayList<Badge> badgeD(Dipendente d){
-    ResultSet rs = serverAzienda.selezione("Assegnato INNER JOIN Badge ON IDBadge=ID","ID, il, nome, descrizione, soglia","IDutente="+d.getId(),"");
+    ResultSet rs = serverAzienda.selezione("Assegnato INNER JOIN Badge ON IDBadge=ID","ID, il, nome, descrizione, soglia","IDDipendente="+d.getId(),"");
     ArrayList<Badge> b = new ArrayList<Badge>();
     boolean trovato = false;
     String nomeB="";
@@ -61,18 +61,19 @@ public class SqlDAOBadge implements DAOBadge{
     int punti=0, ID=0;
     while(!trovato){
       try{
-        ID= rs.getInt("ID");
+//        ID= rs.getInt("ID");
         data=rs.getString("il");
-        nomeB = rs.getString("nome");
-        descr = rs.getString("descrizione");
-        punti = rs.getInt("soglia");
+//        nomeB = rs.getString("nome");
+//        descr = rs.getString("descrizione");
+//        punti = rs.getInt("soglia");
         DataOra da = new DataOra(data);
         Badge temp=new Badge(nomeB, ID, descr,punti);
         temp.setData(da);
         b.add(temp);      
+        System.out.println("badge aggiunto");
         rs.next();
       }
-      catch(SQLException e){trovato=true;}  
+      catch(SQLException e){System.out.println("questo errore="+e.getMessage());trovato=true;}  
     }
     if (b.size()==0){b=null;}
     return b;

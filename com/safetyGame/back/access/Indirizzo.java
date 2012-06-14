@@ -142,12 +142,14 @@ public class Indirizzo{
     String where="";
     ResultSet rs=null;
     if (controlli!=""){
-      where="WHERE " +controlli;
+      where=" WHERE " +controlli;
     }
     try{
-      rs = connettore.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where + extra);
+    	System.out.println("SELECT "+ colonne+" FROM "+ tabella + where + extra+";");
+      rs = connettore.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where + extra+";");
     }
-    catch(SQLException e){return null;}
+    catch(SQLException e){System.out.println("errori selezione"+e.getMessage());return null;}
+    System.out.println("risultato="+rs.toString());
     return rs;
   }
 }
