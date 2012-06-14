@@ -255,11 +255,11 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param nome stringa contenente il nuovo nome
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean modNome(Dipendente d, String nome){
-    return serverAzienda.modificaRiga("Dipendente","nome="+nome,"ID="+d.getId());
+    return serverAzienda.modificaRiga("Dipendente","nome='"+nome+"'","ID="+d.getId());
   }
   
   /**
@@ -267,7 +267,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param cognome stringa contenente il nuovo cognome
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean modCognome(Dipendente d, String cognome){

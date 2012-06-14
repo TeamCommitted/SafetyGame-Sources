@@ -20,21 +20,33 @@ public class SqlDAODipendentiTest {
 	  indirizzoAz = "127.0.0.1/ing";//"monossido.ath.cx/teamcommitted1";//"aziendasafetygam.altervista.org";//"monossido.ath.cx";
 	  utente = "root";//"teamcommitted";//"aziendasafetygam";//"teamcommitted";
 	  pass = "root";//"team";//"gifgiresmo40";//""team";
-	  System.out.println("cetto");
 	  ind = new Indirizzo(indirizzoAz,utente,pass);
-	  System.out.println("cetto");
 	  sqlD = new SqlDAODipendenti(ind);
-	  System.out.println("cetto");
 	}
 	
 	
 	@Test
-	public void aggiuntaUtente() {
+	public void aggiuntaUtenteOk() {
 	  //test per l'aggiunta di un dipendente al DB Azienda	
 	  init();
 	  Dipendente dipp = new Dipendente(1,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
-	  assertTrue("utente non aggiunto", (sqlD.aggiungiDipendente(dipp)));
-	  
+	  assertTrue("utente non aggiunto", (sqlD.aggiungiDipendente(dipp)));  
 	}
 
+	@Test
+	public void aggiuntaUtenteBad() {
+	  //test per l'aggiunta di un dipendente al DB Azienda con parametri non corretti	
+	  init();
+	  
+	  Dipendente dipp = new Dipendente(1,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
+	  assertTrue("utente non aggiunto", (sqlD.aggiungiDipendente(dipp)));  
+	}
+	
+	@Test
+	public void modificaDipendenteNome() {
+	  init();
+	  Dipendente dipV = new Dipendente(25,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
+	  String nome = "Paolo";
+	  assertTrue("nome utente non modificato", (sqlD.modNome(dipV, nome)));  
+	}
 }

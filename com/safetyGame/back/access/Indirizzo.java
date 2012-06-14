@@ -51,15 +51,12 @@ public class Indirizzo{
       //conn = DriverManager.getConnection("jdbc:mysql:"+database+ "user="+utente+"&password="+password);
     	//final String driver="com.mysql.jdbc.Driver"; //driver del connettore
     	//Class.forName(driver);/var/lib/tomcat6/webapps/ROOT/teamcommitted
-    	System.out.println("ci sono");
     	final String driver="com.mysql.jdbc.Driver";
     	Class.forName(driver);
-    	System.out.println("ci sono1");
     	//conn = DriverManager.getConnection("jdbc:mysql://"+database+":3306",utente,password);
     	//conn = DriverManager.getConnection("jdbc:mysql://monossido.ath.cx/" + "teamcommitted1" + "?user=" + "teamcommitted" + "&password=" + "team");
     	//conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/ing"+ "?user=" + "root" + "&password=" + "root");
     	conn = DriverManager.getConnection("jdbc:mysql://"+database+ "?user="+utente  + "&password=" + password);
-    	System.out.println("ci sono2");
       connettore = conn.createStatement();
     }
     catch(SQLException e){
@@ -121,9 +118,10 @@ public class Indirizzo{
    */   
   public boolean modificaRiga(String tabella, String colonnevalori, String controlli){
     try{
-      connettore.executeQuery("UPDATE "+ tabella +" SET "+ colonnevalori +" WHERE "+ controlli);
+    	System.out.println("UPDATE "+ tabella +" SET "+ colonnevalori +" WHERE "+ controlli+";");
+      connettore.executeUpdate("UPDATE "+ tabella +" SET "+ colonnevalori +" WHERE "+ controlli+";");
     }
-    catch(SQLException e){return false;}
+    catch(SQLException e){System.out.println(e.getMessage());return false;}
     return true;
   }
       
