@@ -271,7 +271,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    */   
   public boolean modCognome(Dipendente d, String cognome){
-    return serverAzienda.modificaRiga("Dipendente","cognome="+cognome,"ID="+d.getId());
+    return serverAzienda.modificaRiga("Dipendente","cognome='"+cognome+"'","ID="+d.getId());
   }
   
   /**
@@ -279,11 +279,11 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param codfis stringa contenente il nuovo codice fiscale
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean modCodFis(Dipendente d, String codfis){
-    return serverAzienda.modificaRiga("Dipendente","codice fiscale="+codfis,"ID="+d.getId());
+    return serverAzienda.modificaRiga("Dipendente","codice_fiscale='"+codfis+"'","ID="+d.getId());
   }
 
   /**
@@ -291,11 +291,11 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param username stringa contenente il nuovo username
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean modUsername(Dipendente d, String username){
-    return serverAzienda.modificaRiga("Dipendente","nickname="+username,"ID="+d.getId());
+    return serverAzienda.modificaRiga("Dipendente","nickname='"+username+"'","ID="+d.getId());
   }
 
   /**
@@ -303,11 +303,11 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param impiego stringa contenente il nuovo impiego
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean modImpiego(Dipendente d, String impiego){
-    return serverAzienda.modificaRiga("Dipendente","ruolo="+impiego,"ID="+d.getId());
+    return serverAzienda.modificaRiga("Dipendente","ruolo='"+impiego+"'","ID="+d.getId());
   }
   
   /**
@@ -315,32 +315,32 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    * @param d Oggetto Dipendente da cui si prendono le informazioni
    * @param n intero contenente il nuovo ammontare trofei
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean setTrofei(Dipendente d, int n){
-    return serverAzienda.modificaRiga("Dipendente","trofei="+n,"ID="+d.getId());
+    return serverAzienda.modificaRiga("Dipendente","trofeo="+n,"ID="+d.getId());
   }
   
   /**
    * Metodo che resetta la password (casuale) di un Dipendente
    * 
    * @param r Oggetto Recupero da cui si prendono le informazioni
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean resetD(Recupero r, String p){
-    return serverAzienda.modificaRiga("Dipendente","passmod="+p,"email="+r.getEmail()+" AND codice fiscale= "+r.getCodFiscale());
+  public boolean resetD(Recupero r, String p){//non si fa un controllo che se non trova un dipendente  e non gli modifica la password ma ritorna true allora sarebbe da ritornare false?
+    return serverAzienda.modificaRiga("Dipendente","passmod='"+p+"'","email='"+r.getEmail()+"'"+" AND codice_fiscale='"+r.getCodFiscale()+"'");
   }
   
   /**
    * Metodo che resetta la password (casuale) di un Amministratore
    * 
    * @param r Oggetto Recupero da cui si prendono le informazioni
-   * @return boolean che indica se l'operazione � andata o meno a buon fine
+   * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
   public boolean resetA(Recupero r, String p){
-    return serverAzienda.modificaRiga("Amministratore","passmod="+p,"email="+r.getEmail()+" AND codice fiscale= "+r.getCodFiscale());
+    return serverAzienda.modificaRiga("Amministratore","passmod='"+p+"'","email='"+r.getEmail()+" AND codice fiscale= "+r.getCodFiscale()+"'");
   }
 }
