@@ -76,13 +76,13 @@ public class LoginActivity extends SherlockActivity {
 		protected void onPreExecute() {
 			dialog = ProgressDialog.show(LoginActivity.this, "",
 					"Loading. Please wait...", true);
+
+			user = (EditText) findViewById(R.id.userE);
+			passw = (EditText) findViewById(R.id.passwordE);
 		}
 
 		@Override
 		protected String doInBackground(Object... params) {
-
-			user = (EditText) findViewById(R.id.userE);
-			passw = (EditText) findViewById(R.id.passwordE);
 
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 			nameValuePairs.add(new BasicNameValuePair("username", user
