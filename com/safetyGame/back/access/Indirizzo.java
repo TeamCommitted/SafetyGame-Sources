@@ -48,21 +48,13 @@ public class Indirizzo{
    */
   public Indirizzo(String database, String utente, String password){
     try {
-      //conn = DriverManager.getConnection("jdbc:mysql:"+database+ "user="+utente+"&password="+password);
-    	//final String driver="com.mysql.jdbc.Driver"; //driver del connettore
-    	//Class.forName(driver);/var/lib/tomcat6/webapps/ROOT/teamcommitted
-    	final String driver="com.mysql.jdbc.Driver";
-    	Class.forName(driver);
-    	//conn = DriverManager.getConnection("jdbc:mysql://"+database+":3306",utente,password);
-    	//conn = DriverManager.getConnection("jdbc:mysql://monossido.ath.cx/" + "teamcommitted1" + "?user=" + "teamcommitted" + "&password=" + "team");
-    	//conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/ing"+ "?user=" + "root" + "&password=" + "root");
-    	conn = DriverManager.getConnection("jdbc:mysql://"+database+ "?user="+utente  + "&password=" + password);
+      final String driver="com.mysql.jdbc.Driver";
+      Class.forName(driver);
+      conn = DriverManager.getConnection("jdbc:mysql://"+database+ "?user="+utente  + "&password=" + password);
       connettore = conn.createStatement();
     }
-    catch(SQLException e){
-    	System.out.println(e.getMessage());
-    	System.out.println("Impossibile creare la connessione al database: "+database);}
-    catch(Exception e){System.out.println("implodi");};
+    catch(SQLException e){System.out.println("Impossibile creare la connessione al database: "+database);}
+    catch(ClassNotFoundException e){System.out.println("Impossibile creare la connessione al database: "+database);}
   }
   
   /**
@@ -92,19 +84,11 @@ public class Indirizzo{
       val+=", "+valori[i];
     val+=");";
     try{
-    //System.out.println("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
-      //PreparedStatement pstmt = conn.prepareStatement("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
-     System.out.println("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val); 
-    PreparedStatement pstmt = conn.prepareStatement("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
-      //for(int i=0; i<valori.length; i++)
-      //pstmt.setString(i, valori[i]);
+      PreparedStatement pstmt = conn.prepareStatement("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
       pstmt.executeUpdate();
-      //pstmt.execute("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
       pstmt.close();
-    //Statement statement = conn.createStatement();
-    //statement.executeUpdate("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
     }
-    catch(SQLException e){System.out.println(e.getMessage()); return false;}
+    catch(SQLException e){return false;}
     return true;
   }
        

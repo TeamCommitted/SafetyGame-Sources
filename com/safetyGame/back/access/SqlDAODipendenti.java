@@ -329,8 +329,20 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean resetD(Recupero r, String p){//non si fa un controllo che se non trova un dipendente  e non gli modifica la password ma ritorna true allora sarebbe da ritornare false?
-    return serverAzienda.modificaRiga("Dipendente","passmod='"+p+"'","email='"+r.getEmail()+"'"+" AND codice_fiscale='"+r.getCodFiscale()+"'");
+  public boolean resetD(Recupero r, String p){
+    boolean b = serverAzienda.modificaRiga("Dipendente","passmod='"+p+"'","email='"+r.getEmail()+"'"+" AND codice_fiscale='"+r.getCodFiscale()+"'");
+    if (b){
+      ResultSet rs= serverAzienda.selezione("Dipendente","passmod","email='"+r.getEmail()+"'"+" AND codice_fiscale='"+r.getCodFiscale()+"'","");
+      try{
+        String s = rs.getString("passmod");
+        if (s!="")
+          b=true;
+        else
+          b=false;
+      }
+      catch(SQLException e){return false;}
+    }
+    return b;
   }
   
   /**
