@@ -118,7 +118,6 @@ public class Indirizzo{
    */   
   public boolean modificaRiga(String tabella, String colonnevalori, String controlli){
     try{
-    	System.out.println("UPDATE "+ tabella +" SET "+ colonnevalori +" WHERE "+ controlli+";");
       connettore.executeUpdate("UPDATE "+ tabella +" SET "+ colonnevalori +" WHERE "+ controlli+";");
     }
     catch(SQLException e){System.out.println(e.getMessage());return false;}
