@@ -20,12 +20,6 @@
  *
  */
 package com.safetyGame.back.access;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.*;
 
 /**
@@ -84,11 +78,9 @@ public class Indirizzo{
       val+=", "+valori[i];
     val+=");";
     try{
-      PreparedStatement pstmt = conn.prepareStatement("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
-      pstmt.executeUpdate();
-      pstmt.close();
-    }
-    catch(SQLException e){return false;}
+        connettore.executeUpdate("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
+      }
+      catch(SQLException e){return false;}
     return true;
   }
        

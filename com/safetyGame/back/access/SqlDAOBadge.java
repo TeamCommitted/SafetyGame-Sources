@@ -84,7 +84,7 @@ public class SqlDAOBadge implements DAOBadge{
    * @return un ArrayList di Badge che contiene i Badge di quell'azienda
    * 
    */     
-  public ArrayList<Badge> badgeAS(){//DA TESTARE
+  public ArrayList<Badge> badgeAS(){//
     ResultSet rs = serverAzienda.selezione("Badge","*","","");
     ArrayList<Badge> b = new ArrayList<Badge>();
     boolean trovato = false;
@@ -116,11 +116,11 @@ public class SqlDAOBadge implements DAOBadge{
    * 
    */     
   public boolean assegna(Dipendente d, Badge b){//DA TESTARE
-    String valori[]=new String [2];
-    valori[0]="'"+d.getId()+"'";
-    valori[1]="'"+b.getId()+"'";
+    String valori[]=new String [3];
+    valori[0]=""+d.getId();
+    valori[1]=""+b.getId();
     DataOra data=new DataOra();
     valori[2]="'"+data.toString()+"'";
-    return serverAzienda.inserisciRiga("Assegnato","IDDipendente, IDBadge, data",valori);
+    return serverAzienda.inserisciRiga("Assegnato","IDDipendente, IDBadge, il",valori);
   }
 }
