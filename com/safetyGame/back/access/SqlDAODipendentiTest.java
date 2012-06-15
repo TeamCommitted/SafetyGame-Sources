@@ -183,7 +183,7 @@ public class SqlDAODipendentiTest {
 	
 	@Test
 	public void delDip() {
-      //test per verificare il recupero della lista dei dipendenti
+      //test per verificare la cancellazione di un dipendente
 	  init();
 	  String username = "marco";
 	  String password = "p1";

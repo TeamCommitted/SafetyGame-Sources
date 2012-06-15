@@ -66,14 +66,14 @@ public class SqlDAOLogin implements DAOLogin{
    * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */    
-  public boolean loginDipendente(Login l){//DA TESTARE
+  public boolean loginDipendente(Login l){//
     String username = l.getUsername();
     String password = l.getPassword();
-    ResultSet rs= serverAzienda.selezione("Dipendente","*", "nickname='"+username+"', password='"+password+"' OR passmod='"+password+"')",""); 
+    ResultSet rs= serverAzienda.selezione("Dipendente","*", "nickname='"+username+"' AND (password='"+password+"' OR passmod='"+password+"')",""); 
     try{
       int ID = rs.getInt("ID");
     }
-    catch(SQLException e){return false;} 
+    catch(SQLException e){System.out.println(e.getMessage());return false;} 
     return true;
   }
 }
