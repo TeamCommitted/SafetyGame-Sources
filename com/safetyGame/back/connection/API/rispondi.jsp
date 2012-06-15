@@ -1,5 +1,5 @@
 /*
- * Name: domanda.java
+ * Name: rispondi.java
  * Package: com.safetygame.back.connection.API
  * Author: Lorenzo Braghetto
  * Date: {Data di approvazione del file}
@@ -21,36 +21,28 @@
 ApplicazioniConnection appC;
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
+int id = request.getParameter("id");
+int punti = request.getParameter("punti");
+Punteggio p = Punteggio(p);
+String risposta1 = request.getParameter("risposta1");
+String risposta2 = request.getParameter("risposta2");
+String risposta3 = request.getParameter("risposta3");
+int corretta = request.getParameter("corretta");
+int rispostaData = request.getParameter("rispostaData");
 boolean response = appC.login(user, passw);
 Login l = Login(user, passw)
-Domanda d = appC.mostraDomanda(l);
+ArrayList<String> r = new ArrayList<String>
+r.add(risposta1);
+r.add(risposta2);
+r.add(risposta3);
+Domanda d = (id, p, r, corretta, null, rispostaData, true, -1, null, -1);
+boolean risposto = appC.rispondi(l, d);
 %>
 <response>
 <%
-if(response)
+if(response && risposto)
 { %>
 	<status>OK</status>
-	<domanda>
-		<% String tipo = d.getTipologia();
-		{ %>
-			<id><%d.getId()%></id>
-			<type>tipo</type>
-			<testo><%d.getTesto()%></testo>
-			<punteggio><%d.getPunteggio().getPunti()%></punteggio>
-			<corretta><%d.getCorretta()%></corretta>
-		<% if(!tipo.equals("sino"))
-		   {
-			ArrayList<String> risposte = d.getRsiposte(); 
-		%>
-		<risposte num="<%i%>">
-		<%	for(int i=0;i<risposte.size();i++)
-			{	
-		%>
-				<risposta id="<%i%>"><%risposte.get(i)%></risposta>
-			<% } %>
-			</risposte>
-		<% } %>
-	</domanda>
 <% }else{ %>
 	<status>FAILED</status>
 <% }		

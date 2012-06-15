@@ -94,6 +94,14 @@ public class LoginActivity extends SherlockActivity {
 							"http://monossido.ath.cx/teamcommitted/back/connection/API/login.jsp",
 							nameValuePairs);
 
+			SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
+			SharedPreferences.Editor editor = prefs.edit();
+			editor.putString("user", user
+					.getText().toString());
+			editor.putString("password", passw
+					.getText().toString());
+			editor.commit();
+
 			return status;
 		}
 

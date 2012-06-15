@@ -23,11 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -79,10 +81,12 @@ public class PunteggiActivity extends SherlockActivity {
 		protected Punteggi doInBackground(Object... params) {
 
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-			// nameValuePairs.add(new BasicNameValuePair("username",
-			// user.getText().toString()));
-			// nameValuePairs.add(new BasicNameValuePair("password",
-			// passw.getText().toString()));
+			SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
+
+			nameValuePairs.add(new BasicNameValuePair("username",
+					prefs.getString("user", "")));
+			nameValuePairs.add(new BasicNameValuePair("password",
+					prefs.getString("password", "")));
 			Punteggi punteggi = (Punteggi) ConnectionUtils
 					.HttpCreateClient(
 							"http://monossido.ath.cx/teamcommitted/back/connection/API/punteggi.jsp",

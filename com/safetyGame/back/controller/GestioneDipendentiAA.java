@@ -46,13 +46,11 @@ public class GestioneDipendentiAA{
 	  supporto.setPassword(pass);
       
 	  boolean inserito = accessDip.aggiungiDipendente(supporto);
-	  int conta = 1;System.out.println(inserito);
+	  int conta = 0;
 	  while(!inserito) {
 		conta++;
-		username = username + conta;
-		supporto.setNickname(username);
+		supporto.setNickname(username+conta);
 		inserito =  accessDip.aggiungiDipendente(supporto);
-		System.out.println(inserito);
 	  }
 	  String messaggio_mail = "Nome: "+ supporto.getNome()+
 			          "\n\n "+"Cognome: " + supporto.getCognome() +
@@ -62,7 +60,6 @@ public class GestioneDipendentiAA{
 			          "\n\n "+"Ruolo aziendale: " + supporto.getRuolo();
 	  GestioneRecupero.sendMailInserito(supporto.getEmail(), messaggio_mail);
 	  return true;
-	  //return accessDip.aggiungiDipendente(Dip);
    }
    
    /**

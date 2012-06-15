@@ -84,12 +84,11 @@ public class Indirizzo{
       val+=", "+valori[i];
     val+=");";
     try{
-    	System.out.println("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
       PreparedStatement pstmt = conn.prepareStatement("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
       pstmt.executeUpdate();
       pstmt.close();
     }
-    catch(SQLException e){System.out.println(e.getMessage());return false;}
+    catch(SQLException e){return false;}
     return true;
   }
        
@@ -146,7 +145,6 @@ public class Indirizzo{
       where=" WHERE " +controlli;
     }
     try{
-    	System.out.println("SELECT "+ colonne+" FROM "+ tabella + where +" "+ extra+";");
     	rs = connettore.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where +" "+ extra+";");
     	rs.next();
     }
