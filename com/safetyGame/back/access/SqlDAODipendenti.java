@@ -133,7 +133,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean resetPassD(Dipendente d){//DA TESTARE
+  public boolean resetPassD(Dipendente d){//
     return serverAzienda.modificaRiga("Dipendente", "passmod=''","ID="+d.getId());
   }
   
@@ -144,7 +144,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean resetPassA(Dipendente d){//DA TESTARE
+  public boolean resetPassA(Dipendente d){//
     return serverAzienda.modificaRiga("Amministratore", "passmod=''","ID="+d.getId());
   }
   
@@ -156,7 +156,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean passD(Dipendente d, String pass){//DA TESTARE
+  public boolean passD(Dipendente d, String pass){//
     return serverAzienda.modificaRiga("Dipendente", "password='"+pass+"'","ID="+d.getId());
   }
 
@@ -168,7 +168,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean passA(Dipendente d, String pass){//DA TESTARE
+  public boolean passA(Dipendente d, String pass){//
     DataOra data=new DataOra();
     boolean b = serverAzienda.modificaRiga("Amministratore", "password='"+pass+"'","ID="+d.getId());
     if (b){
@@ -188,7 +188,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean mailD(Dipendente d, String mail){//DA TESTARE
+  public boolean mailD(Dipendente d, String mail){//
     return serverAzienda.modificaRiga("Dipendente", "email='"+mail+"'","ID="+d.getId());
   }
 
@@ -198,21 +198,24 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return un ArrayList che contiene tutti i dipendenti
    * 
    */   
-  public ArrayList<Dipendente> elencoDipendenti(){//DA TESTARE
-    ResultSet rs=serverAzienda.selezione("Dipendenti","*","","");
+  public ArrayList<Dipendente> elencoDipendenti(){//
+    ResultSet rs=serverAzienda.selezione("Dipendente","*","","");
     ArrayList<Dipendente> d = new ArrayList<Dipendente>();
+    ArrayList<Login> supporto = new ArrayList<Login>();
     boolean trovato = false;
-    String nome,cognome,codfis,email,ruolo,username,password,passmod;
-    int ID,trofeo;
+    String username,password;
     while(!trovato){
       try{
         username = rs.getString("nickname");
         password = rs.getString("password");
-        Dipendente temp=getInfoD(new Login(username,password));
-        d.add(temp);      
+        supporto.add(new Login(username,password));      
         rs.next();
       }
       catch(SQLException e){trovato=true;}  
+    }
+    for (int i=0; i<supporto.size(); i++){
+      Dipendente temp = getInfoD(supporto.get(i));
+      d.add(temp);
     }
     if (d.size()==0){d=null;}
     return d;

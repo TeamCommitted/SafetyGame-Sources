@@ -131,12 +131,64 @@ public class SqlDAODipendentiTest {
 	
 	@Test
 	public void testGetInfoA(){
-	  //test che verifica i dati ritornati di un dipendente siano corretti
+	  //test che verifica i dati ritornati di un amministratore siano corretti
 	  init();
-	  Login l = new Login("nickA","passA");
+	  Login l = new Login("amministratoreAz","pass");
 	  Dipendente d = sqlD.getInfoA(l);
-	  //System.out.println(d.getNome());
-	  assertTrue("le infoA ricevute(nick) non sono corrette", d.getNickname().equals("nick"));
+	  assertTrue("le infoA ricevute(nick) non sono corrette", d.getNickname().equals("amministratoreAz"));
 	  assertTrue("le infoA ricevute(pass) non sono corrette", d.getPassword().equals("pass"));
+	}
+	
+	@Test
+	public void resetPassD() {
+      //test per la modifica password da parte di un dipendente
+	  init();
+	  Dipendente dip = new Dipendente(1,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
+	  String pass = "passNuova";
+
+	  assertTrue("password utente non modificato", (sqlD.passD(dip, pass)));//(sqlD.resetD(recupero, pass)));  
+	}
+	
+	@Test
+	public void resetPassA() {
+      //test per la modifica password da parte di un amministratore
+	  init();
+	  
+	  //Dipendente dip = new Dipendente(1,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
+	  Login l = new Login("amministratoreAz","pass");
+	  Dipendente dip = sqlD.getInfoA(l);
+	  String pass = "passNuova";
+
+	  assertTrue("password utente non modificato", (sqlD.passA(dip, pass)));//(sqlD.resetD(recupero, pass)));  
+	}
+	
+	@Test
+	public void modificaEmailD() {
+      //test per la modifica da parte di un dipendente della propria mail
+	  init();
+	  Login l = new Login("nick","pass");
+	  Dipendente dip = sqlD.getInfoD(l);//= new Dipendente(25,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
+	  String mailN = "nuovamail@gmail.com";
+	  assertTrue("nome utente non modificato", (sqlD.mailD(dip, mailN)));  
+	}
+	
+	@Test
+	public void getElencoDip() {
+      //test per verificare il recupero della lista dei dipendenti
+	  init();
+	  ArrayList<Dipendente> lista = sqlD.elencoDipendenti();
+	  int numero_dipendenti = 8;//al momento
+	  assertTrue("il numero di utenti nell'elenco non e` corretto", numero_dipendenti == lista.size());
+	}
+	
+	@Test
+	public void delDip() {
+      //test per verificare il recupero della lista dei dipendenti
+	  init();
+	  String username = "marco";
+	  String password = "p1";
+	  Login l = new Login(username,password);
+      Dipendente dip = sqlD.getInfoD(l);
+	  assertTrue("l'utente non e` stato rimosso", sqlD.cancellaDipendente(dip));
 	}
 }
