@@ -248,8 +248,8 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean cancellaDipendente(Dipendente d){//DA TESTARE
-    return serverAzienda.cancellaRiga("Dipendente","ID="+d.getId()+" AND username='"+d.getNickname()+"' AND password ='"+d.getPassword()+"'");
+  public boolean cancellaDipendente(Dipendente d){//
+    return serverAzienda.cancellaRiga("Dipendente","ID="+d.getId()+" AND nickname='"+d.getNickname()+"' AND password ='"+d.getPassword()+"';");
   }
   
   /**
@@ -354,7 +354,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean resetA(Recupero r, String p){//DA TESTARE
+  public boolean resetA(Recupero r, String p){//
     boolean b =serverAzienda.modificaRiga("Amministratore","passmod='"+p+"'","email='"+r.getEmail()+" AND codice fiscale='"+r.getCodFiscale()+"'");
     if (b){
       ResultSet rs= serverAzienda.selezione("Amministratore","passmod","email='"+r.getEmail()+"'"+" AND codice_fiscale='"+r.getCodFiscale()+"'","");
