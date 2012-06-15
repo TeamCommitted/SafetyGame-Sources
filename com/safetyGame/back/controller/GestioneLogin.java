@@ -30,7 +30,10 @@ public class GestioneLogin{
     * @param login oggetto contenente i dati di login inseriti dall'utente
     */
    public boolean loginAdmin(Login login){
-      return access.loginAmministratore(login);
+      boolean result = access.loginAmministratore(login);
+      if(result) 
+		   log.scriviLogin(login);
+	   return result;
    }
    
    /**
@@ -40,8 +43,8 @@ public class GestioneLogin{
     */
    public boolean loginUser(Login login){
 	   boolean result = access.loginDipendente(login);
-	   //if(result) 
-	//	   log.scriviLogin(login);
+	   if(result) 
+		   log.scriviLogin(login);
 	   return result; 
    }
    
