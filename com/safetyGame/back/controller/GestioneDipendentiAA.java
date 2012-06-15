@@ -37,7 +37,24 @@ public class GestioneDipendentiAA{
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
    public boolean aggiungiDipendente(Dipendente Dip){
-      return accessDip.aggiungiDipendente(Dip);
+	  Dipendente supporto = Dip;
+	  String nome = supporto.getNome();
+	  String cognome = supporto.getCognome();
+	  String pass = GestioneRecupero.generaPassCasuale();
+      String username = nome + cognome;
+	  supporto.setNickname(username);
+	  supporto.setPassword(pass);
+      
+	  boolean inserito = accessDip.aggiungiDipendente(Dip);
+	  int conta = 1;
+	  while(!inserito) {
+		conta++;
+		username += conta;
+		inserito =  accessDip.aggiungiDipendente(Dip);
+	  }
+	  GestioneRecupero.sendMail(Dip.getEmail(), pass);
+	  return true;
+	  //return accessDip.aggiungiDipendente(Dip);
    }
    
    /**
