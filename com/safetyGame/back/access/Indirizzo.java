@@ -84,11 +84,12 @@ public class Indirizzo{
       val+=", "+valori[i];
     val+=");";
     try{
+    	System.out.println("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
       PreparedStatement pstmt = conn.prepareStatement("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
       pstmt.executeUpdate();
       pstmt.close();
     }
-    catch(SQLException e){return false;}
+    catch(SQLException e){System.out.println(e.getMessage());return false;}
     return true;
   }
        

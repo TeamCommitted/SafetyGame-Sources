@@ -29,7 +29,7 @@ public class SqlDAODipendentiTest {
 	public void aggiuntaUtenteOk() {
 	  //test per l'aggiunta di un dipendente al DB Azienda	
 	  init();
-	  Dipendente dipp = new Dipendente(1,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
+	  Dipendente dipp = new Dipendente(1,"ewdrftygyh","Vario","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
 	  assertTrue("utente non aggiunto", (sqlD.aggiungiDipendente(dipp)));  
 	}
 
