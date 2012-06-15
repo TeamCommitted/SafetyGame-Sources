@@ -4,11 +4,11 @@
 <%@ page import= "javax.servlet.*"%>
 <%@ page import= "java.io.*"%>
 <%@ page language= "java" import="java.util.Date"%>
-<%@page language="java" import="com.safetyGame.back.connection.*" %>
-<%@page language="java" import="com.safetyGame.back.controller.*" %>
-<%@page language="java" import="com.safetyGame.back.condivisi.*" %>
-<%@page language="java" import="com.safetyGame.back.access.*" %>
-<%@page language="java" import="com.safetyGame.back.*" %>
+<%@ page language="java" import="com.safetyGame.back.connection.*" %>
+<%@ page language="java" import="com.safetyGame.back.controller.*" %>
+<%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
+<%@ page language="java" import="com.safetyGame.back.access.*" %>
+<%@ page language="java" import="com.safetyGame.back.*" %>
 
 <%
 
@@ -75,6 +75,13 @@
 			Domanda nuovadomanda = connection.mostraDomanda(l);
 			String testo = nuovadomanda.getTesto();
 			out.println(testo);
+			
+			ArrayList risposte = nuovadomanda.getRisposte();
+			String risposta;
+			for (int i = risposte.size()-1; i >= 0; i--) { 
+				risposta = risposte.get(i);
+				out.println("<p>"+risposta+"</p>");
+			}
 		%>
 	</div>
 
