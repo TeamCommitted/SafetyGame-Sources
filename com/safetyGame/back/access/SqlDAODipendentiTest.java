@@ -111,7 +111,6 @@ public class SqlDAODipendentiTest {
 	public void resetA() {
       //test per la modifica da parte di un amministratore dopo un reset password
 	  init();
-//	  Dipendente dipV = new Dipendente(25,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
 	  Dipendente amm = new Dipendente(1,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
 	  amm.setAmmAA(true);
 	  Recupero recupero = new Recupero("xxx@xxx.xxx","dtrftyg");
@@ -121,10 +120,23 @@ public class SqlDAODipendentiTest {
 	
 	@Test
 	public void testGetInfoD(){
+	  //test che verifica i dati ritornati di un dipendente siano corretti
 	  init();
 	  Login l = new Login("nick","pass");
 	  Dipendente d = sqlD.getInfoD(l);
-	  System.out.println(d.getNome());
-	  assertTrue("il dipendente non corrisponde", (sqlD.resetA(recupero, pass)));
+	  //System.out.println(d.getNome());
+	  assertTrue("le infoD ricevute(nick) non sono corrette", d.getNickname().equals("nick"));
+	  assertTrue("le infoD ricevute(pass) non sono corrette", d.getPassword().equals("pass"));
+	}
+	
+	@Test
+	public void testGetInfoA(){
+	  //test che verifica i dati ritornati di un dipendente siano corretti
+	  init();
+	  Login l = new Login("nickA","passA");
+	  Dipendente d = sqlD.getInfoA(l);
+	  //System.out.println(d.getNome());
+	  assertTrue("le infoA ricevute(nick) non sono corrette", d.getNickname().equals("nick"));
+	  assertTrue("le infoA ricevute(pass) non sono corrette", d.getPassword().equals("pass"));
 	}
 }
