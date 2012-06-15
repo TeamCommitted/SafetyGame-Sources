@@ -48,7 +48,7 @@ public class SqlDAOLogin implements DAOLogin{
    * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */    
-  public boolean loginAmministratore(Login l){//DA TESTARE
+  public boolean loginAmministratore(Login l){//
     String username = l.getUsername();
     String password = l.getPassword();
     ResultSet rs= serverAzienda.selezione("Amministratore","*", "nickname='"+username+"' AND (password='"+password+"' OR passmod='"+password+"')",""); 

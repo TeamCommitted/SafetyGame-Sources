@@ -40,8 +40,8 @@ public class GestioneLogin{
     */
    public boolean loginUser(Login login){
 	   boolean result = access.loginDipendente(login);
-	   if(result)
-		   log.scriviLogin(login);
+	   //if(result) 
+	//	   log.scriviLogin(login);
 	   return result; 
    }
    
