@@ -44,6 +44,7 @@ import com.safetyGame.back.condivisi.*;
 public class GestioneDipendentiD{
   private DAODipendenti daoDipendenti;
   private GestioneLog gestioneLog;
+  private GestioneRecupero gestioneRecupero;
   
   /**
    * Costruttore con parametri della classe GestioneDipendentiD
@@ -54,6 +55,7 @@ public class GestioneDipendentiD{
   public GestioneDipendentiD(DAODipendenti d, GestioneLog g) {
     this.daoDipendenti = d;
     this.gestioneLog = g;
+    this.gestioneRecupero = null;
   }
   
   /**
@@ -62,6 +64,7 @@ public class GestioneDipendentiD{
   public GestioneDipendentiD() {
     this.daoDipendenti = null;
     this.gestioneLog = null;
+    this.gestioneRecupero = null;
   }
 
   /**
@@ -109,7 +112,7 @@ public class GestioneDipendentiD{
    * @param l login del dipendente
    * @return informazioni sul dipendente
    */
-  public Dipendente getDati(Login l) {
+  public Dipendente getDati(Login l) {//
     Dipendente ritorno = this.daoDipendenti.getInfoD(l);
 	return ritorno;    
   }
@@ -121,13 +124,14 @@ public class GestioneDipendentiD{
    * 
    * @return true se operazione riuscita con successo, false altrimenti
    */
-  public boolean modificaPass(Dipendente dip) {
+  public boolean modificaPass(Dipendente dip) {//
 	//dip contiene la nuova password (il web deve controllare che la pass sia ok
 	//scrivo la nuova password
 	boolean esito = this.daoDipendenti.passD(dip,dip.getNuovaPass());
     if(esito) {// se tutto ok
 	  //scrivo il log
       //gestioneLog.scriviModPassD(dip);
+      GestioneRecupero.sendMail(dip.getEmail(), dip.getNuovaPass());
       return true;
     }
     return false;//non sono riuscito a modificare la passwrod
@@ -141,11 +145,12 @@ public class GestioneDipendentiD{
    * 
    * @return true se operazione riuscita con successo, false altrimenti
    */
-  public boolean modificaEmail(Dipendente dip, String nEmail) {
+  public boolean modificaEmail(Dipendente dip, String nEmail) {//
     boolean esito = this.daoDipendenti.mailD(dip,nEmail);
     if (esito) {// se tutto ok
       //scrivo il log
       //gestioneLog.scriviModEmailD(dip);
+      GestioneRecupero.sendMailModMail(nEmail);
       return true;
     }
     return false;

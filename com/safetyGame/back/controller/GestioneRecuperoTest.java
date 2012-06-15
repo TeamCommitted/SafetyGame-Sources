@@ -29,5 +29,12 @@ public class GestioneRecuperoTest {
       try{gr.sendMail("ale.corny@gmail.com","nuova_password");}catch(Exception e){e.printStackTrace();};
 	  assertTrue("percorso errato", 1 == 1);
 	}
+	
+	@Test
+	public void TestMailModMail() {
+	//test per verificare la mail di mod mail
+	  init();
+	  try{gr.sendMailModMail("ale.corny@gmail.com");}catch(Exception e){};
+	}
 
 }

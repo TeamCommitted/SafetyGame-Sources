@@ -134,6 +134,40 @@ public class GestioneRecupero{
 	 }
    }
    
+   public static void sendMailModMail(String destinatario){
+	     final String username = "teamcommitted@gmail.com";
+		 final String password = "Pr0jectse";
+	          
+		 Properties props = new Properties();
+		 props.put("mail.smtp.auth", "true");
+		 props.put("mail.smtp.starttls.enable", "true");
+		 props.put("mail.smtp.host", "smtp.gmail.com");
+		 props.put("mail.smtp.port", "587");
+
+		 Session session = Session.getInstance(props,
+		 new javax.mail.Authenticator() {
+		   protected PasswordAuthentication getPasswordAuthentication() {
+		     return new PasswordAuthentication(username, password);
+		   }
+		 });
+
+		 try {
+	       Message message = new MimeMessage(session);
+		   message.setFrom(new InternetAddress(username));
+		   message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(destinatario));
+		   message.setSubject("Cambio mail");
+		   message.setText("Cambio mail riuscito!");
+
+		   Transport.send(message);
+	       System.out.println("Done");
+
+		 } 
+		 catch (MessagingException e) {
+		  throw new RuntimeException(e);
+		 }
+	   }
+	   
+   
    /**
    * Metodo che genera in modo casuale una password
    * 
@@ -169,4 +203,6 @@ public class GestioneRecupero{
     }
     return pass;
    }
+   
+   
 }
