@@ -18,6 +18,8 @@
  * |          |                     | main 
  * |          |                     | actionPerformed 
  * +----------+---------------------+----------------------
+ * | 20120613 | Gabriele Facchin    | tastiera   
+ * +----------+---------------------+----------------------
  * 
  */ 
 
@@ -103,8 +105,6 @@ public class Inizializzatore implements ActionListener{
        grafica();
      }
      catch (Exception e){}
-     
-     tastiera();
   }
    
   /**
@@ -113,7 +113,7 @@ public class Inizializzatore implements ActionListener{
    */
   private void grafica(){
     frame = new JFrame("Server");
-    frame.setSize(100,50);
+    frame.setSize(300,100);
     frame.getContentPane().setLayout(new GridLayout(2,1));
     label = new Label();
     label.setText("Server avviato, premere chiudi per chiuderlo");
@@ -142,7 +142,7 @@ public class Inizializzatore implements ActionListener{
    */  
   private void tastiera(){
     // Stampa a video
-    System.out.println("L'applicazione è in esecuzione.");
+    System.out.println("L'applicazione e` in esecuzione.");
     System.out.println("Premere Q quindi INVIO per terminare l'applicazione");
     // Lettura input
     int carattere=-1;
@@ -180,7 +180,8 @@ public class Inizializzatore implements ActionListener{
    * 
    * @param args[] array di parametri di ingresso tramite opzioni di Java
    */ 
-  public void main (String[] args){
+  public static void main (String[] args){
     Inizializzatore i = new Inizializzatore();
+    i.tastiera();
   }
 }

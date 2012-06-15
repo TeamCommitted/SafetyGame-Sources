@@ -23,7 +23,7 @@ public class SqlDAOBadgeTest {
 	@Test
 	public void testBadgeD() {
 	  init();
-	  ArrayList<Badge> lista ;//= new ArrayList<Badge>();
+	  ArrayList<Badge> lista = new ArrayList<Badge>();
 	  Dipendente dip =  new Dipendente(1,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
 	  lista = daoBadge.badgeD(dip);
 	  //nel DB e` presente un solo Badge assegnato a tale dipendente

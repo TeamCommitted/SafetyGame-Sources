@@ -61,7 +61,7 @@ public class SqlDAOBadge implements DAOBadge{
     int punti=0, ID=0;
     while(!trovato){
       try{
-        rs.absolute(1);
+    	ID = rs.getInt("ID");  
         data=rs.getString("il");
         nomeB = rs.getString("nome");
         descr = rs.getString("descrizione");

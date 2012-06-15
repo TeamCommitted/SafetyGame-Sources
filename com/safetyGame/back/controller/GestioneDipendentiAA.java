@@ -41,20 +41,25 @@ public class GestioneDipendentiAA{
 	  String nome = supporto.getNome();
 	  String cognome = supporto.getCognome();
 	  String pass = GestioneRecupero.generaPassCasuale();
-      String username = nome + cognome;
+      String username = nome +"."+ cognome;
 	  supporto.setNickname(username);
 	  supporto.setPassword(pass);
       
-	  boolean inserito = accessDip.aggiungiDipendente(Dip);
-	  int conta = 1;
+	  boolean inserito = accessDip.aggiungiDipendente(supporto);
+	  int conta = 0;
 	  while(!inserito) {
 		conta++;
-		username += conta;
-		inserito =  accessDip.aggiungiDipendente(Dip);
+		supporto.setNickname(username+conta);
+		inserito =  accessDip.aggiungiDipendente(supporto);
 	  }
-	  GestioneRecupero.sendMail(Dip.getEmail(), pass);
+	  String messaggio_mail = "Nome: "+ supporto.getNome()+
+			          "\n\n "+"Cognome: " + supporto.getCognome() +
+			          "\n\n "+"Nickname: " + supporto.getNickname() +
+			          "\n\n "+"Password: " + supporto.getPassword() +
+			          "\n\n "+"Codice fiscale: " + supporto.getCodFiscale() +
+			          "\n\n "+"Ruolo aziendale: " + supporto.getRuolo();
+	  GestioneRecupero.sendMailInserito(supporto.getEmail(), messaggio_mail);
 	  return true;
-	  //return accessDip.aggiungiDipendente(Dip);
    }
    
    /**

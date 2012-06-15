@@ -53,7 +53,6 @@ import java.util.ArrayList;
    */
 public class WebConnection{
   private GestioneDati dati;
-  
   /**
    * Costruttore della classe WebConnection
    * 

@@ -1,8 +1,15 @@
 #BlueJ package file
+<<<<<<< Updated upstream
 package.editor.height=616
 package.editor.width=1252
-package.editor.x=32
+package.editor.x=-18
 package.editor.y=63
+=======
+package.editor.height=714
+package.editor.width=1478
+package.editor.x=32
+package.editor.y=32
+>>>>>>> Stashed changes
 package.numDependencies=0
 package.numTargets=2
 package.showExtends=true

@@ -63,7 +63,7 @@ public class Inizializzatore implements ActionListener{
   private GestioneDipendentiD gestioneDipendentiD;
   private GestioneDipendentiAA gestioneDipendentiAA;
   private GestioneBadgeAS gestioneBadgeAS;
-  protected GestioneDati gestioneDati;
+  private GestioneDati gestioneDati;
   private static WebConnection webConnection = null;
   private static ApplicazioniConnection appConnection;
 
@@ -100,11 +100,15 @@ public class Inizializzatore implements ActionListener{
      webConnection= new WebConnection(gestioneDati);
      appConnection= new ApplicazioniConnection(gestioneDati);
 
-     
-     /*try{
+     /*
+     try{
        grafica();
      }
-     catch (Exception e){}*/
+     catch (Exception e){}
+<<<<<<< Updated upstream
+     */
+=======
+>>>>>>> Stashed changes
   }
 
   /**
@@ -179,7 +183,11 @@ public class Inizializzatore implements ActionListener{
    * Metodo per avviare l'applicazione
    *
    * @param args[] array di parametri di ingresso tramite opzioni di Java
+<<<<<<< Updated upstream
 
+=======
+   */ 
+>>>>>>> Stashed changes
   public static void main (String[] args){
     Inizializzatore i = new Inizializzatore();
     //i.tastiera();

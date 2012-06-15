@@ -26,7 +26,7 @@ CREATE TABLE Dipendente(
 	cognome VARCHAR(255) NOT NULL,
 	codice_fiscale CHAR(16) NOT NULL,
 	email VARCHAR(255) NOT NULL,
-	nickname VARCHAR(25) UNIQUE NOT NULL,
+	nickname VARCHAR(25) NOT NULL,
 	password CHAR(32) NOT NULL,
 	passmod CHAR(32),
 	ruolo VARCHAR(255),

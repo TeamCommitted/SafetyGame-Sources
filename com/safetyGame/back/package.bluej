@@ -1,8 +1,8 @@
 #BlueJ package file
-package.editor.height=572
-package.editor.width=1248
-package.editor.x=2
-package.editor.y=83
+package.editor.height=697
+package.editor.width=1465
+package.editor.x=12
+package.editor.y=12
 package.numDependencies=0
 package.numTargets=5
 package.showExtends=true
@@ -31,10 +31,10 @@ target4.type=PackageTarget
 target4.width=80
 target4.x=510
 target4.y=20
-target5.editor.height=744
-target5.editor.width=1382
-target5.editor.x=-8
-target5.editor.y=-8
+target5.editor.height=868
+target5.editor.width=1598
+target5.editor.x=1
+target5.editor.y=1
 target5.height=50
 target5.name=Inizializzatore
 target5.naviview.expanded=false
