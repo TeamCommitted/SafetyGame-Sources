@@ -64,7 +64,6 @@ public class Inizializzatore implements ActionListener{
   private GestioneDipendentiAA gestioneDipendentiAA;
   private GestioneBadgeAS gestioneBadgeAS;
   private GestioneDati gestioneDati;
-
   private static WebConnection webConnection = null;
   private static ApplicazioniConnection appConnection;
 

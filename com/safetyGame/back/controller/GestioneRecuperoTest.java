@@ -19,7 +19,7 @@ public class GestioneRecuperoTest {
 	@Test
 	public void testPassCasuale() {
 	  init();
-	  try{gr.sendMail("marco.begolo@gmail.com",gr.generaPassCasuale());}catch(Exception e){e.printStackTrace();};
+	  try{gr.sendMail("ale.corny@gmail.com",gr.generaPassCasuale());}catch(Exception e){e.printStackTrace();};
 	  assertTrue("percorso errato", 1 == 1);
 	}
 	@Test 

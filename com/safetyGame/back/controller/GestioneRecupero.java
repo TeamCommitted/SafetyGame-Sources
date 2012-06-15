@@ -19,7 +19,7 @@ import java.util.Properties;
  */
 public class GestioneRecupero{ 
    private DAODipendenti accessDip;
-   private String porta;
+   private static String porta;
    
    public GestioneRecupero(DAODipendenti accessDip){
        this.accessDip = accessDip;
@@ -61,7 +61,7 @@ public class GestioneRecupero{
     * @param destinatario indirizzo email del dipendente che ha richiesto il recupero
     * @param nuovaPass nuova password
     */
-   public void sendMail(String destinatario, String nuovaPass){
+   public static void sendMail(String destinatario, String nuovaPass){
      final String username = "teamcommitted@gmail.com";
 	 final String password = "Pr0jectse";
           
@@ -101,7 +101,7 @@ public class GestioneRecupero{
    * @return stringa che contiene la nuova password generata casualmente
    * 
    */   
-   protected String generaPassCasuale(){
+   protected static String generaPassCasuale(){
     String lettere[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}; //toLowerCase
     String numeri[] = {"1","2","3","4","5","6","7","8","9","0"};
     String caratteri[] = {"@","#","*","+","?","^","%","&","/","$","!","+","-"};

@@ -73,7 +73,7 @@ public class SqlDAOLogin implements DAOLogin{
     try{
       int ID = rs.getInt("ID");
     }
-    catch(SQLException e){System.out.println(e.getMessage());return false;} 
+    catch(SQLException e){return false;} 
     return true;
   }
 }
