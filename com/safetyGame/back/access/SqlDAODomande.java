@@ -58,7 +58,7 @@ public class SqlDAODomande implements DAODomande{
    * 
    */   
   private Domanda prendiCampiDomanda(int id){//
-    ResultSet rs=serverDomande.selezione("Tipologia as t INNER JOIN Domanda as d ON d.tipologia=t.tipologia","*","ID="+id,"");
+    ResultSet rs=serverDomande.selezione("Domanda","*","ID="+id,"");
     Domanda d=new Domanda();
     Punteggio p;
     String tipologia, testod, ambito;
