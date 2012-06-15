@@ -4,12 +4,18 @@
 <%@ page import= "javax.servlet.*"%>
 <%@ page import= "java.io.*"%>
 <%@ page language= "java" import="java.util.Date"%>
+<%@page language="java" import="com.safetyGame.back.connection.*" %>
+<%@page language="java" import="com.safetyGame.back.controller.*" %>
+<%@page language="java" import="com.safetyGame.back.condivisi.*" %>
+<%@page language="java" import="com.safetyGame.back.access.*" %>
+<%@page language="java" import="com.safetyGame.back.*" %>
 
 <%
 
 	Cookie cookies [] = request.getCookies();
 	String cookieName = null;
 	String username = null;
+	String password = null;
 	String ambito = null;
 	
 	if (cookies != null){
@@ -17,6 +23,13 @@
 		for (int i = 0; i < cookies.length; i++) {
 			if (cookies [i].getName().equals(cookieName)) {
 				username = cookies[i].getValue();
+				break;
+			}
+		}
+		cookieName = "password";
+		for (int i = 0; i < cookies.length; i++) {
+			if (cookies [i].getName().equals(cookieName)) {
+				password = cookies[i].getValue();
 				break;
 			}
 		}
@@ -56,7 +69,12 @@
 	<div id = "content">
 		<h2>Stai rispondendo ad una nuova domanda</h2>
 		<%
-			// Qua bisogna ricavare le informazioni di una nuova domanda per l'utente.
+			Inizializzatore i = new Inizializzatore();
+			WebConnection connection = i.getWeb();
+			Login l = new Login(username,password);
+			Domanda nuovadomanda = connection.mostraDomanda(l);
+			String testo = nuovadomanda.getTesto();
+			out.println(testo);
 		%>
 	</div>
 
