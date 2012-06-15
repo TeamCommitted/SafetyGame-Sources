@@ -80,7 +80,7 @@ public class SqlDAODomande implements DAODomande{
       d.setAmbito(ambito);
     }
     catch(SQLException e){return null;}
-    ResultSet rss=serverDomande.selezione("Risposta INNER JOIN Domanda_Risposta ON ID=IDr","*","ID="+id,"ORDER BY IDr ASC");
+    ResultSet rss=serverDomande.selezione("Risposta INNER JOIN Domanda_Risposta ON ID=IDr","*","IDd="+id,"ORDER BY IDr ASC");
     Boolean trovato = false;
     ArrayList <String> risposte=new ArrayList<String>();
     String testor;
