@@ -106,7 +106,7 @@ public class Indirizzo{
     try{
       connettore.executeUpdate("UPDATE "+ tabella +" SET "+ colonnevalori +" WHERE "+ controlli+";");
     }
-    catch(SQLException e){System.out.println(e.getMessage());return false;}
+    catch(SQLException e){return false;}
     return true;
   }
       
@@ -146,11 +146,11 @@ public class Indirizzo{
       where=" WHERE " +controlli;
     }
     try{
-    	rs = connettore.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where + extra+";");
+    	System.out.println("SELECT "+ colonne+" FROM "+ tabella + where +" "+ extra+";");
+    	rs = connettore.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where +" "+ extra+";");
     	rs.next();
     }
-    catch(SQLException e){return null;}
-    
+    catch(SQLException e){return null;}    
     return rs;
   }
 }
