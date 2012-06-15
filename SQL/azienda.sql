@@ -34,6 +34,7 @@ CREATE TABLE Dipendente(
 	
 	FOREIGN KEY(ruolo) REFERENCES Ruolo(ruolo)
 						ON UPDATE CASCADE
+					
 )ENGINE=InnoDB;
 
 CREATE TABLE Storico(
@@ -68,7 +69,8 @@ CREATE TABLE Assegnato(
 	PRIMARY KEY (IDDipendente, IDBadge),
 	
 	FOREIGN KEY(IDDipendente) REFERENCES Dipendente(ID)
-								ON UPDATE CASCADE,
+								ON UPDATE CASCADE
+								ON DELETE CASCADE,
 	FOREIGN KEY(IDBadge) REFERENCES Badge(ID)
 							ON UPDATE CASCADE
 							ON DELETE CASCADE

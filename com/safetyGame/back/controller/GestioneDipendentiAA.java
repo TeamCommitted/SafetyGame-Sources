@@ -26,7 +26,7 @@ public class GestioneDipendentiAA{
     * Metodo per ottenere i dati dei dipendenti dell'azienda
     * @return un ArrayList<Dipendente> contenente i dipendenti dell'azienda      
     */
-   public ArrayList<Dipendente> getElencoDipendenti(){
+   public ArrayList<Dipendente> getElencoDipendenti(){//
       return accessDip.elencoDipendenti(); 
    }
    
@@ -36,7 +36,7 @@ public class GestioneDipendentiAA{
     * @param Dip oggetto contenente i dati del nuovo dipendente
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
-   public boolean aggiungiDipendente(Dipendente Dip){
+   public boolean aggiungiDipendente(Dipendente Dip){//
 	  Dipendente supporto = Dip;
 	  String nome = supporto.getNome();
 	  String cognome = supporto.getCognome();
