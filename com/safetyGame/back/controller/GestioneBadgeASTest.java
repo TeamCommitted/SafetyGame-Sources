@@ -25,8 +25,11 @@ public class GestioneBadgeASTest {
 	
 	@Test
 	public void testGetBadgeAS(){
-		ArrayList<Badge> list = new ArrayList<Badge>();
-		gb.getBadgesAS();
+		init();
+		ArrayList<Badge> listbadge = new ArrayList<Badge>();
+		listbadge = gb.getBadgesAS();
+		System.out.print(listbadge.get(0).getNome());
+		assertTrue("lista badge non ottenuta", !listbadge.isEmpty()); 
 	}
 
 	@Test

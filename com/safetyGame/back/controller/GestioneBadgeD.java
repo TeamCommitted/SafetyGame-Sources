@@ -48,6 +48,9 @@ public class GestioneBadgeD{
           if(list.isEmpty())
               return null;
           else{
+        	  if(n==0){
+        		  return list;
+        	  }
               ArrayList<Badge> result = new ArrayList<Badge>();
               int i = 0;
               while(i<list.size() && i<n){
