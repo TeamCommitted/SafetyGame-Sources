@@ -77,8 +77,8 @@ public class Inizializzatore implements ActionListener{
    *
    */
    public Inizializzatore() {
-     indirizzoAz = new Indirizzo("aziendasafetygam.altervista.org","aziendasafetygam","gifgiresmo40");
-     indirizzoDom = new Indirizzo("domandesafetygam.altervista.org","domandesafetgam","beptusafco87");
+     indirizzoAz = new Indirizzo("localhost/ingAz","root","");
+     indirizzoDom = new Indirizzo("localhost/ingDom","root","");
      daoDipendenti = new SqlDAODipendenti(indirizzoAz);
      daoPunteggi = new SqlDAOPunteggi(indirizzoAz,indirizzoDom);
      daoLogin = new SqlDAOLogin(indirizzoAz);
@@ -101,11 +101,12 @@ public class Inizializzatore implements ActionListener{
      webConnection= new WebConnection(gestioneDati);
      appConnection= new ApplicazioniConnection(gestioneDati);
 
+     /*
      try{
        grafica();
      }
      catch (Exception e){}
-     
+     */
   }
 
   /**
