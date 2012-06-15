@@ -45,6 +45,8 @@ public class GestioneLogTest {
 		//controllo percorso
 		String percorso = gestioneLog.getPercorso();
 		String percorsoCorretto = "/log/"+ login.getUsername() + "/login.txt";
+		System.out.println(percorsoCorretto);
+		System.out.println(percorso);
 		assertTrue("percorso errato", percorso.equals(percorsoCorretto));
 
 		//controllo log
