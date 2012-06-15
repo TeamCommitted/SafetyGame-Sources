@@ -116,7 +116,7 @@ public class SqlDAODipendentiTest {
 	  amm.setAmmAA(true);
 	  Recupero recupero = new Recupero("xxx@xxx.xxx","dtrftyg");
 	  String pass = "pass1";
-	  assertTrue("password utente non modificato", (sqlD.resetA(recupero, pass)));  
+	  assertTrue("password amministratore non modificato", (sqlD.resetA(recupero, pass)));  
 	}
 	
 	@Test
@@ -125,5 +125,6 @@ public class SqlDAODipendentiTest {
 	  Login l = new Login("nick","pass");
 	  Dipendente d = sqlD.getInfoD(l);
 	  System.out.println(d.getNome());
+	  assertTrue("il dipendente non corrisponde", (sqlD.resetA(recupero, pass)));
 	}
 }
