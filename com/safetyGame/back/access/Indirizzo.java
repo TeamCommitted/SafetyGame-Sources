@@ -117,12 +117,12 @@ public class Indirizzo{
    * @return completamento o meno della cancellazione
    * 
    */  
-  public boolean cancellaRiga(String tabella, String controlli){
+  public boolean cancellaRiga(String tabella, String controlli){  
     if (controlli.trim()==""){
       return false;
     }
     try{
-      connettore.executeQuery("DELETE FROM "+ tabella +" WHERE "+ controlli);
+      connettore.executeUpdate("DELETE FROM "+ tabella +" WHERE "+ controlli);
     }
     catch(SQLException e){return false;}
     return true;

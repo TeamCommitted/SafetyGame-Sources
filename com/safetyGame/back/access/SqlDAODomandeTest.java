@@ -29,10 +29,19 @@ public class SqlDAODomandeTest {
 	public void addDomandaTest(){
 		init("root");
 		Domanda d = new Domanda();
-		d.setId(1);
-		System.out.println(d.getId());
-		sqlD.addDomanda(d);
+		d.setId(2);
+		assertTrue("Impossibile aggiungere domanda", sqlD.addDomanda(d));
 	}
+	
+	@Test
+	public void remDomandaTest(){
+		init("root");
+		init("root");
+		Domanda d = new Domanda();
+		d.setId(1);
+		assertTrue("Impossibile Rimuovere Domanda", sqlD.remDomanda(d));
+	}
+	
 	@Test
 	public void test() {
 		fail("Not yet implemented");
