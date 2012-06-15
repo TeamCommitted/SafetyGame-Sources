@@ -63,7 +63,7 @@ public class Inizializzatore implements ActionListener{
   private GestioneDipendentiD gestioneDipendentiD;
   private GestioneDipendentiAA gestioneDipendentiAA;
   private GestioneBadgeAS gestioneBadgeAS;
-  private GestioneDati gestioneDati;
+  protected GestioneDati gestioneDati;
   private static WebConnection webConnection = null;
   private static ApplicazioniConnection appConnection;
 
@@ -100,11 +100,11 @@ public class Inizializzatore implements ActionListener{
      webConnection= new WebConnection(gestioneDati);
      appConnection= new ApplicazioniConnection(gestioneDati);
 
-     /*
-     try{
+     
+     /*try{
        grafica();
      }
-     catch (Exception e){}
+     catch (Exception e){}*/
   }
 
   /**
