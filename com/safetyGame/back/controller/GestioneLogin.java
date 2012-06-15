@@ -31,8 +31,8 @@ public class GestioneLogin{
     */
    public boolean loginAdmin(Login login){
       boolean result = access.loginAmministratore(login);
-      if(result) 
-		   log.scriviLogin(login);
+      //if(result) 
+		   //log.scriviLogin(login);
 	   return result;
    }
    
@@ -43,8 +43,8 @@ public class GestioneLogin{
     */
    public boolean loginUser(Login login){
 	   boolean result = access.loginDipendente(login);
-	   if(result) 
-		   log.scriviLogin(login);
+	   //if(result) 
+		   //log.scriviLogin(login);
 	   return result; 
    }
    
@@ -54,6 +54,6 @@ public class GestioneLogin{
     * @param l login del dipendente che ha effettuato il logout
     */
    public void logout(Login l) {
-	 this.log.scriviLogout(l);
+	 //this.log.scriviLogout(l);
    }
 }

@@ -127,7 +127,7 @@ public class GestioneDipendentiD{
 	boolean esito = this.daoDipendenti.passD(dip,dip.getNuovaPass());
     if(esito) {// se tutto ok
 	  //scrivo il log
-      gestioneLog.scriviModPassD(dip);
+      //gestioneLog.scriviModPassD(dip);
       return true;
     }
     return false;//non sono riuscito a modificare la passwrod
@@ -145,7 +145,7 @@ public class GestioneDipendentiD{
     boolean esito = this.daoDipendenti.mailD(dip,nEmail);
     if (esito) {// se tutto ok
       //scrivo il log
-      gestioneLog.scriviModEmailD(dip);
+      //gestioneLog.scriviModEmailD(dip);
       return true;
     }
     return false;

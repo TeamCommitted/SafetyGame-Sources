@@ -79,7 +79,7 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals("TotaleRisposte"))
                if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
-                   log.scriviOttenimentoBadge(dip, test);
+                   //log.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
@@ -92,7 +92,7 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals("TotalePunti"))
                if(test.getSoglia() == dip.getPunteggio().getPunti()){
                    accessB.assegna(dip,test);
-                   log.scriviOttenimentoBadge(dip, test);
+                   //log.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
@@ -106,7 +106,7 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals(D.getTipologia()))
                if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
-                   log.scriviOttenimentoBadge(dip, test);
+                   //log.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
