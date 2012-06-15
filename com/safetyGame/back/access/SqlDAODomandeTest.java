@@ -106,12 +106,11 @@ public class SqlDAODomandeTest {
 		init("root");
 		Dipendente facco = new Dipendente();
 		facco.setId(1);
-		ArrayList<Domanda> a = sqlD.domande(facco,null);
+		ArrayList<Domanda> a = new ArrayList<Domanda>();
+		a = sqlD.domande(facco,null);
 		Domanda d = a.get(0);
-		System.out.println(d.getTipologia());
 		a = sqlD.domande(facco, d);
 		d = a.get(0);
-		System.out.println(d.getTipologia());
 		assertTrue("Impossibile ottenere domande", true);
 	}
 	

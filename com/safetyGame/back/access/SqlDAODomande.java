@@ -269,14 +269,13 @@ public class SqlDAODomande implements DAODomande{
     ArrayList <Domanda> domande=new ArrayList<Domanda>();
     int i=0;
     while(i<id.size()){
-      domande.add(prendiCampiDomanda(i));
+      domande.add(prendiCampiDomanda(id.get(i)));
       i++;
     }
-    System.out.println(domande.size());
     if (dom!=null){
       i=0;
       while(i<domande.size()){
-        if (domande.get(i).getTipologia()==dom.getTipologia()){
+        if (domande.get(i).getTipologia().equals(dom.getTipologia())){
           i++;
         }
         else{
