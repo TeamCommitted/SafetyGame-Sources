@@ -103,7 +103,12 @@ public class GestioneDipendentiAA{
     * @return true se l'operazione viene completata con successo, altrimenti false
     */
    public boolean modPassA(Dipendente admin){ //
-       return accessDip.passA(admin,admin.getNuovaPass());
+       boolean risultato = accessDip.passA(admin,admin.getNuovaPass());
+       
+       if(risultato)
+    	 GestioneRecupero.sendMail(admin.getEmail(), admin.getNuovaPass());
+       
+       return risultato;
     }
    
 }
