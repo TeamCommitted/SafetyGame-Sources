@@ -97,7 +97,7 @@ public class Indirizzo{
     try{
       connettore.executeUpdate("UPDATE "+ tabella +" SET "+ colonnevalori +" WHERE "+ controlli+";");
     }
-    catch(SQLException e){return false;}
+    catch(SQLException e){System.out.println(e.getMessage());return false;}
     return true;
   }
       

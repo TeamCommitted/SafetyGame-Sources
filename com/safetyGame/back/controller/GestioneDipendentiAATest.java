@@ -45,9 +45,33 @@ public class GestioneDipendentiAATest {
 		Login l = new Login("nick","pass");
 		Dipendente dip = sqlDip.getInfoD(l);
 		boolean risultato = gDipAA.cancellaDipendente(dip);
-		assertTrue("il numero di dipendenti in elenco non corrisponde",risultato == true);
+		assertTrue("rimozione dipendente non riuscita",risultato == true);
 	}
 	
+	@Test
+	public void modDipTest() {
+	//test che verifica la modifica di un dipendente dal DB
+		init();
+		DAODipendenti sqlDip = new SqlDAODipendenti(indAz);
+		Login l = new Login("nick","pass");
+		Dipendente dip = sqlDip.getInfoD(l);
+		Dipendente dipMod = sqlDip.getInfoD(l);//costuisco dipendente da modificare
+		dipMod.setNome("nuovoNome");
+		boolean risultato = gDipAA.modDipendente(dipMod,dip);
+		System.out.println(risultato);
+		assertTrue("modifica dipendente non riuscita",risultato == true);
+	}
 	
+	@Test
+	public void modPassATest() {
+	//test che verifica la modifica della password da parte di un amministratore
+		init();
+		DAODipendenti sqlDip = new SqlDAODipendenti(indAz);
+		Login l = new Login("amministratoreAz","pass");
+		Dipendente dip = sqlDip.getInfoA(l);
+		dip.setNuovaPass("nuovaPass");
+		boolean risultato = gDipAA.modPassA(dip);
+		assertTrue("modifica password amministratore non riuscita",risultato == true);
+	}
 
 }
