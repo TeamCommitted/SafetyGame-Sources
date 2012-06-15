@@ -52,7 +52,7 @@ public class SqlDAOPunteggi implements DAOPunteggi{
    * @return l'oggetto Punteggio contenente il totale del punteggio del Dipendente
    * 
    */    
-  public Punteggio getStat(Dipendente d){//DA TESTARE
+  public Punteggio getStat(Dipendente d){//
     ResultSet rs = serverAzienda.selezione("Storico","punteggio","IDDipendente="+d.getId(),"");
     int totale=0;
     boolean finito = false;
@@ -73,7 +73,7 @@ public class SqlDAOPunteggi implements DAOPunteggi{
    * @return l'oggetto Punteggio contenente le statistiche dei dipendenti (e dell'azienda) a lui vicini
    * 
    */    
-  public Punteggio getGlobalStat(Dipendente dip){//DA TESTARE
+  public Punteggio getGlobalStat(Dipendente dip){//
     int punteggio=dip.getPunteggio().getPunti();
     ResultSet rs = serverAzienda.selezione("Dipendente","ID","","");
     boolean finito = false;
@@ -99,7 +99,7 @@ public class SqlDAOPunteggi implements DAOPunteggi{
       catch (SQLException e){finito = true;}
     }
     double media=totPunti/totDipendenti; //calcolata la media
-    rs = serverAzienda.selezione("Storico","count(risposte) as tot","IDdipendente="+dip.getId()+ " AND punteggio>0","");
+    rs = serverAzienda.selezione("Storico","count(risposta) as tot","IDdipendente="+dip.getId()+ " AND punteggio>0","");
     int totRisposte=0;
     try{
       totRisposte=rs.getInt("tot");
@@ -113,7 +113,7 @@ public class SqlDAOPunteggi implements DAOPunteggi{
     }
     catch (SQLException e){}
     min=min/2;
-    rs = serverAzienda.selezione("Storico","count(risposte) as tot","IDdipendente="+dip.getId()+ " AND punteggio>"+min,"");
+    rs = serverAzienda.selezione("Storico","count(risposta) as tot","IDdipendente="+dip.getId()+ " AND punteggio>"+min,"");
     int totCorrette=0;
     try{
       totCorrette=rs.getInt("tot");
@@ -139,7 +139,7 @@ public class SqlDAOPunteggi implements DAOPunteggi{
     p.setPuntiSuc(puntiMax);
     p.setnRispCorr(totCorrette);
     p.setnDomRisp(totRisposte);
-    return new Punteggio(1);
+    return p;
   }
 }
 

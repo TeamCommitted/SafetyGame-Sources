@@ -106,7 +106,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return l'oggetto Dipendente (amministratore) istanziato se presente nel db, altrimenti null
    * 
    */   
-  public Dipendente getInfoA(Login l){//DA TESTARE
+  public Dipendente getInfoA(Login l){//
     String username = l.getUsername();
     String password = l.getPassword();
     ResultSet rs = serverAzienda.selezione("Amministratore","*", "nickname='"+username+"'",""); 
