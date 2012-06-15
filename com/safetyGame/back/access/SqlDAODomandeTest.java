@@ -108,7 +108,10 @@ public class SqlDAODomandeTest {
 		facco.setId(1);
 		ArrayList<Domanda> a = sqlD.domande(facco,null);
 		Domanda d = a.get(0);
+		System.out.println(d.getTipologia());
 		a = sqlD.domande(facco, d);
+		d = a.get(0);
+		System.out.println(d.getTipologia());
 		assertTrue("Impossibile ottenere domande", true);
 	}
 	

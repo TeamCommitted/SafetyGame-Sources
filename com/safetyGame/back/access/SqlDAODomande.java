@@ -259,7 +259,7 @@ public class SqlDAODomande implements DAODomande{
     int ID;
     while(!trovato){
       try{
-        ID = rs.getInt("ID");
+        ID = rs.getInt("IDdomanda");
         id.add(ID);      
         rs.next();
       }
@@ -272,6 +272,7 @@ public class SqlDAODomande implements DAODomande{
       domande.add(prendiCampiDomanda(i));
       i++;
     }
+    System.out.println(domande.size());
     if (dom!=null){
       i=0;
       while(i<domande.size()){
