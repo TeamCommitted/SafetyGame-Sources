@@ -105,6 +105,10 @@ public class Inizializzatore implements ActionListener{
        grafica();
      }
      catch (Exception e){}
+<<<<<<< Updated upstream
+     */
+=======
+>>>>>>> Stashed changes
   }
 
   /**
@@ -179,7 +183,11 @@ public class Inizializzatore implements ActionListener{
    * Metodo per avviare l'applicazione
    *
    * @param args[] array di parametri di ingresso tramite opzioni di Java
+<<<<<<< Updated upstream
 
+=======
+   */ 
+>>>>>>> Stashed changes
   public static void main (String[] args){
     Inizializzatore i = new Inizializzatore();
     //i.tastiera();
