@@ -23,17 +23,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
@@ -48,6 +51,7 @@ import com.safetygame.mobile.condivisi.Quest;
 public class DomandaActivity extends SherlockActivity {
 
 	private Context context;
+	private Domanda domanda;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -88,7 +92,7 @@ public class DomandaActivity extends SherlockActivity {
 			// user.getText().toString()));
 			// nameValuePairs.add(new BasicNameValuePair("password",
 			// passw.getText().toString()));
-			Domanda domanda = (Domanda) ConnectionUtils
+			domanda = (Domanda) ConnectionUtils
 					.HttpCreateClient(
 							"http://monossido.ath.cx/teamcommitted/back/connection/API/domanda.jsp",
 							nameValuePairs);
@@ -97,7 +101,7 @@ public class DomandaActivity extends SherlockActivity {
 		}
 
 		@Override
-		protected void onPostExecute(Domanda domanda) {
+		protected void onPostExecute(final Domanda domanda) {
 			dialog.dismiss();
 			if (domanda != null) {
 				if (domanda.getType().equals("sino")) {
@@ -106,12 +110,35 @@ public class DomandaActivity extends SherlockActivity {
 							.getTitle());
 					((TextView) findViewById(R.id.Testo)).setText(domanda
 							.getTesto());
+
+					Button invia = (Button) findViewById(R.id.buttonsi);
+					invia.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+
+							String[] params = { domanda.getId() + "", 0 + "" };
+							new RispostaTask().execute(params);
+						}
+
+					});
+					Button inviaNo = (Button) findViewById(R.id.buttonno);
+					inviaNo.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+
+							new RispostaTask().execute();
+						}
+
+					});
 				} else {
 					setContentView(R.layout.domanda_rispostamultipla);
 					((TextView) findViewById(R.id.Titolo)).setText(domanda
 							.getTitle());
 					((TextView) findViewById(R.id.Testo)).setText(domanda
 							.getTesto());
+					final RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroup1);
 					String[] risposte = domanda.getRisposte();
 					((RadioButton) findViewById(R.id.radio0))
 							.setText(risposte[0]);
@@ -119,6 +146,25 @@ public class DomandaActivity extends SherlockActivity {
 							.setText(risposte[1]);
 					((RadioButton) findViewById(R.id.radio2))
 							.setText(risposte[2]);
+
+					Button invia = (Button) findViewById(R.id.button2);
+					invia.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+							int checked = -1;
+							switch (rg.getCheckedRadioButtonId()) {
+							case R.id.radio0:
+								checked = 0;
+							case R.id.radio1:
+								checked = 1;
+							case R.id.radio2:
+								checked = 2;
+							}
+							new RispostaTask().execute();
+						}
+
+					});
 				}
 
 			} else {
@@ -129,7 +175,6 @@ public class DomandaActivity extends SherlockActivity {
 				builder.show();
 			}
 		}
-
 	}
 
 	private class QuestTask extends AsyncTask<Object, String, Quest> {
@@ -183,6 +228,45 @@ public class DomandaActivity extends SherlockActivity {
 			}
 		}
 
+	}
+
+	private class RispostaTask extends AsyncTask<String, String, Void> {
+		ProgressDialog dialog;
+
+		@Override
+		protected void onPreExecute() {
+			dialog = ProgressDialog.show(DomandaActivity.this, "",
+					"Loading. Please wait...", true);
+		}
+
+		@Override
+		protected Void doInBackground(String... arg0) {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+			SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
+
+			nameValuePairs.add(new BasicNameValuePair("username",
+					prefs.getString("user", "")));
+			nameValuePairs.add(new BasicNameValuePair("password",
+					prefs.getString("password", "")));
+			nameValuePairs.add(new BasicNameValuePair("id", domanda.getId() + ""));
+			nameValuePairs.add(new BasicNameValuePair("punti", domanda.getPunteggio() + ""));
+			nameValuePairs.add(new BasicNameValuePair("risposta1", domanda.getRisposte()[0]));
+			nameValuePairs.add(new BasicNameValuePair("risposta2", domanda.getRisposte()[1]));
+			nameValuePairs.add(new BasicNameValuePair("risposta3", domanda.getRisposte()[2]));
+			nameValuePairs.add(new BasicNameValuePair("corretta", domanda.getCorretta() + ""));
+			nameValuePairs.add(new BasicNameValuePair("rispostaData", arg0[1]));
+
+			ConnectionUtils
+					.HttpCreateClient(
+							"http://monossido.ath.cx/teamcommitted/backend/API/rispondi.jsp",
+							nameValuePairs);
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void arg0) {
+			dialog.dismiss();
+		}
 	}
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
