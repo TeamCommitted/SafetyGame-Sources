@@ -134,8 +134,8 @@ public class SqlDAODomande implements DAODomande{
         catch(SQLException e){trovato=true;}
       }
       if(idQuery.isEmpty()){
-    	  rs = serverAzienda.selezione("Domanda", "ID", "ID NOT IN (SELECT IDdomanda FROM Storico WHERE IDdipendente="+d.getId()+")", "");
-    	  trovato=false;
+          rs = serverAzienda.selezione("Domanda", "ID", "ID NOT IN (SELECT IDdomanda FROM Storico WHERE IDdipendente="+d.getId()+")", "");
+          trovato=false;
           while(!trovato){
             try{
               id=rs.getInt("ID");
@@ -146,7 +146,7 @@ public class SqlDAODomande implements DAODomande{
           }
       }
       if(idQuery.isEmpty()){
-    	  return null;
+          return null;
       }
       Random r=new Random();
       id=r.nextInt(idQuery.size());
@@ -227,7 +227,7 @@ public class SqlDAODomande implements DAODomande{
       }
     ArrayList<Domanda> domande = new ArrayList<Domanda>();
     for(int k=0; k<idDomande.size(); k++){
-    	domande.add(prendiCampiDomanda(idDomande.get(k)));
+        domande.add(prendiCampiDomanda(idDomande.get(k)));
     }
     trovato=false;
     for (int i=0; i<domande.size(); i++){
@@ -319,7 +319,11 @@ public class SqlDAODomande implements DAODomande{
    * 
    */   
   public boolean scriviSottoposta(Dipendente dip, Domanda dom){//
-	String[] s = {""+0,""+dip.getId(),""+dom.getId()};
-    return serverAzienda.inserisciRiga("Storico","punteggio, IDdipendente, IDdomanda",s);
-  }
+    String[] s = {""+0,""+dip.getId(),""+dom.getId()};
+    boolean risposta = serverAzienda.inserisciRiga("Storico","punteggio, IDdipendente, IDdomanda",s);
+    if(!risposta){
+        return serverAzienda.modificaRiga("Storico","punteggio=0","IDdipendente="+s[1]+" AND IDdomanda="+s[2]);
+    }
+    return risposta;
+   }
 }
