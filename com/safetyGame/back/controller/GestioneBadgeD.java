@@ -106,7 +106,7 @@ public class GestioneBadgeD{
        i = 0;
        while(i < badge.size() && trovato == false){
            Badge test = badge.get(i);
-           if(test.getDescrizione().equals(D.getTipologia()))
+           if(test.getDescrizione().equals(D.getAmbito()))
                if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
                    //log.scriviOttenimentoBadge(dip, test);
