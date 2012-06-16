@@ -37,14 +37,16 @@ public class GestioneDatiTest {
 	  GestionePunteggiAA gestionePunteggiAA;
 	  GestioneLog gestioneLog;
 	  GestioneDati D;
+	  Indirizzo indirizzoAz;
+	  Indirizzo indirizzoDom;
 	
 	private void init() {
 		  String indirizzo1 = "127.0.0.1/ingAz";
 		  String indirizzo2 = "127.0.0.1/ingDom";
 		  String utente = "root";
 		  String pass = "root";
-		  Indirizzo indirizzoAz = new Indirizzo(indirizzo1,utente,pass);
-		  Indirizzo indirizzoDom = new Indirizzo(indirizzo2,utente,pass);
+		  indirizzoAz = new Indirizzo(indirizzo1,utente,pass);
+		  indirizzoDom = new Indirizzo(indirizzo2,utente,pass);
 		  DAODipendenti daoDipendenti= new SqlDAODipendenti(indirizzoAz);
 		  DAOPunteggi daoPunteggi = new SqlDAOPunteggi(indirizzoAz,indirizzoDom);
 		  DAOLogin daoLogin = new SqlDAOLogin(indirizzoAz);
@@ -97,37 +99,65 @@ public class GestioneDatiTest {
 	  
 	@Test
 	public void testmodDipendente() {
-		D.modDipendente(newDip, oldDip);
+		init();
+		DAODipendenti sqlDip = new SqlDAODipendenti(indirizzoAz);
+		Login l = new Login("nick","pass");
+		Dipendente dip = sqlDip.getInfoD(l);
+		Dipendente dipMod = sqlDip.getInfoD(l);//costuisco dipendente da modificare
+		dipMod.setNome("nuovoNome");
+		boolean risultato = D.modDipendente(dipMod,dip);
+		System.out.println(risultato);
+		assertTrue("modifica dipendente non riuscita",risultato == true);
 	}
 	  
 	@Test
 	public void testgetDati() {
-	    D.getDati(l);
+		init();
+		Login l = new Login("nick","pass");
+		Dipendente dip = D.getDati(l);
+		assertTrue("recupero informazioni dipendente non riuscita",dip.getCodFiscale().equals("0"));
 	}
 	  
 	@Test
 	public void testmodificaPass() {
-		D.modificaPass(dip);
+		init();
+		Login l = new Login("nick","pass");
+		Dipendente dip = D.getDati(l);
+		dip.setNuovaPass("nuovaPass");
+		assertTrue("modifica password non riuscita",D.modificaPass(dip));
 	}
 	  
 	@Test
 	public void testmodificaEmail() {
-		D.modificaEmail(dip, nEmail);
+		init();
+		Login l = new Login("nick","pass");
+		Dipendente dip = D.getDati(l);
+		assertTrue("modifica email non riuscita",D.modificaEmail(dip, "ale.corny@gmail.com"));
 	}
 	  
 	@Test
 	public void testgetElencoDomande() {
-		D.getElencoDomande();
+		init();
+		ArrayList<Domanda> a = new ArrayList<Domanda>();
+		a = D.getElencoDomande();
+		System.out.println(a.size());
+		assertTrue("lista domande non ottenuta", !a.isEmpty()); 
 	}
 	  
 	@Test
 	public void testaddDomanda() {
-	    D.addDomanda(Dom);
+		init();
+		Domanda Dom = new Domanda();
+		Dom.setId(1);
+		assertTrue("aggiunta fallita", D.addDomanda(Dom)); 
 	}
 	  
 	@Test
 	public void testremDomanda() {
-		D.remDomanda(Dom);
+		init();
+		Domanda Dom = new Domanda();
+		Dom.setId(1);
+		assertTrue("rimozione fallita", D.remDomanda(Dom)); 
 	}
 	
 	@Test
@@ -142,27 +172,43 @@ public class GestioneDatiTest {
 	  
 	@Test
 	public void testloginAdmin(){
-		D.loginAdmin(login);
+		init();
+		Login l = new Login("amministratoreAz","pass");
+		assertTrue("login non effettuato", D.loginAdmin(l)); 
 	}
 	
 	@Test
 	public void testloginUser() {
-		D.loginUser(login);		
+		init();
+		Login l = new Login("nick","pass");
+		assertTrue("login non effettuato", D.loginUser(l)); 	
 	}
 	
 	@Test
 	public void testgetPunteggi() {
-		D.getPunteggi();
+		init();
+		ArrayList<Dipendente> d = new ArrayList<Dipendente>();
+		d = D.getPunteggi();
+		System.out.println(d.size());
+		assertTrue("lista punteggi non ottenuta", !d.isEmpty()); 
 	}
 	
 	@Test
 	public void testsetTrofei() {
-		 D.setTrofei(Dip, n);
+		init();
+		Dipendente d = new Dipendente();
+		d.setId(1);
+		boolean risp =  D.setTrofei(d, 7);
+		assertTrue("login non effettuato", risp); 
 	}
 	   
 	@Test
 	public void testgetStatisticheD() {
-		 D.getStatisticheD(l);
+		init();
+		Login l = new Login("nick","pass");
+		Punteggio p = D.getStatisticheD(l);
+		System.out.println(p.getPunti());
+		assertTrue("punteggio non ottenuto", true); 
 	}
 	   
 	@Test
@@ -172,27 +218,50 @@ public class GestioneDatiTest {
 	   
 	@Test
 	public void testlogout() {
+		init();
+		Login l = new Login("nick","pass");
 		D.logout(l);
+		assertTrue("logout non effettuato", true); 
 	}
 	   
 	@Test
 	public void testgetStatisticheGlob() {
-		D.getStatisticheGlob(l);
+		init();
+		Login l = new Login("nick","pass");
+		Punteggio p = D.getStatisticheGlob(l);
+		System.out.println(p.getMediaPuntiAzienda());
+		assertTrue("punteggio non ottenuto", true); 
 	}
 	   
 	@Test
 	public void testrecuperoD() {
-		D.recuperoD(dip);
+		init();
+		Recupero amm = new Recupero();
+		amm.setEmail("teamcommitted@gmail.com");
+		amm.setCodFiscale("0");
+		try{D.recuperoA(amm);}catch(Exception e){e.printStackTrace();};
+		assertTrue("percorso errato", 1 == 1);
 	}
 	   
 	@Test
 	public void testrecuperoA() {
-		D.recuperoA(amm);
+		init();
+		Recupero amm = new Recupero();
+		amm.setEmail("teamcommitted@gmail.com");
+		amm.setCodFiscale("0");
+		try{D.recuperoA(amm);}catch(Exception e){e.printStackTrace();};
+		assertTrue("percorso errato", 1 == 1);
 	}
 	   
 	@Test
 	public void testmodPassA(){
-		D.modPassA(admin);
+		init();
+		DAODipendenti sqlDip = new SqlDAODipendenti(indirizzoAz);
+		Login l = new Login("amministratoreAz","pass");
+		Dipendente dip = sqlDip.getInfoA(l);
+		dip.setNuovaPass("nuovaPass");
+		boolean risultato = D.modPassA(dip);
+		assertTrue("modifica password amministratore non riuscita",risultato == true);
 	}
 
 	@Test

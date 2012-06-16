@@ -48,8 +48,10 @@ public class GestioneRecupero{
     */
    public boolean recuperoA(Recupero amm){
       String pass = generaPassCasuale();
+      System.out.println("bitches1"); 
       boolean esito = accessDip.resetA(amm, pass);
-      if (esito) {
+      System.out.println(esito); 
+      if (esito) { 
     	this.sendMail(amm.getEmail(), pass);
       }
 
