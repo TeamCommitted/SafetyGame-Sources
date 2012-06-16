@@ -252,7 +252,7 @@ public class SqlDAODomande implements DAODomande{
    * @return ArrayList che contiene l'elenco di tutte le Domande
    * 
    */   
-  public ArrayList<Domanda> domande(Dipendente d, Domanda dom){//DA TESTARE
+  public ArrayList<Domanda> domande(Dipendente d, Domanda dom){//
     ResultSet rs=serverAzienda.selezione("Storico","IDdomanda","IDdipendente="+d.getId(),"");
     ArrayList<Integer> id = new ArrayList<Integer>();
     boolean trovato = false;
@@ -275,7 +275,7 @@ public class SqlDAODomande implements DAODomande{
     if (dom!=null){
       i=0;
       while(i<domande.size()){
-        if (domande.get(i).getTipologia().equals(dom.getTipologia())){
+        if (domande.get(i).getAmbito().equals(dom.getAmbito())){ //TEST NEED OMFG
           i++;
         }
         else{

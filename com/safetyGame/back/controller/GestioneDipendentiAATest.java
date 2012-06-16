@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
+
 import java.util.ArrayList;
 
 public class GestioneDipendentiAATest {
@@ -23,7 +24,7 @@ public class GestioneDipendentiAATest {
 	public void aggiungiDipTest() {
 	//test che verifica che venga aggiunto un dipendente al DB
 		init();
-		Dipendente dip = new Dipendente(101,"wwww","nome","cognome","ale.corny@gmail.com","www","pass","Dirigente",0,"",4);
+		Dipendente dip = new Dipendente(50,"ewdrftygyh","Vario","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
 		boolean risultato = gDipAA.aggiungiDipendente(dip);
 		assertTrue("dipendente non aggiunto",risultato == true);
 	}

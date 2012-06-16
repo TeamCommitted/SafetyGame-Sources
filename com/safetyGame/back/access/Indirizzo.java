@@ -77,8 +77,10 @@ public class Indirizzo{
     for(int i=1;i<valori.length;i++)
       val+=", "+valori[i];
     val+=");";
-    try{
-        connettore.executeUpdate("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
+    try{System.out.println("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
+    	PreparedStatement pstmt = conn.prepareStatement("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
+        pstmt.executeUpdate();
+        pstmt.close();
       }
       catch(SQLException e){return false;}
     return true;
