@@ -53,8 +53,8 @@
 			try {
                 Domanda nuovadomanda = connection.mostraDomanda(l);
                 String testo = nuovadomanda.getTesto();
-                out.println(testo);
 				out.println("<h2>Stai rispondendo ad una nuova domanda</h2>");
+				out.println("<p>"+testo+"</p>");
 				out.println("<form id=\"form_domanda\" title=\"Form per rispondere a una domanda\" action=\"checkRisposta.jsp\" method=\"post\"><fieldset><ul>");
 				ArrayList risposte = nuovadomanda.getRisposte();
 				session.setAttribute("oggetto_domanda", nuovadomanda);
