@@ -11,7 +11,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it">
 <head>
-	<title>Pannello Amministratore</title>
+	<title>Aggiungi Dipendente</title>
 	<link rel="stylesheet" href="style/reset.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="style/screen.css" type="text/css" media="handheld, screen, projection" />
 	
@@ -20,14 +20,12 @@
 <body>
 
 	<div id = "header">
-		<h1>SafetyGame - Pannello Amministratore</h1>
+		<h1>SafetyGame - Aggiungi Dipendente</h1>
         <a href="logout.jsp" class="logout">Logout</a>
 	</div>
 
 
 	<div id = "content">
-    	<% // Stampo le informazioni sul tipo di account %>
-		<h2>Informazioni sull'account</h2>
         <% 
 			// Ottengo le informazioni dai cookies
 			Cookie usernameCookie = null;
@@ -70,24 +68,20 @@
 			}
 			else response.sendRedirect("login.jsp");
 			if ((ambito.equals("Dipendente"))) response.sendRedirect("user_page.jsp");			
-			
-				out.println("<p>Benvenuto ");
-				out.println(username);
-				out.println("</p><p>Hai effettuato il login come ");
-				out.println(ambito);
-				out.println("</p>");
 		%>
-        
-        <h2>Menu</h2>
-        <% if (ambito.equals("Amministratore Azienda")) { %>
-            <ul>
-                <li><a href="aggiungiDipendente.jsp">Aggiungi un nuovo Dipendente</a></li>
-            </ul>
-        <% } else if (ambito.equals("Amministratore Sicurezza")) { %>
-        	<ul>
-                <li><a href="aggiungiDomanda.jsp">Aggiungi una nuova Domanda</a></li>
-            </ul>
-        <% } %>
+        <form id="aggiungiDipendente" title="Form per l'aggiunta di un nuovo Dipendente" action="checkAggiungiDipendente.jsp" method="post">
+        	<fieldset>
+            	<ul>
+                    <li><span class="etichetta">Nome:</span><input type="text" name="input_nome" /></li>
+                    <li><span class="etichetta">Cognome:</span><input type="text" name="input_cognome" /></li>
+                    <li><span class="etichetta">Codice fiscale:</span><input type="text" name="input_codfis" /></li>
+                    <li><span class="etichetta">Email:</span><input type="text" name="input_email" /></li>
+                    <li><span class="etichetta">Ruolo:</span><input type="text" name="input_ruolo" />
+                    	<span id="attenzione">Attenzione! Inserire un ruolo gi&agrave; esistente!</span></li>
+                </ul>
+                <input type="submit" value="Aggiungi Dipendente" />
+            </fieldset>
+        </form>
         
 		
 	</div>

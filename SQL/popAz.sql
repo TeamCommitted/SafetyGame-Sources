@@ -17,5 +17,5 @@ insert into Assegnato values (1,1,'2012/06/14 12:13:45'),
 (2,4,'2011/12/20 11:11:11'),
 (3,4,'2012/08/28 21:31:11'),
 (4,3,'2012/02/10 13:15:51');
-insert into Domanda values (1),(2),(3),(4),(5),(6);
+insert into Domanda values (1),(2),(3);
 insert into Storico values (1,1,1,1,15),(2,1,3,1,30),(1,3,3,3,10);
