@@ -188,11 +188,13 @@ public class GestioneDomandeD{
    */
   public Domanda getDomandaD(Login l) {
 	Dipendente dip = this.daoDipendenti.getInfoD(l);//recupero il dipendente
+	System.out.println(dip.getNome());
 	if ( dip == null) {
 	  return null;  // non sono stato in grado di recuperare il dipendente
 	}
 	//il dip è stato trovato
 	Domanda ritorno = this.daoDomande.getDomanda(dip);//recupero la domanda passandogli il dip così posso scrivere sul db che gli è stata presentata
+	System.out.println(ritorno.getTesto());
 	if (ritorno == null) {
       return null; //non sono stato in grado di recuperare la domanda
 	}
