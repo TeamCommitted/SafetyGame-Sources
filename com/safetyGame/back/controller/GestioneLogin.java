@@ -1,3 +1,23 @@
+/*
+ * Name: GestioneLogin.java
+ * Package: com.safetygame.back.controller
+ * Author: Massimo Dalla Pieta'
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Massimo Dalla Pieta' | * GestioneLogin
+ * |          |                     | * loginAdmin
+ * |          |                     | * loginUser
+ * |          |                     | * logout
+ * +----------+---------------------|---------------------
+ *
+ */
+
 package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
@@ -31,8 +51,8 @@ public class GestioneLogin{
     */
    public boolean loginAdmin(Login login){
       boolean result = access.loginAmministratore(login);
-      if(result) 
-		   log.scriviLogin(login);
+      //if(result) 
+		   //log.scriviLogin(login);
 	   return result;
    }
    
@@ -43,8 +63,8 @@ public class GestioneLogin{
     */
    public boolean loginUser(Login login){
 	   boolean result = access.loginDipendente(login);
-	   if(result) 
-		   log.scriviLogin(login);
+	   //if(result) 
+		   //log.scriviLogin(login);
 	   return result; 
    }
    
@@ -54,6 +74,6 @@ public class GestioneLogin{
     * @param l login del dipendente che ha effettuato il logout
     */
    public void logout(Login l) {
-	 this.log.scriviLogout(l);
+	 //this.log.scriviLogout(l);
    }
 }

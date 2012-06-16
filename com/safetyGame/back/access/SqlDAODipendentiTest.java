@@ -1,3 +1,40 @@
+/*
+ * Name: SqlDAODipendenti.java
+ * Package: com.safetygame.back.access
+ * Author: Alessandro Cornaglia
+ * Date: {Data di approvazione del file}
+ * Version: 0.1
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120604 | Alessandro Cornaglia| + aggiuntaUtenteOk
+ * |          |                     | + testGetInfoD
+ * |          |                     | + testGetInfoA
+ * |          |                     | + testResetPassD                
+ * |          |                     | + testResetPassA
+ * |          |                     | + passD
+ * |          |                     | + passA
+ * |          |                     | + mailD
+ * |          |                     | + elencoDipendenti
+ * |          |                     | + aggiungiDipendente
+ * |          |                     | + delDip
+ * |          |                     | + modificaDipendenteNome
+ * |          |                     | + modificaDipendenteCognome
+ * |          |                     | + modificaDipendenteCodFis
+ * |          |                     | + modificaDipendenteUsername
+ * |          |                     | + modificaDipendenteImpiego
+ * |          |                     | + modificaDipendenteSetTrofei
+ * |          |                     | + generaPassCasuale
+ * |          |                     | + resetA
+ * |          |                     | + resetD
+ * +----------+---------------------|---------------------
+ * | 20120605 | Alessandro Cornaglia| - generaPassCasuale
+ * +----------+---------------------|---------------------
+ * 
+ */
 package com.safetyGame.back.access;
 
 import static org.junit.Assert.*;

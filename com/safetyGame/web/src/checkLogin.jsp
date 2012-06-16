@@ -4,11 +4,11 @@
 <%@ page import= "javax.servlet.*"%>
 <%@ page import= "java.io.*"%>
 <%@ page language="java" import="java.util.Date"%>
-<%@page language="java" import="com.safetyGame.back.connection.*" %>
-<%@page language="java" import="com.safetyGame.back.controller.*" %>
-<%@page language="java" import="com.safetyGame.back.condivisi.*" %>
-<%@page language="java" import="com.safetyGame.back.access.*" %>
-<%@page language="java" import="com.safetyGame.back.*" %>
+<%@ page language="java" import="com.safetyGame.back.connection.*" %>
+<%@ page language="java" import="com.safetyGame.back.controller.*" %>
+<%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
+<%@ page language="java" import="com.safetyGame.back.access.*" %>
+<%@ page language="java" import="com.safetyGame.back.*" %>
 <% 
 	String username = request.getParameter("account_username"); // Ottengo lo username dal post
 	String password = request.getParameter("account_password"); // Ottengo la psw dal post
@@ -24,13 +24,18 @@
 	boolean logged = false;
 	Inizializzatore i = new Inizializzatore();
 	WebConnection connection = i.getWeb();
-	if (ambito.equals("Dipendente")) {
-		logged = connection.loginDip(username, password);
+	//try {
+		if (ambito.equals("Dipendente")) {
+			logged = connection.loginDip(username, password);
+		}
+		else {
+			logged = connection.loginAdmin(username, password);
+		}
+	/*}
+	catch (Exception e) {
+		logged = true;
 	}
-	else {
-		logged = connection.loginAdmin(username, password);
-	}
-	// boolean logged = true;
+	// boolean logged = true;*/
 	
 	
 	// Imposto i cookie salvando username, password e ambito utente

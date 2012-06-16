@@ -106,7 +106,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return l'oggetto Dipendente (amministratore) istanziato se presente nel db, altrimenti null
    * 
    */   
-  public Dipendente getInfoA(Login l){//DA TESTARE
+  public Dipendente getInfoA(Login l){//
     String username = l.getUsername();
     String password = l.getPassword();
     ResultSet rs = serverAzienda.selezione("Amministratore","*", "nickname='"+username+"'",""); 
@@ -355,7 +355,8 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    */   
   public boolean resetA(Recupero r, String p){//
-    boolean b =serverAzienda.modificaRiga("Amministratore","passmod='"+p+"'","email='"+r.getEmail()+" AND codice fiscale='"+r.getCodFiscale()+"'");
+    boolean b =serverAzienda.modificaRiga("Amministratore","passmod='"+p+"'","email='"+r.getEmail()+"' AND codice_fiscale='"+r.getCodFiscale()+"'");
+    System.out.println(b); 
     if (b){
       ResultSet rs= serverAzienda.selezione("Amministratore","passmod","email='"+r.getEmail()+"'"+" AND codice_fiscale='"+r.getCodFiscale()+"'","");
       try{

@@ -5,7 +5,10 @@
 <%@ page import= "java.io.*"%>
 <%@ page language="java" import="java.util.Date"%>
 <%@ page language="java" import="com.safetyGame.back.connection.*" %>
+<%@ page language="java" import="com.safetyGame.back.controller.*" %>
 <%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
+<%@ page language="java" import="com.safetyGame.back.access.*" %>
+<%@ page language="java" import="com.safetyGame.back.*" %>
 <%
 	// WebConnection connection = new WebConnection
 %>
@@ -86,27 +89,40 @@
         
         <h2>Punteggi</h2>
         <%
-			// Funzione per ottenere il punteggio di un dato utente
-			// getPunteggio(username);
-			int punteggio = 2046;
-			//
-			
+			Inizializzatore i = new Inizializzatore();
+			WebConnection connection = i.getWeb();
+			Login l = new Login(username ,password);
+			Punteggio p = connection.getPunteggio(l);
+			int punt = p.getPuntiPrec();
+						
 			out.println("Il tuo punteggio &egrave; ");
-			out.println(punteggio);
+			out.println(punt);
 		%>
         
         <h2>Trofei e Badge</h2>
         <%
 			// Funzione per ottenere l'elenco dei trovei e dei badge
 			// getPunteggio(session.getAttribute("username"));
-			String elencoTrofei = null;
+			ArrayList elencoTrofei = null;
+			//elencoTrofei = connection.getBadge(l,10);
 			//
 			if (elencoTrofei == null) {
 				out.println("Non hai guadagnato nessun trofeo.");
 			}
 			else {
 				out.println("Segue l'elenco dei tuoi trofei:");
-				// Elenco dei badge / Trofei
+				out.println("<dl>");
+				String nomebadge;
+				String descrbadge;
+				/*
+				for (int i = elencoTrofei.size()-1; i >= 0; i--) { 
+					nomebadge = elencoTrofei.get(i).getNome();
+					descrbadge = elencoTrofei.get(i).getDescrizione();
+					out.println("<dt>"+nomebadge+"</dt>");
+					out.println("<dd>"+descrbadge+"</dd>");
+				}
+				*/
+				out.println("</dl>");
 			}
 			
 		%>

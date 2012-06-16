@@ -1,5 +1,5 @@
 /*
- * Name: GestionePunteggiD.java
+ * Name: GestioneDati.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
  * Date: {Data di approvazione del file}

@@ -1,17 +1,20 @@
 #BlueJ package file
-<<<<<<< Updated upstream
-package.editor.height=572
-package.editor.width=1248
-package.editor.x=2
-package.editor.y=83
+dependency1.from=InizializzatoreTest
+dependency1.to=Inizializzatore
+dependency1.type=UsesDependency
+<<<<<<< HEAD
+package.editor.height=714
+package.editor.width=1482
+package.editor.x=-1868
+package.editor.y=52
 =======
-package.editor.height=697
-package.editor.width=1465
-package.editor.x=12
-package.editor.y=12
->>>>>>> Stashed changes
-package.numDependencies=0
-package.numTargets=5
+package.editor.height=572
+package.editor.width=1244
+package.editor.x=32
+package.editor.y=32
+>>>>>>> a34939ff7d3194db44a4c66edb4f1fb09228dc9e
+package.numDependencies=1
+package.numTargets=6
 package.showExtends=true
 package.showUses=true
 target1.height=62
@@ -38,17 +41,10 @@ target4.type=PackageTarget
 target4.width=80
 target4.x=510
 target4.y=20
-<<<<<<< Updated upstream
 target5.editor.height=744
 target5.editor.width=1382
 target5.editor.x=-8
 target5.editor.y=-8
-=======
-target5.editor.height=868
-target5.editor.width=1598
-target5.editor.x=1
-target5.editor.y=1
->>>>>>> Stashed changes
 target5.height=50
 target5.name=Inizializzatore
 target5.naviview.expanded=false
@@ -57,3 +53,15 @@ target5.type=ClassTarget
 target5.width=100
 target5.x=280
 target5.y=170
+target6.editor.height=700
+target6.editor.width=900
+target6.editor.x=714
+target6.editor.y=54
+target6.height=50
+target6.name=InizializzatoreTest
+target6.naviview.expanded=true
+target6.showInterface=false
+target6.type=UnitTestTargetJunit4
+target6.width=130
+target6.x=10
+target6.y=90

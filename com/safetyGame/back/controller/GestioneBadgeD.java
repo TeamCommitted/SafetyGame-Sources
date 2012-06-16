@@ -1,3 +1,22 @@
+/*
+ * Name: GestioneBadgeD.java
+ * Package: com.safetygame.back.controller
+ * Author: Massimo Dalla Pieta'
+ * Date: {Data di approvazione del file}
+ * Version: 0.3
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120607 |Massimo Dalla Pieta' | + GestioneBadgeD
+ * |          |                     | + getBadgeD
+ * |          |                     | + assegnaBadgeD
+ * +----------+---------------------+----------------------
+ * 
+ */ 
+
 package com.safetyGame.back.controller;
 
 import com.safetyGame.back.access.*;
@@ -48,6 +67,9 @@ public class GestioneBadgeD{
           if(list.isEmpty())
               return null;
           else{
+        	  if(n==0){
+        		  return list;
+        	  }
               ArrayList<Badge> result = new ArrayList<Badge>();
               int i = 0;
               while(i<list.size() && i<n){
@@ -79,7 +101,7 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals("TotaleRisposte"))
                if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
-                   log.scriviOttenimentoBadge(dip, test);
+                   //log.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
@@ -92,7 +114,7 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals("TotalePunti"))
                if(test.getSoglia() == dip.getPunteggio().getPunti()){
                    accessB.assegna(dip,test);
-                   log.scriviOttenimentoBadge(dip, test);
+                   //log.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
@@ -103,10 +125,10 @@ public class GestioneBadgeD{
        i = 0;
        while(i < badge.size() && trovato == false){
            Badge test = badge.get(i);
-           if(test.getDescrizione().equals(D.getTipologia()))
+           if(test.getDescrizione().equals(D.getAmbito()))
                if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
-                   log.scriviOttenimentoBadge(dip, test);
+                   //log.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }

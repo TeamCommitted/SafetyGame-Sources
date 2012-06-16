@@ -1,3 +1,20 @@
+/*
+ * Name: SqlDAOLoginTest.java
+ * Package: com.safetygame.back.access
+ * Author: Alessandro Cornaglia
+ * Date: {Data di approvazione del file}
+ * Version: 0.1
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120607 | Alessandro Cornaglia| + testLoginD
+ * |          |                     | + testLoginA
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.back.access;
 
 import static org.junit.Assert.*;

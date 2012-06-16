@@ -58,7 +58,7 @@ public class SqlDAODomande implements DAODomande{
    * 
    */   
   private Domanda prendiCampiDomanda(int id){//
-    ResultSet rs=serverDomande.selezione("Tipologia as t INNER JOIN Domanda as d ON d.tipologia=t.tipologia","*","ID="+id,"");
+    ResultSet rs=serverDomande.selezione("Domanda","*","ID="+id,"");
     Domanda d=new Domanda();
     Punteggio p;
     String tipologia, testod, ambito;
@@ -80,7 +80,7 @@ public class SqlDAODomande implements DAODomande{
       d.setAmbito(ambito);
     }
     catch(SQLException e){return null;}
-    rs=serverDomande.selezione("Risposta INNER JOIN Domanda_Risposta ON ID=IDr","*","ID="+id,"ORDER BY IDr ASC");
+    ResultSet rss=serverDomande.selezione("Risposta INNER JOIN Domanda_Risposta ON ID=IDr","*","IDd="+id,"ORDER BY IDr ASC");
     Boolean trovato = false;
     ArrayList <String> risposte=new ArrayList<String>();
     String testor;
@@ -90,10 +90,10 @@ public class SqlDAODomande implements DAODomande{
     corretta=false;
     while (!trovato){
       try{
-        corretta= rs.getBoolean("risposta_corretta");
-        testor=rs.getString("testo_risposta");
+        corretta= rss.getBoolean("risposta_corretta");
+        testor=rss.getString("testo_risposta");
         risposte.add(testor);
-        rs.next();
+        rss.next();
       }
       catch(SQLException e){trovato=true;}
       if (corretta){
@@ -134,8 +134,8 @@ public class SqlDAODomande implements DAODomande{
         catch(SQLException e){trovato=true;}
       }
       if(idQuery.isEmpty()){
-    	  rs = serverAzienda.selezione("Domanda", "ID", "ID NOT IN (SELECT IDdomanda FROM Storico WHERE IDdipendente="+d.getId()+")", "");
-    	  trovato=false;
+          rs = serverAzienda.selezione("Domanda", "ID", "ID NOT IN (SELECT IDdomanda FROM Storico WHERE IDdipendente="+d.getId()+")", "");
+          trovato=false;
           while(!trovato){
             try{
               id=rs.getInt("ID");
@@ -146,7 +146,7 @@ public class SqlDAODomande implements DAODomande{
           }
       }
       if(idQuery.isEmpty()){
-    	  return null;
+          return null;
       }
       Random r=new Random();
       id=r.nextInt(idQuery.size());
@@ -227,7 +227,7 @@ public class SqlDAODomande implements DAODomande{
       }
     ArrayList<Domanda> domande = new ArrayList<Domanda>();
     for(int k=0; k<idDomande.size(); k++){
-    	domande.add(prendiCampiDomanda(idDomande.get(k)));
+        domande.add(prendiCampiDomanda(idDomande.get(k)));
     }
     trovato=false;
     for (int i=0; i<domande.size(); i++){
@@ -252,7 +252,7 @@ public class SqlDAODomande implements DAODomande{
    * @return ArrayList che contiene l'elenco di tutte le Domande
    * 
    */   
-  public ArrayList<Domanda> domande(Dipendente d, Domanda dom){//DA TESTARE
+  public ArrayList<Domanda> domande(Dipendente d, Domanda dom){//
     ResultSet rs=serverAzienda.selezione("Storico","IDdomanda","IDdipendente="+d.getId(),"");
     ArrayList<Integer> id = new ArrayList<Integer>();
     boolean trovato = false;
@@ -275,7 +275,7 @@ public class SqlDAODomande implements DAODomande{
     if (dom!=null){
       i=0;
       while(i<domande.size()){
-        if (domande.get(i).getTipologia().equals(dom.getTipologia())){
+        if (domande.get(i).getAmbito().equals(dom.getAmbito())){ //TEST NEED OMFG
           i++;
         }
         else{
@@ -319,7 +319,11 @@ public class SqlDAODomande implements DAODomande{
    * 
    */   
   public boolean scriviSottoposta(Dipendente dip, Domanda dom){//
-	String[] s = {""+0,""+dip.getId(),""+dom.getId()};
-    return serverAzienda.inserisciRiga("Storico","punteggio, IDdipendente, IDdomanda",s);
-  }
+    String[] s = {""+0,""+dip.getId(),""+dom.getId()};
+    boolean risposta = serverAzienda.inserisciRiga("Storico","punteggio, IDdipendente, IDdomanda",s);
+    if(!risposta){
+        return serverAzienda.modificaRiga("Storico","punteggio=0","IDdipendente="+s[1]+" AND IDdomanda="+s[2]);
+    }
+    return risposta;
+   }
 }

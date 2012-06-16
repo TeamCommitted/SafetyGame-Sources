@@ -87,7 +87,7 @@ public class Timer extends Thread{
   }
   
   /**
-   * metodo che consente di recuperare il tempo con cui è stato impostato il thread
+   * metodo che consente di recuperare il tempo con cui e` stato impostato il thread
    * @return tempo
    */
   public int getTempo(){
