@@ -2,8 +2,8 @@
  * Name: Dipendente.java
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.4
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -22,10 +22,10 @@
  * |          |                     | +getNuovaPass
  * |          |                     | +setNuovaPass
  * +----------|---------------------+---------------------
- * | 20120421 |Alessandro Cornaglia | +setBadges
+ * | 20120521 |Alessandro Cornaglia | +setBadges
  * |          |                     | +toStringID
  * +----------+---------------------+---------------------
- * | 20120419 |Alessandro Cornaglia | + Dipendente
+ * | 20120519 |Alessandro Cornaglia | + Dipendente
  * |          |                     | + getId
  * |          |                     | + setId
  * |          |                     | + getCodFiscale
@@ -55,7 +55,7 @@ import java.util.ArrayList;
  * Classe che rappresenta un dipendente dell'azienda
  * 
  * @author acornagl 
- * @version 0.1
+ * @version 1.0
  * 
  */
 

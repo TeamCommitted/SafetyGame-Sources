@@ -1,3 +1,21 @@
+/*
+ * Name: GestioneLoginTest.java
+ * Package: com.safetygame.back.controller
+ * Author: Massimo Dalla Pieta'
+ * Date: 2012/06/16
+ * Version: 1.0
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120602 |Massimo Dalla Pieta' | + testLoginD
+ * |          |                     | + testLoginA
+ * |          |                     | + testLogout
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.back.controller;
 
 import static org.junit.Assert.*;
@@ -53,9 +71,5 @@ public class GestioneLoginTest {
 		assertTrue("logout non effettuato", true); 
 	}
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 
 }

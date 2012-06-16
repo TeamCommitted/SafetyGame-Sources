@@ -2,8 +2,8 @@
  * Name: Punteggio.java
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -22,7 +22,7 @@
  * |          |                     | + setnRispCorr
  * |          |                     | * Punteggio
  * +----------+---------------------+---------------------
- * | 20120424 |Alessandro Cornaglia | + Punteggio
+ * | 20120519 |Alessandro Cornaglia | + Punteggio
  * |          |                     | + getPunti
  * |          |                     | + setPunti
  * +----------+---------------------|---------------------
@@ -36,7 +36,7 @@ package com.safetyGame.back.condivisi;
  * sia ad una domanda che ad un dipendente
  * 
  * @author acornagl 
- * @version 0.1
+ * @version 1.0
  */
 public class Punteggio {
   private int punti;

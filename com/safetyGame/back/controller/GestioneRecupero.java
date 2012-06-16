@@ -1,9 +1,9 @@
 /*
  * Name: GestioneRecupero.java
  * Package: com.safetygame.back.controller
- * Author: Massimo Dalla Pieta'
- * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Author: Massimo Dalla Pieta' & Alessandro Cornaglia
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -15,7 +15,7 @@
  * |          |                     | + setmailInserito
  * |          |                     | * sendMail
  * +----------+---------------------+---------------------
- * | 20120519 |Alessandro Cornaglia | + ecuperoA
+ * | 20120519 |Alessandro Cornaglia | + recuperoA
  * |          |                     | + recuperoD
  * |          |                     | + GeneraPassCasuale
  * +----------+---------------------|---------------------
@@ -38,7 +38,7 @@ import java.util.Properties;
  * 
  * @author acornagl
  * @author mdallapi
- * @version 0.2
+ * @version 1.0
  *
  */
 public class GestioneRecupero{ 

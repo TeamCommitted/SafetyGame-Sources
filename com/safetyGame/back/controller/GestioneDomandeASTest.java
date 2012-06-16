@@ -2,8 +2,8 @@
  * Name: GestioneDomandeAS.java
  * Package: com.safetygame.back.controller
  * Author: Giorgio Maggiolo
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:

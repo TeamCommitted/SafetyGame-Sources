@@ -2,8 +2,8 @@
  * Name: Badge.java
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -20,7 +20,7 @@
  * |          |                     | * getSoglia
  * |          |                     | * setSoglia
  * +----------+---------------------+---------------------
- * | 20120419 |Alessandro Cornaglia | + Badge
+ * | 20120519 |Alessandro Cornaglia | + Badge
  * |          |                     | + Badge
  * |          |                     | + getNome
  * |          |                     | + setNome
@@ -37,7 +37,7 @@ package com.safetyGame.back.condivisi;
  * Classe che rappresenta un badge del sistema
  * 
  * @author acornagl 
- * @version v0.3
+ * @version v1.0
  */
 
 public class Badge {

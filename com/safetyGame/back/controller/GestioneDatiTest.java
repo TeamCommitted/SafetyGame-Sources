@@ -2,22 +2,22 @@
  * Name: GestioneDati.java
  * Package: com.safetygame.back.controller
  * Author: Lorenzo Braghetto
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120711 |Lorenzo Braghetto    | + testRecupero
+ * | 20120611 |Lorenzo Braghetto    | + testRecupero
  * |          |                     | + testModPassA
  * +----------+---------------------+---------------------
- * | 20120708 |Lorenzo Braghetto    | + testLogout
+ * | 20120608 |Lorenzo Braghetto    | + testLogout
  * |          |                     | * testGetBadgeD
  * |          |                     | + testGetStatisticheGlob
  * +----------+---------------------+---------------------
- * | 20120707 |Lorenzo Braghetto    | + GestioneDati
+ * | 20120607 |Lorenzo Braghetto    | + GestioneDati
  * |          |                     | + testGetBadgeAS
  * |          |                     | + testGetBadgeD
  * |          |                     | + testAssegnaBadgeD

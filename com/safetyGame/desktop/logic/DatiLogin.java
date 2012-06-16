@@ -2,19 +2,19 @@
  * Name: DatiLogin.java
  * Package: com.safetygame.desktop.logic
  * Author: Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120610 | Gabriele Facchin    | + DatiLogin
+ * | 20120611 | Gabriele Facchin    | + DatiLogin
  * |          |                     | + getUsername
  * |          |                     | + getPassword
  * +----------+---------------------|---------------------
- * | 20120611 | Gabriele Facchin    | + getLogin
+ * | 20120610 | Gabriele Facchin    | + getLogin
  * +----------+---------------------|---------------------
  *
  */
@@ -27,7 +27,7 @@ import com.safetyGame.desktop.condivisi.Login;
  * Classe wrapper della classe condivisa Login che gestisce i dati di login di un Dipendente
  * 
  * @author gfacchin
- * @version 0.2
+ * @version 1.0
  */
 public class DatiLogin{
   private Login l;

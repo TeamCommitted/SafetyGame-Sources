@@ -2,8 +2,8 @@
  * Name: SqlDAOFactory.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -26,7 +26,7 @@ package com.safetyGame.back.access;
  * Classe che implementa le sottoclassi per la gestione del database SQL
  * 
  * @author gfacchin
- * @version 0.1
+ * @version 1.0
  */
 public class SqlDAOFactory extends DAOFactory{
   /**

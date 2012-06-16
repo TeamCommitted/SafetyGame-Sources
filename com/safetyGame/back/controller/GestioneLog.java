@@ -2,8 +2,8 @@
  * Name: GestioneLog.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -20,10 +20,10 @@
  * |          |                     | *scriviModEmailD
  * |          |                     | *scriviOttenimentoBadge
  * +----------+---------------------+---------------------
- * | 20120511 |Alessandro Cornaglia | + getLog
+ * | 20120525 |Alessandro Cornaglia | + getLog
  * |          |                     | + getPercorso
  * +----------+---------------------+---------------------
- * | 20120510 |Alessandro Cornaglia | + GestioneLog
+ * | 20120517 |Alessandro Cornaglia | + GestioneLog
  * |          |                     | + getUpdateLog
  * |          |                     | + setUpdateLog
  * |          |                     | + scriviLogin
@@ -53,7 +53,7 @@ import com.safetyGame.back.condivisi.*;
  * Classe che si occupa di gestire i log del sistema
  * 
  * @author acornagl 
- * @version v0.3
+ * @version v1.0
  */
 public class GestioneLog{
 

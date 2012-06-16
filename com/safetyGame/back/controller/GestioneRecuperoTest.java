@@ -2,19 +2,19 @@
  * Name: GestioneRecuperoTest.java
  * Package: com.safetygame.back.controller
  * Author: Giorgio Maggiolo
- * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120611 |Giorgio Maggiolo     | + testMail
+ * | 20120612 |Giorgio Maggiolo     | + testMail
  * |          |                     | + testMailInserito
  * |          |                     | * testModMail
  * +----------+---------------------+---------------------
- * | 20120612 |Giorgio Maggiolo     | + testRecuperoA
+ * | 20120611 |Giorgio Maggiolo     | + testRecuperoA
  * |          |                     | + testRecuperoD
  * |          |                     | + testPassCasuale
  * +----------+---------------------|---------------------

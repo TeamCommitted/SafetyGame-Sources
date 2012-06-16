@@ -2,8 +2,8 @@
  * Name: GestioneLogTest.java
  * Package: com.safetygame.back.controller
  * Author: Lorenzo Braghetto
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -20,10 +20,10 @@
  * |          |                     | *scriviModEmailD
  * |          |                     | *scriviOttenimentoBadge
  * +----------+---------------------+---------------------
- * | 20120511 |Lorenzo Braghetto    | + getLog
+ * | 20120527 |Lorenzo Braghetto    | + getLog
  * |          |                     | + getPercorso
  * +----------+---------------------+---------------------
- * | 20120510 |Lorenzo Braghetto    | + GestioneLog
+ * | 20120520 |Lorenzo Braghetto    | + GestioneLog
  * |          |                     | + getUpdateLog
  * |          |                     | + setUpdateLog
  * |          |                     | + scriviLogin
@@ -55,7 +55,7 @@ import org.junit.Test;
 /**
  * Classe di test per oggetti di tipo GestioneLog
  * 
- * @author acornagl
+ * @author lbragh
  *
  */
 public class GestioneLogTest {

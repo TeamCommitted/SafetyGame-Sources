@@ -1,3 +1,22 @@
+/*
+ * Name: DatiLoginTest.java
+ * Package: com.safetygame.desktop.logic
+ * Author: Alessandro Cornaglia
+ * Date: 2012/06/16
+ * Version: 1.0
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120613 | Alessandro Cornaglia| + getPasswordTest
+ * |          |                     | + getUsernameTest
+ * +----------+---------------------|---------------------
+ * | 20120612 | Alessandro Cornaglia| + getLoginTest
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.desktop.logic;
 
 import static org.junit.Assert.*;

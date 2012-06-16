@@ -2,8 +2,8 @@
  * Name: DAODomande.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -32,7 +32,7 @@ import java.util.List;
  * Interfaccia che contiene i prototipi dei metodi per gestire le domande
  * 
  * @author gfacchin
- * @version 0.1
+ * @version 1.0
  */
 
 public interface DAODomande{

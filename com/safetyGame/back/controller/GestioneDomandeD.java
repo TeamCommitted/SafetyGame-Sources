@@ -2,8 +2,8 @@
  * Name: GestioneDomandeD.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -24,7 +24,7 @@
  * |          |                     | + getDAOPunteggi
  * |          |                     | + setDAOPunteggi
  * +----------+---------------------+---------------------
- * | 20120518 |Alessandro Cornaglia | + GestioneDomandeD
+ * | 20120521 |Alessandro Cornaglia | + GestioneDomandeD
  * |          |                     | + getDaoFactory
  * |          |                     | + setDaoFactory
  * |          |                     | + getGestionePunteggiD
@@ -45,7 +45,7 @@ import com.safetyGame.back.condivisi.*;
  * Classe che si occupa di gestire tutte le azioni dovute dall'interazione 
  * fra un dipendente ed una domanda del sistema
  * @author acornagl
- *
+ * @version 1.0
  */
 public class GestioneDomandeD{
   private DAODomande daoDomande;

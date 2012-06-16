@@ -2,8 +2,8 @@
  * Name: GestioneDipendentiD.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -38,7 +38,7 @@ import com.safetyGame.back.condivisi.*;
  * puo' avere con il sistema
  * 
  * @author acornagl
- * @version 0.2
+ * @version 1.0
  *
  */
 public class GestioneDipendentiD{

@@ -2,8 +2,8 @@
  * Name: SqlDAOLoginTest.java
  * Package: com.safetygame.back.access
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:

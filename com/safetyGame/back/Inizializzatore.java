@@ -2,8 +2,8 @@
  * Name: Inizializzatore.java
  * Package: com.safetygame.back
  * Author: Gabriele Facchin & Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  *
  * Changes:
@@ -39,7 +39,7 @@ import java.io.*;
    *
    * @author gfacchin
    * @author acornagl
-   * @version v0.2
+   * @version v1.0
    */
 
 public class Inizializzatore implements ActionListener{

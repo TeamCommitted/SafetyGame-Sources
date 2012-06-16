@@ -2,15 +2,15 @@
  * Name: Dati.java
  * Package: com.safetygame.android.condivisi
  * Author: Lorenzo Braghetto
- * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+------------------+---------------------
  * |   Date   | Programmer       | Changes
  * +----------+------------------+---------------------
- * | 20120306 |Lorenzo Braghetto | + Dati
+ * | 20120506 |Lorenzo Braghetto | + Dati
  * |          |                  | + getNome
  * |          |                  | + getCognome
  * +----------+------------------+---------------------

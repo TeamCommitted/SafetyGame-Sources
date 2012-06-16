@@ -2,8 +2,8 @@
  * Name: GestioneDati.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -51,7 +51,7 @@ import com.safetyGame.back.condivisi.*;
 /**
  * Classe GestioneDati, facade del package controller del back-end
  * @author acornagl
- * @version = 0.3
+ * @version = 1.0
  */
 public class GestioneDati{
    

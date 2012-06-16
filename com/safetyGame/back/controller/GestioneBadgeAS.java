@@ -2,8 +2,8 @@
  * Name: GestioneBadgeAS.java
  * Package: com.safetygame.back.controller
  * Author: Massimo Dalla Pieta'
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -24,7 +24,7 @@ import java.util.ArrayList;
  * Classe che si occupa di gestire i badge da parte AS
  * 
  * @author mdallapi 
- * @version v0.1
+ * @version v1.0
  */
 public class GestioneBadgeAS{ 
     private DAOBadge accessB;

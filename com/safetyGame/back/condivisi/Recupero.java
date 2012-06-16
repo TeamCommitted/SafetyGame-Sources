@@ -2,15 +2,15 @@
  * Name: Recupero.java
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120424 |Alessandro Cornaglia | + Recupero
+ * | 20120519 |Alessandro Cornaglia | + Recupero
  * |          |                     | + getEmail
  * |          |                     | + setEmail
  * |          |                     | + getCodFiscale
@@ -25,7 +25,7 @@ package com.safetyGame.back.condivisi;
  * Classe che contiene le informazioni di un untente che chiede il recupero della password
  * 
  * @author acornagl
- * @version v0.1
+ * @version v1.0
  */
 public class Recupero {
   

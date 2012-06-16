@@ -1,3 +1,21 @@
+/*
+ * Name: DataOra.java
+ * Package: com.safetygame.back.condivisi
+ * Author: Alessandro Cornaglia
+ * Date: 2012/06/16
+ * Version: 1.0
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120607 |Alessandro Cornaglia | + testCostruttoreP
+ * |          |                     | + testCostruttoreV
+ * |          |                     | + testCostruttoreStringa
+ * +----------+---------------------|---------------------
+ *
+ */ 
 package com.safetyGame.back.condivisi;
 
 import static org.junit.Assert.*;

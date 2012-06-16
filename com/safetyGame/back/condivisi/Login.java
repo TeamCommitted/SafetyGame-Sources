@@ -2,8 +2,8 @@
  * Name: Login.java
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -22,7 +22,7 @@
  * |          |                     | - setAutenticato
  * |          |                     | * Login
  * +----------+---------------------+---------------------
- * | 20120424 |Alessandro Cornaglia | + Login
+ * | 20120524 |Alessandro Cornaglia | + Login
  * |          |                     | + getDipendente
  * |          |                     | + setDipendente
  * |          |                     | + getDataOra
@@ -38,7 +38,7 @@
  * Classe contenitrice dei dati di autenticazione di un utente
  * 
  * @author TeamCommitted
- * @version 0.2
+ * @version 1.0
  * 
  */
 public class Login {

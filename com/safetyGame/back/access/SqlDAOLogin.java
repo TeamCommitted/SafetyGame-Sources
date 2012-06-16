@@ -2,8 +2,8 @@
  * Name: SqlDAOLogin.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -26,7 +26,7 @@ import java.sql.SQLException;
  * Classe che gestisce i login, implementa i metodi pubblici dell'interfaccia
  * 
  * @author gfacchin
- * @version 0.1
+ * @version 1.0
  */
 
 public class SqlDAOLogin implements DAOLogin{

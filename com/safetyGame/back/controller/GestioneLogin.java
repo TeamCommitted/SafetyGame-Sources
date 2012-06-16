@@ -2,8 +2,8 @@
  * Name: GestioneLogin.java
  * Package: com.safetygame.back.controller
  * Author: Massimo Dalla Pieta'
- * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -26,7 +26,7 @@ import com.safetyGame.back.condivisi.*;
  * Classe che si occupa di gestire i login nel sistema
  * 
  * @author mdallapi 
- * @version v0.1
+ * @version v1.0
  */
 
 public class GestioneLogin{

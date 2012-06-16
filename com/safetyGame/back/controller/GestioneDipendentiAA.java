@@ -2,8 +2,8 @@
  * Name: GestioneDipendentiAA.java
  * Package: com.safetygame.back.controller
  * Author: Massimo Dalla Pieta'
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -29,7 +29,7 @@ import java.util.ArrayList;
  * Classe che si occupa di gestire le modifiche dati dei Dipendenti da parte di un Amministratore Azienda
  * 
  * @author mdallapi 
- * @version v0.1
+ * @version v1.0
  */
 public class GestioneDipendentiAA{
    private DAODipendenti accessDip;

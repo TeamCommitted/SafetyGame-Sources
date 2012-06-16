@@ -2,15 +2,15 @@
  * Name: DashboardActivity.java
  * Package: com.safetygame.android.View
  * Author: Lorenzo Braghetto
- * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+------------------+---------------------
  * |   Date   | Programmer       | Changes
  * +----------+------------------+---------------------
- * | 20120302 |Lorenzo Braghetto | + onCreate
+ * | 20120502 |Lorenzo Braghetto | + onCreate
  * +----------+------------------+---------------------
  *
  */
