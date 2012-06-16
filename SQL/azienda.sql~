@@ -38,13 +38,13 @@ CREATE TABLE Dipendente(
 )ENGINE=InnoDB;
 
 CREATE TABLE Storico(
-	ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	IDdomanda INT NOT NULL,
 	IDdipendente INT NOT NULL,
 	risposta BOOL DEFAULT FALSE,
 	corretta BOOL DEFAULT FALSE,
 	punteggio INT NOT NULL,
 	
+	PRIMARY KEY(IDdomanda, IDdipendente),
 	FOREIGN KEY(IDdomanda) REFERENCES Domanda(ID)
 							ON UPDATE CASCADE,
 	FOREIGN KEY(IDdipendente) REFERENCES Dipendente(ID)
@@ -69,7 +69,8 @@ CREATE TABLE Assegnato(
 	PRIMARY KEY (IDDipendente, IDBadge),
 	
 	FOREIGN KEY(IDDipendente) REFERENCES Dipendente(ID)
-								ON UPDATE CASCADE,
+								ON UPDATE CASCADE
+								ON DELETE CASCADE,
 	FOREIGN KEY(IDBadge) REFERENCES Badge(ID)
 							ON UPDATE CASCADE
 							ON DELETE CASCADE
