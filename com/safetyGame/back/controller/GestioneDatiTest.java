@@ -69,32 +69,57 @@ public class GestioneDatiTest {
 	
 	@Test
 	public void testGetBadgesAS() {
-		D.getBadgesAS();
+		init();
+		ArrayList<Badge> listbadge = new ArrayList<Badge>();
+		listbadge = D.getBadgesAS();
+		System.out.print(listbadge.get(0).getNome());
+		assertTrue("lista badge non ottenuta", !listbadge.isEmpty()); 
 	}
 	
 	@Test
 	public void testgetBadgeD() {
-		D.getBadgeD(l, n);  
+		init();
+		ArrayList<Badge> listbadge = new ArrayList<Badge>();
+		Login l = new Login("nick","pass");
+		listbadge = D.getBadgeD(l,1);
+		System.out.print(listbadge.size());
+		assertTrue("lista badge non ottenuta", !listbadge.isEmpty());  
 	}
 	
 	@Test
 	public void testassegnaBadge() {
-		D.assegnaBadge(D, l);
+		init();
+		Domanda d = new Domanda();
+		d.setId(1);
+		d.setTipologia("Pompiere");
+		Login l = new Login("nick","pass");
+		assertTrue("badge non assegnata", D.assegnaBadge(d,l)); 
 	}
 	  
 	@Test
 	public void testgetElencoDipendenti() {
-	   D.getElencoDipendenti();
+		init();
+		ArrayList<Dipendente> risultato_elenco = D.getElencoDipendenti();
+		int numero_dip = 1;//nel DB al momento
+		assertTrue("il numero di dipendenti in elenco non corrisponde",numero_dip == risultato_elenco.size());
 	}
 	  
 	@Test
 	public void testaggiungiDipendente() {
-		D.aggiungiDipendente(Dip);
+		init();
+		Dipendente dip = new Dipendente(101,"wwww","nome","cognome","ale.corny@gmail.com","www","pass","Dirigente",0,"",4);
+		boolean risultato = D.aggiungiDipendente(dip);
+		assertTrue("dipendente non aggiunto",risultato == true);
 	}
 	  
 	@Test
 	public void testcancellaDipendente() {
-		D.cancellaDipendente(Dip);
+		init();
+		DAODipendenti sqlDip = new SqlDAODipendenti(indirizzoAz);
+		Login l = new Login("nick","pass");
+		Dipendente dip = sqlDip.getInfoD(l);
+		boolean risultato = D.cancellaDipendente(dip);
+		assertTrue("rimozione dipendente non riuscita",risultato == true);
 	}
 	  
 	@Test
@@ -240,7 +265,7 @@ public class GestioneDatiTest {
 		amm.setEmail("teamcommitted@gmail.com");
 		amm.setCodFiscale("0");
 		try{D.recuperoA(amm);}catch(Exception e){e.printStackTrace();};
-		assertTrue("percorso errato", 1 == 1);
+		assertTrue("percorso errato", true);
 	}
 	   
 	@Test
@@ -250,7 +275,7 @@ public class GestioneDatiTest {
 		amm.setEmail("teamcommitted@gmail.com");
 		amm.setCodFiscale("0");
 		try{D.recuperoA(amm);}catch(Exception e){e.printStackTrace();};
-		assertTrue("percorso errato", 1 == 1);
+		assertTrue("percorso errato", true);
 	}
 	   
 	@Test
