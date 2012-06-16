@@ -12,4 +12,4 @@ INSERT INTO Risposta VALUES
 (1,'si'), (2,'no'),(3,'1'),(4,'5'),(5,'3');
 
 INSERT INTO Domanda_Risposta VALUES
-(1,5,TRUE),(1,2,FALSE),(2,1,FALSE),(2,2,FALSE),(3,1,TRUE);
+(1,3,FALSE),(1,4,FALSE),(1,5,TRUE),(2,3,FALSE),(2,4,TRUE),(2,5,FALSE),(3,1,TRUE),(3,2,FALSE);
