@@ -1,3 +1,81 @@
+/*
+ * Name: GestioneDipendentiDTest.java
+ * Package: com.safetygame.back.controller
+ * Author: Lorenzo Braghetto
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Lorenzo Braghetto    | /*
+ * Name: GestioneDipendentiD.java
+ * Package: com.safetygame.back.controller
+ * Author: Alessandro Cornaglia
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Alessandro Cornaglia | * GestioneDipendentiD
+ * |          |                     | - getDaoFactory
+ * |          |                     | - setDaoFactory
+ * |          |                     | + getDaoDipendenti
+ * |          |                     | + setDaoDipendenti
+ * |          |                     | * getDati
+ * |          |                     | * modificaPass
+ * |          |                     | + modificaEmail
+ * +----------+---------------------+---------------------
+ * | 20120519 |Alessandro Cornaglia | + GestioneDipendentiD
+ * |          |                     | + getDaoFacory
+ * |          |                     | + setDaoFactory
+ * |          |                     | + getGestioneLog
+ * |          |                     | + setGestioneLog 
+ * |          |                     | + getDati
+ * |          |                     | + modificaPass
+ * +----------+---------------------|---------------------
+ *
+ *//*
+ * Name: GestioneDipendentiD.java
+ * Package: com.safetygame.back.controller
+ * Author: Alessandro Cornaglia
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Alessandro Cornaglia | * GestioneDipendentiD
+ * |          |                     | - getDaoFactory
+ * |          |                     | - setDaoFactory
+ * |          |                     | + getDaoDipendenti
+ * |          |                     | + setDaoDipendenti
+ * |          |                     | * getDati
+ * |          |                     | * modificaPass
+ * |          |                     | + modificaEmail
+ * +----------+---------------------+---------------------
+ * | 20120519 |Alessandro Cornaglia | + GestioneDipendentiD
+ * |          |                     | + getDaoFacory
+ * |          |                     | + setDaoFactory
+ * |          |                     | + getGestioneLog
+ * |          |                     | + setGestioneLog 
+ * |          |                     | + getDati
+ * |          |                     | + modificaPass
+ * +----------+---------------------|---------------------
+ *
+ *
+ * |          |                     | 
+ * +----------+---------------------+---------------------
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.back.controller;
 
 import static org.junit.Assert.*;

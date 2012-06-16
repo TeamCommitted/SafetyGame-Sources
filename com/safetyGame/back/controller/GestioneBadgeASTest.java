@@ -1,3 +1,21 @@
+/*
+ * Name: GestioneBadgeASTest.java
+ * Package: com.safetygame.back.controller
+ * Author: Giorgio Maggiolo
+ * Date: {Data di approvazione del file}
+ * Version: 0.3
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120704 |Giorgio Maggiolo     | + testGestioneBadgeAS
+ * |          |                     | + testgetBadgeAS
+ * +----------+---------------------+----------------------
+ * 
+ */ 
+
 package com.safetyGame.back.controller;
 
 import static org.junit.Assert.*;

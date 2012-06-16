@@ -1,3 +1,26 @@
+/*
+ * Name: SqlDAODomandeTest.java
+ * Package: com.safetygame.back.access
+ * Author: Massimo Dalla Pieta'
+ * Date: {Data di approvazione del file}
+ * Version: 0.1
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120602 | Massimo Dalla Pieta'| + prendiCampiDomandaTest
+ * |          |                     | + getDomandaTest
+ * |          |                     | + posticipaTest                
+ * |          |                     | + rispondiTest
+ * |          |                     | + domandeATest
+ * |          |                     | + addDomandaTest
+ * |          |                     | + remDomandaTest
+ * |          |                     | + scriviSottopostaTest
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.back.access;
 
 import static org.junit.Assert.*;

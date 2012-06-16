@@ -1,3 +1,20 @@
+/*
+ * Name: GestionePunteggiAA.java
+ * Package: com.safetygame.back.controller
+ * Author: Giorgio Maggiolo
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Giorgio Maggiolo     | * testGetPunteggi
+ * |          |                     | * testSetTrofei
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.back.controller;
 
 import static org.junit.Assert.*;

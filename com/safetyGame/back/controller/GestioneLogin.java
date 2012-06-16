@@ -1,3 +1,23 @@
+/*
+ * Name: GestioneLogin.java
+ * Package: com.safetygame.back.controller
+ * Author: Massimo Dalla Pieta'
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Massimo Dalla Pieta' | * GestioneLogin
+ * |          |                     | * loginAdmin
+ * |          |                     | * loginUser
+ * |          |                     | * logout
+ * +----------+---------------------|---------------------
+ *
+ */
+
 package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;

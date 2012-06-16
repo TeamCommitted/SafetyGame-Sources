@@ -1,3 +1,25 @@
+/*
+ * Name: GestioneDipendentiAA.java
+ * Package: com.safetygame.back.controller
+ * Author: Massimo Dalla Pieta'
+ * Date: {Data di approvazione del file}
+ * Version: 0.3
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120611 |Massimo Dalla Pieta' | + modPassA
+ * |          |                     | + GestioneDipendentiAA
+ * |          |                     | + getElencoDipendenti
+ * |          |                     | + aggiungiDipendente
+ * |          |                     | + cancellaDipendente
+ * |          |                     | + modDipendente
+ * +----------+---------------------+----------------------
+ * 
+ */ 
+
 package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;

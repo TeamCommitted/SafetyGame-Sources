@@ -1,3 +1,21 @@
+/*
+ * Name: GestioneBadgeDTest.java
+ * Package: com.safetygame.back.controller
+ * Author: Giorgio Maggiolo
+ * Date: {Data di approvazione del file}
+ * Version: 0.3
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120607 |Giorgio Maggiolo     | + testGetBadgeD
+ * |          |                     | + testassegnaBadgeD
+ * +----------+---------------------+----------------------
+ * 
+ */ 
+
 package com.safetyGame.back.controller;
 
 import static org.junit.Assert.*;

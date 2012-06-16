@@ -1,3 +1,48 @@
+/*
+ * Name: GestioneDati.java
+ * Package: com.safetygame.back.controller
+ * Author: Lorenzo Braghetto
+ * Date: {Data di approvazione del file}
+ * Version: 0.3
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120711 |Lorenzo Braghetto    | + testRecupero
+ * |          |                     | + testModPassA
+ * +----------+---------------------+---------------------
+ * | 20120708 |Lorenzo Braghetto    | + testLogout
+ * |          |                     | * testGetBadgeD
+ * |          |                     | + testGetStatisticheGlob
+ * +----------+---------------------+---------------------
+ * | 20120707 |Lorenzo Braghetto    | + GestioneDati
+ * |          |                     | + testGetBadgeAS
+ * |          |                     | + testGetBadgeD
+ * |          |                     | + testAssegnaBadgeD
+ * |          |                     | + testGetElencoDipendenti
+ * |          |                     | + testAggiungiDipendente
+ * |          |                     | + testCancellaDipendente
+ * |          |                     | + testModDipendente
+ * |          |                     | + testGetBadgeAS
+ * |          |                     | + testModificaPass
+ * |          |                     | + testModificaEmail
+ * |          |                     | + testGetElencoDomande
+ * |          |                     | + testGetBadgeAS
+ * |          |                     | + testAddDomanda
+ * |          |                     | + testRemDomanda
+ * |          |                     | + testGetDomandaD
+ * |          |                     | + testSetRisposta
+ * |          |                     | + testLoginAdmin
+ * |          |                     | + testLoginUser
+ * |          |                     | + testGetPunteggi
+ * |          |                     | + testSetTrofei
+ * |          |                     | + testSetStatisticheD
+ * |          |                     | + testPosticipa
+ * +----------+---------------------+----------------------
+ * 
+ */ 
 package com.safetyGame.back.controller;
 
 import static org.junit.Assert.*;

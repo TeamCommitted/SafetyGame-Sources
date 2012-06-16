@@ -1,3 +1,27 @@
+/*
+ * Name: GestioneRecupero.java
+ * Package: com.safetygame.back.controller
+ * Author: Massimo Dalla Pieta'
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Massimo Dalla Pieta' | * GestioneRecupero
+ * |          |                     | + modMail
+ * |          |                     | + setmailInserito
+ * |          |                     | * sendMail
+ * +----------+---------------------+---------------------
+ * | 20120519 |Alessandro Cornaglia | + ecuperoA
+ * |          |                     | + recuperoD
+ * |          |                     | + GeneraPassCasuale
+ * +----------+---------------------|---------------------
+ *
+ */
+
 package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;

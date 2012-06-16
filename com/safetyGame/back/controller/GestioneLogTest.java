@@ -1,4 +1,48 @@
-
+/*
+ * Name: GestioneLogTest.java
+ * Package: com.safetygame.back.controller
+ * Author: Lorenzo Braghetto
+ * Date: {Data di approvazione del file}
+ * Version: 0.3
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Lorenzo Braghetto    | * scriviLogin
+ * |          |                     | * scriviLogout
+ * |          |                     | * scriviDomRic
+ * |          |                     | * scriviDomProp
+ * |          |                     | * scriviDomPost
+ * |          |                     | * scriviDomRisp
+ * |          |                     | *scriviModPassD
+ * |          |                     | *scriviModEmailD
+ * |          |                     | *scriviOttenimentoBadge
+ * +----------+---------------------+---------------------
+ * | 20120511 |Lorenzo Braghetto    | + getLog
+ * |          |                     | + getPercorso
+ * +----------+---------------------+---------------------
+ * | 20120510 |Lorenzo Braghetto    | + GestioneLog
+ * |          |                     | + getUpdateLog
+ * |          |                     | + setUpdateLog
+ * |          |                     | + scriviLogin
+ * |          |                     | + scriviLogout
+ * |          |                     | + scriviDomRic
+ * |          |                     | + scriviDomProp
+ * |          |                     | + scriviDomPost
+ * |          |                     | + scriviDomRisp
+ * |          |                     | + scriviModPassD
+ * |          |                     | + scriviModEmailD
+ * |          |                     | + scriviOttenimentoBadge
+ * |          |                     | + scriviAddDip
+ * |          |                     | + scriviDelDip
+ * |          |                     | + scriviModDip
+ * |          |                     | + scriviAddDomande
+ * |          |                     | + scriviDelDomande
+ * +----------+---------------------|---------------------
+ *
+ */ 
 package com.safetyGame.back.controller;
 
 import java.io.File;

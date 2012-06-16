@@ -1,3 +1,21 @@
+/*
+ * Name: GestionePunteggiAA.java
+ * Package: com.safetygame.back.controller
+ * Author: Massimo Dalla Pietà
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Massimo Dalla Pieta' | * GestionePunteggiAA
+ * |          |                     | * getPunteggi
+ * |          |                     | * setTrofei
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;

@@ -1,3 +1,25 @@
+/*
+ * Name: GestioneRecuperoTest.java
+ * Package: com.safetygame.back.controller
+ * Author: Giorgio Maggiolo
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120611 |Giorgio Maggiolo     | + testMail
+ * |          |                     | + testMailInserito
+ * |          |                     | * testModMail
+ * +----------+---------------------+---------------------
+ * | 20120612 |Giorgio Maggiolo     | + testRecuperoA
+ * |          |                     | + testRecuperoD
+ * |          |                     | + testPassCasuale
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.back.controller;
 
 import static org.junit.Assert.*;

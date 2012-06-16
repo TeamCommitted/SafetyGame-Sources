@@ -1,3 +1,20 @@
+/*
+ * Name: SqlDAOPunteggiTest.java
+ * Package: com.safetygame.back.access
+ * Author: Massimo Dalla Pieta'
+ * Date: {Data di approvazione del file}
+ * Version: 0.2
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120610 | Massimo Dalla Pieta'| + getStatisticheTest
+ * |          |                     | + getStatisticheGlobaliTest
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.back.access;
 
 import static org.junit.Assert.*;

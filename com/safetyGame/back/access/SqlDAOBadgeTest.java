@@ -1,3 +1,22 @@
+/*
+ * Name: SqlDAOBadge.java
+ * Package: com.safetygame.back.access
+ * Author: Massimo Dalla Pieta'
+ * Date: {Data di approvazione del file}
+ * Version: 0.1
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120610 | Massimo Dalla Pieta'| + testAssegna
+ * |          |                     | + testBadgeD
+ * +----------+---------------------|---------------------
+ * | 20120611 | Massimo Dalla Pieta'| + testBadgeAS
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.back.access;
 
 import static org.junit.Assert.*;

@@ -1,3 +1,21 @@
+/*
+ * Name: GestioneDomandeDTest.java
+ * Package: com.safetygame.back.controller
+ * Author: Lorenzo Braghetto
+ * Date: {Data di approvazione del file}
+ * Version: 0.3
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120611 |Lorenzo Braghetto    | + posticipaTest
+ * |          |                     | * getDomandaTest
+ * |          |                     | * setRispostaTest
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.back.controller;
 
 import static org.junit.Assert.*;
