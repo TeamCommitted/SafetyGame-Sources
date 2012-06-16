@@ -242,10 +242,9 @@ public class GestioneDomandeD{
    */
   public boolean posticipa(Login l, Domanda d) {
 	Dipendente dip = this.daoDipendenti.getInfoD(l);
-	
 	boolean eseguito = this.daoDomande.posticipa(dip, d);
-	if (eseguito)
-      this.gestioneLog.scriviDomPost(l, d);
+	//if (eseguito)
+      //this.gestioneLog.scriviDomPost(l, d);
 	return eseguito;
   }
   

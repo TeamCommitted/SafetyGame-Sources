@@ -187,12 +187,22 @@ public class GestioneDatiTest {
 	
 	@Test
 	public void testgetDomandaD() {
-		D.getDomandaD(l);
+		init();
+		  Login l = new Login("nick","pass");
+		  Domanda dom = D.getDomandaD(l);
+		  assertTrue("non viene ritornata domanda corretta", dom.getId()==2);
 	}
 	  
 	@Test
 	public void testsetRisposta() {
-		D.setRisposta(l, risposta);
+		init();
+		  Login l = new Login("nick","pass");
+		  Domanda dom = new Domanda();
+		  dom.setId(1);
+		  dom.setRispostaData(1);
+		  dom.setPunteggio(new Punteggio(50));
+		  boolean b = D.setRisposta(l, dom);
+		  assertTrue("non viene rsegnata la risposta corretta", b);
 	}
 	  
 	@Test
@@ -238,7 +248,12 @@ public class GestioneDatiTest {
 	   
 	@Test
 	public void testposticipa() {
-		 D.posticipa(l, d);
+		init();
+		  Login l = new Login("nick","pass");
+		  Domanda dom = new Domanda();
+		  dom.setId(1);
+		  boolean b = D.posticipa(l, dom);
+		  assertTrue("non viene rsegnata la risposta corretta", b);
 	}
 	   
 	@Test

@@ -46,7 +46,7 @@ public class GestioneDomandeDTest {
 	  init();
 	  Login l = new Login("nick","pass");
 	  Domanda dom = gestioneDomandeD.getDomandaD(l);
-	  assertTrue("non viene ritornata domanda corretta", dom.getId()==1);
+	  assertTrue("non viene ritornata domanda corretta", dom.getId()==2);
 	}
 	
 	@Test
@@ -56,10 +56,21 @@ public class GestioneDomandeDTest {
 	  Login l = new Login("nick","pass");
 	  Domanda dom = new Domanda();
 	  dom.setId(1);
-	  dom.setRispostaData(2);
+	  dom.setRispostaData(1);
+	  dom.setPunteggio(new Punteggio(50));
 	  boolean b = gestioneDomandeD.setRisposta(l, dom);
-	  System.out.println(b);
-	  //assertTrue("non viene ritornata domanda corretta", dom.getId()==1);
+	  assertTrue("non viene rsegnata la risposta corretta", b);
+	}
+	
+	@Test
+	public void posticipaTest() {
+	//test che verifica il recupero di una domanda
+	  init();
+	  Login l = new Login("nick","pass");
+	  Domanda dom = new Domanda();
+	  dom.setId(1);
+	  boolean b = gestioneDomandeD.posticipa(l, dom);
+	  assertTrue("non viene rsegnata la risposta corretta", b);
 	}
 
 }
