@@ -9,7 +9,10 @@ insert into Amministratore values (1,'teamcommitted@gmail.com','amministratoreAz
 insert into Badge values (1,'Re dei pompieri', 'Pompiere',100),
 (2,'Re dei segretari', 'Segretaria',180),
 (3,'Re dei dirigenti', 'Dirigente',250),
-(4,'Re degli operai', 'Operaio',50);
+(4,'Re degli operai', 'Operaio',50),
+(5,'Re delle risposte','TotaleRisposte',5),
+(6,'Re delle risposte','TotalePunti',150);
+
 insert into Assegnato values (1,1,'2012/06/14 12:13:45'),
 (2,4,'2011/12/20 11:11:11'),
 (3,4,'2012/08/28 21:31:11'),

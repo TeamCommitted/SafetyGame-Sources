@@ -1,17 +1,15 @@
 INSERT INTO Tipologia VALUES 
-('Pompiere'),
-('Magazziniere'),
-('Dirigente'),
-('Segretaria');
+('Multipla');
 
 INSERT INTO Domanda
-(ID,testo_domanda,tipologia,linkV,linkF,punteggio,tempo,ambito)
+(ID,testo_domanda,tipologia,linkV,linkF,punteggio,tempo,ambito,mobile)
  VALUES 
-(1,'Sei in fiamme?','Pompiere','nolinkV','nolinkF',50,5,'Pompiere'),
-(2,'Sei a 90?','Segretaria','nolinkV','nolinkF',20,10,'Segretaria');
+(1,'Quanti estintori ci vogliono in 10 m-quadri?','Multipla','','',15,30,'Pompiere',0),
+(2,'Quanti dipendenti devono saper fare il massaggio cardiaco ogni 10?','Multipla','','',30,10,'Dirigente',0),
+(3,'Bisogna usare il tornio con la grata abbassata?','Multipla','','',5,20,'Operaio',0);
 
 INSERT INTO Risposta VALUES
-(1,'si'), (2,'no');
+(1,'si'), (2,'no'),(3,'1'),(4,'5'),(5,'3');
 
 INSERT INTO Domanda_Risposta VALUES
-(1,1,TRUE),(1,2,FALSE),(2,1,FALSE),(2,2,TRUE);
+(1,5,TRUE),(1,2,FALSE),(2,1,FALSE),(2,2,FALSE),(3,1,TRUE);
