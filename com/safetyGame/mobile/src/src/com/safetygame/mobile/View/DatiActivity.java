@@ -89,7 +89,7 @@ public class DatiActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			Dati dati = (Dati) ConnectionUtils
 					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/back/connection/API/dati.jsp",
+							"http://monossido.ath.cx/teamcommitted/API/dati.jsp",
 							nameValuePairs);
 
 			return dati;

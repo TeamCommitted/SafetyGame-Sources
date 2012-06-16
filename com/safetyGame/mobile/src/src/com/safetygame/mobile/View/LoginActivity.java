@@ -91,7 +91,7 @@ public class LoginActivity extends SherlockActivity {
 					.getText().toString()));
 			String status = (String) ConnectionUtils
 					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/back/connection/API/login.jsp",
+							"http://monossido.ath.cx/teamcommitted/API/login.jsp",
 							nameValuePairs);
 
 			SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);

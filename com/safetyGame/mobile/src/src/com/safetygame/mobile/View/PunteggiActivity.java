@@ -89,7 +89,7 @@ public class PunteggiActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			Punteggi punteggi = (Punteggi) ConnectionUtils
 					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/back/connection/API/punteggi.jsp",
+							"http://monossido.ath.cx/teamcommitted/API/punteggi.jsp",
 							nameValuePairs);
 
 			return punteggi;
@@ -108,7 +108,7 @@ public class PunteggiActivity extends SherlockActivity {
 						+ punteggi.getPunti());
 				String[] badges = punteggi.getBadge();
 				((TextView) findViewById(R.id.Badge1)).setText(badges[0]);
-				((TextView) findViewById(R.id.Badge2)).setText(badges[0]);
+				((TextView) findViewById(R.id.Badge2)).setText(badges[1]);
 			} else {
 
 				AlertDialog.Builder builder = new AlertDialog.Builder(context);
