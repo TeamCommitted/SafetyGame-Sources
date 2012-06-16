@@ -82,14 +82,14 @@ public class ConnectionUtils
 			{
 				String type = parseXML(xml, "type", 0);
 				if (type.equals("sino"))
-					return new Domanda(Integer.parseInt(parseXML(xml, "id", 0)), type, parseXML(xml, "title", 0), parseXML(xml, "testo", 0), Integer.parseInt(parseXML(xml, "punteggio", 0)), Integer.parseInt(parseXML(xml, "corretta", 0)));
+					return new Domanda(Integer.parseInt(parseXML(xml, "id", 0)), type, parseXML(xml, "testo", 0), Integer.parseInt(parseXML(xml, "punteggio", 0)), Integer.parseInt(parseXML(xml, "corretta", 0)));
 				else
 				{
 					String[] risposte = new String[3];
 					risposte[0] = parseXML(xml, "risposta", 0);
 					risposte[1] = parseXML(xml, "risposta", 1);
 					risposte[2] = parseXML(xml, "risposta", 2);
-					return new Domanda(Integer.parseInt(parseXML(xml, "id", 0)), type, parseXML(xml, "title", 0), parseXML(xml, "testo", 0), risposte, 3, Integer.parseInt(parseXML(xml, "punteggio", 0)), Integer.parseInt(parseXML(xml, "corretta", 0)));
+					return new Domanda(Integer.parseInt(parseXML(xml, "id", 0)), type, parseXML(xml, "testo", 0), risposte, 3, Integer.parseInt(parseXML(xml, "punteggio", 0)), Integer.parseInt(parseXML(xml, "corretta", 0)));
 				}
 
 			} else if (url.contains("quest"))

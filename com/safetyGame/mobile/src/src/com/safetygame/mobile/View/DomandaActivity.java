@@ -94,7 +94,7 @@ public class DomandaActivity extends SherlockActivity {
 			// passw.getText().toString()));
 			domanda = (Domanda) ConnectionUtils
 					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/back/connection/API/domanda.jsp",
+							"http://monossido.ath.cx/teamcommitted/API/domanda.jsp",
 							nameValuePairs);
 
 			return domanda;
@@ -106,8 +106,6 @@ public class DomandaActivity extends SherlockActivity {
 			if (domanda != null) {
 				if (domanda.getType().equals("sino")) {
 					setContentView(R.layout.domanda_sino);
-					((TextView) findViewById(R.id.Titolo)).setText(domanda
-							.getTitle());
 					((TextView) findViewById(R.id.Testo)).setText(domanda
 							.getTesto());
 
@@ -117,7 +115,7 @@ public class DomandaActivity extends SherlockActivity {
 						@Override
 						public void onClick(View arg0) {
 
-							String[] params = { domanda.getId() + "", 0 + "" };
+							String[] params = { "0" };
 							new RispostaTask().execute(params);
 						}
 
@@ -127,15 +125,14 @@ public class DomandaActivity extends SherlockActivity {
 
 						@Override
 						public void onClick(View arg0) {
+							String[] params = { "1" };
 
-							new RispostaTask().execute();
+							new RispostaTask().execute(params);
 						}
 
 					});
 				} else {
 					setContentView(R.layout.domanda_rispostamultipla);
-					((TextView) findViewById(R.id.Titolo)).setText(domanda
-							.getTitle());
 					((TextView) findViewById(R.id.Testo)).setText(domanda
 							.getTesto());
 					final RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroup1);
@@ -161,7 +158,8 @@ public class DomandaActivity extends SherlockActivity {
 							case R.id.radio2:
 								checked = 2;
 							}
-							new RispostaTask().execute();
+							String[] params = { checked + "" };
+							new RispostaTask().execute(params);
 						}
 
 					});
@@ -196,7 +194,7 @@ public class DomandaActivity extends SherlockActivity {
 			// passw.getText().toString()));
 			Quest quest = (Quest) ConnectionUtils
 					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/backend/API/quest.jsp",
+							"http://monossido.ath.cx/teamcommitted/API/quest.jsp",
 							nameValuePairs);
 
 			return quest;
@@ -254,11 +252,11 @@ public class DomandaActivity extends SherlockActivity {
 			nameValuePairs.add(new BasicNameValuePair("risposta2", domanda.getRisposte()[1]));
 			nameValuePairs.add(new BasicNameValuePair("risposta3", domanda.getRisposte()[2]));
 			nameValuePairs.add(new BasicNameValuePair("corretta", domanda.getCorretta() + ""));
-			nameValuePairs.add(new BasicNameValuePair("rispostaData", arg0[1]));
+			nameValuePairs.add(new BasicNameValuePair("rispostaData", arg0[0]));
 
 			ConnectionUtils
 					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/backend/API/rispondi.jsp",
+							"http://monossido.ath.cx/teamcommitted/API/rispondi.jsp",
 							nameValuePairs);
 			return null;
 		}
