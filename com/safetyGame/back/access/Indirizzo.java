@@ -114,7 +114,6 @@ public class Indirizzo{
       return false;
     }
     try{
-    	System.out.println("DELETE FROM "+ tabella +" WHERE "+ controlli+";");
       connettore.executeUpdate("DELETE FROM "+ tabella +" WHERE "+ controlli+";");
     }
     catch(SQLException e){return false;}
