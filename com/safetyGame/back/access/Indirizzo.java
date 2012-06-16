@@ -136,7 +136,7 @@ public class Indirizzo{
     if (controlli!=""){
       where=" WHERE " +controlli;
     }
-    try{
+    try{System.out.println("SELECT "+ colonne+" FROM "+ tabella + where +" "+ extra+";");
     	rs = connettore.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where +" "+ extra+";");
     	rs.next();
     }

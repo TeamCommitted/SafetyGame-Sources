@@ -4,4 +4,4 @@ insert into Amministratore values (1,'teamcommitted@gmail.com','amministratoreAz
 insert into Badge values (1,'Re dei pompieri', 'tanti punti su incendio',100),(2,'Re dei segretari', 'tanti punti su interno',100);
 insert into Assegnato values (1,1,'2012/06/14 12:13:45'),(1,2,'2012/06/14 12:13:45');
 insert into Domanda values (1),(2);
-insert into Storico values (1,1,1,1,1,15),(1,2,1,1,1,-1);
+insert into Storico values (1,1,1,1,15),(2,1,1,1,-1);
