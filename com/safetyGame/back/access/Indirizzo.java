@@ -96,7 +96,7 @@ public class Indirizzo{
    * 
    */   
   public boolean modificaRiga(String tabella, String colonnevalori, String controlli){
-    try{ 
+    try{ System.out.println("UPDATE "+ tabella +" SET "+ colonnevalori +" WHERE "+ controlli+";");
       connettore.executeUpdate("UPDATE "+ tabella +" SET "+ colonnevalori +" WHERE "+ controlli+";");
     }
     catch(SQLException e){System.out.println(e.getMessage());return false;}
@@ -115,7 +115,7 @@ public class Indirizzo{
     if (controlli.trim()==""){
       return false;
     }
-    try{
+    try{System.out.println("DELETE FROM "+ tabella +" WHERE "+ controlli+";");
       connettore.executeUpdate("DELETE FROM "+ tabella +" WHERE "+ controlli+";");
     }
     catch(SQLException e){return false;}
@@ -138,7 +138,7 @@ public class Indirizzo{
     if (controlli!=""){
       where=" WHERE " +controlli;
     }
-    try{
+    try{System.out.println("SELECT "+ colonne+" FROM "+ tabella + where +" "+ extra+";");
     	rs = connettore.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where +" "+ extra+";");
     	rs.next();
     }
