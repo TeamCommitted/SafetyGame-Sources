@@ -2,10 +2,17 @@
 dependency1.from=InizializzatoreTest
 dependency1.to=Inizializzatore
 dependency1.type=UsesDependency
+<<<<<<< HEAD
+package.editor.height=714
+package.editor.width=1482
+package.editor.x=-1868
+package.editor.y=52
+=======
 package.editor.height=572
 package.editor.width=1244
 package.editor.x=32
 package.editor.y=32
+>>>>>>> a34939ff7d3194db44a4c66edb4f1fb09228dc9e
 package.numDependencies=1
 package.numTargets=6
 package.showExtends=true

@@ -116,10 +116,17 @@ dependency8.type=UsesDependency
 dependency9.from=SqlDAOFactory
 dependency9.to=SqlDAOBadge
 dependency9.type=UsesDependency
+<<<<<<< HEAD
+package.editor.height=714
+package.editor.width=1482
+package.editor.x=-1848
+package.editor.y=72
+=======
 package.editor.height=608
 package.editor.width=1244
 package.editor.x=-12
 package.editor.y=26
+>>>>>>> a34939ff7d3194db44a4c66edb4f1fb09228dc9e
 package.numDependencies=39
 package.numTargets=19
 package.showExtends=true
@@ -239,10 +246,17 @@ target18.type=UnitTestTargetJunit4
 target18.width=140
 target18.x=160
 target18.y=10
+<<<<<<< HEAD
+target19.editor.height=886
+target19.editor.width=1616
+target19.editor.x=-8
+target19.editor.y=-8
+=======
 target19.editor.height=780
 target19.editor.width=1378
 target19.editor.x=-8
 target19.editor.y=0
+>>>>>>> a34939ff7d3194db44a4c66edb4f1fb09228dc9e
 target19.height=50
 target19.name=Indirizzo
 target19.naviview.expanded=true
@@ -251,8 +265,13 @@ target19.type=ClassTarget
 target19.width=80
 target19.x=880
 target19.y=110
+<<<<<<< HEAD
+target2.editor.height=886
+target2.editor.width=1616
+=======
 target2.editor.height=780
 target2.editor.width=1378
+>>>>>>> a34939ff7d3194db44a4c66edb4f1fb09228dc9e
 target2.editor.x=-8
 target2.editor.y=-8
 target2.height=50
