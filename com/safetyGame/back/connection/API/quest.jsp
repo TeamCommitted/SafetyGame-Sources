@@ -1,5 +1,5 @@
 /*
- * Name: dati.java
+ * Name: quest.java
  * Package: com.safetygame.back.connection.API
  * Author: Lorenzo Braghetto
  * Date: {Data di approvazione del file}
@@ -13,30 +13,18 @@
  * | 20120611 | Lorenzo Braghetto   | 
  * +----------+---------------------+----------------------
  * 
- */
+ */ 
 <?xml version="1.0" encoding="UTF-8"?>
-<%@ page contentType="text/xml" import="com.safetygame.back.connection.*"  %>
-<%@page import="com.safetygame.back.condivisi.*" %>
-<%@page import="com.safetygame.back.*" %>
+<%@ page contentType="text/xml" %>
 <% 
-Inizializzatore i = new Inizializzatore();
-ApplicazioniConnection appC = i.getApp();
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
-boolean risposta = appC.login(user, passw);
-Login l = new Login(user, passw);
-Dipendente d = appC.getDati(l);
 %>
 <response>
-<%
-if(risposta)
-{ %>
 	<status>OK</status>
-	<dati>
-		<nome><%=d.getNome()%></nome>
-		<cognome><%=d.getCognome()%></cognome>
-	</dati>
-<% }else{ %>
-	<status>FAILED</status>
-<% } %>
+	<quest>
+		<type>scan</type>
+		<title>Incendio</title>
+		<testo>Trova il primo estintore disponibile e scannerizza il barcode</testo>
+	</quest>
 </response>

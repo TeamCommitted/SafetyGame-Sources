@@ -1,5 +1,5 @@
 /*
- * Name: login.jsp
+ * Name: login.java
  * Package: com.safetygame.back.connection.API
  * Author: Lorenzo Braghetto
  * Date: {Data di approvazione del file}
@@ -13,21 +13,23 @@
  * | 20120611 | Lorenzo Braghetto   | 
  * +----------+---------------------+----------------------
  * 
- */ 
+ */
 <?xml version="1.0" encoding="UTF-8"?>
-<%@ page contentType="text/xml" import="com.safetyGame.back.connection.*"  %>
+<%@ page contentType="text/xml" import="com.safetygame.back.connection.*"  %>
+<%@page import="com.safetygame.back.*"  %>
 <% 
-ApplicazioniConnection appC;
+Inizializzatore i = new Inizializzatore();
+ApplicazioniConnection appC = i.getApp();
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
-boolean response = appC.login(user, passw);
+boolean risposta = appC.login(user, passw);
 %>
 <response>
 <%
-if(response)
+if(risposta)
 { %>
 	<status>OK</status>
 <% }else{ %>
 	<status>FAILED</status>
-<% }
+<% } %>
 </response>
