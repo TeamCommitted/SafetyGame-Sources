@@ -88,10 +88,12 @@ public class DomandaActivity extends SherlockActivity {
 		protected Domanda doInBackground(Object... params) {
 
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-			// nameValuePairs.add(new BasicNameValuePair("username",
-			// user.getText().toString()));
-			// nameValuePairs.add(new BasicNameValuePair("password",
-			// passw.getText().toString()));
+			SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
+
+			nameValuePairs.add(new BasicNameValuePair("username",
+					prefs.getString("user", "")));
+			nameValuePairs.add(new BasicNameValuePair("password",
+					prefs.getString("password", "")));
 			domanda = (Domanda) ConnectionUtils
 					.HttpCreateClient(
 							"http://monossido.ath.cx/teamcommitted/API/domanda.jsp",
