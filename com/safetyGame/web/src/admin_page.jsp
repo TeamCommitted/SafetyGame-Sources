@@ -86,6 +86,7 @@
         <% } else if (ambito.equals("Amministratore Sicurezza")) { %>
         	<ul>
                 <li><a href="aggiungiDomanda.jsp">Aggiungi una nuova Domanda</a></li>
+                <li><a href="rimuoviDomande.jsp">Rimuovi una Domanda gi&agrave; presenta</a></li>
             </ul>
         <% } %>
         
