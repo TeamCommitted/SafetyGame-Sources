@@ -17,7 +17,7 @@
  * +----------+------------------+---------------------
  *
  */
-package com.safetygame.mobile.View;
+package com.safetyGame.mobile.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,12 +41,12 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.safetygame.mobile.R;
-import com.safetygame.mobile.Utils.ConnectionUtils;
-import com.safetygame.mobile.Utils.IntentIntegrator;
-import com.safetygame.mobile.Utils.IntentResult;
-import com.safetygame.mobile.condivisi.Domanda;
-import com.safetygame.mobile.condivisi.Quest;
+import com.safetyGame.mobile.R;
+import com.safetyGame.mobile.Utils.ConnectionUtils;
+import com.safetyGame.mobile.Utils.IntentIntegrator;
+import com.safetyGame.mobile.Utils.IntentResult;
+import com.safetyGame.mobile.condivisi.Domanda;
+import com.safetyGame.mobile.condivisi.Quest;
 
 public class DomandaActivity extends SherlockActivity {
 
@@ -88,10 +88,12 @@ public class DomandaActivity extends SherlockActivity {
 		protected Domanda doInBackground(Object... params) {
 
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-			// nameValuePairs.add(new BasicNameValuePair("username",
-			// user.getText().toString()));
-			// nameValuePairs.add(new BasicNameValuePair("password",
-			// passw.getText().toString()));
+			SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
+
+			nameValuePairs.add(new BasicNameValuePair("username",
+					prefs.getString("user", "")));
+			nameValuePairs.add(new BasicNameValuePair("password",
+					prefs.getString("password", "")));
 			domanda = (Domanda) ConnectionUtils
 					.HttpCreateClient(
 							"http://monossido.ath.cx/teamcommitted/API/domanda.jsp",

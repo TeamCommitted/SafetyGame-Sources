@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.safetygame.mobile.Utils;
+package com.safetyGame.mobile.Utils;
 
 import java.util.Arrays;
 import java.util.Collection;

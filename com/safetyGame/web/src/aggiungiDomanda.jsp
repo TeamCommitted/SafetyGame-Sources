@@ -76,19 +76,56 @@
 		%>
         
         <% //Recupero le domande dal database ingDom
-			
+			Inizializzatore i = new Inizializzatore();
+			WebConnection connection = i.getWeb();
+			ArrayList elencoDomande = null;
+			elencoDomande = connection.getElencoDomande();
+			if (elencoDomande == null) out.println("<h2>Non sono disponibili altre domande da inserire</h2>");
+			else {
 		%>
         
         <h2>Aggiungi Domande</h2>
         <form id="aggiungiDomande" action="checkAggiungiDomande.jsp">
         	<fieldset>
             	<table>
-                	<th>
-                    	<
-            	
-                <input type="button" value="Inserisci le domande selezionate" />
+                	<th>Selezione</th>
+                    <th>Id</th>
+                    <th>Anteprima</th>
+                    <th>Tipologia</th>
+                    <th>Ambito</th>
+                    <% 
+						int idDom;
+						String antDom;
+						String tipDom;
+						String ambitoDom;
+						Domanda domanda;
+						for (int j = elencoDomande.size()-1; j >= 0; j--) { 
+							domanda = (Domanda) elencoDomande.get(j);
+							if (!(domanda.isInternaAzienda())) {
+								out.println("<tr>");
+								idDom = domanda.getId();
+								antDom = domanda.getTesto();
+								tipDom = domanda.getTipologia();
+								ambitoDom = domanda.getAmbito();
+								out.println("<td><input type=\"checkbox\" name=\"check"+j+"\" value=\""+idDom+"\" /></td>");
+								out.println("<td>"+idDom+"</td>");
+								out.println("<td>"+antDom+"</td>");
+								out.println("<td>"+tipDom+"</td>");
+								out.println("<td>"+ambitoDom+"</td>");
+								out.println("</tr>");
+							}
+						}
+					%>
+                </table>
+            	<%
+					out.println("<input type=\"hidden\" name=\"numDomande\" value=\""+elencoDomande.size()+"\" />");
+				%>
+                <input type="submit" value="Inserisci le domande selezionate" />
             </fieldset>
         </form>
+        <%
+			}
+		%>
         
         
 		
