@@ -1,3 +1,5 @@
+@import url(table.css);
+
 @font-face {
    font-family: 'FRADM';
    src: local('FRADM'), url('font/FRADM.TTF') format('truetype');
@@ -220,6 +222,15 @@ body {
 	line-height: 1.5em;
 }
 
+#content h3 {
+	font-size: 1.3em;
+	color:#000000;
+	opacity:0.8;
+	margin:0em;
+	padding-left: 0.4em;
+	text-align:center;
+}
+
 #footer {
 	height: 24em;
 	width:100%;
@@ -315,4 +326,30 @@ body {
 	color: #F00;
 	font-weight:800;
 	font-size:1.2em;
+}
+
+.etichetta {
+	display:inline-block;
+	width:8em;
+	text-align:right;
+}
+
+#aggiungiDipendente ul {
+	list-style: none;
+}
+
+#attenzione {
+	letter-spacing:0em;
+	font-weight:bold;
+	color: #C33;
+}
+
+.button {
+	display:inline-block;
+	float:right;
+	padding: 0.5em;
+	padding-left: 1em;
+	padding-right: 1em;
+	margin-top: 1em;
+	margin-right: 1em;
 }

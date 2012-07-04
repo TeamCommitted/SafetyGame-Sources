@@ -9,6 +9,13 @@
 <%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
 <%@ page language="java" import="com.safetyGame.back.access.*" %>
 <%@ page language="java" import="com.safetyGame.back.*" %>
+
+<%@ include file="html/header_pre_title.html" %> 
+Safety Game - Pannello Amministratore
+<%@ include file="html/header_post_title.html" %> 
+<%@ include file="html/menuaa.html" %> 
+<%@ include file="html/menu_content.html" %> 
+
 <% 
 	String nome = request.getParameter("input_nome");
 	String cognome = request.getParameter("input_cognome");
@@ -35,13 +42,15 @@
 	//catch (Exception e){ out.println("<h1>Errore nella comunicazione con il Back-end<h1>"); }
 	
 	if (operazioneRiuscita) {
-		out.println("<h1>Nuovo Dipendente aggiunto con successo!</h1>");
-		out.println("Hai inserito i seguenti dati:<br>");
-		out.println("Nome: "+nome+"<br>");
-		out.println("Cognome: "+cognome+"<br>");
-		out.println("Codice Fiscale: "+codfis+"<br>");
-		out.println("Email: "+email+"<br>");
-		out.println("Ruolo: "+ruolo+"<br>");
+		out.println("<span class=\"successo\">Nuovo Dipendente aggiunto con successo!</span>");
+		out.println("<p>Hai inserito i seguenti dati:</p>");
+		out.println("<p>Nome: "+nome+"</p>");
+		out.println("<p>Cognome: "+cognome+"</p>");
+		out.println("<p>Codice Fiscale: "+codfis+"</p>");
+		out.println("<p>Email: "+email+"</p>");
+		out.println("<p>Ruolo: "+ruolo+"</p>");
 	}
-	else { out.println("<h1>Operazione fallita!</h1>Ritentare o contattare l'Amministratore di sistema"); }
+	else { out.println("<span calss=\"successo\">Operazione fallita!</span>Ritentare o contattare l'Amministratore di sistema"); }
 %>
+
+<%@ include file="html/footer.html" %> 

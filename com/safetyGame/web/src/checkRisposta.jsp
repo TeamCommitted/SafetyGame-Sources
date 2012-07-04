@@ -9,6 +9,13 @@
 <%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
 <%@ page language="java" import="com.safetyGame.back.access.*" %>
 <%@ page language="java" import="com.safetyGame.back.*" %>
+
+<%@ include file="html/header_pre_title.html" %> 
+Nuova Domanda
+<%@ include file="html/header_post_title.html" %> 
+<%@ include file="html/menud.html" %> 
+<%@ include file="html/menu_content.html" %> 
+
 <% 
 	// Ottengo le informazioni dai cookies
 	Cookie usernameCookie = null;
@@ -59,10 +66,12 @@
 		Domanda domanda = (Domanda) session.getAttribute("oggetto_domanda");
 		domanda.setRispostaData(risposta);
 		boolean rispostoConSuccesso = connection.setRisposta(l, domanda);
-		out.println("<h1>La tua risposta è stata inviata con successo!</h1>");
+		out.println("<span class=\"successo\">La tua risposta &egrave; stata inviata con successo!</span>");
 	}
 	catch(Exception e) {
-		out.println("Errore - Impossibile recuperare la risposta dalla pagina precedente. Torna indietro e riprova");
+		out.println("<span class=\"fallimento\">Errore - Impossibile recuperare la risposta dalla pagina precedente. Torna indietro e riprova</span>");
 	}
 	
 %>
+
+<%@ include file="html/footer.html" %> 

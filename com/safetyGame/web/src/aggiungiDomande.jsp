@@ -11,7 +11,7 @@
 <%@ page language="java" import="com.safetyGame.back.*" %>
 
 <%@ include file="html/header_pre_title.html" %> 
-Rimuovi Domande
+Inserisci Domande
 <%@ include file="html/header_post_title.html" %> 
 <%@ include file="html/menuas.html" %> 
 <%@ include file="html/menu_content.html" %> 
@@ -69,14 +69,14 @@ Rimuovi Domande
 			Domanda conteggioDomande;
 			for (int j = elencoDomande.size()-1; j >= 0; j--) { 
 				conteggioDomande = (Domanda) elencoDomande.get(j);
-				if ((conteggioDomande.isInternaAzienda())) numeroDomInterne++;
+				if (!(conteggioDomande.isInternaAzienda())) numeroDomInterne++;
 			}
-			if ( (elencoDomande == null) || (numeroDomInterne==0)) out.println("<h3>Non sono disponibili altre domande da rimuovere</h3>");
+			if ( (elencoDomande == null) || (numeroDomInterne==0)) out.println("<h3>Non sono disponibili altre domande da inserire</h3>");
 			else {
 		%>
         
-        <h2>Rimuovi Domande</h2>
-        <form id="rimuoviDomande" action="checkAggiungiDomande.jsp">
+        <h2>Aggiungi Domande</h2>
+        <form id="aggiungiDomande" action="checkAggiungiDomande.jsp">
         	<fieldset>
             	<table>
                 	<thead>
@@ -95,7 +95,7 @@ Rimuovi Domande
 						Domanda domanda;
 						for (int j = elencoDomande.size()-1; j >= 0; j--) { 
 							domanda = (Domanda) elencoDomande.get(j);
-							if ((domanda.isInternaAzienda())) {
+							if (!(domanda.isInternaAzienda())) {
 								if (alt) out.println("<tr>");
 								else out.println("<tr class=\"odd\">");
 								alt = !alt;
@@ -116,7 +116,7 @@ Rimuovi Domande
             	<%
 					out.println("<input type=\"hidden\" name=\"numDomande\" value=\""+elencoDomande.size()+"\" />");
 				%>
-                <input class="button" type="submit" value="Rimuovi le domande selezionate" />
+                <input class="button" type="submit" value="Inserisci le domande selezionate" />
             </fieldset>
         </form>
         <%

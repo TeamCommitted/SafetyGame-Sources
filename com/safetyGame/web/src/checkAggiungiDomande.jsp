@@ -9,6 +9,13 @@
 <%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
 <%@ page language="java" import="com.safetyGame.back.access.*" %>
 <%@ page language="java" import="com.safetyGame.back.*" %>
+
+<%@ include file="html/header_pre_title.html" %> 
+Safety Game - Pannello Amministratore
+<%@ include file="html/header_post_title.html" %> 
+<%@ include file="html/menuas.html" %> 
+<%@ include file="html/menu_content.html" %> 
+
 <% 
 	int numDomande = (Integer.parseInt(request.getParameter("numDomande"))) ;
 	Inizializzatore i = new Inizializzatore();
@@ -31,5 +38,7 @@
 		}
 	}
 	
-	out.println("Operazione eseguita con successo!");
+	out.println("<span class=\"successo\">Operazione eseguita con successo!</span>");
 %>
+
+<%@ include file="html/footer.html" %> 
