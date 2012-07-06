@@ -13,45 +13,49 @@
  * | 20120611 | Lorenzo Braghetto   | 
  * +----------+---------------------+----------------------
  * 
- */ 
+ */
 <?xml version="1.0" encoding="UTF-8"?>
-<%@ page contentType="text/xml" import="com.safetyGame.back.connection.*"  %>
-<%@page import="com.safetyGame.back.condivisi.*" %>
+<%@ page contentType="text/xml" import="com.safetygame.back.connection.*"  %>
+<%@page import="com.safetygame.back.condivisi.*" %>
+<%@page import="com.safetygame.back.*" %>
+<%@page import="java.util.ArrayList" %>
 <% 
-ApplicazioniConnection appC;
+Inizializzatore i = new Inizializzatore();
+ApplicazioniConnection appC = i.getApp();
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
-boolean response = appC.login(user, passw);
-Login l = Login(user, passw)
+boolean risposta = appC.login(user, passw);
+Login l = new Login(user, passw);
 Domanda d = appC.mostraDomanda(l);
+
 %>
 <response>
 <%
-if(response)
+if(risposta)
 { %>
 	<status>OK</status>
 	<domanda>
 		<% String tipo = d.getTipologia();
-		{ %>
-			<id><%d.getId()%></id>
-			<type>tipo</type>
-			<testo><%d.getTesto()%></testo>
-			<punteggio><%d.getPunteggio().getPunti()%></punteggio>
-			<corretta><%d.getCorretta()%></corretta>
+		 %>
+			<id><%=d.getId()%></id>
+			<type><%=tipo%></type>
+			<testo><%=d.getTesto()%></testo>
+			<punteggio><%=d.getPunteggio().getPunti()%></punteggio>
+			<corretta><%=d.getCorretta()%></corretta>
 		<% if(!tipo.equals("sino"))
 		   {
-			ArrayList<String> risposte = d.getRsiposte(); 
+			ArrayList<String> risposte = d.getRisposte(); 
 		%>
-		<risposte num="<%i%>">
-		<%	for(int i=0;i<risposte.size();i++)
+		<risposte num="<%=risposte.size()%>">
+		<%	for(int z=0;z<risposte.size();z++)
 			{	
 		%>
-				<risposta id="<%i%>"><%risposte.get(i)%></risposta>
+				<risposta id="<%=z%>"><%=risposte.get(z)%></risposta>
 			<% } %>
 			</risposte>
 		<% } %>
 	</domanda>
 <% }else{ %>
 	<status>FAILED</status>
-<% }		
+<% } %>		
 </response>

@@ -5,27 +5,12 @@
 <%@ page import= "java.io.*"%>
 <%@ page language="java" import="java.util.Date"%>
 
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//IT"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<%@ include file="html/header_pre_title.html" %> 
+SafetyGame - Aggiungi Dipendente
+<%@ include file="html/header_post_title.html" %> 
+<%@ include file="html/menuaa.html" %> 
+<%@ include file="html/menu_content.html" %> 
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it">
-<head>
-	<title>Aggiungi Dipendente</title>
-	<link rel="stylesheet" href="style/reset.css" type="text/css" media="all" />
-	<link rel="stylesheet" href="style/screen.css" type="text/css" media="handheld, screen, projection" />
-	
-</head>
-
-<body>
-
-	<div id = "header">
-		<h1>SafetyGame - Aggiungi Dipendente</h1>
-        <a href="logout.jsp" class="logout">Logout</a>
-	</div>
-
-
-	<div id = "content">
         <% 
 			// Ottengo le informazioni dai cookies
 			Cookie usernameCookie = null;
@@ -67,8 +52,9 @@
 				catch (Exception e) { response.sendRedirect("login.jsp"); }
 			}
 			else response.sendRedirect("login.jsp");
-			if ((ambito.equals("Dipendente"))) response.sendRedirect("user_page.jsp");			
+			if (!(ambito.equals("Amministratore Azienda"))) response.sendRedirect("user_page.jsp");			
 		%>
+        <h2>Aggiungi Dipendente</h2>
         <form id="aggiungiDipendente" title="Form per l'aggiunta di un nuovo Dipendente" action="checkAggiungiDipendente.jsp" method="post">
         	<fieldset>
             	<ul>
@@ -79,18 +65,8 @@
                     <li><span class="etichetta">Ruolo:</span><input type="text" name="input_ruolo" />
                     	<span id="attenzione">Attenzione! Inserire un ruolo gi&agrave; esistente!</span></li>
                 </ul>
-                <input type="submit" value="Aggiungi Dipendente" />
+                <input class="button" type="submit" value="Aggiungi Dipendente" />
             </fieldset>
         </form>
         
-		
-	</div>
-
-
-	<div id = "footer">
-
-	</div>
-
-
-</body>
-</html>
+<%@ include file="html/footer.html" %> 

@@ -13,30 +13,11 @@
 	// WebConnection connection = new WebConnection
 %>
 
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//IT"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it">
-<head>
-	<title>Pannello Utente</title>
-	<link rel="stylesheet" href="style/reset.css" type="text/css" media="all" />
-	<link rel="stylesheet" href="style/screen.css" type="text/css" media="handheld, screen, projection" />
-	
-</head>
-
-<body>
-
-	<div id = "header">
-		<h1>SafetyGame - Pannello utente</h1>
-        <p><a href="logout.jsp" class="logout">Logout</a></p>
-        <p><a href="nuovaDomanda.jsp" class="nuovadomanda">Rispondi ad una nuova domanda</a></p>
-	</div>
-
-
-	<div id = "content">
-    	<% // Stampo le informazioni sul tipo di account %>
-		<h2>Informazioni sull'account</h2>
+<%@ include file="html/header_pre_title.html" %>
+SafetyGame - Pannello utente
+<%@ include file="html/header_post_title.html" %>
+<%@ include file="html/menud.html" %> 
+<%@ include file="html/menu_content.html" %> 
         <% 
 			// Ottengo le informazioni dai cookies
 			Cookie usernameCookie = null;
@@ -78,13 +59,15 @@
 				catch (Exception e) { response.sendRedirect("login.jsp"); }
 			}
 			else response.sendRedirect("login.jsp");
-			if (!(ambito.equals("Dipendente"))) response.sendRedirect("admin_page.jsp");			
-			
-				out.println("<p>Benvenuto ");
-				out.println(username);
-				out.println("</p><p>Hai effettuato il login come ");
-				out.println(ambito);
-				out.println("</p>");
+			if (!(ambito.equals("Dipendente"))) response.sendRedirect("admin_page.jsp");
+		%>
+        <h2>Informazioni sull'account</h2>
+        <%			
+			out.println("<p>Benvenuto ");
+			out.println(username);
+			out.println("</p><p>Hai effettuato il login come ");
+			out.println(ambito);
+			out.println("</p>");
 		%>
         
         <h2>Punteggi</h2>
@@ -93,7 +76,7 @@
 			WebConnection connection = i.getWeb();
 			Login l = new Login(username ,password);
 			Punteggio p = connection.getPunteggio(l);
-			int punt = p.getPuntiPrec();
+			int punt = p.getPunti();
 						
 			out.println("Il tuo punteggio &egrave; ");
 			out.println(punt);
@@ -126,14 +109,4 @@
 			}
 			
 		%>
-		
-	</div>
-
-
-	<div id = "footer">
-
-	</div>
-
-
-</body>
-</html>
+<%@ include file="html/footer.html" %> 

@@ -5,20 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it">
 <head>
 	<title>Login</title>
-	<link rel="stylesheet" href="style/reset.css" type="text/css" media="all" />
-	<link rel="stylesheet" href="style/screen.css" type="text/css" media="handheld, screen, projection" />
+	<link rel="stylesheet" href="style/login.css" type="text/css" media="all" />
 	
 </head>
 
 <body>
-
-	<div id = "header">
-		<h1>SafetyGame - Benvenuti</h1>
-	</div>
-
-
-	<div id = "content">
-		<h2>Home page</h2>
         
         <% 
 			Cookie cookies [] = request.getCookies();
@@ -47,17 +38,18 @@
 	%>
 		
 		<div id = "form_login">
-			
-			<p class="form_info">
-				Inserisci lo username e la password negli appositi spazi, sleziona il tuo ruolo ed effettua il login. 
-			</p>
 			<form id="form_box" title="Form per effettuare il login" action="checkLogin.jsp" onsubmit="" method="post">
 				<fieldset>
-					
-					<label for="account_username">Username</label>			
-					<input id="account_username" title="Casella di testo per lo username" type="text" name="account_username" onfocus="" value=""/>
-					<label for="account_password">Password</label>
-					<input id="account_password" title="Casella di testo per la password" type="password" name="account_password" onfocus=""/>
+					<legend>Safety Game - Login</legend>
+                    
+                    <p>
+                        <label for="account_username" class="form">Username</label>			
+                        <input id="account_username" title="Casella di testo per lo username" type="text" name="account_username" onfocus="" value=""/>
+                    </p>
+                    <p>
+                        <label for="account_password" class="form">Password</label>
+                        <input id="account_password" title="Casella di testo per la password" type="password" name="account_password" onfocus=""/>
+                    </p>
 					
 					<ul>
                         <li>
@@ -93,12 +85,5 @@
 		%>
 		
 	</div>
-
-
-	<div id = "footer">
-
-	</div>
-
-
 </body>
 </html>

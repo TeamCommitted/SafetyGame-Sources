@@ -15,37 +15,41 @@
  * 
  */ 
 <?xml version="1.0" encoding="UTF-8"?>
-<%@ page contentType="text/xml" import="com.safetyGame.back.connection.*"  %>
-<%@page import="com.safetyGame.back.condivisi.*" %>
+<%@ page contentType="text/xml" import="com.safetygame.back.connection.*"  %>
+<%@page import="com.safetygame.back.condivisi.*" %>
+<%@page import="com.safetygame.back.*" %>
+<%@page import="java.util.ArrayList" %>
 <% 
-ApplicazioniConnection appC;
+Inizializzatore i = new Inizializzatore();
+ApplicazioniConnection appC = i.getApp();
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
-boolean response = appC.login(user, passw);
-Login l = Login(user, passw)
+boolean risposta = appC.login(user, passw);
+Login l = new Login(user, passw);
 Punteggio p = appC.getStat(l);
 ArrayList<Badge> b = appC.getBadge(l, 2);
 %>
 <response>
 <%
-if(response)
+if(risposta)
 { %>
 	<status>OK</status>
 	<punteggi>
-		<rispostedate><%p.getnDomRisp()%></rispostedate>
-		<rispostecorrette><%p.getnRispCorr()%></rispostecorrette>
-		<punti><%p.getPunti()%></punti>
+		<rispostedate><%=p.getnDomRisp()%></rispostedate>
+		<rispostecorrette><%=p.getnRispCorr()%></rispostecorrette>
+		<risposteerrate><%=p.getnDomRisp()-p.getnRispCorr()%></risposteerrate>
+		<punti><%=p.getPunti()%></punti>
 	</punteggi>
-	<badges num="<%b.size();%>">
-	<% for(int i=0;i<b.size();i++)
+	<badges num="<%=b.size()%>">
+	<% for(int z=0;z<b.size();z++)
 	{  %>
-		<badge id="<%i%>">
+		<badge id="<%=z%>">
 			<img></img>
-			<testo><%b.get(i).getDescrizione()%></testo>
+			<testo><%=b.get(z).getDescrizione()%></testo>
 		</badge>
 	<% } %>	
 	</badges>
 <% }else{ %>
 	<status>FAILED</status>
-<% }
+<% } %>
 </response>

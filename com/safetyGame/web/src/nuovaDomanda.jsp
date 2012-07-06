@@ -10,6 +10,12 @@
 <%@ page language="java" import="com.safetyGame.back.access.*" %>
 <%@ page language="java" import="com.safetyGame.back.*" %>
 
+<%@ include file="html/header_pre_title.html" %> 
+Nuova Domanda
+<%@ include file="html/header_post_title.html" %> 
+<%@ include file="html/menud.html" %> 
+<%@ include file="html/menu_content.html" %> 
+
 <%
 	Cookie cookies [] = request.getCookies();
 	String cookieName = null;
@@ -45,8 +51,6 @@
 		if ((username == null) || (ambito == null)) response.sendRedirect("login.jsp");
 		else if (!(ambito.equals("Dipendente"))) response.sendRedirect("admin_page.jsp");
 		else { // I cookie ritornano correttamente username, psw e ambito
-			out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//IT\"\"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"it\"><head><title>Nuova Domanda</title><link rel=\"stylesheet\" href=\"style/reset.css\" type=\"text/css\" media=\"all\" /><link rel=\"stylesheet\" href=\"style/screen.css\" type=\"text/css\" media=\"handheld, screen, projection\" /></head><body><div id = \"header\"><h1>SafetyGame - Nuova Domanda</h1></div>");
-			out.println("<div id = \"content\">");
 			Inizializzatore i = new Inizializzatore();
 			WebConnection connection = i.getWeb();
 			Login l = new Login(username,password);
@@ -63,11 +67,12 @@
 					risposta = risposte.get(j).toString();
 					out.println("<li><input type=\"radio\" name=\"group1\" value=\"" +(j+1)+ "\" />" +risposta+ "</li>");
 				}
-				out.println("</ul><input type=\"submit\" name=\"rispondi_domanda\" value=\"Invia la risposta\" /></fieldset></form>");
+				out.println("</ul><input class=\"button\" type=\"submit\" name=\"rispondi_domanda\" value=\"Invia la risposta\" /></fieldset></form>");
 			}
-			catch(Exception e) { out.println("<h2>Complimenti! Hai risposto a tutte le domande.</h2>"); }
-			out.println("</div><div id = \"footer\"></div></body></html>");
+			catch(Exception e) { out.println("<h3>Complimenti! Hai risposto a tutte le domande.</h3>"); }
 		}
 	}
 	else { response.sendRedirect("login.jsp"); }	
 %>
+
+<%@ include file="html/footer.html" %> 

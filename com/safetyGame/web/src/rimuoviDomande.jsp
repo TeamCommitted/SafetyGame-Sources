@@ -1,0 +1,125 @@
+<%@ page import= "java.sql.*"%>
+<%@ page import= "java.util.*"%>
+<%@ page import= "java.lang.*"%>
+<%@ page import= "javax.servlet.*"%>
+<%@ page import= "java.io.*"%>
+<%@ page language="java" import="java.util.Date"%>
+<%@ page language="java" import="com.safetyGame.back.connection.*" %>
+<%@ page language="java" import="com.safetyGame.back.controller.*" %>
+<%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
+<%@ page language="java" import="com.safetyGame.back.access.*" %>
+<%@ page language="java" import="com.safetyGame.back.*" %>
+
+<%@ include file="html/header_pre_title.html" %> 
+Rimuovi Domande
+<%@ include file="html/header_post_title.html" %> 
+<%@ include file="html/menuas.html" %> 
+<%@ include file="html/menu_content.html" %> 
+
+        <% 
+			// Ottengo le informazioni dai cookies
+			Cookie usernameCookie = null;
+			Cookie passwordCookie = null;
+			Cookie ambitoCookie = null;
+			Cookie cookies [] = request.getCookies();
+			String cookieName = null;
+			String username = null;
+			String password = null;
+			String ambito = null;
+			
+			cookieName = "username";
+			if (cookies != null){
+				for (int i = 0; i < cookies.length; i++){
+					if (cookies [i].getName().equals(cookieName)){
+						usernameCookie = cookies[i];
+						break;
+					}
+				}
+				cookieName = "password";
+				for (int i = 0; i < cookies.length; i++){
+					if (cookies [i].getName().equals(cookieName)){
+						passwordCookie = cookies[i];
+						break;
+					}
+				}
+				cookieName = "ambito";
+				for (int i = 0; i < cookies.length; i++){
+					if (cookies [i].getName().equals(cookieName)){
+						ambitoCookie = cookies[i];
+						break;
+					}
+				}
+				try {
+					username = usernameCookie.getValue();
+					password = passwordCookie.getValue();
+					ambito = ambitoCookie.getValue();
+				}
+				catch (Exception e) { response.sendRedirect("login.jsp"); }
+			}
+			else response.sendRedirect("login.jsp");
+			if (!(ambito.equals("Amministratore Sicurezza"))) response.sendRedirect("user_page.jsp");			
+		%>
+        
+        <% //Recupero le domande dal database ingDom
+			Inizializzatore i = new Inizializzatore();
+			WebConnection connection = i.getWeb();
+			ArrayList elencoDomande = null;
+			elencoDomande = connection.getElencoDomande();
+			int numeroDomInterne = 0;
+			Domanda conteggioDomande;
+			for (int j = elencoDomande.size()-1; j >= 0; j--) { 
+				conteggioDomande = (Domanda) elencoDomande.get(j);
+				if ((conteggioDomande.isInternaAzienda())) numeroDomInterne++;
+			}
+			if ( (elencoDomande == null) || (numeroDomInterne==0)) out.println("<h3>Non sono disponibili altre domande da rimuovere</h3>");
+			else {
+		%>
+        
+        <h2>Rimuovi Domande</h2>
+        <form id="rimuoviDomande" action="checkAggiungiDomande.jsp">
+        	<fieldset>
+            	<table>
+                	<thead>
+                        <th>Selezione</th>
+                        <th>Id</th>
+                        <th>Anteprima</th>
+                        <th>Tipologia</th>
+                        <th>Ambito</th>
+                    </thead>
+                    <% 
+						int idDom;
+						String antDom;
+						String tipDom;
+						String ambitoDom;
+						boolean alt = true;
+						Domanda domanda;
+						for (int j = elencoDomande.size()-1; j >= 0; j--) { 
+							domanda = (Domanda) elencoDomande.get(j);
+							if ((domanda.isInternaAzienda())) {
+								if (alt) out.println("<tr>");
+								else out.println("<tr class=\"odd\">");
+								alt = !alt;
+								idDom = domanda.getId();
+								antDom = domanda.getTesto();
+								tipDom = domanda.getTipologia();
+								ambitoDom = domanda.getAmbito();
+								out.println("<td><input type=\"checkbox\" name=\"check"+j+"\" value=\""+idDom+"\" /></td>");
+								out.println("<td>"+idDom+"</td>");
+								out.println("<td>"+antDom+"</td>");
+								out.println("<td>"+tipDom+"</td>");
+								out.println("<td>"+ambitoDom+"</td>");
+								out.println("</tr>");
+							}
+						}
+					%>
+                </table>
+            	<%
+					out.println("<input type=\"hidden\" name=\"numDomande\" value=\""+elencoDomande.size()+"\" />");
+				%>
+                <input class="button" type="submit" value="Rimuovi le domande selezionate" />
+            </fieldset>
+        </form>
+        <%
+			}
+		%>
+<%@ include file="html/footer.html" %> 
