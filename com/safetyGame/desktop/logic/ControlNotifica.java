@@ -3,10 +3,8 @@ package com.safetyGame.desktop.logic;
 public class ControlNotifica{
   String testo;
   ConnBack connessione;
-  public ControlNotifica(String s, ConnBack cb){
-    testo= s;
-    connessione=cb;
-    testo="Ti e` stata proposta una domanda, vuoi rispondere?";
+  public ControlNotifica(){
+    connessione=ConnBack.getInstance();
   }
 
   public void posticipa(){
