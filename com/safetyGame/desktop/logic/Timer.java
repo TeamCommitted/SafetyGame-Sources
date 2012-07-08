@@ -50,9 +50,10 @@ public class Timer extends Thread{
         int tempocopia=tempo;
         int attesa=tempocopia/10;
         while(tempocopia>0){
-          try{wait(attesa);}
+          try{sleep(attesa);}
           catch(InterruptedException e){tempocopia+=attesa-1;}
           tempocopia-=attesa;
+          System.out.println(tempocopia/1000);
           if (cambiato){
             tempocopia=0;
           }
