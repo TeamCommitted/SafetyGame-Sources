@@ -142,7 +142,7 @@ public class GestioneDipendentiAA{
     * @return elenco dei ruoli di un'azienda
     */
    public ArrayList<String> getElencoRuoli() {
-     ArrayList elencoRuoli = accessDip.getElencoRuoli();
+     ArrayList <String> elencoRuoli = accessDip.getElencoRuoli();
      return elencoRuoli;
    }
 }
