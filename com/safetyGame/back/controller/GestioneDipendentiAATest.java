@@ -10,6 +10,8 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120708 |Marco Begolo         | + getElencoRuoli
+ * +----------+---------------------+---------------------
  * | 20120611 |Giorgio Maggiolo     | + modPassATest
  * |          |                     | + GestioneDipendentiAATest
  * |          |                     | + getElencoDipendentiTest
@@ -97,4 +99,12 @@ public class GestioneDipendentiAATest {
 		assertTrue("modifica password amministratore non riuscita",risultato == true);
 	}
 
+	@Test
+	public void getElencoRuoliTest() {
+	//test che verifica la modifica della password da parte di un amministratore
+		init();
+		DAODipendenti sqlDip = new SqlDAODipendenti(indAz);
+		ArrayList<String> ruoli = sqlDip.getElencoRuoli();
+		assertTrue("elenco ruoli non corrisponde",9 == ruoli.size());
+	}
 }

@@ -10,6 +10,8 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20130708 | Alessandro Cornaglia| + getElencoRuoli
+ * +----------+---------------------+---------------------
  * | 20120512 | Gabriele Facchin    | + getInfoD
  * |          |                     | + getInfoA
  * |          |                     | + resetPassD                
@@ -215,4 +217,11 @@ public interface DAODipendenti{
    * 
    */   
   public boolean resetA(Recupero r, String p);
+  
+  /**
+   * Metodo che consente di recuperate l'elenco dei ruoli aziendali
+   * 
+   * @return lista dei ruoli aziendali
+   */
+  public ArrayList<String> getElencoRuoli();
 }

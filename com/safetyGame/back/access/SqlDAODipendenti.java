@@ -10,6 +10,8 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20130708 | Alessandro Cornaglia| + getElencoRuoli
+ * +----------+---------------------+---------------------
  * | 20120527 | Gabriele Facchin    | + SqlDAODipendenti
  * |          |                     | + getInfoD
  * |          |                     | + getInfoA
@@ -369,5 +371,26 @@ public class SqlDAODipendenti implements DAODipendenti{
       catch(SQLException e){return false;}
     }
     return b;
+  }
+  
+  /**
+   * Metodo che restituisce la lista dei ruoli aziendali
+   * 
+   * @return lista dei ruoli aziendali
+   */
+  public ArrayList<String> getElencoRuoli() {
+    ResultSet rs=serverAzienda.selezione("Ruolo","*","","");
+    ArrayList<String> ruoli = new ArrayList<String>();
+    boolean trovato = false;
+    String ruolo = "";
+    while(!trovato){
+      try{
+        ruolo = rs.getString("ruolo");
+        ruoli.add(ruolo);      
+        rs.next();
+      }
+      catch(SQLException e){trovato=true;}  
+    }
+    return ruoli;
   }
 }
