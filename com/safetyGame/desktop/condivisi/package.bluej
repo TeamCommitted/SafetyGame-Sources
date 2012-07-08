@@ -1,9 +1,12 @@
 #BlueJ package file
+dependency1.from=Domanda
+dependency1.to=Punteggio
+dependency1.type=UsesDependency
 package.editor.height=714
 package.editor.width=1482
-package.editor.x=-8
-package.editor.y=-8
-package.numDependencies=0
+package.editor.x=32
+package.editor.y=32
+package.numDependencies=1
 package.numTargets=3
 package.showExtends=true
 package.showUses=true
@@ -45,5 +48,5 @@ target3.naviview.expanded=true
 target3.showInterface=false
 target3.type=ClassTarget
 target3.width=80
-target3.x=450
-target3.y=30
+target3.x=490
+target3.y=70

@@ -1,13 +1,34 @@
+
 package com.safetyGame.desktop.logic;
-import com.safetyGame.desktop.condivisi.*;
-
-public class ConnBack{
-
-  public ConnBack(){
-    //istanzia le variabili per la connessione al back
+/**
+ * ConnBack2.java
+ *
+ * @author 
+ * @version 0.1
+ */
+public class ConnBack {
+    
+  private static ConnBack singleton = null;
+    
+  /** 
+   * Costrutture della classe ConnBack
+   */
+  private ConnBack() {}
+    
+  /**
+   * Metodo che ritorna l'unica istanza della classe valida
+   * 
+   * @return unico oggetto ConnBack 
+   * 
+   */
+  public static ConnBack getInstance(){
+    if(singleton == null){
+      singleton = new ConnBack();
+    }
+    return singleton;
   }
-  
-  public boolean login(String username, String password){
+    
+      public boolean login(String username, String password){
     //chiama le funzioni del back - end
     return false;
   }

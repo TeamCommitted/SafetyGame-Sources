@@ -1,19 +1,58 @@
 package com.safetyGame.desktop.logic;
 
-public class Parser{
-    public Parser(){
-      //apre la comunicazione verso un file txt in cui vengono immessi i dati del back-end
-      //se non riesce ad aprire in lettura il file --> non esiste il file --> bisogna chiedere all'utente di inserire l'indirizzo
-    }
+import java.io.*;
 
-    public String leggi(){
-      //legge la stringa dei dati del server dal file aperto
-      return "";
+public class Parser{
+  
+  private File file=null;
+  private FileReader in;
+  private boolean aperto;
+
+  public Parser(){
+    file=new File("server.txt");
+    apri();
+  }
+
+  public boolean isOpen(){
+    return aperto;
+  }
+  
+  public void finalize(){
+    try{in.close();}
+    catch(IOException e){}
+  }
+  
+  public String leggi(){
+    int carattere;
+    try{carattere=in.read();}
+    catch(IOException e){carattere =-1;}
+    String s="";
+    while(carattere==-1){
+      char c= (char) carattere;
+      s+=c;
+      try{carattere=in.read();}
+      catch(IOException e){carattere=-1;}
     }
+    return s;
+  }
+  
+  private void apri(){
+    aperto=true;
+    try{in= new FileReader(file);}
+    catch (FileNotFoundException e){aperto=false;}
+  }
     
-    public boolean scrivi(String s){
-      //scrive, in caso di insuccesso nell'apertura del file in lettura, la stringa contenente i dati per l'accesso al server. 
-      //se non esiste il file in scrittura, esso viene creato dal metodo di java
-      return false;
+  public boolean scrivi(String s){
+    if (file==null){
+      PrintWriter out=null;
+      try{out=new PrintWriter(file);} 
+      catch(Exception e){return false;}    
+      out.println(s);
+      out.flush();
+      out.close();
+      apri();
+      return true;
     }
+    else return false;
+  }
 }

@@ -14,8 +14,8 @@ public class TimerTest {
 	public void runTest() {
 	  init();
 	  timer.start();
-	  while (!timer.getFinito()){}
-	  assertTrue("il conteggio non e' finito",timer.getFinito()==true);
+	  while (!timer.isFinito()){}
+	  assertTrue("il conteggio non e' finito",timer.isFinito()==true);
 	}
 
 }

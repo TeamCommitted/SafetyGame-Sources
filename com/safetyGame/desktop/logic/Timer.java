@@ -29,8 +29,8 @@ package com.safetyGame.desktop.logic;
  */
 public class Timer extends Thread{
   private int tempo;
-  private boolean finito=false;
-  private boolean cambiato=false;
+  private boolean finito;
+  private boolean cambiato;
 
   /**
    * Costruttore della classe Timer
@@ -38,10 +38,12 @@ public class Timer extends Thread{
    */
   public Timer(int t){
     tempo = t;
+    finito=false;
+    cambiato=false;
   }
 
   /**
-   * metodo che fa partire il thread e quindi il conteggio
+   * metodo che fa partire il thread e quindi il conteggio alla rovescia
    * 
    */
   public void run(){
@@ -53,7 +55,6 @@ public class Timer extends Thread{
           try{sleep(attesa);}
           catch(InterruptedException e){tempocopia+=attesa-1;}
           tempocopia-=attesa;
-          System.out.println(tempocopia/1000);
           if (cambiato){
             tempocopia=0;
           }
@@ -71,6 +72,7 @@ public class Timer extends Thread{
   
   /**
    * metodo che consente di reimpostare il tempo d'attesa
+   * 
    * @param t nuovo tempo di attesa
    */
   public void setTempo(int t){
@@ -81,14 +83,16 @@ public class Timer extends Thread{
   
   /**
    * metodo che consente di recuperare lo stato del conteggio
+   * 
    * @return finito
    */
-  public boolean getFinito(){
+  public boolean isFinito(){
     return finito;
   }
   
   /**
    * metodo che consente di recuperare il tempo con cui e` stato impostato il thread
+   * 
    * @return tempo
    */
   public int getTempo(){
