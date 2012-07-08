@@ -9,11 +9,14 @@ package com.safetyGame.desktop.logic;
 public class ConnBack {
     
   private static ConnBack singleton = null;
+  private boolean loggato;
     
   /** 
    * Costrutture della classe ConnBack
    */
-  private ConnBack() {}
+  private ConnBack() {
+    loggato=false;
+  }
     
   /**
    * Metodo che ritorna l'unica istanza della classe valida
@@ -46,5 +49,9 @@ public class ConnBack {
   public boolean recupera(String username){
     //chiama le funzioni del back - end
     return false;
+  }
+  
+  public boolean isLogged(){
+    return loggato;
   }
 }

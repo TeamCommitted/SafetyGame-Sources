@@ -100,11 +100,10 @@ public class Inizializzatore implements ActionListener{
      webConnection= new WebConnection(gestioneDati);
      appConnection= new ApplicazioniConnection(gestioneDati);
 
-     
-     /*try{
+     try{
        grafica();
      }
-     catch (Exception e){}*/
+     catch (Exception e){}
   }
 
   /**
@@ -179,10 +178,9 @@ public class Inizializzatore implements ActionListener{
    * Metodo per avviare l'applicazione
    *
    * @param args[] array di parametri di ingresso tramite opzioni di Java
-
+   */
   public static void main (String[] args){
     Inizializzatore i = new Inizializzatore();
     //i.tastiera();
   }
-     */
 }

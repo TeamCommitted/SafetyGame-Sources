@@ -1,8 +1,8 @@
 #BlueJ package file
 package.editor.height=714
 package.editor.width=1482
-package.editor.x=32
-package.editor.y=32
+package.editor.x=-8
+package.editor.y=-8
 package.numDependencies=0
 package.numTargets=3
 package.showExtends=true
@@ -31,9 +31,9 @@ target2.type=ClassTarget
 target2.width=80
 target2.x=410
 target2.y=120
-target3.editor.height=1096
-target3.editor.width=1936
-target3.editor.x=-1928
+target3.editor.height=886
+target3.editor.width=1616
+target3.editor.x=-8
 target3.editor.y=-8
 target3.height=50
 target3.name=Notifica
