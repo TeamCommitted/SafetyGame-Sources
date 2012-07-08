@@ -10,6 +10,8 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120708 |Giorgio Maggiolo     | + getElencoRuoliTest
+ * +----------+---------------------+---------------------
  * | 20120611 |Lorenzo Braghetto    | + testRecupero
  * |          |                     | + testModPassA
  * +----------+---------------------+---------------------
@@ -350,8 +352,14 @@ public class GestioneDatiTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void getElencoRuoliTest() {
+	//test che verifica la modifica della password da parte di un amministratore
+		init();
+		//DAODipendenti sqlDip = new SqlDAODipendenti(indAz);
+		DAODipendenti sqlDip = new SqlDAODipendenti(indirizzoAz);
+		ArrayList<String> ruoli = sqlDip.getElencoRuoli();
+		assertTrue("elenco ruoli non corrisponde",9 == ruoli.size());
 	}
+
 
 }

@@ -10,6 +10,8 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120708 | Gabriele Facchin    | + getElencoRuoliTest
+ * +----------+---------------------+---------------------
  * | 20120604 | Alessandro Cornaglia| + aggiuntaUtenteOk
  * |          |                     | + testGetInfoD
  * |          |                     | + testGetInfoA
@@ -180,7 +182,9 @@ public class SqlDAODipendentiTest {
 	public void resetPassD() {
       //test per la modifica password da parte di un dipendente
 	  init();
-	  Dipendente dip = new Dipendente(1,"ewdrftygyh","Giacomo","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
+	  //Dipendente dip = new Dipendente(1,"ndrmrt88l73f","Andrea","Marton","marco.begolo@gmail.com","andrea.marton","pass","Magazziniere",0,"",0);
+	  Login l = new Login("andrea.marton","pass");
+	  Dipendente dip =sqlD.getInfoD(l);
 	  String pass = "passNuova";
 
 	  assertTrue("password utente non modificato", (sqlD.passD(dip, pass)));//(sqlD.resetD(recupero, pass)));  
@@ -227,5 +231,13 @@ public class SqlDAODipendentiTest {
 	  Login l = new Login(username,password);
       Dipendente dip = sqlD.getInfoD(l);
 	  assertTrue("l'utente non e` stato rimosso", sqlD.cancellaDipendente(dip));
+	}
+	
+	@Test
+	public void getElencoRuoliTest() {
+      //test per verificare che la lista dei ruoli aziendali sia quella attesa
+	  init();
+	  ArrayList<String> ruoli = sqlD.getElencoRuoli();
+	  assertTrue("il numero di ruoli aziendali non corrisponde", 9 == ruoli.size());
 	}
 }

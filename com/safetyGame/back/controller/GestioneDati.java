@@ -10,6 +10,8 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120708 |Alessandro Cornaglia | + getElencoRuoli
+ * +----------+---------------------+---------------------
  * | 20120611 |Alessandro Cornaglia | + recupero
  * |          |                     | + modPassA
  * +----------+---------------------+---------------------
@@ -365,4 +367,14 @@ public class GestioneDati{
    public boolean modPassA(Dipendente admin){
        return this.gestioneDipendentiAA.modPassA(admin);
     }
+   
+   /**
+    * Metodo che consente di recuperare la lista dei ruoli aziendali
+    * 
+    * @return lista dei ruoli aziendali
+    */
+   public ArrayList<String> getElencoRuoli() {
+     return this.gestioneDipendentiAA.getElencoRuoli();
+   }
+   
 }

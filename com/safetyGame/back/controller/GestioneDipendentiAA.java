@@ -10,6 +10,8 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120708 |Alessandro Cornaglia | + getElencoRuoli
+ * +----------+---------------------+---------------------
  * | 20120611 |Massimo Dalla Pieta' | + modPassA
  * |          |                     | + GestioneDipendentiAA
  * |          |                     | + getElencoDipendenti
@@ -134,4 +136,13 @@ public class GestioneDipendentiAA{
        return risultato;
     }
    
+   /**
+    * Metodo per recuperare l'elenco dei ruoli di un'azienda
+    * 
+    * @return elenco dei ruoli di un'azienda
+    */
+   public ArrayList<String> getElencoRuoli() {
+     ArrayList elencoRuoli = accessDip.getElencoRuoli();
+     return elencoRuoli;
+   }
 }
