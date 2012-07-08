@@ -14,7 +14,7 @@
  * +----------+------------------+---------------------
  *
  */
-package com.safetygame.mobile.View;
+package com.safetyGame.mobile.View;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,7 +24,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.actionbarsherlock.app.SherlockActivity;
-import com.safetygame.mobile.R;
+import com.safetyGame.mobile.R;
 
 public class DashboardActivity extends SherlockActivity {
 

@@ -16,7 +16,7 @@
  * +----------+------------------+---------------------
  *
 */
-package com.safetygame.mobile.condivisi;
+package com.safetyGame.mobile.condivisi;
 
 public class Quest {
 	

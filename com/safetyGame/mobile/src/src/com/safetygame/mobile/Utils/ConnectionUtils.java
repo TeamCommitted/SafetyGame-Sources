@@ -16,7 +16,7 @@
  * +----------+------------------+---------------------
  *
  */
-package com.safetygame.mobile.Utils;
+package com.safetyGame.mobile.Utils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -38,10 +38,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.safetygame.mobile.condivisi.Dati;
-import com.safetygame.mobile.condivisi.Domanda;
-import com.safetygame.mobile.condivisi.Punteggi;
-import com.safetygame.mobile.condivisi.Quest;
+import com.safetyGame.mobile.condivisi.Dati;
+import com.safetyGame.mobile.condivisi.Domanda;
+import com.safetyGame.mobile.condivisi.Punteggi;
+import com.safetyGame.mobile.condivisi.Quest;
 
 public class ConnectionUtils
 {

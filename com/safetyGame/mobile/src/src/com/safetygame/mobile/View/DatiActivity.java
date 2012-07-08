@@ -17,7 +17,7 @@
  * +----------+------------------+---------------------
  *
  */
-package com.safetygame.mobile.View;
+package com.safetyGame.mobile.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +36,9 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.safetygame.mobile.R;
-import com.safetygame.mobile.Utils.ConnectionUtils;
-import com.safetygame.mobile.condivisi.Dati;
+import com.safetyGame.mobile.R;
+import com.safetyGame.mobile.Utils.ConnectionUtils;
+import com.safetyGame.mobile.condivisi.Dati;
 
 public class DatiActivity extends SherlockActivity {
 

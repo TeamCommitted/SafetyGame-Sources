@@ -14,9 +14,9 @@
  * +----------+------------------+---------------------
  *
 */
-package com.safetygame.mobile.Utils;
+package com.safetyGame.mobile.Utils;
 
-import com.safetygame.mobile.View.TimerNotifica;
+import com.safetyGame.mobile.View.TimerNotifica;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

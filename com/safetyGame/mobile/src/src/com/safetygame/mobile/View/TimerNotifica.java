@@ -16,7 +16,7 @@
  * +----------+------------------+---------------------
  *
  */
-package com.safetygame.mobile.View;
+package com.safetyGame.mobile.View;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.IBinder;
 
-import com.safetygame.mobile.R;
+import com.safetyGame.mobile.R;
 
 public class TimerNotifica extends Service
 {

@@ -16,7 +16,7 @@
  * +----------+------------------+---------------------
  *
  */
-package com.safetygame.mobile.View;
+package com.safetyGame.mobile.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +38,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.actionbarsherlock.app.SherlockActivity;
-import com.safetygame.mobile.R;
-import com.safetygame.mobile.Utils.ConnectionUtils;
+import com.safetyGame.mobile.R;
+import com.safetyGame.mobile.Utils.ConnectionUtils;
 
 public class LoginActivity extends SherlockActivity {
 
