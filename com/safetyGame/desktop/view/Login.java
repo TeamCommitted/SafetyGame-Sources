@@ -2,17 +2,19 @@
  * Name: Login.java
  * Package: com.safetygame.desktop.view
  * Author: Gabriele Facchin
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 
+ * Version: 0.2
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120610 | Gabriele Facchin    | + Login
+ * | 20120608 | Gabriele Facchin    | + Login
  * |          |                     | + actionPerformed
  * |          |                     | + isVisible
+ * +----------+---------------------|---------------------
+ * | 20120609 | Gabriele Facchin    | + creaSubFrameRecupero
  * +----------+---------------------|---------------------
  *
  */
@@ -27,17 +29,25 @@ import javax.swing.*;
  * Classe che gestisce la grafica per il login
  * 
  * @author gfacchin
- * @version 1.0
+ * @version 0.2
  */
 public class Login implements ActionListener{
   
   private JFrame frame;
+  private JFrame frame_recupero;
   private JButton ok;
   private JButton annulla;
+  private JButton okr;
+  private JButton annullar;
   private JButton passdim;
   private Label userl;
   private Label passl;
   private Label errore;
+  private Label errorer;
+  private Label codfisl;
+  private Label maill;
+  private TextField mail;
+  private TextField codfis;
   private TextField username;
   private TextField password;
   private ControlLogin controller;
@@ -81,8 +91,39 @@ public class Login implements ActionListener{
     frame.add(errore);
     frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     frame.setVisible(true);
+    
+    okr = new JButton("Invia");
+    okr.addActionListener(this);
+    annullar=new JButton("Annulla");
+    annullar.addActionListener(this);
   }
 
+  /**
+   * metodo che istanzia la grafica della sottofinestra per la richiesta di una nuova password
+   * 
+   */  
+  private void creaSubFrameRecupero(){
+    frame_recupero=new JFrame("Rigenera password");
+    frame_recupero.setSize(300,200);
+    frame_recupero.setLayout(new GridLayout(4,2));
+    codfisl= new Label();
+    codfisl.setText("Codice Fiscale:");
+    codfis = new TextField();
+    maill= new Label();
+    maill.setText("E-mail:");
+    mail = new TextField();
+    errorer= new Label();
+    frame_recupero.add(codfisl);
+    frame_recupero.add(codfis);
+    frame_recupero.add(maill);
+    frame_recupero.add(mail);
+    frame_recupero.add(okr);
+    frame_recupero.add(annullar);
+    frame_recupero.add(errorer);
+    frame_recupero.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    frame_recupero.setVisible(true);
+  }
+  
   /**
    * metodo che gestisce le azioni che i pulsanti devono intraprendere
    * 
@@ -103,18 +144,30 @@ public class Login implements ActionListener{
         errore.setText("Occorre inserire username e password per accedere al sistema");
     }
     else
-     if (e.getSource()==annulla)
-       frame.setVisible(false);
-     else //password dimenticata
-       if (!username.getText().trim().equals("")){
-         boolean rigenera=controller.recupera(username.getText().trim());
-         if (rigenera)
-           errore.setText("Nuova password generata, si prega di controllare l'email");
-         else
-           errore.setText("Nuova password non generata, ricontrollare i dati inseriti");              
-       }
-       else
-         errore.setText("occorre inserire il Nickname per richiedere una nuova password al sistema");
+      if (e.getSource()==annulla)
+        frame.setVisible(false);
+      else 
+        if (e.getSource()==passdim){
+            creaSubFrameRecupero();
+        }
+        else
+          if (e.getSource()==okr){
+            if (!mail.getText().trim().equals("") && !codfis.getText().trim().equals("")){
+              boolean rigenera=controller.recupera(codfis.getText().trim(), mail.getText().trim());
+              frame_recupero.setVisible(false);
+              if (rigenera){
+                errore.setText("Nuova password generata, si prega di controllare l'email");
+              }
+              else
+                errore.setText("Nuova password non generata, ricontrollare i dati inseriti");              
+            }
+            else{
+              errorer.setText("Inserire entrambe i dati");
+            }
+          } 
+          else{ //e.getSource()==annullar
+            frame_recupero.setVisible(false);
+          }      
   }
   
   /**

@@ -1,5 +1,8 @@
 
 package com.safetyGame.desktop.logic;
+
+import com.safetyGame.desktop.condivisi.*;
+
 /**
  * ConnBack2.java
  *
@@ -9,13 +12,13 @@ package com.safetyGame.desktop.logic;
 public class ConnBack {
     
   private static ConnBack singleton = null;
-  private boolean loggato;
+  private DatiLogin loggato;
     
   /** 
    * Costrutture della classe ConnBack
    */
   private ConnBack() {
-    loggato=false;
+    loggato=null;
   }
     
   /**
@@ -31,13 +34,16 @@ public class ConnBack {
     return singleton;
   }
     
-      public boolean login(String username, String password){
+  public boolean login(DatiLogin login){
+    //back.login(login.getLogin());
     //chiama le funzioni del back - end
+      loggato=login;
     return false;
   }
   
-  public boolean logout(String username){
+  public boolean logout(){
     //chiama le funzioni del back - end
+      loggato=null;
     return false;
   }
   
@@ -46,12 +52,12 @@ public class ConnBack {
     return false;
   }
   
-  public boolean recupera(String username){
+  public boolean recupera(Recupero rec){
     //chiama le funzioni del back - end
     return false;
   }
   
   public boolean isLogged(){
-    return loggato;
+    return loggato!=null;
   }
 }

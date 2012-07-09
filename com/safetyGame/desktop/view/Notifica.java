@@ -2,15 +2,15 @@
  * Name: Notifica.java
  * Package: com.safetygame.desktop.view
  * Author: Gabriele Facchin
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 
+ * Version: 0.1
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120610 | Gabriele Facchin    | + Notifica
+ * | 20120608 | Gabriele Facchin    | + Notifica
  * |          |                     | + actionPerformed
  * +----------+---------------------|---------------------
  *
@@ -26,7 +26,7 @@ import javax.swing.*;
  * Classe che gestisce la grafica per la notifica di una nuova domanda
  * 
  * @author gfacchin
- * @version 1.0
+ * @version 0.1
  */
 public class Notifica implements ActionListener{
 
@@ -43,7 +43,7 @@ public class Notifica implements ActionListener{
   public Notifica(ControlNotifica controllore){
     controller=controllore;
     frame=new JFrame("Notifica Domanda");
-    frame.setSize(1300,200);
+    frame.setSize(200,200);
     frame.setLayout(new GridLayout(2,2));
     testo= new Label();
     testo.setText("Ti e` stata proposta una domanda, vuoi rispondere?");
