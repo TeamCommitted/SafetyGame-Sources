@@ -47,20 +47,23 @@ public class Timer extends Thread{
    * 
    */
   public void run(){
+	int conta = 0;  //riga corny
     while (true){
-      while(!finito){
+      while(!finito){conta++; System.out.println("numero timer="+conta);//riga corny
         int tempocopia=tempo;
         int attesa=tempocopia/10;
         while(tempocopia>0){
           try{sleep(attesa);}
           catch(InterruptedException e){tempocopia+=attesa-1;}
           tempocopia-=attesa;
-          if (cambiato){
+          if (tempocopia <= 0) cambiato = true; //riga corny(manca qualcosa del genere?)
+          if (cambiato){ //come fa ad entrarci????
             tempocopia=0;
           }
         }
-        finito=true;
-        if (cambiato){
+        finito=true; 
+        if (cambiato){//come fa ad entarci??? 
+        	System.out.println("sono entrato");
           finito=false;
           cambiato=false;
         }
