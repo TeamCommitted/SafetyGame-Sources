@@ -160,6 +160,10 @@ public class GestioneRecupero{
 	 }
    }
    
+   /**
+    * Metodo che si occupa di inviare una mail all'utente che ha richiesto la modifica della propria mail
+    * @param destinatario indirizzo email del dipendente che ha richiesto il recupero
+    */
    public static void sendMailModMail(String destinatario){
 	     final String username = "teamcommitted@gmail.com";
 		 final String password = "Pr0jectse";
