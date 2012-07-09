@@ -2,10 +2,10 @@
 dependency1.from=Domanda
 dependency1.to=Punteggio
 dependency1.type=UsesDependency
-package.editor.height=714
+package.editor.height=725
 package.editor.width=1482
-package.editor.x=32
-package.editor.y=32
+package.editor.x=14
+package.editor.y=81
 package.numDependencies=1
 package.numTargets=3
 package.showExtends=true

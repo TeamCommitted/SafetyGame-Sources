@@ -56,7 +56,6 @@ public class Timer extends Thread{
           try{sleep(attesa);}
           catch(InterruptedException e){tempocopia+=attesa-1;}
           tempocopia-=attesa;
-          if (tempocopia <= 0) cambiato = true; //riga corny(manca qualcosa del genere?)
           if (cambiato){ //come fa ad entrarci????
             tempocopia=0;
           }
