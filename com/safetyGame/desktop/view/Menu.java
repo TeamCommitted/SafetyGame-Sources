@@ -11,6 +11,7 @@
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
  * | 20120609 | Gabriele Facchin    | + Menu
+ * |          |                     | + svuota
  * |          |                     | + creaMenu
  * |          |                     | + finalize
  * |          |                     | + actionPerformed
@@ -53,17 +54,33 @@ public class Menu implements ActionListener{
    * Costruttore della classe Menu
    * 
    */
-  public Menu(){//ControlMenu controllo){
-    control=new ControlMenu();//controllo;
+  public Menu(ControlMenu controllo){
+    control=controllo;
     try{
       tray=SystemTray.getSystemTray();
       Image img=Toolkit.getDefaultToolkit().getImage("com/safetyGame/desktop/view/icona.jpg");
       icon=new TrayIcon(img);
       tray.add(icon);
+      richiedi_domanda= new JMenuItem("Chiedi Domanda");
+      visualizza_punteggio= new JMenuItem("Visualizza il tuo punteggio");
+      visualizza_dati= new JMenuItem("Visualizza i tuoi dati");
+      modifica_dati= new JMenuItem("Modifica i tuoi dati");
+      logout= new JMenuItem("Logout");
+      login = new JMenuItem("Login");
+      nascondi= new JMenuItem("nascondi");
+      nascondi.addActionListener(this);
+      login.addActionListener(this);
+      richiedi_domanda.addActionListener(this);
+      visualizza_punteggio.addActionListener(this);
+      visualizza_dati.addActionListener(this);
+      modifica_dati.addActionListener(this);
+      logout.addActionListener(this);
+      menu= new JPopupMenu();
       icon.addMouseListener(new MouseAdapter()
+      
       {
         public void mouseClicked(MouseEvent e){
-          menu=creaMenu();
+          creaMenu();
           menu.addFocusListener(new FocusAdapter()
           {
             public void focusLost(FocusEvent e){}
@@ -77,40 +94,34 @@ public class Menu implements ActionListener{
     catch(UnsupportedOperationException e){System.out.println("Le funzionalità minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(1);}
     catch(AWTException e){System.out.println("Le funzionalità minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(1);}
   }
+  
+  /**
+   * metodo che svuota il menu
+   * 
+   */
+  private void svuota(){
+    for (int i=0;i<menu.getComponentCount();i++){
+      menu.remove(1);
+    }
+  }
  
   /**
    * metodo che istanza correttamente il menu, a seconda che il dipendente sia o meno loggato
    * 
-   * @return JPopupMenu correttamente istanziato in base allo stato di login del dipendente
    */
-  private JPopupMenu creaMenu(){
-    JPopupMenu m= new JPopupMenu();
+  private void creaMenu(){
+    svuota();
     if (!control.isLogged()){
-      login = new JMenuItem("Login");
-      login.addActionListener(this);
-      m.add(login);
+      menu.add(login);
     }
     else{
-      richiedi_domanda= new JMenuItem("Chiedi Domanda");
-      visualizza_punteggio= new JMenuItem("Visualizza il tuo punteggio");
-      visualizza_dati= new JMenuItem("Visualizza i tuoi dati");
-      modifica_dati= new JMenuItem("Modifica i tuoi dati");
-      logout= new JMenuItem("Logout");
-      richiedi_domanda.addActionListener(this);
-      visualizza_punteggio.addActionListener(this);
-      visualizza_dati.addActionListener(this);
-      modifica_dati.addActionListener(this);
-      logout.addActionListener(this);
-      m.add(richiedi_domanda);
-      m.add(visualizza_punteggio);
-      m.add(visualizza_dati);
-      m.add(modifica_dati);
-      m.add(logout);
+      menu.add(richiedi_domanda);
+      menu.add(visualizza_punteggio);
+      menu.add(visualizza_dati);
+      menu.add(modifica_dati);
+      menu.add(logout);
     }
-    nascondi= new JMenuItem("nascondi");
-    nascondi.addActionListener(this);
-    m.add(nascondi);
-    return m;
+    menu.add(nascondi);
   }
   
   /**
