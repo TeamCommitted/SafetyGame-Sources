@@ -48,7 +48,7 @@ public class Timer extends Thread{
    */
   public void run(){
 	int conta = 0;  //riga corny
-    while (true){
+    while (true){System.out.println("ciclo");
       while(!finito){conta++; System.out.println("numero timer="+conta);//riga corny
         int tempocopia=tempo;
         int attesa=tempocopia/10;
@@ -61,6 +61,7 @@ public class Timer extends Thread{
           }
         }
         finito=true; 
+        System.out.println("finito ="+finito);
         if (cambiato){//come fa ad entarci??? 
         	System.out.println("sono entrato");
           finito=false;

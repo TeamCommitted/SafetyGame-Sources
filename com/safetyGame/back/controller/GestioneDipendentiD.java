@@ -49,12 +49,12 @@ public class GestioneDipendentiD{
   /**
    * Costruttore con parametri della classe GestioneDipendentiD
    * 
-   * @param d riferimento all'iggetto di tipo DAOFactory
-   * @param g riferimento alla classe di tipo GestioneLog
+   * @param daoDipendenti riferimento all'iggetto di tipo DAOFactory
+   * @param gestioneLog riferimento alla classe di tipo GestioneLog
    */
-  public GestioneDipendentiD(DAODipendenti d, GestioneLog g) {
-    this.daoDipendenti = d;
-    this.gestioneLog = g;
+  public GestioneDipendentiD(DAODipendenti daoDipendenti, GestioneLog gestioneLog) {
+    this.daoDipendenti = daoDipendenti;
+    this.gestioneLog = gestioneLog;
     this.gestioneRecupero = null;
   }
   
@@ -79,9 +79,9 @@ public class GestioneDipendentiD{
 
   /**
    * metodo che consente di impostare il riferimento all'oggetto di tipo statico 
-   * DAOFactory
+   * DAODipendenti
    * 
-   * @param daoFactory riferimento all'oggetto di tipo DAOFactory
+   * @param daoDip riferimento all'oggetto di tipo DAODipendenti
    */
   public void setDaoDipendenti(DAODipendenti daoDip) {
     this.daoDipendenti = daoDip;
@@ -109,11 +109,11 @@ public class GestioneDipendentiD{
    * Metodo che consente di reperire le informazioni di un dipendente a partire
    * dal suo login
    * 
-   * @param l login del dipendente
+   * @param login login del dipendente
    * @return informazioni sul dipendente
    */
-  public Dipendente getDati(Login l) {//
-    Dipendente ritorno = this.daoDipendenti.getInfoD(l);
+  public Dipendente getDati(Login login) {//
+    Dipendente ritorno = this.daoDipendenti.getInfoD(login);
 	return ritorno;    
   }
   

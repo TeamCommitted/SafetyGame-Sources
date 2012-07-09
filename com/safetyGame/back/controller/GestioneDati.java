@@ -71,28 +71,28 @@ public class GestioneDati{
   /**
    * Costruttore, con parametri, della classe GestioneDati 
    * 
-   * @param gr riferimento ad oggetto di tipo GestioneRecupero
-   * @param gl riferimento ad oggetto di tipo GestioneLogin
-   * @param gdd riferimento ad oggetto di tipo GestioneDomandeD
-   * @param gda riferimento ad oggetto di tipo GestioneDomandeAS
-   * @param gdip riferimento ad oggetto di tipo GestioneDipendentiD
-   * @param gdipa riferimento ad oggetto di tipo GestioneDipendentiAA
-   * @param gbd riferimento ad oggetto di tipo GestioneBadgeD
-   * @param gba riferimento ad oggetto di tipo GestioneBadgeAS
-   * @param gpd riferimento ad oggetto di tipo GestionePunteggiD
-   * @param gpaa riferimento ad oggetto di tipo GestionePunteggiAA
+   * @param gestRec riferimento ad oggetto di tipo GestioneRecupero
+   * @param gestLogin riferimento ad oggetto di tipo GestioneLogin
+   * @param gestDomD riferimento ad oggetto di tipo GestioneDomandeD
+   * @param gestDomAS riferimento ad oggetto di tipo GestioneDomandeAS
+   * @param gestDipD riferimento ad oggetto di tipo GestioneDipendentiD
+   * @param gestDipAA riferimento ad oggetto di tipo GestioneDipendentiAA
+   * @param gestBadgeD riferimento ad oggetto di tipo GestioneBadgeD
+   * @param gestBadgeAS riferimento ad oggetto di tipo GestioneBadgeAS
+   * @param gestPuntD riferimento ad oggetto di tipo GestionePunteggiD
+   * @param gestPuntAA riferimento ad oggetto di tipo GestionePunteggiAA
    */
-  public GestioneDati(GestioneRecupero gr,GestioneLogin gl, GestioneDomandeD gdd, GestioneDomandeAS gda, GestioneDipendentiD gdip, GestioneDipendentiAA gdipa, GestioneBadgeD gbd, GestioneBadgeAS gba, GestionePunteggiD gpd, GestionePunteggiAA gpaa) {
-	this.gestioneRecupero = gr;
-	this.gestioneLogin = gl;
-	this.gestioneDomandeD = gdd;
-	this.gestioneDomandeAS = gda;
-	this.gestioneDipendentiD = gdip;
-	this.gestioneDipendentiAA = gdipa;
-	this.gestioneBadgeD = gbd;
-	this.gestioneBadgeAS = gba;
-	this.gestionePunteggiD = gpd;
-	this.gestionePunteggiAA = gpaa;
+  public GestioneDati(GestioneRecupero gestRec,GestioneLogin gestLogin, GestioneDomandeD gestDomD, GestioneDomandeAS gestDomAS, GestioneDipendentiD gestDipD, GestioneDipendentiAA gestDipAA, GestioneBadgeD gestBadgeD, GestioneBadgeAS gestBadgeAS, GestionePunteggiD gestPuntD, GestionePunteggiAA gestPuntAA) {
+	this.gestioneRecupero = gestRec;
+	this.gestioneLogin = gestLogin;
+	this.gestioneDomandeD = gestDomD;
+	this.gestioneDomandeAS = gestDomAS;
+	this.gestioneDipendentiD = gestDipD;
+	this.gestioneDipendentiAA = gestDipAA;
+	this.gestioneBadgeD = gestBadgeD;
+	this.gestioneBadgeAS = gestBadgeAS;
+	this.gestionePunteggiD = gestPuntD;
+	this.gestionePunteggiAA = gestPuntAA;
   }
   
   /**
@@ -123,22 +123,22 @@ public class GestioneDati{
     * Metodo per ottenere i dati delle badge per un dato utente
     * 
     * @param login dati dell'utente che effettua la richiesta
-    * @param n numero di badge che si vuole selezionare
+    * @param numeroBadge numero di badge che si vuole selezionare
     * @return un ArrayList<Badge> contenente n badge ottenute dall'utente 
    */
-  public ArrayList<Badge> getBadgeD(Login l, int n) {
-    return this.gestioneBadgeD.getBadgeD(l, n);  
+  public ArrayList<Badge> getBadgeD(Login login, int numeroBadge) {
+    return this.gestioneBadgeD.getBadgeD(login, numeroBadge);  
   }
   
   /**
    * Metodo per controllare se l'utente ha soddisfatto dei requisiti per ottenere un badge
    * 
-   * @param l dati dell'utente che si deve controllare
-   * @param D domanda risposta dall'utente
+   * @param login dati dell'utente che si deve controllare
+   * @param domanda domanda risposta dall'utente
    * @return true se l'utente ha ricevuto un badge, altrimenti false    
    */
-  public boolean assegnaBadge(Domanda D, Login l) {
-    return this.gestioneBadgeD.assegnaBadge(D, l);
+  public boolean assegnaBadge(Domanda domanda, Login login) {
+    return this.gestioneBadgeD.assegnaBadge(domanda, login);
   }
   
   /**
@@ -152,21 +152,21 @@ public class GestioneDati{
   /**
    * Metodo per aggiungere un dipendente
    * 
-   * @param Dip oggetto contenente i dati del nuovo dipendente
+   * @param dip oggetto contenente i dati del nuovo dipendente
    * @return true se l'operazione viene completata con successo, altrimenti false    
    */
-  public boolean aggiungiDipendente(Dipendente Dip) {
-    return this.gestioneDipendentiAA.aggiungiDipendente(Dip);
+  public boolean aggiungiDipendente(Dipendente dip) {
+    return this.gestioneDipendentiAA.aggiungiDipendente(dip);
   }
   
   /**
    * Metodo per eliminare
    * 
-   * @param Dip oggetto contenente i dati del dipendente da eliminare
+   * @param dip oggetto contenente i dati del dipendente da eliminare
    * @return true se l'operazione viene completata con successo, altrimenti false    
    */
-  public boolean cancellaDipendente(Dipendente Dip) {
-	return this.gestioneDipendentiAA.cancellaDipendente(Dip);
+  public boolean cancellaDipendente(Dipendente dip) {
+	return this.gestioneDipendentiAA.cancellaDipendente(dip);
   }
   
   /**
@@ -184,11 +184,11 @@ public class GestioneDati{
    * Metodo che consente di reperire le informazioni di un dipendente a partire
    * dal suo login
    * 
-   * @param l login del dipendente
+   * @param login login del dipendente
    * @return informazioni sul dipendente
    */
-  public Dipendente getDati(Login l) {
-    return this.gestioneDipendentiD.getDati(l);
+  public Dipendente getDati(Login login) {
+    return this.gestioneDipendentiD.getDati(login);
   }
   
   /**
@@ -206,12 +206,12 @@ public class GestioneDati{
    * Metodo che consente la modifica della mail da parte di un dipendente
    * 
    * @param dip che chiede di modificare la mail
-   * @param nEmail nuovo indirizzo mail da inserire
+   * @param newEmail nuovo indirizzo mail da inserire
    * 
    * @return true se operazione riuscita con successo, false altrimenti
    */
-  public boolean modificaEmail(Dipendente dip, String nEmail) {
-	return this.gestioneDipendentiD.modificaEmail(dip, nEmail);
+  public boolean modificaEmail(Dipendente dip, String newEmail) {
+	return this.gestioneDipendentiD.modificaEmail(dip, newEmail);
   }
   
   /**
@@ -226,26 +226,28 @@ public class GestioneDati{
    * Metodo per inserire una domanda dal server domande al server dell'azienda
    * @return true se l'operazione è stata completata, altrimenti false   
    */
-  public boolean addDomanda(Domanda Dom) {
-    return this.gestioneDomandeAS.addDomanda(Dom);
+  public boolean addDomanda(Domanda dom) {
+    return this.gestioneDomandeAS.addDomanda(dom);
   }
   
   /**
    * Metodo per eliminare una domanda dal server dell'azienda
+   * 
+   * @param dom domanda da rimuovere
    * @return true se l'operazione è stata completata, altrimenti false       
    */
-  public boolean remDomanda(Domanda Dom) {
-	return this.gestioneDomandeAS.remDomanda(Dom);
+  public boolean remDomanda(Domanda dom) {
+	return this.gestioneDomandeAS.remDomanda(dom);
   }
   
   /**
    * Metodo che consente di recuperare una domanda 
    * 
-   * @param l oggetto Login del dipendente che deve ricevere la domanda
+   * @param login oggetto Login del dipendente che deve ricevere la domanda
    * @return domanda per il login proposto
    */
-  public Domanda getDomandaD(Login l) {
-	return this.gestioneDomandeD.getDomandaD(l);
+  public Domanda getDomandaD(Login login) {
+	return this.gestioneDomandeD.getDomandaD(login);
   }
   
   /**
@@ -253,11 +255,11 @@ public class GestioneDati{
    * domanda e tenta di scrivere tali informazioni sul DB. Se la risposta è corretta
    * assegna il punteggio al dipendente
    * 
-   * @param l Login del dipendente che ha risposto
+   * @param login Login del dipendente che ha risposto
    * @param risposta Domanda posta al dipendente contenente la risposta data
    */
-  public boolean setRisposta(Login l,Domanda risposta) {
-	return this.gestioneDomandeD.setRisposta(l, risposta);
+  public boolean setRisposta(Login login,Domanda risposta) {
+	return this.gestioneDomandeD.setRisposta(login, risposta);
   }
   
   /**
@@ -273,6 +275,8 @@ public class GestioneDati{
    * Metodo per il login dei dipendenti
    * 
    * @param login oggetto contenente i dati di login inseriti dall'utente
+   * 
+   * @return booleano che indica se l'utente e` loggato
    */
   public boolean loginUser(Login login) {
 	return this.gestioneLogin.loginUser(login);		
@@ -291,53 +295,53 @@ public class GestioneDati{
   /**
    * Metodo per modificare i trofei di un dipendente
    * 
-   * @param Dip il dipendente che si vuole modificare
-   *        n numero di trofei che si vuole assegnare
+   * @param dip il dipendente che si vuole modificare
+   * @param numTrofei numero di trofei che si vuole assegnare
    * @return true se l'operazione ha successo, altrimenti false  
    */
-   public boolean setTrofei(Dipendente Dip, int n) {
-	 return this.gestionePunteggiAA.setTrofei(Dip, n);
+   public boolean setTrofei(Dipendente dip, int numTrofei) {
+	 return this.gestionePunteggiAA.setTrofei(dip, numTrofei);
    }
    
    /**
     * Metodo che consente di recuperare le statistiche di un determinato dipendente
     * 
-    * @param l login del dipendente che richiede di conoscere le statistiche
+    * @param login login del dipendente che richiede di conoscere le statistiche
     * 
     * @return statistiche del dipendente
     */
-   public Punteggio getStatisticheD(Login l) {
-	 return this.gestionePunteggiD.getStatisticheD(l);
+   public Punteggio getStatisticheD(Login login) {
+	 return this.gestionePunteggiD.getStatisticheD(login);
    }
    
   
    /**
     * Metodo che si occupa di controllare quando una domanda viene posticipata
-    * @param l login del dipendente
-    * @param d domanda posticipata
+    * @param login login del dipendente
+    * @param dom domanda posticipata
     * @return true se la domanda è stata posticipata correttamente, false altrimenti
     */
-   public boolean posticipa(Login l, Domanda d) {
-	 return this.gestioneDomandeD.posticipa(l, d);
+   public boolean posticipa(Login login, Domanda dom) {
+	 return this.gestioneDomandeD.posticipa(login, dom);
    }
    
    /**
     * Metodo per segnalare al sistema il logout di un utente
     * 
-    * @param l login del dipendente che ha effettuato il logout
+    * @param login login del dipendente che ha effettuato il logout
     */
-   public void logout(Login l) {
-	 this.gestioneLogin.logout(l);
+   public void logout(Login login) {
+	 this.gestioneLogin.logout(login);
    }
    
    /**
     * Metodo che consente di recuperare le statistiche globali
     * 
-    * @param l login del dipendente che richiede di conoscere le statistiche
+    * @param login login del dipendente che richiede di conoscere le statistiche
     * @return statistiche globali
     */
-   public Punteggio getStatisticheGlob(Login l) {
-	 return this.gestionePunteggiD.getStatisticheGlob(l);
+   public Punteggio getStatisticheGlob(Login login) {
+	 return this.gestionePunteggiD.getStatisticheGlob(login);
    }
    
    /**
