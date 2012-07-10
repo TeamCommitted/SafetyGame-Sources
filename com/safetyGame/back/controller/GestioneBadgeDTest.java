@@ -52,9 +52,11 @@ public class GestioneBadgeDTest {
 	public void testGetBadgeD(){
 		init();
 		ArrayList<Badge> listbadge = new ArrayList<Badge>();
-		Login l = new Login("nick","pass");
+		Login l = new Login("mario.verdi","pass");
 		listbadge = gb.getBadgeD(l,1);
-		System.out.print(listbadge.size());
+		//System.out.print(listbadge.size());
+		for(int i = 0; i < listbadge.size(); i++)
+			System.out.println(listbadge.get(i).getNome());
 		assertTrue("lista badge non ottenuta", !listbadge.isEmpty()); 
 	}
 	
