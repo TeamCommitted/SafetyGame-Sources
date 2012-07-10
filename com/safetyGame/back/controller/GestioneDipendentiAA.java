@@ -60,8 +60,8 @@ public class GestioneDipendentiAA{
     * @param Dip oggetto contenente i dati del nuovo dipendente
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
-   public boolean aggiungiDipendente(Dipendente Dip){//
-	  Dipendente supporto = Dip;
+   public boolean aggiungiDipendente(Dipendente dip){//
+	  Dipendente supporto = dip;
 	  String nome = supporto.getNome();
 	  String cognome = supporto.getCognome();
 	  String pass = GestioneRecupero.generaPassCasuale();
@@ -93,8 +93,8 @@ public class GestioneDipendentiAA{
     * @param Dip oggetto contenente i dati del dipendente da eliminare
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
-   public boolean cancellaDipendente(Dipendente Dip){ //
-      return accessDip.cancellaDipendente(Dip);
+   public boolean cancellaDipendente(Dipendente dip){ //
+      return accessDip.cancellaDipendente(dip);
    }
    
    /**

@@ -54,15 +54,15 @@ public class GestioneDomandeAS{
     * Metodo per inserire una domanda dal server domande al server dell'azienda
     * @return true se l'operazione � stata completata, altrimenti false   
     */
-   public boolean addDomanda(Domanda Dom){
-      return accessDom.addDomanda(Dom);
+   public boolean addDomanda(Domanda dom){
+      return accessDom.addDomanda(dom);
    }
    
    /**
     * Metodo per eliminare una domanda dal server dell'azienda
     * @return true se l'operazione � stata completata, altrimenti false       
     */
-   public boolean remDomanda(Domanda Dom){
-      return accessDom.remDomanda(Dom);
+   public boolean remDomanda(Domanda dom){
+      return accessDom.remDomanda(dom);
    }
 }

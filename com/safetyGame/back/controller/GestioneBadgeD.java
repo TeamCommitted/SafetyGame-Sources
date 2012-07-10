@@ -30,7 +30,7 @@ import java.util.ArrayList;
  * @version v1.0
  */
 public class GestioneBadgeD{
-   private DAOBadge accessB;
+   private DAOBadge accessBadge;
    private DAODipendenti accessDip;
    private DAODomande accessDom;
    private GestioneLog gestLog;
@@ -45,8 +45,8 @@ public class GestioneBadgeD{
     *        log riferimento alla classe GestioneLog
     *        login riferimento alla classe GestioneLogin
     */
-   public GestioneBadgeD(DAOBadge accessB,DAODipendenti accessDip, DAODomande accessDom, GestioneLog gestLog, GestioneLogin gestLogin){
-       this.accessB = accessB;
+   public GestioneBadgeD(DAOBadge accessBadge,DAODipendenti accessDip, DAODomande accessDom, GestioneLog gestLog, GestioneLogin gestLogin){
+       this.accessBadge = accessBadge;
        this.accessDip = accessDip;
        this.accessDom = accessDom;
        this.gestLog = gestLog;
@@ -63,7 +63,7 @@ public class GestioneBadgeD{
    public ArrayList<Badge> getBadgeD(Login login, int num){
       if(gestLogin.loginUser(login)){
           Dipendente d = accessDip.getInfoD(login);
-          ArrayList<Badge> list = accessB.badgeD(d);
+          ArrayList<Badge> list = accessBadge.badgeD(d);
           if(list.isEmpty())
               return list;//return null;
           else{
@@ -92,7 +92,7 @@ public class GestioneBadgeD{
    public boolean assegnaBadge(Domanda domanda, Login login){
        Dipendente dip = accessDip.getInfoD(login);
        ArrayList<Domanda> risposte = accessDom.domande(dip,null);
-       ArrayList<Badge> badge = accessB.badgeAS();
+       ArrayList<Badge> badge = accessBadge.badgeAS();
        boolean trovato = false;
        int i = 0;
        boolean result = false;
@@ -100,7 +100,7 @@ public class GestioneBadgeD{
            Badge test = badge.get(i);
            if(test.getDescrizione().equals("TotaleRisposte"))
                if(test.getSoglia() == risposte.size()){
-                   accessB.assegna(dip,test);
+                   accessBadge.assegna(dip,test);
                    gestLog.scriviOttenimentoBadge(dip, test);
                    //log.scriviOttenimentoBadge(dip, test);
                    trovato = true;
@@ -114,7 +114,7 @@ public class GestioneBadgeD{
            Badge test = badge.get(i);
            if(test.getDescrizione().equals("TotalePunti"))
                if(test.getSoglia() == dip.getPunteggio().getPunti()){
-                   accessB.assegna(dip,test);
+                   accessBadge.assegna(dip,test);
                    //log.scriviOttenimentoBadge(dip, test);
                    gestLog.scriviOttenimentoBadge(dip, test);
                    trovato = true;
@@ -129,7 +129,7 @@ public class GestioneBadgeD{
            Badge test = badge.get(i);
            if(test.getDescrizione().equals(domanda.getAmbito()))
                if(test.getSoglia() == risposte.size()){
-                   accessB.assegna(dip,test);
+                   accessBadge.assegna(dip,test);
                    //gestLog.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;

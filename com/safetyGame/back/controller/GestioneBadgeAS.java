@@ -27,7 +27,7 @@ import java.util.ArrayList;
  * @version v1.0
  */
 public class GestioneBadgeAS{ 
-    private DAOBadge accessB;
+    private DAOBadge accessBadge;
     
     /**
     * Costruttore con parametri della classe GestioneBadgeAS
@@ -35,8 +35,8 @@ public class GestioneBadgeAS{
     * @param accessB riferimento alla classe che implementa l'interfaccia DAOBadge
     *       
     */
-    public GestioneBadgeAS(DAOBadge accessB){
-        this.accessB=accessB;
+    public GestioneBadgeAS(DAOBadge accessBadge){
+        this.accessBadge=accessBadge;
     }
     
     /**
@@ -45,6 +45,6 @@ public class GestioneBadgeAS{
     * 
     */
     public ArrayList<Badge> getBadgesAS(){
-        return accessB.badgeAS();
+        return accessBadge.badgeAS();
     }
 }

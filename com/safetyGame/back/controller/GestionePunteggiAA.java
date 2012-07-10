@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * @version v1.0
  */
 public class GestionePunteggiAA{ 
-   private DAOPunteggi accessP;
+   private DAOPunteggi accessPunti;
    private DAODipendenti accessDip;
    
    /**
@@ -37,8 +37,8 @@ public class GestionePunteggiAA{
     * @param accessP riferimento alla classe che implementa l'interfaccia DAOPunteggi
     *        accessDip riferimento alla classe che implementa l'interfaccia DAODipendenti
     */
-   public GestionePunteggiAA(DAOPunteggi accessP, DAODipendenti accessDip){
-       this.accessP = accessP;
+   public GestionePunteggiAA(DAOPunteggi accessPunti, DAODipendenti accessDip){
+       this.accessPunti = accessPunti;
        this.accessDip = accessDip;
     }
    
@@ -56,7 +56,7 @@ public class GestionePunteggiAA{
        int corrette = 0;
        Punteggio p = new Punteggio();
        for(int i=1; i<dipendenti.size(); i++){
-           p = accessP.getGlobalStat(dipendenti.get(i));
+           p = accessPunti.getGlobalStat(dipendenti.get(i));
            dipendenti.get(i).setPunteggio(p);
             risposte += p.getnDomRisp();
             corrette += p.getnRispCorr();
@@ -77,7 +77,7 @@ public class GestionePunteggiAA{
     *        n numero di trofei che si vuole assegnare
     * @return true se l'operazione ha successo, altrimenti false  
     */
-    public boolean setTrofei(Dipendente Dip, int n){
-        return accessDip.setTrofei(Dip,n);
+    public boolean setTrofei(Dipendente dip, int num){
+        return accessDip.setTrofei(dip,num);
     }
 }
