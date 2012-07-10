@@ -64,10 +64,10 @@ public class GestioneBadgeD{
       if(gestLogin.loginUser(login)){
           Dipendente d = accessDip.getInfoD(login);
           ArrayList<Badge> list = accessB.badgeD(d);
-          if(list.isEmpty())
+          if(list == null)
               return null;
           else{
-        	  if(n==0){
+        	  if(num==0){
         		  return list;
         	  }
               ArrayList<Badge> result = new ArrayList<Badge>();
@@ -127,12 +127,10 @@ public class GestioneBadgeD{
        i = 0;
        while(i < badge.size() && trovato == false){
            Badge test = badge.get(i);
-           if(test.getDescrizione().equals(D.getAmbito()))
-           if(test.getDescrizione().equals(domanda.getTipologia()))
+           if(test.getDescrizione().equals(domanda.getAmbito()))
                if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
-                   //log.scriviOttenimentoBadge(dip, test);
-                   gestLog.scriviOttenimentoBadge(dip, test);
+                   //gestLog.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
