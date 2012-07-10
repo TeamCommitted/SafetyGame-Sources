@@ -65,7 +65,7 @@ public class GestioneBadgeD{
           Dipendente d = accessDip.getInfoD(login);
           ArrayList<Badge> list = accessB.badgeD(d);
           if(list.isEmpty())//
-              return null;
+              return list;//return null;
           else{
         	  if(num==0){
         		  return list;
