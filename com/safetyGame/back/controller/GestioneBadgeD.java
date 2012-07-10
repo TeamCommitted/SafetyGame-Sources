@@ -14,8 +14,8 @@ public class GestioneBadgeD{
    private DAOBadge accessB;
    private DAODipendenti accessDip;
    private DAODomande accessDom;
-   private GestioneLog log;
-   private GestioneLogin login;
+   private GestioneLog gestLog;
+   private GestioneLogin gestLogin;
    
    /**
     * Costruttore con parametri della classe GestioneBadgeD
@@ -26,12 +26,12 @@ public class GestioneBadgeD{
     *        log riferimento alla classe GestioneLog
     *        login riferimento alla classe GestioneLogin
     */
-   public GestioneBadgeD(DAOBadge accessB,DAODipendenti accessDip, DAODomande accessDom, GestioneLog log, GestioneLogin login){
+   public GestioneBadgeD(DAOBadge accessB,DAODipendenti accessDip, DAODomande accessDom, GestioneLog gestLog, GestioneLogin gestLogin){
        this.accessB = accessB;
        this.accessDip = accessDip;
        this.accessDom = accessDom;
-       this.log = log;
-       this.login = login;
+       this.gestLog = gestLog;
+       this.gestLogin = gestLogin;
    }
    
    /**
@@ -41,16 +41,16 @@ public class GestioneBadgeD{
     * @param n numero di badge che si vuole selezionare
     * @return un ArrayList<Badge> contenente n badge ottenute dall'utente        
     */
-   public ArrayList<Badge> getBadgeD(Login l, int n){
-      if(login.loginUser(l)){
-          Dipendente d = accessDip.getInfoD(l);
+   public ArrayList<Badge> getBadgeD(Login login, int num){
+      if(gestLogin.loginUser(login)){
+          Dipendente d = accessDip.getInfoD(login);
           ArrayList<Badge> list = accessB.badgeD(d);
           if(list.isEmpty())
               return null;
           else{
               ArrayList<Badge> result = new ArrayList<Badge>();
               int i = 0;
-              while(i<list.size() && i<n){
+              while(i<list.size() && i<num){
                   result.add(list.get(i));
                   i++;
               }
@@ -67,8 +67,8 @@ public class GestioneBadgeD{
     * @param D domanda risposta dall'utente
     * @return true se l'utente ha ricevuto un badge, altrimenti false    
     */
-   public boolean assegnaBadge(Domanda D, Login l){
-       Dipendente dip = accessDip.getInfoD(l);
+   public boolean assegnaBadge(Domanda domanda, Login login){
+       Dipendente dip = accessDip.getInfoD(login);
        ArrayList<Domanda> risposte = accessDom.domande(dip,null);
        ArrayList<Badge> badge = accessB.badgeAS();
        boolean trovato = false;
@@ -79,7 +79,7 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals("TotaleRisposte"))
                if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
-                   log.scriviOttenimentoBadge(dip, test);
+                   gestLog.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
@@ -92,21 +92,21 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals("TotalePunti"))
                if(test.getSoglia() == dip.getPunteggio().getPunti()){
                    accessB.assegna(dip,test);
-                   log.scriviOttenimentoBadge(dip, test);
+                   gestLog.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
            i++;
        }
-       risposte = accessDom.domande(dip,D);
+       risposte = accessDom.domande(dip,domanda);
        trovato = false;
        i = 0;
        while(i < badge.size() && trovato == false){
            Badge test = badge.get(i);
-           if(test.getDescrizione().equals(D.getTipologia()))
+           if(test.getDescrizione().equals(domanda.getTipologia()))
                if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
-                   log.scriviOttenimentoBadge(dip, test);
+                   gestLog.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }

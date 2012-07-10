@@ -7,7 +7,7 @@ import org.junit.Test;
 import com.safetyGame.back.condivisi.Domanda;
 
 public class SqlDAODomandeTest {
-	
+
 	private DAODomande sqlD;
 	private String indirizzoAz;
 	private String indirizzoDom;
@@ -25,7 +25,6 @@ public class SqlDAODomandeTest {
 	  sqlD = new SqlDAODomande(ind1,ind2);
 	}
 	
-	@Test
 	public void addDomandaTest(){
 		init("root");
 		Domanda d = new Domanda();
@@ -33,7 +32,7 @@ public class SqlDAODomandeTest {
 		System.out.println(d.getId());
 		sqlD.addDomanda(d);
 	}
-	@Test
+	
 	public void test() {
 		fail("Not yet implemented");
 	}
