@@ -2,8 +2,8 @@
  * Name: Punteggio.java
  * Package: com.safetygame.desktop.condivisi
  * Author: Alessandro Cornaglia & Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -11,7 +11,7 @@
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
  * | 20120610 | Gabriele Facchin    | + tutti i metodi 
- * |          |                     | + sono stati copiati
+ * |          | Cornaglia Alessandro| + sono stati copiati
  * |          |                     | + dall'omonima 
  * |          |                     | + classe nel 
  * |          |                     | + Back End
@@ -26,7 +26,8 @@ package com.safetyGame.desktop.condivisi;
  * sia ad una domanda che ad un dipendente
  * 
  * @author acornagl 
- * @version 0.1
+ * @author gfacchin
+ * @version 1.0
  */
 public class Punteggio {
   private int punti;

@@ -1,4 +1,4 @@
-<com.safetygame.android.View.DashboardLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.safetyGame.mobile.View.DashboardLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
@@ -30,4 +30,4 @@
 
     <Button style="@style/DashboardButton" />
 
-</com.safetygame.android.View.DashboardLayout>
+</com.safetyGame.mobile.View.DashboardLayout>

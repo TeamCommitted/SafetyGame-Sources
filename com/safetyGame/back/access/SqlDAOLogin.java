@@ -2,8 +2,8 @@
  * Name: SqlDAOLogin.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -26,7 +26,7 @@ import java.sql.SQLException;
  * Classe che gestisce i login, implementa i metodi pubblici dell'interfaccia
  * 
  * @author gfacchin
- * @version 0.1
+ * @version 1.0
  */
 
 public class SqlDAOLogin implements DAOLogin{
@@ -48,10 +48,10 @@ public class SqlDAOLogin implements DAOLogin{
    * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */    
-  public boolean loginAmministratore(Login l){
+  public boolean loginAmministratore(Login l){//
     String username = l.getUsername();
     String password = l.getPassword();
-    ResultSet rs= serverAzienda.selezione("Amministratore","*", "nickname="+username+" AND (password="+password+" OR passmod="+password+")",""); 
+    ResultSet rs= serverAzienda.selezione("Amministratore","*", "nickname='"+username+"' AND (password='"+password+"' OR passmod='"+password+"')",""); 
     try{
       int ID = rs.getInt("ID");
     }
@@ -66,10 +66,10 @@ public class SqlDAOLogin implements DAOLogin{
    * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */    
-  public boolean loginDipendente(Login l){
+  public boolean loginDipendente(Login l){//
     String username = l.getUsername();
     String password = l.getPassword();
-    ResultSet rs= serverAzienda.selezione("Dipendente","*", "nickname="+username+", password="+password+" OR passmod="+password+")",""); 
+    ResultSet rs= serverAzienda.selezione("Dipendente","*", "nickname='"+username+"' AND (password='"+password+"' OR passmod='"+password+"')",""); 
     try{
       int ID = rs.getInt("ID");
     }

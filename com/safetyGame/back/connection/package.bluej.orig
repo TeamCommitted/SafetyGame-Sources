@@ -1,0 +1,40 @@
+#BlueJ package file
+<<<<<<< HEAD
+package.editor.height=616
+package.editor.width=1252
+package.editor.x=32
+package.editor.y=32
+=======
+package.editor.height=608
+package.editor.width=1244
+package.editor.x=12
+package.editor.y=12
+>>>>>>> a34939ff7d3194db44a4c66edb4f1fb09228dc9e
+package.numDependencies=0
+package.numTargets=2
+package.showExtends=true
+package.showUses=true
+target1.editor.height=870
+target1.editor.width=800
+target1.editor.x=0
+target1.editor.y=0
+target1.height=50
+target1.name=WebConnection
+target1.naviview.expanded=false
+target1.showInterface=false
+target1.type=ClassTarget
+target1.width=110
+target1.x=180
+target1.y=120
+target2.editor.height=870
+target2.editor.width=800
+target2.editor.x=800
+target2.editor.y=0
+target2.height=50
+target2.name=ApplicazioniConnection
+target2.naviview.expanded=false
+target2.showInterface=false
+target2.type=ClassTarget
+target2.width=160
+target2.x=370
+target2.y=70

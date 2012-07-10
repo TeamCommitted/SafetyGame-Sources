@@ -1,3 +1,27 @@
+/*
+ * Name: GestioneRecupero.java
+ * Package: com.safetygame.back.controller
+ * Author: Massimo Dalla Pieta' & Alessandro Cornaglia
+ * Date: 2012/06/16
+ * Version: 1.0
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Massimo Dalla Pieta' | * GestioneRecupero
+ * |          |                     | + modMail
+ * |          |                     | + setmailInserito
+ * |          |                     | * sendMail
+ * +----------+---------------------+---------------------
+ * | 20120519 |Alessandro Cornaglia | + recuperoA
+ * |          |                     | + recuperoD
+ * |          |                     | + GeneraPassCasuale
+ * +----------+---------------------|---------------------
+ *
+ */
+
 package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
@@ -14,12 +38,12 @@ import java.util.Properties;
  * 
  * @author acornagl
  * @author mdallapi
- * @version 0.2
+ * @version 1.0
  *
  */
 public class GestioneRecupero{ 
    private DAODipendenti accessDip;
-   private String porta;
+   private static String porta;
    
    public GestioneRecupero(DAODipendenti accessDip){
        this.accessDip = accessDip;
@@ -48,8 +72,10 @@ public class GestioneRecupero{
     */
    public boolean recuperoA(Recupero amm){
       String pass = generaPassCasuale();
+      System.out.println("bitches1"); 
       boolean esito = accessDip.resetA(amm, pass);
-      if (esito) {
+      System.out.println(esito); 
+      if (esito) { 
     	this.sendMail(amm.getEmail(), pass);
       }
 
@@ -61,7 +87,7 @@ public class GestioneRecupero{
     * @param destinatario indirizzo email del dipendente che ha richiesto il recupero
     * @param nuovaPass nuova password
     */
-   public void sendMail(String destinatario, String nuovaPass){
+   public static void sendMail(String destinatario, String nuovaPass){
      final String username = "teamcommitted@gmail.com";
 	 final String password = "Pr0jectse";
           
@@ -69,7 +95,7 @@ public class GestioneRecupero{
 	 props.put("mail.smtp.auth", "true");
 	 props.put("mail.smtp.starttls.enable", "true");
 	 props.put("mail.smtp.host", "smtp.gmail.com");
-	 props.put("mail.smtp.port", porta);//"587");
+	 props.put("mail.smtp.port", "587");
 
 	 Session session = Session.getInstance(props,
 	 new javax.mail.Authenticator() {
@@ -96,12 +122,89 @@ public class GestioneRecupero{
    }
    
    /**
+    * Metodo che si occupa di inviare una mail all'utente che ha richiesto il ripristino della password
+    * @param destinatario indirizzo email del dipendente che ha richiesto il recupero
+    * @param nuovaPass nuova password
+    */
+   public static void sendMailInserito(String destinatario, String messaggio){
+     final String username = "teamcommitted@gmail.com";
+	 final String password = "Pr0jectse";
+          
+	 Properties props = new Properties();
+	 props.put("mail.smtp.auth", "true");
+	 props.put("mail.smtp.starttls.enable", "true");
+	 props.put("mail.smtp.host", "smtp.gmail.com");
+	 props.put("mail.smtp.port", "587");
+
+	 Session session = Session.getInstance(props,
+	 new javax.mail.Authenticator() {
+	   protected PasswordAuthentication getPasswordAuthentication() {
+	     return new PasswordAuthentication(username, password);
+	   }
+	 });
+
+	 try {
+       Message message = new MimeMessage(session);
+	   message.setFrom(new InternetAddress(username));
+	   message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(destinatario));
+	   message.setSubject("Iscrizione al sistema");
+	   message.setText("Ecco i suoi dati inseriti nel sistema:"
+				+ "\n\n "+ messaggio);
+
+	   Transport.send(message);
+       System.out.println("Done");
+
+	 } 
+	 catch (MessagingException e) {
+	  throw new RuntimeException(e);
+	 }
+   }
+   
+   /**
+    * Metodo che si occupa di inviare una mail all'utente che ha richiesto la modifica della propria mail
+    * @param destinatario indirizzo email del dipendente che ha richiesto il recupero
+    */
+   public static void sendMailModMail(String destinatario){
+	     final String username = "teamcommitted@gmail.com";
+		 final String password = "Pr0jectse";
+	          
+		 Properties props = new Properties();
+		 props.put("mail.smtp.auth", "true");
+		 props.put("mail.smtp.starttls.enable", "true");
+		 props.put("mail.smtp.host", "smtp.gmail.com");
+		 props.put("mail.smtp.port", "587");
+
+		 Session session = Session.getInstance(props,
+		 new javax.mail.Authenticator() {
+		   protected PasswordAuthentication getPasswordAuthentication() {
+		     return new PasswordAuthentication(username, password);
+		   }
+		 });
+
+		 try {
+	       Message message = new MimeMessage(session);
+		   message.setFrom(new InternetAddress(username));
+		   message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(destinatario));
+		   message.setSubject("Cambio mail");
+		   message.setText("Cambio mail riuscito!");
+
+		   Transport.send(message);
+	       System.out.println("Done");
+
+		 } 
+		 catch (MessagingException e) {
+		  throw new RuntimeException(e);
+		 }
+	   }
+	   
+   
+   /**
    * Metodo che genera in modo casuale una password
    * 
    * @return stringa che contiene la nuova password generata casualmente
    * 
    */   
-   protected String generaPassCasuale(){
+   protected static String generaPassCasuale(){
     String lettere[] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}; //toLowerCase
     String numeri[] = {"1","2","3","4","5","6","7","8","9","0"};
     String caratteri[] = {"@","#","*","+","?","^","%","&","/","$","!","+","-"};
@@ -130,4 +233,6 @@ public class GestioneRecupero{
     }
     return pass;
    }
+   
+   
 }

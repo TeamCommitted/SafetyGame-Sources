@@ -1,4 +1,48 @@
-
+/*
+ * Name: GestioneLogTest.java
+ * Package: com.safetygame.back.controller
+ * Author: Lorenzo Braghetto
+ * Date: 2012/06/16
+ * Version: 1.0
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Lorenzo Braghetto    | * scriviLogin
+ * |          |                     | * scriviLogout
+ * |          |                     | * scriviDomRic
+ * |          |                     | * scriviDomProp
+ * |          |                     | * scriviDomPost
+ * |          |                     | * scriviDomRisp
+ * |          |                     | *scriviModPassD
+ * |          |                     | *scriviModEmailD
+ * |          |                     | *scriviOttenimentoBadge
+ * +----------+---------------------+---------------------
+ * | 20120527 |Lorenzo Braghetto    | + getLog
+ * |          |                     | + getPercorso
+ * +----------+---------------------+---------------------
+ * | 20120520 |Lorenzo Braghetto    | + GestioneLog
+ * |          |                     | + getUpdateLog
+ * |          |                     | + setUpdateLog
+ * |          |                     | + scriviLogin
+ * |          |                     | + scriviLogout
+ * |          |                     | + scriviDomRic
+ * |          |                     | + scriviDomProp
+ * |          |                     | + scriviDomPost
+ * |          |                     | + scriviDomRisp
+ * |          |                     | + scriviModPassD
+ * |          |                     | + scriviModEmailD
+ * |          |                     | + scriviOttenimentoBadge
+ * |          |                     | + scriviAddDip
+ * |          |                     | + scriviDelDip
+ * |          |                     | + scriviModDip
+ * |          |                     | + scriviAddDomande
+ * |          |                     | + scriviDelDomande
+ * +----------+---------------------|---------------------
+ *
+ */ 
 package com.safetyGame.back.controller;
 
 import java.io.File;
@@ -11,7 +55,7 @@ import org.junit.Test;
 /**
  * Classe di test per oggetti di tipo GestioneLog
  * 
- * @author acornagl
+ * @author lbragh
  *
  */
 public class GestioneLogTest {
@@ -45,6 +89,8 @@ public class GestioneLogTest {
 		//controllo percorso
 		String percorso = gestioneLog.getPercorso();
 		String percorsoCorretto = "/log/"+ login.getUsername() + "/login.txt";
+		System.out.println(percorsoCorretto);
+		System.out.println(percorso);
 		assertTrue("percorso errato", percorso.equals(percorsoCorretto));
 
 		//controllo log

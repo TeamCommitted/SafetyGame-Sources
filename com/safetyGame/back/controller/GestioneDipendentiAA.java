@@ -1,3 +1,27 @@
+/*
+ * Name: GestioneDipendentiAA.java
+ * Package: com.safetygame.back.controller
+ * Author: Massimo Dalla Pieta'
+ * Date: 2012/06/16
+ * Version: 1.0
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120708 |Alessandro Cornaglia | + getElencoRuoli
+ * +----------+---------------------+---------------------
+ * | 20120611 |Massimo Dalla Pieta' | + modPassA
+ * |          |                     | + GestioneDipendentiAA
+ * |          |                     | + getElencoDipendenti
+ * |          |                     | + aggiungiDipendente
+ * |          |                     | + cancellaDipendente
+ * |          |                     | + modDipendente
+ * +----------+---------------------+----------------------
+ * 
+ */ 
+
 package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
@@ -7,7 +31,7 @@ import java.util.ArrayList;
  * Classe che si occupa di gestire le modifiche dati dei Dipendenti da parte di un Amministratore Azienda
  * 
  * @author mdallapi 
- * @version v0.1
+ * @version v1.0
  */
 public class GestioneDipendentiAA{
    private DAODipendenti accessDip;
@@ -26,7 +50,7 @@ public class GestioneDipendentiAA{
     * Metodo per ottenere i dati dei dipendenti dell'azienda
     * @return un ArrayList<Dipendente> contenente i dipendenti dell'azienda      
     */
-   public ArrayList<Dipendente> getElencoDipendenti(){
+   public ArrayList<Dipendente> getElencoDipendenti(){//
       return accessDip.elencoDipendenti(); 
    }
    
@@ -36,8 +60,31 @@ public class GestioneDipendentiAA{
     * @param Dip oggetto contenente i dati del nuovo dipendente
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
-   public boolean aggiungiDipendente(Dipendente Dip){
-      return accessDip.aggiungiDipendente(Dip);
+   public boolean aggiungiDipendente(Dipendente Dip){//
+	  Dipendente supporto = Dip;
+	  String nome = supporto.getNome();
+	  String cognome = supporto.getCognome();
+	  String pass = GestioneRecupero.generaPassCasuale();
+      String username = nome +"."+ cognome;
+	  supporto.setNickname(username);
+	  supporto.setPassword(pass);
+      
+	  boolean inserito = accessDip.aggiungiDipendente(supporto);
+	  System.out.println(inserito);
+	  int conta = 0;
+	  while(!inserito) {
+		conta++;
+		supporto.setNickname(username+conta);
+		inserito =  accessDip.aggiungiDipendente(supporto);
+	  }
+	  String messaggio_mail = "Nome: "+ supporto.getNome()+
+			          "\n\n "+"Cognome: " + supporto.getCognome() +
+			          "\n\n "+"Nickname: " + supporto.getNickname() +
+			          "\n\n "+"Password: " + supporto.getPassword() +
+			          "\n\n "+"Codice fiscale: " + supporto.getCodFiscale() +
+			          "\n\n "+"Ruolo aziendale: " + supporto.getRuolo();
+	  GestioneRecupero.sendMailInserito(supporto.getEmail(), messaggio_mail);
+	  return true;
    }
    
    /**
@@ -46,7 +93,7 @@ public class GestioneDipendentiAA{
     * @param Dip oggetto contenente i dati del dipendente da eliminare
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
-   public boolean cancellaDipendente(Dipendente Dip){
+   public boolean cancellaDipendente(Dipendente Dip){ //
       return accessDip.cancellaDipendente(Dip);
    }
    
@@ -57,7 +104,7 @@ public class GestioneDipendentiAA{
     * @param oldDip oggetto contenente i vecchi dati del dipendente da modificare
     * @return true se l'operazione viene completata con successo, altrimenti false
     */
-   public boolean modDipendente(Dipendente newDip, Dipendente oldDip){
+   public boolean modDipendente(Dipendente newDip, Dipendente oldDip){ //
         boolean correct = true;
         if(!newDip.getNome().equals(oldDip.getNome()))
             correct = accessDip.modNome(newDip, newDip.getNome());
@@ -80,8 +127,22 @@ public class GestioneDipendentiAA{
     * @param admin oggetto contenente i dati dell'amministratore
     * @return true se l'operazione viene completata con successo, altrimenti false
     */
-   public boolean modPassA(Dipendente admin){
-       return accessDip.passA(admin,admin.getPassword());
+   public boolean modPassA(Dipendente admin){ //
+       boolean risultato = accessDip.passA(admin,admin.getNuovaPass());
+       
+       if(risultato)
+    	 GestioneRecupero.sendMail(admin.getEmail(), admin.getNuovaPass());
+       
+       return risultato;
     }
    
+   /**
+    * Metodo per recuperare l'elenco dei ruoli di un'azienda
+    * 
+    * @return elenco dei ruoli di un'azienda
+    */
+   public ArrayList<String> getElencoRuoli() {
+     ArrayList <String> elencoRuoli = accessDip.getElencoRuoli();
+     return elencoRuoli;
+   }
 }

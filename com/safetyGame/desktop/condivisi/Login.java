@@ -2,8 +2,8 @@
  * Name: Login.java
  * Package: com.safetygame.desktop.condivisi
  * Author: Alessandro Cornaglia & Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -11,7 +11,7 @@
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
  * | 20120610 | Gabriele Facchin    | + tutti i metodi 
- * |          |                     | + sono stati copiati
+ * |          | Alessandro Cornaglia| + sono stati copiati
  * |          |                     | + dall'omonima 
  * |          |                     | + classe nel 
  * |          |                     | + Back End
@@ -24,7 +24,7 @@
  * Classe contenitrice dei dati di autenticazione di un utente
  * 
  * @author TeamCommitted
- * @version 0.1
+ * @version 1.0
  * 
  */
 public class Login {

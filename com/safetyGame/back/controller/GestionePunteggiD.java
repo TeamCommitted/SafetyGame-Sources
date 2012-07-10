@@ -2,8 +2,8 @@
  * Name: GestionePunteggiD.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -29,6 +29,7 @@ import com.safetyGame.back.condivisi.*;
 /**
  * Classe che si occupa di gestire i punteggi dei dipendenti
  * @author acornagl
+ * @version 1.0
  *
  */
 public class GestionePunteggiD{ 
@@ -39,13 +40,12 @@ public class GestionePunteggiD{
   /**
    * Costruttore con paramentri della classe GestionePunteggiD
    * 
-   * @param dP riferimento all'oggetto di tipo DAOPunteggi
-   * @param dB riferimento all'oggetto di tipo DAOBadge
-   * @param dD riferimento all'oggetto di tipo DAODipendenti
+   * @param daoPunt riferimento all'oggetto di tipo DAOPunteggi
+   * @param daoDip riferimento all'oggetto di tipo DAODipendenti
    */
-  public GestionePunteggiD(DAOPunteggi dP, DAODipendenti dD) {
-    this.daoPunteggi = dP;
-	this.daoDipendenti = dD;
+  public GestionePunteggiD(DAOPunteggi daoPunt, DAODipendenti daoDip) {
+    this.daoPunteggi = daoPunt;
+	this.daoDipendenti = daoDip;
   }
   
   /**
@@ -59,12 +59,12 @@ public class GestionePunteggiD{
   /**
    * Metodo che consente di recuperare le statistiche di un determinato dipendente
    * 
-   * @param l login del dipendente che richiede di conoscere le statistiche
+   * @param login login del dipendente che richiede di conoscere le statistiche
    * 
    * @return statistiche del dipendente
    */
-  public Punteggio getStatisticheD(Login l) {
-	Dipendente dip = this.daoDipendenti.getInfoD(l);
+  public Punteggio getStatisticheD(Login login) {
+	Dipendente dip = this.daoDipendenti.getInfoD(login);
     Punteggio ritorno = this.daoPunteggi.getStat(dip);
     return ritorno;
   }
@@ -72,11 +72,11 @@ public class GestionePunteggiD{
   /**
    * Metodo che consente di recuperare le statistiche globali
    * 
-   * @param l login del dipendente che richiede di conoscere le statistiche
+   * @param login login del dipendente che richiede di conoscere le statistiche
    * @return statistiche globali
    */
-  public Punteggio getStatisticheGlob(Login l) {
-	  Dipendente dip = this.daoDipendenti.getInfoD(l);
+  public Punteggio getStatisticheGlob(Login login) {
+	  Dipendente dip = this.daoDipendenti.getInfoD(login);
 	  Punteggio ritorno = this.daoPunteggi.getGlobalStat(dip);
 	  return ritorno;
   }

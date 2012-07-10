@@ -3,8 +3,8 @@ package com.safetyGame.back.access;
  * Name: DAOFactory.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:

@@ -2,13 +2,15 @@
  * Name: DAODipendenti.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20130708 | Alessandro Cornaglia| + getElencoRuoli
  * +----------+---------------------+---------------------
  * | 20120512 | Gabriele Facchin    | + getInfoD
  * |          |                     | + getInfoA
@@ -41,7 +43,7 @@ import java.util.List;
  * Interfaccia che contiene i prototipi dei metodi per gestire un dipendente
  * 
  * @author gfacchin
- * @version 0.1
+ * @version 1.0
  */
 
 public interface DAODipendenti{
@@ -215,4 +217,11 @@ public interface DAODipendenti{
    * 
    */   
   public boolean resetA(Recupero r, String p);
+  
+  /**
+   * Metodo che consente di recuperate l'elenco dei ruoli aziendali
+   * 
+   * @return lista dei ruoli aziendali
+   */
+  public ArrayList<String> getElencoRuoli();
 }

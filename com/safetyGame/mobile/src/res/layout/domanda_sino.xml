@@ -15,7 +15,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonno"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -23,7 +23,7 @@
         android:text="NO" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/buttonsi"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"

@@ -2,8 +2,8 @@
  * Name: SqlDAOBadge.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -51,8 +51,8 @@ public class SqlDAOBadge implements DAOBadge{
    * @return un ArrayList di Badge che contiene i Badge di quel Dipendente
    * 
    */     
-  public ArrayList<Badge> badgeD(Dipendente d){
-    ResultSet rs = serverAzienda.selezione("Assegnato INNER JOIN Badge ON IDBadge=ID","ID, il, nome, descrizione, soglia","IDutente="+d.getId(),"");
+  public ArrayList<Badge> badgeD(Dipendente d){ //
+    ResultSet rs = serverAzienda.selezione("Assegnato INNER JOIN Badge ON IDBadge=ID","ID, il, nome, descrizione, soglia","IDDipendente="+d.getId(),"");
     ArrayList<Badge> b = new ArrayList<Badge>();
     boolean trovato = false;
     String nomeB="";
@@ -61,7 +61,7 @@ public class SqlDAOBadge implements DAOBadge{
     int punti=0, ID=0;
     while(!trovato){
       try{
-        ID= rs.getInt("ID");
+    	ID = rs.getInt("ID");  
         data=rs.getString("il");
         nomeB = rs.getString("nome");
         descr = rs.getString("descrizione");
@@ -84,7 +84,7 @@ public class SqlDAOBadge implements DAOBadge{
    * @return un ArrayList di Badge che contiene i Badge di quell'azienda
    * 
    */     
-  public ArrayList<Badge> badgeAS(){
+  public ArrayList<Badge> badgeAS(){//
     ResultSet rs = serverAzienda.selezione("Badge","*","","");
     ArrayList<Badge> b = new ArrayList<Badge>();
     boolean trovato = false;
@@ -115,12 +115,12 @@ public class SqlDAOBadge implements DAOBadge{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */     
-  public boolean assegna(Dipendente d, Badge b){
-    String valori[]=new String [2];
+  public boolean assegna(Dipendente d, Badge b){//DA TESTARE
+    String valori[]=new String [3];
     valori[0]=""+d.getId();
     valori[1]=""+b.getId();
     DataOra data=new DataOra();
-    valori[2]=data.toString();
-    return serverAzienda.inserisciRiga("Assegnato","IDDipendente, IDBadge, data",valori);
+    valori[2]="'"+data.toString()+"'";
+    return serverAzienda.inserisciRiga("Assegnato","IDDipendente, IDBadge, il",valori);
   }
 }

@@ -1,3 +1,22 @@
+/*
+ * Name: GestioneBadgeD.java
+ * Package: com.safetygame.back.controller
+ * Author: Massimo Dalla Pieta'
+ * Date: 2012/06/16
+ * Version: 1.0
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120607 |Massimo Dalla Pieta' | + GestioneBadgeD
+ * |          |                     | + getBadgeD
+ * |          |                     | + assegnaBadgeD
+ * +----------+---------------------+----------------------
+ * 
+ */ 
+
 package com.safetyGame.back.controller;
 
 import com.safetyGame.back.access.*;
@@ -8,7 +27,7 @@ import java.util.ArrayList;
  * Classe che si occupa di gestire il recupero di badge di un dipendente 
  * 
  * @author mdallapi 
- * @version v0.1
+ * @version v1.0
  */
 public class GestioneBadgeD{
    private DAOBadge accessB;
@@ -48,6 +67,9 @@ public class GestioneBadgeD{
           if(list.isEmpty())
               return null;
           else{
+        	  if(n==0){
+        		  return list;
+        	  }
               ArrayList<Badge> result = new ArrayList<Badge>();
               int i = 0;
               while(i<list.size() && i<num){
@@ -80,6 +102,7 @@ public class GestioneBadgeD{
                if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
                    gestLog.scriviOttenimentoBadge(dip, test);
+                   //log.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
@@ -92,6 +115,7 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals("TotalePunti"))
                if(test.getSoglia() == dip.getPunteggio().getPunti()){
                    accessB.assegna(dip,test);
+                   //log.scriviOttenimentoBadge(dip, test);
                    gestLog.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
@@ -103,9 +127,11 @@ public class GestioneBadgeD{
        i = 0;
        while(i < badge.size() && trovato == false){
            Badge test = badge.get(i);
+           if(test.getDescrizione().equals(D.getAmbito()))
            if(test.getDescrizione().equals(domanda.getTipologia()))
                if(test.getSoglia() == risposte.size()){
                    accessB.assegna(dip,test);
+                   //log.scriviOttenimentoBadge(dip, test);
                    gestLog.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;

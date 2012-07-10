@@ -2,8 +2,8 @@
  * Name: Indirizzo.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -20,19 +20,13 @@
  *
  */
 package com.safetyGame.back.access;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.*;
 
 /**
  * Classe che gestisce l'accesso ad un database. I metodi implementati sono per un database SQL
  * 
  * @author gfacchin
- * @version 0.1
+ * @version 1.0
  */
 public class Indirizzo{
    private Connection conn;
@@ -48,21 +42,13 @@ public class Indirizzo{
    */
   public Indirizzo(String database, String utente, String password){
     try {
-      //conn = DriverManager.getConnection("jdbc:mysql:"+database+ "user="+utente+"&password="+password);
-    	//final String driver="com.mysql.jdbc.Driver"; //driver del connettore
-    	//Class.forName(driver);/var/lib/tomcat6/webapps/ROOT/teamcommitted
-    	final String driver="com.mysql.jdbc.Driver";
-    	Class.forName(driver);
-    	//conn = DriverManager.getConnection("jdbc:mysql://"+database+":3306",utente,password);
-    	//conn = DriverManager.getConnection("jdbc:mysql://monossido.ath.cx/" + "teamcommitted1" + "?user=" + "teamcommitted" + "&password=" + "team");
-    	//conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/ing"+ "?user=" + "root" + "&password=" + "root");
-    	conn = DriverManager.getConnection("jdbc:mysql://"+database+ "?user="+utente  + "&password=" + password);
+      final String driver="com.mysql.jdbc.Driver";
+      Class.forName(driver);
+      conn = DriverManager.getConnection("jdbc:mysql://"+database+ "?user="+utente  + "&password=" + password);
       connettore = conn.createStatement();
     }
-    catch(SQLException e){
-    	System.out.println(e.getMessage());
-    	System.out.println("Impossibile creare la connessione al database: "+database);}
-    catch(Exception e){System.out.println("implodi");};
+    catch(SQLException e){System.out.println("Impossibile creare la connessione al database: "+database);}
+    catch(ClassNotFoundException e){System.out.println("Impossibile creare la connessione al database: "+database);}
   }
   
   /**
@@ -91,20 +77,12 @@ public class Indirizzo{
     for(int i=1;i<valori.length;i++)
       val+=", "+valori[i];
     val+=");";
-    try{
-    //System.out.println("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
-      //PreparedStatement pstmt = conn.prepareStatement("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
-     System.out.println("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val); 
-    PreparedStatement pstmt = conn.prepareStatement("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
-      //for(int i=0; i<valori.length; i++)
-      //pstmt.setString(i, valori[i]);
-      pstmt.executeUpdate();
-      //pstmt.execute("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
-      pstmt.close();
-    //Statement statement = conn.createStatement();
-    //statement.executeUpdate("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
-    }
-    catch(SQLException e){System.out.println(e.getMessage()); return false;}
+    try{//System.out.println("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
+    	PreparedStatement pstmt = conn.prepareStatement("INSERT INTO "+ tabella +" ("+ colonne.trim() +") values "+ val);
+        pstmt.executeUpdate();
+        pstmt.close();
+      }
+      catch(SQLException e){return false;}
     return true;
   }
        
@@ -118,7 +96,7 @@ public class Indirizzo{
    * 
    */   
   public boolean modificaRiga(String tabella, String colonnevalori, String controlli){
-    try{
+    try{ //System.out.println("UPDATE "+ tabella +" SET "+ colonnevalori +" WHERE "+ controlli+";");
       connettore.executeUpdate("UPDATE "+ tabella +" SET "+ colonnevalori +" WHERE "+ controlli+";");
     }
     catch(SQLException e){System.out.println(e.getMessage());return false;}
@@ -133,12 +111,12 @@ public class Indirizzo{
    * @return completamento o meno della cancellazione
    * 
    */  
-  public boolean cancellaRiga(String tabella, String controlli){
+  public boolean cancellaRiga(String tabella, String controlli){  
     if (controlli.trim()==""){
       return false;
     }
-    try{
-      connettore.executeQuery("DELETE FROM "+ tabella +" WHERE "+ controlli);
+    try{//System.out.println("DELETE FROM "+ tabella +" WHERE "+ controlli+";");
+      connettore.executeUpdate("DELETE FROM "+ tabella +" WHERE "+ controlli+";");
     }
     catch(SQLException e){return false;}
     return true;
@@ -158,12 +136,13 @@ public class Indirizzo{
     String where="";
     ResultSet rs=null;
     if (controlli!=""){
-      where="WHERE " +controlli;
+      where=" WHERE " +controlli;
     }
-    try{
-      rs = connettore.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where + extra);
+    try{//System.out.println("SELECT "+ colonne+" FROM "+ tabella + where +" "+ extra+";");
+    	rs = connettore.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where +" "+ extra+";");
+    	rs.next();
     }
-    catch(SQLException e){return null;}
+    catch(SQLException e){return null;}    
     return rs;
   }
 }

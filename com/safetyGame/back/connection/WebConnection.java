@@ -2,41 +2,43 @@
  * Name: WebConnection.java
  * Package: com.safetygame.back.connection
  * Author: Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120609 | Gabriele Facchin    | WebConnection
- * |          |                     | loginDip
- * |          |                     | loginAdmin 
- * |          |                     | getDati 
- * |          |                     | getPunteggio 
- * |          |                     | getStat 
- * |          |                     | getBadge
- * |          |                     | modPassD 
- * |          |                     | modPassA 
- * |          |                     | modMail 
- * |          |                     | resetPassD 
- * |          |                     | resetPassA  
- * |          |                     | mostraDomanda
- * |          |                     | setRisposta 
- * |          |                     | posticipa 
- * |          |                     | logout 
- * |          |                     | getElencoDomande 
- * |          |                     | cancellaDomanda 
- * |          |                     | aggiungiDomanda 
- * |          |                     | getElencoDipendenti 
- * |          |                     | setTrofei 
- * |          |                     | aggiungiDipendente 
- * |          |                     | cancellaDipendente 
- * |          |                     | modInfoDipendente 
- * |          |                     | getBadgesAS 
- * |          |                     | assegnaBadge 
- * |          |                     | getPunteggi 
+ * | 20120708 | Alessandro Cornaglia| + getElencoRuoli
+ * +----------+---------------------+---------------------
+ * | 20120609 | Gabriele Facchin    | + WebConnection
+ * |          |                     | + loginDip
+ * |          |                     | + loginAdmin 
+ * |          |                     | + getDati 
+ * |          |                     | + getPunteggio 
+ * |          |                     | + getStat 
+ * |          |                     | + getBadge
+ * |          |                     | + modPassD 
+ * |          |                     | + modPassA 
+ * |          |                     | + modMail 
+ * |          |                     | + resetPassD 
+ * |          |                     | + resetPassA  
+ * |          |                     | + mostraDomanda
+ * |          |                     | + setRisposta 
+ * |          |                     | + posticipa 
+ * |          |                     | + logout 
+ * |          |                     | + getElencoDomande 
+ * |          |                     | + cancellaDomanda 
+ * |          |                     | + aggiungiDomanda 
+ * |          |                     | + getElencoDipendenti 
+ * |          |                     | + setTrofei 
+ * |          |                     | + aggiungiDipendente 
+ * |          |                     | + cancellaDipendente 
+ * |          |                     | + modInfoDipendente 
+ * |          |                     | + getBadgesAS 
+ * |          |                     | + assegnaBadge 
+ * |          |                     | + getPunteggi 
  * +----------+---------------------+----------------------
  * 
  */ 
@@ -53,7 +55,6 @@ import java.util.ArrayList;
    */
 public class WebConnection{
   private GestioneDati dati;
-  
   /**
    * Costruttore della classe WebConnection
    * 
@@ -323,5 +324,14 @@ public class WebConnection{
    */
   public ArrayList<Dipendente> getPunteggi() {
 	return dati.getPunteggi();
+  }
+  
+  /**
+   * Metodo per recuperare lista dei ruoli aziendali
+   * 
+   * @return lista ruoli aziendali
+   */
+  public ArrayList<String> getElencoRuoli() {
+    return dati.getElencoRuoli();
   }
 }

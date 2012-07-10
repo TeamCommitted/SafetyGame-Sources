@@ -1,19 +1,116 @@
+ /*
+ * Name: Parserer.java
+ * Package: com.safetygame.desktop.logic
+ * Author: Gabriele Facchin
+ * Date: 2012/07/08
+ * Version: 1.0
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120708 | Gabriele Facchin    | + Parser
+ * |          |                     | + isOpen
+ * |          |                     | + finalize
+ * |          |                     | + leggi
+ * |          |                     | + apri
+ * |          |                     | + scrivi
+ * +----------+---------------------|---------------------
+ *
+ */
+
 package com.safetyGame.desktop.logic;
 
-public class Parser{
-    public Parser(){
-      //apre la comunicazione verso un file txt in cui vengono immessi i dati del back-end
-      //se non riesce ad aprire in lettura il file --> non esiste il file --> bisogna chiedere all'utente di inserire l'indirizzo
-    }
+import java.io.*;
 
-    public String leggi(){
-      //legge la stringa dei dati del server dal file aperto
-      return "";
+/**
+ * Classe che gestisce il file con l'indirizzo per la connessione al Back End
+ * 
+ * @author gfacchin
+ * @version 1.0
+ */
+public class Parser{
+  
+  private File file=null;
+  private FileReader in;
+  private boolean aperto;
+
+  /**
+   * Costruttore della classe Parser
+   * 
+   */
+  public Parser(){
+    file=new File("server.txt");
+    apri();
+  }
+
+  /**
+   * metodo che ritorna lo stato dell'apertura del file in lettura
+   * 
+   * @return aperto true se è stato aperto, false altrimenti
+   */
+  public boolean isOpen(){
+    return aperto;
+  }
+  
+  /**
+   * metodo che chiude lo stream prima che l'oggetto venga deallocato
+   * 
+   */
+  public void finalize(){
+    try{in.close();}
+    catch(IOException e){}
+  }
+  
+  /**
+   * metodo che legge la stringa contenente l'indirizzo del server
+   * 
+   * @return percorso stringa che contiene il percorso
+   */
+  public String leggi(){
+    int carattere;
+    try{carattere=in.read();}
+    catch(IOException e){carattere =-1;}
+    String percorso="";
+    while(carattere==-1){
+      char c= (char) carattere;
+      percorso+=c;
+      try{carattere=in.read();}
+      catch(IOException e){carattere=-1;}
     }
-    
-    public boolean scrivi(String s){
-      //scrive, in caso di insuccesso nell'apertura del file in lettura, la stringa contenente i dati per l'accesso al server. 
-      //se non esiste il file in scrittura, esso viene creato dal metodo di java
-      return false;
+    return percorso;
+  }
+
+  /**
+   * metodo che tenta di aprire lo stream in lettura
+   * 
+   */
+  private void apri(){
+    try{
+      in= new FileReader(file);
+      aperto=true;
     }
+    catch (FileNotFoundException e){aperto=false;}
+  }
+
+  /**
+   * metodo che crea un file in scrittura e ne scrive una stringa (contenente l'indirizzo del server). al termine apre lo stream in lettura.
+   * 
+   * @param server la stringa con l'indirizzo del server
+   * @return true se l'operazione è stata effettuata con successo, false altrimenti
+   */
+  public boolean scrivi(String server){
+    if (file==null){
+      PrintWriter out=null;
+      try{out=new PrintWriter(file);} 
+      catch(Exception e){return false;}    
+      out.println(server);
+      out.flush();
+      out.close();
+      apri();
+      return true;
+    }
+    else return false;
+  }
 }

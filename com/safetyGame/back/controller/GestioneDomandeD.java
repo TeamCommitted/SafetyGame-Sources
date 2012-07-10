@@ -2,8 +2,8 @@
  * Name: GestioneDomandeD.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -24,7 +24,7 @@
  * |          |                     | + getDAOPunteggi
  * |          |                     | + setDAOPunteggi
  * +----------+---------------------+---------------------
- * | 20120518 |Alessandro Cornaglia | + GestioneDomandeD
+ * | 20120521 |Alessandro Cornaglia | + GestioneDomandeD
  * |          |                     | + getDaoFactory
  * |          |                     | + setDaoFactory
  * |          |                     | + getGestionePunteggiD
@@ -45,7 +45,7 @@ import com.safetyGame.back.condivisi.*;
  * Classe che si occupa di gestire tutte le azioni dovute dall'interazione 
  * fra un dipendente ed una domanda del sistema
  * @author acornagl
- *
+ * @version 1.0
  */
 public class GestioneDomandeD{
   private DAODomande daoDomande;
@@ -59,19 +59,20 @@ public class GestioneDomandeD{
   /**
    * Costruttore con parametri della classe GestioneDomandeD
    * 
-   * @param d implementazione daoDomande a seconda del database
-   * @param dp implementazione daoPunteggi a seconda del database
-   * @param g riferimento alla classe GestionePunteggiD
-   * @param gl riferimento alla classe GestioneLog
-   * @param gbd riferimento alla classe GestioneBadgeD
+   * @param daoDom implementazione daoDomande a seconda del database
+   * @param daoPunt implementazione daoPunteggi a seconda del database
+   * @param daoDip riferimento alla classe DAODipendenti
+   * @param gestPuntD riferimento alla classe GestionePunteggiD
+   * @param gestLog riferimento alla classe GestioneLog
+   * @param gestBadgeD riferimento alla classe GestioneBadgeD
    */
-  public GestioneDomandeD(DAODomande d, DAOPunteggi dp, DAODipendenti dd, GestionePunteggiD g, GestioneLog gl, GestioneBadgeD gbd) {
-    this.daoDomande = d;
-    this.daoPunteggi = dp;
-    this.daoDipendenti = dd;
-    this.gestionePunteggiD = g;
-    this.gestioneLog = gl;
-    this.gestioneBadge = gbd;
+  public GestioneDomandeD(DAODomande daoDom, DAOPunteggi daoPunt, DAODipendenti daoDip, GestionePunteggiD gestPuntD, GestioneLog gestLog, GestioneBadgeD gestBadgeD) {
+    this.daoDomande = daoDom;
+    this.daoPunteggi = daoPunt;
+    this.daoDipendenti = daoDip;
+    this.gestionePunteggiD = gestPuntD;
+    this.gestioneLog = gestLog;
+    this.gestioneBadge = gestBadgeD;
   }
   
   /**
@@ -183,11 +184,11 @@ public class GestioneDomandeD{
   /**
    * Metodo che consente di recuperare una domanda 
    * 
-   * @param l oggetto Login del dipendente che deve ricevere la domanda
+   * @param login oggetto Login del dipendente che deve ricevere la domanda
    * @return domanda per il login proposto
    */
-  public Domanda getDomandaD(Login l) {
-	Dipendente dip = this.daoDipendenti.getInfoD(l);//recupero il dipendente
+  public Domanda getDomandaD(Login login) {
+	Dipendente dip = this.daoDipendenti.getInfoD(login);//recupero il dipendente
 	if ( dip == null) {
 	  return null;  // non sono stato in grado di recuperare il dipendente
 	}
@@ -200,7 +201,7 @@ public class GestioneDomandeD{
     boolean controllo = this.daoDomande.scriviSottoposta(dip,ritorno);
     if (controllo) {
       //è andato tutto bene
-      this.gestioneLog.scriviDomRic(l, ritorno); // scrivo il log
+      //this.gestioneLog.scriviDomRic(l, ritorno); // scrivo il log
       return ritorno;
     }
     return null;//non sono riuscito a scrivere sul DB che la domanda è stata sottoposta
@@ -211,12 +212,12 @@ public class GestioneDomandeD{
    * domanda e tenta di scrivere tali informazioni sul DB. Se la risposta è corretta
    * assegna il punteggio al dipendente
    * 
-   * @param l Login del dipendente che ha risposto
+   * @param login Login del dipendente che ha risposto
    * @param risposta Domanda posta al dipendente contenente la risposta data
    */
-  public boolean setRisposta(Login l,Domanda risposta) {
+  public boolean setRisposta(Login login,Domanda risposta) {
     //Dal login ricavo il dipendente
-	Dipendente dip = this.daoDipendenti.getInfoD(l);
+	Dipendente dip = this.daoDipendenti.getInfoD(login);
 
 	//scrivo sul DB che utente ha risposto a domanda
 	boolean controllo = this.daoDomande.rispondi(dip, risposta);
@@ -226,26 +227,25 @@ public class GestioneDomandeD{
 	else {
 	  if (risposta.getRispostaData() == risposta.getCorretta()) {
 		//se risposta esatta controllo se ha ottenuto badge 
-	    this.gestioneBadge.assegnaBadge(risposta, l);
+	    this.gestioneBadge.assegnaBadge(risposta, login);
 	  }
 	}
 	//scrivoil log che l'utente ha risposto
-	gestioneLog.scriviDomRisp(l, risposta);
+	//gestioneLog.scriviDomRisp(l, risposta);
 	return true;//andato tutto correttamente
   }
   
   /**
    * Metodo che si occupa di controllare quando una domanda viene posticipata
-   * @param l login del dipendente
-   * @param d domanda posticipata
+   * @param login login del dipendente
+   * @param dom domanda posticipata
    * @return true se la domanda è stata posticipata correttamente, false altrimenti
    */
-  public boolean posticipa(Login l, Domanda d) {
-	Dipendente dip = this.daoDipendenti.getInfoD(l);
-	
-	boolean eseguito = this.daoDomande.posticipa(dip, d);
-	if (eseguito)
-      this.gestioneLog.scriviDomPost(l, d);
+  public boolean posticipa(Login login, Domanda dom) {
+	Dipendente dip = this.daoDipendenti.getInfoD(login);
+	boolean eseguito = this.daoDomande.posticipa(dip, dom);
+	//if (eseguito)
+      //this.gestioneLog.scriviDomPost(l, d);
 	return eseguito;
   }
   

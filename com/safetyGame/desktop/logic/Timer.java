@@ -2,8 +2,8 @@
  * Name: Timer.java
  * Package: com.safetygame.desktop.logic
  * Author: Gabriele Facchin
- * Date: {Data di approvazione del file}
- * Version: 0.1
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -25,12 +25,12 @@ package com.safetyGame.desktop.logic;
  * Classe che gestisce il timer per le domande
  * 
  * @author gfacchin
- * @version 0.1
+ * @version 1.0
  */
 public class Timer extends Thread{
   private int tempo;
-  private boolean finito=false;
-  private boolean cambiato=false;
+  private boolean finito;
+  private boolean cambiato;
 
   /**
    * Costruttore della classe Timer
@@ -38,27 +38,32 @@ public class Timer extends Thread{
    */
   public Timer(int t){
     tempo = t;
+    finito=false;
+    cambiato=false;
   }
 
   /**
-   * metodo che fa partire il thread e quindi il conteggio
+   * metodo che fa partire il thread e quindi il conteggio alla rovescia
    * 
    */
   public void run(){
-    while (true){
-      while(!finito){
+	int conta = 0;  //riga corny
+    while (true){System.out.println("ciclo");
+      while(!finito){conta++; System.out.println("numero timer="+conta);//riga corny
         int tempocopia=tempo;
         int attesa=tempocopia/10;
         while(tempocopia>0){
-          try{wait(attesa);}
+          try{sleep(attesa);}
           catch(InterruptedException e){tempocopia+=attesa-1;}
           tempocopia-=attesa;
-          if (cambiato){
+          if (cambiato){ //come fa ad entrarci????
             tempocopia=0;
           }
         }
-        finito=true;
-        if (cambiato){
+        finito=true; 
+        System.out.println("finito ="+finito);
+        if (cambiato){//come fa ad entarci??? 
+        	System.out.println("sono entrato");
           finito=false;
           cambiato=false;
         }
@@ -70,6 +75,7 @@ public class Timer extends Thread{
   
   /**
    * metodo che consente di reimpostare il tempo d'attesa
+   * 
    * @param t nuovo tempo di attesa
    */
   public void setTempo(int t){
@@ -80,14 +86,16 @@ public class Timer extends Thread{
   
   /**
    * metodo che consente di recuperare lo stato del conteggio
+   * 
    * @return finito
    */
-  public boolean getFinito(){
+  public boolean isFinito(){
     return finito;
   }
   
   /**
-   * metodo che consente di recuperare il tempo con cui è stato impostato il thread
+   * metodo che consente di recuperare il tempo con cui e` stato impostato il thread
+   * 
    * @return tempo
    */
   public int getTempo(){

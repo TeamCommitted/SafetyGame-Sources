@@ -1,15 +1,16 @@
 package com.safetyGame.desktop.logic;
+import com.safetyGame.desktop.condivisi.*;
 
 
 public class ControlMenu{
   ConnBack connessione;
-  public ControlMenu(ConnBack cb){
+  public ControlMenu(){
     //crea una System Tray e i menu' ad essa correlati
-    connessione=cb;
+    connessione=ConnBack.getInstance();;
   }
 
-  public boolean logout(String username){
-    return connessione.logout(username);
+  public boolean logout(){
+    return connessione.logout();
   }
   
   public void richiediDomanda(){
@@ -26,5 +27,9 @@ public class ControlMenu{
   
   public void modificaDati(){
     //apre il browser con la pagina della modifica dei dati
+  }
+  
+  public boolean isLogged(){
+    return connessione.isLogged();
   }
 }

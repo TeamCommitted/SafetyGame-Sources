@@ -1,16 +1,22 @@
 #BlueJ package file
-package.editor.height=714
 <<<<<<< HEAD
-package.editor.width=1482
-package.editor.x=61
-package.editor.y=74
-=======
-package.editor.width=1478
-package.editor.x=11
-package.editor.y=108
->>>>>>> 179310aa2144b3582d1da6068131d17e181164e1
+package.editor.height=890
+package.editor.width=1558
+package.editor.x=12
+package.editor.y=83
 package.numDependencies=0
 package.numTargets=5
+=======
+dependency1.from=InizializzatoreTest
+dependency1.to=Inizializzatore
+dependency1.type=UsesDependency
+package.editor.height=572
+package.editor.width=1244
+package.editor.x=53
+package.editor.y=60
+package.numDependencies=1
+package.numTargets=6
+>>>>>>> 40631071c78fed5da71152eb84c44d762211f50a
 package.showExtends=true
 package.showUses=true
 target1.height=62
@@ -37,15 +43,27 @@ target4.type=PackageTarget
 target4.width=80
 target4.x=510
 target4.y=20
-target5.editor.height=870
-target5.editor.width=800
-target5.editor.x=800
-target5.editor.y=0
+target5.editor.height=744
+target5.editor.width=1382
+target5.editor.x=-8
+target5.editor.y=-8
 target5.height=50
 target5.name=Inizializzatore
 target5.naviview.expanded=false
 target5.showInterface=false
 target5.type=ClassTarget
 target5.width=100
-target5.x=90
-target5.y=310
+target5.x=280
+target5.y=170
+target6.editor.height=700
+target6.editor.width=900
+target6.editor.x=714
+target6.editor.y=54
+target6.height=50
+target6.name=InizializzatoreTest
+target6.naviview.expanded=true
+target6.showInterface=false
+target6.type=UnitTestTargetJunit4
+target6.width=130
+target6.x=10
+target6.y=90

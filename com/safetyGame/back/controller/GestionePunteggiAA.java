@@ -1,3 +1,21 @@
+/*
+ * Name: GestionePunteggiAA.java
+ * Package: com.safetygame.back.controller
+ * Author: Massimo Dalla Pietà
+ * Date: 2012/06/16
+ * Version: 1.0
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120531 |Massimo Dalla Pieta' | * GestionePunteggiAA
+ * |          |                     | * getPunteggi
+ * |          |                     | * setTrofei
+ * +----------+---------------------|---------------------
+ *
+ */
 package com.safetyGame.back.controller;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
@@ -7,7 +25,7 @@ import java.util.ArrayList;
  * Classe che si occupa di gestire la visione dei punteggi in un'azienda
  * 
  * @author mdallapi 
- * @version v0.1
+ * @version v1.0
  */
 public class GestionePunteggiAA{ 
    private DAOPunteggi accessP;

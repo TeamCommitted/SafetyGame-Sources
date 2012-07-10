@@ -2,8 +2,8 @@
  * Name: DataOra.java
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -12,10 +12,10 @@
  * +----------+---------------------+---------------------
  * | 20120607 |Alessandro Cornaglia | *DataOra
  * +----------+---------------------+---------------------
- * | 20120420 |Alessandro Cornaglia | +aggiusta
+ * | 20120520 |Alessandro Cornaglia | +aggiusta
  * |          |                     | +toString
  * +----------+---------------------+---------------------
- * | 20120419 |Alessandro Cornaglia | + DataOra
+ * | 20120519 |Alessandro Cornaglia | + DataOra
  * |          |                     | + Badge
  * |          |                     | + getAnno
  * |          |                     | + setAnno
@@ -39,7 +39,7 @@
  * Classe che rappresenta una data ed un'orario nella seguente formato: aaaa/mm/gg hh:mm:ss
  * 
  * @author TeamCommitted
- * @version 0.3
+ * @version 1.0
  * 
  */
 public class DataOra {

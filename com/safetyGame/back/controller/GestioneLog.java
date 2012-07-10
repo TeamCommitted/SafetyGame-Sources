@@ -2,8 +2,8 @@
  * Name: GestioneLog.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.3
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -20,10 +20,10 @@
  * |          |                     | *scriviModEmailD
  * |          |                     | *scriviOttenimentoBadge
  * +----------+---------------------+---------------------
- * | 20120511 |Alessandro Cornaglia | + getLog
+ * | 20120525 |Alessandro Cornaglia | + getLog
  * |          |                     | + getPercorso
  * +----------+---------------------+---------------------
- * | 20120510 |Alessandro Cornaglia | + GestioneLog
+ * | 20120517 |Alessandro Cornaglia | + GestioneLog
  * |          |                     | + getUpdateLog
  * |          |                     | + setUpdateLog
  * |          |                     | + scriviLogin
@@ -53,7 +53,7 @@ import com.safetyGame.back.condivisi.*;
  * Classe che si occupa di gestire i log del sistema
  * 
  * @author acornagl 
- * @version v0.3
+ * @version v1.0
  */
 public class GestioneLog{
 
@@ -93,20 +93,20 @@ public class GestioneLog{
    * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo un login
    * 
-   * @param l oggetto Login dovuto dall'effettuazione del login da parte di un dipendente
+   * @param login oggetto Login dovuto dall'effettuazione del login da parte di un dipendente
    */
-  public void scriviLogin(Login l) {
+  public void scriviLogin(Login login) {
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
    	
     //creo path del file da scrivere e creo UpdateLog
     this.percorso = "/login.txt";
    
 	try {
-	  this.updateLog = new UpdateLog("/"+l.getUsername(),this.percorso);
+	  this.updateLog = new UpdateLog("/"+login.getUsername(),this.percorso);
 	}
 	catch (IOException e) {System.out.println("non va"); }//bisogna decidere cosa fare se si verifica errore
     
-    log = "LOGIN " + dataOra.toString() + " " + l.getUsername(); //stringa contenente il log
+    log = "LOGIN " + dataOra.toString() + " " + login.getUsername(); //stringa contenente il log
     updateLog.scriviChiudi(log);//passo la stringa creata a updateLog
   }
   
@@ -114,20 +114,20 @@ public class GestioneLog{
    * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo un logout
    * 
-   * @param l oggetto Login del dipendente che ha effettuato il logout
+   * @param login oggetto Login del dipendente che ha effettuato il logout
    */
-  public void scriviLogout(Login l) {
+  public void scriviLogout(Login login) {
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/logout.txt";
 
     try {
-	  this.updateLog = new UpdateLog("/"+l.getUsername(),percorso);
+	  this.updateLog = new UpdateLog("/"+login.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
-    log = "LOGOUT " + dataOra.toString() + " " + l.getUsername(); //stringa contenente il log
+    log = "LOGOUT " + dataOra.toString() + " " + login.getUsername(); //stringa contenente il log
     updateLog.scriviChiudi(log);//passo la stringa creata a updateLog
   }
   
@@ -135,21 +135,21 @@ public class GestioneLog{
    * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo che una domanda viene ricevuta da un dipendente
    * 
-   * @param l oggetto Login del dipendente che riceve la domanda
-   * @param d domanda che viene ricevuta dall'utente
+   * @param login oggetto Login del dipendente che riceve la domanda
+   * @param dom domanda che viene ricevuta dall'utente
    */
-  public void scriviDomRic(Login l, Domanda d) {
+  public void scriviDomRic(Login login, Domanda dom) {
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
     percorso =  "/dRic.txt";
 
     try {
-	  this.updateLog = new UpdateLog("/"+l.getUsername(),percorso);
+	  this.updateLog = new UpdateLog("/"+login.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
-    log = "DOMANDA RICEVUTA " + dataOra.toString() + " usr=" + l.getUsername() + " id dom=" + d.getId();
+    log = "DOMANDA RICEVUTA " + dataOra.toString() + " usr=" + login.getUsername() + " id dom=" + dom.getId();
     updateLog.scriviChiudi(log);
   }
   
@@ -157,21 +157,21 @@ public class GestioneLog{
    * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo che una domanda viene proposta ad un dipendente 
    *
-   * @param l oggetto Login del dipendente che riceve la proposta di domanda
-   * @param d domanda che viene proposta all'utente
+   * @param login oggetto Login del dipendente che riceve la proposta di domanda
+   * @param dom domanda che viene proposta all'utente
    */
-  public void scriviDomProp(Login l, Domanda d) {
+  public void scriviDomProp(Login login, Domanda dom) {
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
 
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/dProp.txt";
 
     try {
-	  this.updateLog = new UpdateLog("/"+l.getUsername(),percorso);
+	  this.updateLog = new UpdateLog("/"+login.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
-	log = "DOMANDA PROPOSTA " + dataOra.toString() + " usr=" + l.getUsername() + " id dom=" + d.getId();
+	log = "DOMANDA PROPOSTA " + dataOra.toString() + " usr=" + login.getUsername() + " id dom=" + dom.getId();
     updateLog.scriviChiudi(log);
   }
 
@@ -179,21 +179,21 @@ public class GestioneLog{
    *metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo che una domanda viene posticipata da un dipendente 
    *
-   * @param l oggetto Login del dipendente che posticipa una domanda
-   * @param d domanda che viene posticipata dall'utente
+   * @param login oggetto Login del dipendente che posticipa una domanda
+   * @param dom domanda che viene posticipata dall'utente
    */
-  public void scriviDomPost(Login l, Domanda d) {
+  public void scriviDomPost(Login login, Domanda dom) {
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
 
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/dPost.txt";
     
 	try {
-	  this.updateLog = new UpdateLog("/"+l.getUsername(),percorso);
+	  this.updateLog = new UpdateLog("/"+login.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
-	log = "DOMANDA POSTICIPATA " + dataOra.toString() + " usr=" + l.getUsername() + " id dom=" + d.getId();
+	log = "DOMANDA POSTICIPATA " + dataOra.toString() + " usr=" + login.getUsername() + " id dom=" + dom.getId();
     updateLog.scriviChiudi(log);
   }
   
@@ -201,21 +201,21 @@ public class GestioneLog{
    *metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo che una domanda viene posticipata da un dipendente 
    *
-   * @param l oggetto Login del dipendente che posticipa una domanda
-   * @param d domanda che viene posticipata dall'utente
+   * @param login oggetto Login del dipendente che posticipa una domanda
+   * @param dom domanda che viene posticipata dall'utente
    */
-  public void scriviDomRisp(Login l, Domanda d) {
+  public void scriviDomRisp(Login login, Domanda dom) {
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
 
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/dRisp.txt";
 
     try {
-	  this.updateLog = new UpdateLog("/"+l.getUsername(),percorso);
+	  this.updateLog = new UpdateLog("/"+login.getUsername(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
-	log = "DOMANDA RISPOSTA " + dataOra.toString() + " usr=" + l.getUsername() + " id dom=" + d.getId();
+	log = "DOMANDA RISPOSTA " + dataOra.toString() + " usr=" + login.getUsername() + " id dom=" + dom.getId();
     updateLog.scriviChiudi(log);
   }
   
@@ -223,21 +223,21 @@ public class GestioneLog{
    * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo che un dipendente modifica la propria password 
    * 
-   * @param d dipendente che ha modificato la propria password
+   * @param dip dipendente che ha modificato la propria password
    */
-  public void scriviModPassD(Dipendente d) {
+  public void scriviModPassD(Dipendente dip) {
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    String usr = d.getNickname(); //ricavo il nick del dipendente, utile per il path
+    String usr = dip.getNickname(); //ricavo il nick del dipendente, utile per il path
     percorso = "/modPassD.txt";
 
     try {
-	  this.updateLog = new UpdateLog("/"+d.getNickname(),percorso);
+	  this.updateLog = new UpdateLog("/"+dip.getNickname(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
-	log = "MODIFICA PASS D " + dataOra.toString() + " id dip=" + d.getId();
+	log = "MODIFICA PASS D " + dataOra.toString() + " id dip=" + dip.getId();
     updateLog.scriviChiudi(log);
   }
   
@@ -245,21 +245,21 @@ public class GestioneLog{
    * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo che un dipendente modifica la propria email 
    * 
-   * @param d dipendente che ha modificato la propria email
+   * @param dip dipendente che ha modificato la propria email
    */
-  public void scriviModEmailD(Dipendente d) {
+  public void scriviModEmailD(Dipendente dip) {
     DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    String usr = d.getNickname(); //ricavo il nick del dipendente, utile per il path
+    String usr = dip.getNickname(); //ricavo il nick del dipendente, utile per il path
     percorso = "/modEmailD.txt";
     
 	try {
-	  this.updateLog = new UpdateLog("/"+d.getNickname(),percorso);
+	  this.updateLog = new UpdateLog("/"+dip.getNickname(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
-    log = "MODIFICA EMAIL D " + dataOra.toString() + " id dip=" + d.getId();
+    log = "MODIFICA EMAIL D " + dataOra.toString() + " id dip=" + dip.getId();
     updateLog.scriviChiudi(log);
   }
 
@@ -267,21 +267,21 @@ public class GestioneLog{
    * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo che un dipendente ottiene un badge
    * 
-   * @param d dipendente che ha ottenuto un badge
-   * @param b badge ottenuto
+   * @param dip dipendente che ha ottenuto un badge
+   * @param badge badge ottenuto
    */
-  public void scriviOttenimentoBadge(Dipendente d, Badge b) {
+  public void scriviOttenimentoBadge(Dipendente dip, Badge badge) {
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
-    String usr = d.getNickname(); //ricavo il nick del dipendente, utile per il path
+    String usr = dip.getNickname(); //ricavo il nick del dipendente, utile per il path
     percorso = "/modOttB.txt";
 	try {
-	  this.updateLog = new UpdateLog("/"+d.getNickname(),percorso);
+	  this.updateLog = new UpdateLog("/"+dip.getNickname(),percorso);
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
-	log = "OTTENIMENTO BADGE " + dataOra.toString() + " id dip=" + d.getId() + " badge=" + b.getNome();
+	log = "OTTENIMENTO BADGE " + dataOra.toString() + " id dip=" + dip.getId() + " badge=" + badge.getNome();
     updateLog.scriviChiudi(log);
   }
   
@@ -289,9 +289,9 @@ public class GestioneLog{
    * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo che l'AA aggiunge un dipendente
    * 
-   * @param d dipendente aggiunto
+   * @param dip dipendente aggiunto
    */
-  public void scriviAddDip(Dipendente d) {
+  public void scriviAddDip(Dipendente dip) {
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
@@ -301,7 +301,7 @@ public class GestioneLog{
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
-	log = "AGGIUNTO DIPENDENTE " + dataOra.toString() + " id dip=" + d.getId();
+	log = "AGGIUNTO DIPENDENTE " + dataOra.toString() + " id dip=" + dip.getId();
     updateLog.scriviChiudi(log);
   }
   
@@ -309,9 +309,9 @@ public class GestioneLog{
    * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo che l'AA rimuove un dipendente
    * 
-   * @param d dipendente rimosso
+   * @param dip dipendente rimosso
    */
-  public void scriviDelDip(Dipendente d) {
+  public void scriviDelDip(Dipendente dip) {
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
@@ -321,7 +321,7 @@ public class GestioneLog{
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
-	log = "RIMOSSO DIPENDENTE " + dataOra.toString() + " id dip=" + d.getId();
+	log = "RIMOSSO DIPENDENTE " + dataOra.toString() + " id dip=" + dip.getId();
     updateLog.scriviChiudi(log);
   }
   
@@ -329,9 +329,9 @@ public class GestioneLog{
    * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo che l'AA modifica un dipendente
    * 
-   * @param d dipendente modificato
+   * @param dip dipendente modificato
    */
-  public void scriviModDip(Dipendente d) {
+  public void scriviModDip(Dipendente dip) {
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
@@ -341,7 +341,7 @@ public class GestioneLog{
 	}
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
-	log = "MODIFICATO DIPENDENTE " + dataOra.toString() + " id dip=" + d.getId();
+	log = "MODIFICATO DIPENDENTE " + dataOra.toString() + " id dip=" + dip.getId();
     updateLog.scriviChiudi(log);
   }
   
@@ -349,9 +349,9 @@ public class GestioneLog{
    * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo che l'AS aggiunge una o più domande
    * 
-   * @param d domande aggiunte
+   * @param dom domande aggiunte
    */
-  public void scriviAddDomande(Domanda [] d) {
+  public void scriviAddDomande(Domanda [] dom) {
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
@@ -362,8 +362,8 @@ public class GestioneLog{
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
 	//scrivo una riga per ogni domanda aggiunta
-	for (int i = 0; i < d.length; i++) {
-	  log = "AGGIUNTA DOMANDA " + dataOra.toString() + " id dom=" + d[i].getId();
+	for (int i = 0; i < dom.length; i++) {
+	  log = "AGGIUNTA DOMANDA " + dataOra.toString() + " id dom=" + dom[i].getId();
 	  updateLog.scriviChiudi(log);
 	}
   }
@@ -372,9 +372,9 @@ public class GestioneLog{
    * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
    * nel file di log dopo che l'AS rimuove una o più domande
    * 
-   * @param d domande rimosse
+   * @param dom domande rimosse
    */
-  public void scriviDelDomande(Domanda [] d) {
+  public void scriviDelDomande(Domanda [] dom) {
 	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
@@ -385,8 +385,8 @@ public class GestioneLog{
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
 	//scrivo una riga per ogni domanda aggiunta
-	for (int i = 0; i < d.length; i++) {
-	  log = "RIMOSSA DOMANDA " + dataOra.toString() + " id dom=" + d[i].getId();
+	for (int i = 0; i < dom.length; i++) {
+	  log = "RIMOSSA DOMANDA " + dataOra.toString() + " id dom=" + dom[i].getId();
 	  updateLog.scriviChiudi(log);
 	}
   }

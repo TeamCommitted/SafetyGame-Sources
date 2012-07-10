@@ -2,8 +2,8 @@
  * Name: Domanda.java
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -14,7 +14,7 @@
  * |          |                     | + isInternaAzienda
  * |          |                     | + setInternaAzienda
  * +----------+---------------------+---------------------
- * | 20120422 |Alessandro Cornaglia | + Domanda
+ * | 20120522 |Alessandro Cornaglia | + Domanda
  * |          |                     | + getId
  * |          |                     | + setId
  * |          |                     | + getPunteggio
@@ -44,7 +44,7 @@ package com.safetyGame.back.condivisi;
  * Classe che rappresenta una domanda del sistema
  * 
  * @author acornagl 
- * @version v0.1
+ * @version v1.0
  */
 import java.util.*;
 

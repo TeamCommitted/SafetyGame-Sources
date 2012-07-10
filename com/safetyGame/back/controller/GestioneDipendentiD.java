@@ -2,8 +2,8 @@
  * Name: GestioneDipendentiD.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: {Data di approvazione del file}
- * Version: 0.2
+ * Date: 2012/06/16
+ * Version: 1.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -38,22 +38,24 @@ import com.safetyGame.back.condivisi.*;
  * puo' avere con il sistema
  * 
  * @author acornagl
- * @version 0.2
+ * @version 1.0
  *
  */
 public class GestioneDipendentiD{
   private DAODipendenti daoDipendenti;
   private GestioneLog gestioneLog;
+  private GestioneRecupero gestioneRecupero;
   
   /**
    * Costruttore con parametri della classe GestioneDipendentiD
    * 
-   * @param d riferimento all'iggetto di tipo DAOFactory
-   * @param g riferimento alla classe di tipo GestioneLog
+   * @param daoDipendenti riferimento all'iggetto di tipo DAOFactory
+   * @param gestioneLog riferimento alla classe di tipo GestioneLog
    */
-  public GestioneDipendentiD(DAODipendenti d, GestioneLog g) {
-    this.daoDipendenti = d;
-    this.gestioneLog = g;
+  public GestioneDipendentiD(DAODipendenti daoDipendenti, GestioneLog gestioneLog) {
+    this.daoDipendenti = daoDipendenti;
+    this.gestioneLog = gestioneLog;
+    this.gestioneRecupero = null;
   }
   
   /**
@@ -62,6 +64,7 @@ public class GestioneDipendentiD{
   public GestioneDipendentiD() {
     this.daoDipendenti = null;
     this.gestioneLog = null;
+    this.gestioneRecupero = null;
   }
 
   /**
@@ -76,9 +79,9 @@ public class GestioneDipendentiD{
 
   /**
    * metodo che consente di impostare il riferimento all'oggetto di tipo statico 
-   * DAOFactory
+   * DAODipendenti
    * 
-   * @param daoFactory riferimento all'oggetto di tipo DAOFactory
+   * @param daoDip riferimento all'oggetto di tipo DAODipendenti
    */
   public void setDaoDipendenti(DAODipendenti daoDip) {
     this.daoDipendenti = daoDip;
@@ -106,11 +109,11 @@ public class GestioneDipendentiD{
    * Metodo che consente di reperire le informazioni di un dipendente a partire
    * dal suo login
    * 
-   * @param l login del dipendente
+   * @param login login del dipendente
    * @return informazioni sul dipendente
    */
-  public Dipendente getDati(Login l) {
-    Dipendente ritorno = this.daoDipendenti.getInfoD(l);
+  public Dipendente getDati(Login login) {//
+    Dipendente ritorno = this.daoDipendenti.getInfoD(login);
 	return ritorno;    
   }
   
@@ -121,13 +124,14 @@ public class GestioneDipendentiD{
    * 
    * @return true se operazione riuscita con successo, false altrimenti
    */
-  public boolean modificaPass(Dipendente dip) {
+  public boolean modificaPass(Dipendente dip) {//
 	//dip contiene la nuova password (il web deve controllare che la pass sia ok
 	//scrivo la nuova password
 	boolean esito = this.daoDipendenti.passD(dip,dip.getNuovaPass());
     if(esito) {// se tutto ok
 	  //scrivo il log
-      gestioneLog.scriviModPassD(dip);
+      //gestioneLog.scriviModPassD(dip);
+      GestioneRecupero.sendMail(dip.getEmail(), dip.getNuovaPass());
       return true;
     }
     return false;//non sono riuscito a modificare la passwrod
@@ -141,11 +145,12 @@ public class GestioneDipendentiD{
    * 
    * @return true se operazione riuscita con successo, false altrimenti
    */
-  public boolean modificaEmail(Dipendente dip, String nEmail) {
+  public boolean modificaEmail(Dipendente dip, String nEmail) {//
     boolean esito = this.daoDipendenti.mailD(dip,nEmail);
     if (esito) {// se tutto ok
       //scrivo il log
-      gestioneLog.scriviModEmailD(dip);
+      //gestioneLog.scriviModEmailD(dip);
+      GestioneRecupero.sendMailModMail(nEmail);
       return true;
     }
     return false;
