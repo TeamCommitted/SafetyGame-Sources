@@ -74,7 +74,7 @@ public class SqlDAOBadge implements DAOBadge{
       }
       catch(SQLException e){trovato=true;}  
     }
-    if (b.size()==0){b=null;}
+    if (b.size()==0){}//b=null;}
     return b;
   }
   

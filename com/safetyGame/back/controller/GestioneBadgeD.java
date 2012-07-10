@@ -64,7 +64,7 @@ public class GestioneBadgeD{
       if(gestLogin.loginUser(login)){
           Dipendente d = accessDip.getInfoD(login);
           ArrayList<Badge> list = accessB.badgeD(d);
-          if(list == null)
+          if(list.isEmpty())//
               return null;
           else{
         	  if(num==0){
