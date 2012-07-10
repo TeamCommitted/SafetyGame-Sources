@@ -64,7 +64,7 @@ public class GestioneBadgeD{
       if(gestLogin.loginUser(login)){
           Dipendente d = accessDip.getInfoD(login);
           ArrayList<Badge> list = accessB.badgeD(d);
-          if(list.isEmpty())//
+          if(list.isEmpty())
               return list;//return null;
           else{
         	  if(num==0){
@@ -80,7 +80,7 @@ public class GestioneBadgeD{
           }
       }
       else
-          return null;
+          return new ArrayList<Badge>();
    }
    /**
     * Metodo per controllare se l'utente ha soddisfatto dei requisiti per ottenere un badge
