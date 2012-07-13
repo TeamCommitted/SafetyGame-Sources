@@ -183,10 +183,10 @@ public class GestioneDatiTest {
 	}
 	  
 	@Test
-	public void testgetDati() {
+	public void testgetDatiD() {
 		init();
 		Login l = new Login("nick","pass");
-		Dipendente dip = D.getDati(l);
+		Dipendente dip = D.getDatiD(l);
 		assertTrue("recupero informazioni dipendente non riuscita",dip.getCodFiscale().equals("0"));
 	}
 	  
@@ -194,7 +194,7 @@ public class GestioneDatiTest {
 	public void testmodificaPass() {
 		init();
 		Login l = new Login("nick","pass");
-		Dipendente dip = D.getDati(l);
+		Dipendente dip = D.getDatiD(l);
 		dip.setNuovaPass("nuovaPass");
 		assertTrue("modifica password non riuscita",D.modificaPass(dip));
 	}
@@ -203,7 +203,7 @@ public class GestioneDatiTest {
 	public void testmodificaEmail() {
 		init();
 		Login l = new Login("nick","pass");
-		Dipendente dip = D.getDati(l);
+		Dipendente dip = D.getDatiD(l);
 		assertTrue("modifica email non riuscita",D.modificaEmail(dip, "ale.corny@gmail.com"));
 	}
 	  
@@ -256,7 +256,7 @@ public class GestioneDatiTest {
 	public void testloginAdmin(){
 		init();
 		Login l = new Login("amministratoreAz","pass");
-		assertTrue("login non effettuato", D.loginAdmin(l)); 
+		assertTrue("login non effettuato", D.loginAdmin(l,true)); 
 	}
 	
 	@Test

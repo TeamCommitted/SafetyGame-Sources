@@ -79,9 +79,9 @@ public class WebConnection{
    * @param login oggetto contenente i dati di login inseriti dall'utente
    * @return boolean che conferma il successo o meno dell'operazione
    */
-  public boolean loginAdmin(String username, String password){
+  public boolean loginAdmin(String username, String password, boolean tipo){
     Login l=new Login(username,password);
-    return dati.loginAdmin(l);
+    return dati.loginAdmin(l,tipo);
   }
     
   /**
@@ -91,8 +91,19 @@ public class WebConnection{
    * @param l login del dipendente
    * @return informazioni sul dipendente
    */
-  public Dipendente getDati(Login l){
-    return dati.getDati(l); 
+  public Dipendente getDatiD(Login l){
+    return dati.getDatiD(l); 
+  }
+  
+  /**
+   * Metodo che consente di reperire le informazioni di un amministratore a partire
+   * dal suo login
+   * 
+   * @param l login dell'amministratore
+   * @return informazioni sull'amministratore
+   */
+  public Dipendente getDatiA(Login l){
+    return dati.getDatiA(l); 
   }
    
    /**

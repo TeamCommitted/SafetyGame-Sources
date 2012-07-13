@@ -187,8 +187,19 @@ public class GestioneDati{
    * @param login login del dipendente
    * @return informazioni sul dipendente
    */
-  public Dipendente getDati(Login login) {
-    return this.gestioneDipendentiD.getDati(login);
+  public Dipendente getDatiD(Login login) {
+    return this.gestioneDipendentiD.getDatiD(login);
+  }
+  
+  /**
+   * Metodo che consente di reperire le informazioni di un amministratore a partire
+   * dal suo login
+   * 
+   * @param login login dell'amministratore
+   * @return informazioni sull'amministratore
+   */
+  public Dipendente getDatiA(Login login) {
+    return this.gestioneDipendentiAA.getDatiA(login);
   }
   
   /**
@@ -267,8 +278,8 @@ public class GestioneDati{
    * 
    * @param login oggetto contenente i dati di login inseriti dall'utente
    */
-  public boolean loginAdmin(Login login){
-	return this.gestioneLogin.loginAdmin(login);
+  public boolean loginAdmin(Login login, boolean tipo){
+	return this.gestioneLogin.loginAdmin(login,tipo);
   }
   
   /**

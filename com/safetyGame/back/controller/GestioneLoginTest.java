@@ -60,7 +60,7 @@ public class GestioneLoginTest {
 	public void testLoginA(){
 		init();
 		Login l = new Login("amministratoreAz","pass");
-		assertTrue("login non effettuato", login.loginAdmin(l)); 
+		assertTrue("login non effettuato", login.loginAdmin(l,true)); 
 	}
 	
 	@Test

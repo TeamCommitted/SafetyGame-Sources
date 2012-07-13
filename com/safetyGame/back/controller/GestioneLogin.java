@@ -49,8 +49,8 @@ public class GestioneLogin{
     * 
     * @param login oggetto contenente i dati di login inseriti dall'utente
     */
-   public boolean loginAdmin(Login login){
-      boolean result = access.loginAmministratore(login);
+   public boolean loginAdmin(Login login, boolean tipo){
+      boolean result = access.loginAmministratore(login,tipo);
       //if(result) 
 		   //log.scriviLogin(login);
 	   return result;

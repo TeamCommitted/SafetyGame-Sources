@@ -67,7 +67,7 @@ public class GestioneDipendentiDTest {
 	//test che verifica il corretto recupero delle informazioni di un dipendente
 		init();
 		Login l = new Login("nick","pass");
-		Dipendente dip = gestDipD.getDati(l);
+		Dipendente dip = gestDipD.getDatiD(l);
 		assertTrue("recupero informazioni dipendente non riuscita",dip.getCodFiscale().equals("sxrYDTCfvg"));
 	}
 	
@@ -76,7 +76,7 @@ public class GestioneDipendentiDTest {
 	//test che verifica il corretto cambio della password di un dipendente
 		init();
 		Login l = new Login("nick","pass");
-		Dipendente dip = gestDipD.getDati(l);
+		Dipendente dip = gestDipD.getDatiD(l);
 		dip.setNuovaPass("nuovaPass");
 		assertTrue("modifica password non riuscita",gestDipD.modificaPass(dip));
 	}
@@ -86,7 +86,7 @@ public class GestioneDipendentiDTest {
 	//test che verifica il corretto cambio della mail di un dipendente
 		init();
 		Login l = new Login("nick","pass");
-		Dipendente dip = gestDipD.getDati(l);
+		Dipendente dip = gestDipD.getDatiD(l);
 		assertTrue("modifica email non riuscita",gestDipD.modificaEmail(dip, "ale.corny@gmail.com"));
 	}
 
