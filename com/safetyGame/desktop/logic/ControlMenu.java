@@ -4,9 +4,11 @@ import com.safetyGame.desktop.condivisi.*;
 
 public class ControlMenu{
   ConnBack connessione;
+  Browser browser;
+  
   public ControlMenu(){
-    //crea una System Tray e i menu' ad essa correlati
-    connessione=ConnBack.getInstance();;
+    connessione=ConnBack.getInstance();
+    browser=Browser.getInstance();
   }
 
   public boolean logout(){
@@ -14,18 +16,22 @@ public class ControlMenu{
   }
   
   public void richiediDomanda(){
+    browser.apri("https://www.google.it/");
     //apre il browser con la pagina di richiesta della domanda
   }
   
   public void visualizzaPunteggio(){
+    browser.apri("https://www.google.it/");
     //apre il browser con la pagina di visualizzazione dei propri punteggi
   }
   
   public void visualizzaDati(){
+    browser.apri("https://www.google.it/");
     //apre il browser con la pagina di visualizzazione dei dati personali
   }
   
   public void modificaDati(){
+    browser.apri("https://www.google.it/");
     //apre il browser con la pagina della modifica dei dati
   }
   

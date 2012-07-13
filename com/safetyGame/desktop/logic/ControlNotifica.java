@@ -29,6 +29,7 @@ package com.safetyGame.desktop.logic;
  */
 public class ControlNotifica{
   ConnBack connessione;
+  Browser browser;
   
   /**
    * Costruttore della classe ControlNotifica
@@ -36,6 +37,7 @@ public class ControlNotifica{
    */
   public ControlNotifica(){
     connessione=ConnBack.getInstance();
+    browser=Browser.getInstance();
   }
   
   /**
@@ -54,6 +56,7 @@ public class ControlNotifica{
    * 
    */  
   public void rispondi(){
+    browser.apri("https://www.google.it/");
     //apre il browser con la domanda --> mostra domanda
   }
 }
