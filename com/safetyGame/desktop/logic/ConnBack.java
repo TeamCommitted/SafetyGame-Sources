@@ -1,12 +1,32 @@
+/*
+ * Name: ConnBack.java
+ * Package: com.safetygame.desktop.logic
+ * Author: Gabriele Facchin
+ * Date: 
+ * Version: 0.1
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120711 | Gabriele Facchin    | + ConnBack
+ * |          |                     | + getIstance
+ * +----------+---------------------|---------------------
+ * | 201207 | Gabriele Facchin    | + 
+ * +----------+---------------------|---------------------
+ *
+ */
+
 
 package com.safetyGame.desktop.logic;
 
 import com.safetyGame.desktop.condivisi.*;
 
 /**
- * ConnBack2.java
+ * ConnBack.java
  *
- * @author 
+ * @author gfacchin
  * @version 0.1
  */
 public class ConnBack {

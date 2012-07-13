@@ -1,8 +1,34 @@
+/*
+ * Name: Browser.java
+ * Package: com.safetygame.desktop.logic
+ * Author: Gabriele Facchin
+ * Date: 
+ * Version: 0.1
+ * Copyright: see COPYRIGHT
+ * 
+ * Changes:
+ * +----------+---------------------+---------------------
+ * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120713 | Gabriele Facchin    | + Browser
+ * |          |                     | + getInstance
+ * |          |                     | + apri
+ * +----------+---------------------|---------------------
+ *
+ */
+
 package com.safetyGame.desktop.logic;
 import java.awt.Desktop;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.io.IOException;
+
+/**
+ * Classe che gestisce l'apertura del browser predefinito di sistema
+ *
+ * @author gfacchin 
+ * @version 0.1
+ */
 
 public class Browser {
  
@@ -10,8 +36,8 @@ public class Browser {
   private Desktop desktop;
   private URI link;
   
-  /** Creates a new instance of Singleton
-   * Declared private to prevent an instance being created other than using the getInstance method
+  /**
+   * Costrutture della classe Browser
    */
   private Browser(){
     try{
@@ -20,8 +46,10 @@ public class Browser {
     catch(UnsupportedOperationException e){System.out.println("Le funzionalità minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(1);}
   }
   
-  /**Static method getInstance is used to initialise the singleton object
-   *All calls to getInstance will return the same singleton object
+  /**
+   * Metodo che ritorna l'unica istanza della classe valida
+   * 
+   * @return unico oggetto Browser
    */
   public static Browser getInstance(){
     if(singleton == null){
