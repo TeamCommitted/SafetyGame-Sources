@@ -112,7 +112,7 @@ public class GestioneDipendentiD{
    * @param login login del dipendente
    * @return informazioni sul dipendente
    */
-  public Dipendente getDati(Login login) {//
+  public Dipendente getDatiD(Login login) {//
     Dipendente ritorno = this.daoDipendenti.getInfoD(login);
 	return ritorno;    
   }

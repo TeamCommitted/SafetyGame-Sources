@@ -135,6 +135,18 @@ public class GestioneDipendentiAA{
        
        return risultato;
     }
+    
+    /**
+   * Metodo che consente di reperire le informazioni di un amministratore a partire
+   * dal suo login
+   * 
+   * @param login login dell'amministratore
+   * @return informazioni sull'amministratore
+   */
+  public Dipendente getDatiA(Login login) {//
+    Dipendente ritorno = this.accessDip.getInfoA(login);
+	return ritorno;    
+  }
    
    /**
     * Metodo per recuperare l'elenco dei ruoli di un'azienda
