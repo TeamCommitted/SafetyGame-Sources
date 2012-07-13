@@ -57,7 +57,7 @@ public class SqlDAOLoginTest {
 		  String username = "amministratoreAz";
 		  String password = "pass";
 		  Login l = new Login(username,password);
-		  assertTrue("non e` stato possibile effettuare il loginA", daoLogin.loginAmministratore(l));
+		  assertTrue("non e` stato possibile effettuare il loginA", daoLogin.loginAmministratore(l,true));
 	}
 
 }

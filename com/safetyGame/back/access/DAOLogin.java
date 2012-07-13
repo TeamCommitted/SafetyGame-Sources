@@ -32,10 +32,11 @@ public interface DAOLogin{
    * Metodo che prova il login di un Amministratore
    * 
    * @param l Oggetto Login da cui si prendono le informazioni
+   * @param  tipo booleano: 1 se amministratore azienda(AA), 0 se amministratore sicurezza(AS) 
    * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */  
-  public boolean loginAmministratore(Login l);
+  public boolean loginAmministratore(Login l, boolean tipo);
   
   /**
    * Metodo che prova il login di un Dipendente
