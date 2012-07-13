@@ -54,8 +54,8 @@ public class Menu implements ActionListener{
    * Costruttore della classe Menu
    * 
    */
-  public Menu(ControlMenu controllo){
-    control=controllo;
+  public Menu(){//ControlMenu controllo){
+    control=new ControlMenu();//controllo;
     try{
       tray=SystemTray.getSystemTray();
       Image img=Toolkit.getDefaultToolkit().getImage("com/safetyGame/desktop/view/icona.jpg");
