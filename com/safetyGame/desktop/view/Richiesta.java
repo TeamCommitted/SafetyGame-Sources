@@ -44,7 +44,7 @@ public class Richiesta implements ActionListener{
    */
   public Richiesta(){
     frame=new JFrame("Nuovo Server");
-    frame.setSize(650,100);
+    frame.setSize(675,100);
     frame.setLayout(new GridLayout(2,2));
     testo= new Label();
     testo.setText("Inserire l'indirizzo del server SafetyGame dell' Azienda: ");
