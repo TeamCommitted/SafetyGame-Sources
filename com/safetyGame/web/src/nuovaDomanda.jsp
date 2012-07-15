@@ -21,8 +21,7 @@ Nuova Domanda
 	<%
 		if (!(ambito.equals("Dipendente"))) response.sendRedirect("admin_page.jsp");
 		else { // I cookie ritornano correttamente username, psw e ambito
-			Inizializzatore i = new Inizializzatore();
-			WebConnection connection = i.getWeb();
+			WebConnection connection = Inizializzatore.getWeb();
 			Login l = new Login(username,password);
 			try {
                 Domanda nuovadomanda = connection.mostraDomanda(l);

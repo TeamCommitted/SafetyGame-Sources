@@ -21,19 +21,23 @@ Pannello Amministratore
 	String password = request.getParameter("account_password"); // Ottengo la psw dal post
 	// Ottengo il valore del radio button
 	String ambito = null;
+	boolean tipoAdmin = true;
 	if (request.getParameter("radio").equals("radioD")) {
 		ambito = "Dipendente";}
 	if (request.getParameter("radio").equals("radioAA")) {
-		ambito = "Amministratore Azienda";}
+		ambito = "Amministratore Azienda";
+		tipoAdmin = true;
+	}
 	if (request.getParameter("radio").equals("radioAS")) {
-		ambito = "Amministratore Sicurezza";}
+		ambito = "Amministratore Sicurezza";
+		tipoAdmin = false;
+	}
 	
 	boolean logged = false;
-	Inizializzatore i = new Inizializzatore();
-	WebConnection connection = i.getWeb();
+	WebConnection connection = Inizializzatore.getWeb();
 	
 	if (ambito.equals("Dipendente")) logged = connection.loginDip(username, password);
-	else logged = connection.loginAdmin(username, password);
+	else logged = connection.loginAdmin(username, password, tipoAdmin);
 	
 	// Imposto i cookie salvando username, password e ambito utente
 	// Purtroppo bisogna impostare un cookie per ogni dato

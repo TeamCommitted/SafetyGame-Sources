@@ -5,8 +5,7 @@
 <%@page language="java" import="com.safetyGame.back.*" %>
 <%
 	out.println("ASDFGHJ");
-	Inizializzatore i = new Inizializzatore();
-	WebConnection connection = i.getWeb();
+	WebConnection connection = Inizializzatore.getWeb();
 	Login l = new Login("nick","pass");
 	Punteggio p = connection.getPunteggio(l);
 	int punt = p.getPuntiPrec();

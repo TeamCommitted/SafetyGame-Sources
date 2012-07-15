@@ -22,8 +22,7 @@ Rimuovi Dipendente
 		<%
 			int id = Integer.parseInt(request.getParameter("id"));
 			
-			Inizializzatore i = new Inizializzatore();
-			WebConnection connection = i.getWeb();
+			WebConnection connection = Inizializzatore.getWeb();
 			ArrayList<Dipendente> dipendenti = connection.getElencoDipendenti();
 			Dipendente d = null;
 			for (int it=0; it<dipendenti.size(); it++) {	

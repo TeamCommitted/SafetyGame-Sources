@@ -28,8 +28,7 @@ Modifica Dipendente
 	input_id = input_id.trim();
 	int id = Integer.parseInt(input_id);
 	
-	Inizializzatore i = new Inizializzatore();
-	WebConnection connection = i.getWeb();
+	WebConnection connection = Inizializzatore.getWeb();
 	
 	Dipendente newDip = new Dipendente();
 	Dipendente oldDip = new Dipendente();

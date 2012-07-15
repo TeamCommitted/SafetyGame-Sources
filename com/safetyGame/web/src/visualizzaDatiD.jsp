@@ -24,8 +24,7 @@ I tuoi dati
 
 	<h2>Dati Personali</h2>
     <%
-        Inizializzatore i = new Inizializzatore();
-        WebConnection connection = i.getWeb();
+        WebConnection connection = Inizializzatore.getWeb();
 		Dipendente dip = new Dipendente();
 		Login l = new Login(username, password);
 		dip = connection.getDati(l);

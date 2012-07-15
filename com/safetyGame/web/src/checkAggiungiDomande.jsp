@@ -18,8 +18,7 @@ Safety Game - Pannello Amministratore
 
 <% 
 	int numDomande = (Integer.parseInt(request.getParameter("numDomande"))) ;
-	Inizializzatore i = new Inizializzatore();
-	WebConnection connection = i.getWeb();
+	WebConnection connection = Inizializzatore.getWeb();
 	Domanda d;
 	ArrayList elencoDomande = connection.getElencoDomande();
 	for (int it=0; it<numDomande; it++) {

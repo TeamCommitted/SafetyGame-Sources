@@ -22,8 +22,7 @@ Recupero Password
 	String ambito = request.getParameter("radio");
 	boolean successo = false;
 	
-	Inizializzatore i = new Inizializzatore();
-	WebConnection connection = i.getWeb();
+	WebConnection connection = Inizializzatore.getWeb();
 	
 	Recupero r = new Recupero(email, codfis);
 	if (ambito.equals("Amministratore")) {

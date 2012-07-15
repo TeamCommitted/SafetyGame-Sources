@@ -20,8 +20,7 @@ Inserisci Domande
 <% if (!(ambito.equals("Amministratore Sicurezza"))) response.sendRedirect("user_page.jsp"); %>
         
         <% //Recupero le domande dal database ingDom
-			Inizializzatore i = new Inizializzatore();
-			WebConnection connection = i.getWeb();
+			WebConnection connection = Inizializzatore.getWeb();
 			ArrayList elencoDomande = null;
 			elencoDomande = connection.getElencoDomande();
 			int numeroDomInterne = 0;

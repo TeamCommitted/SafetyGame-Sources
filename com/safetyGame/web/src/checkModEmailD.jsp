@@ -24,8 +24,7 @@ Modifica Email
 		String psw = request.getParameter("password");
 		if (!(psw.equals(password))) out.println("<span class=\"fallimento\">Attenzione! La password non &egrave; corretta</span><p>Torna indietro ed inserisci i dati corretti</p>");
 		else {
-			Inizializzatore i = new Inizializzatore();
-			WebConnection connection = i.getWeb();
+			WebConnection connection = Inizializzatore.getWeb();
 			
 			Login l = new Login(username, password);			
 			Dipendente d = new Dipendente();
