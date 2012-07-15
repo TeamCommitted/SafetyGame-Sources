@@ -56,7 +56,7 @@ public class ControlNotifica{
    * 
    */  
   public void rispondi(){
-    browser.apri("https://www.google.it/");
+    browser.apri("nuovaDomanda.jsp");
     //apre il browser con la domanda --> mostra domanda
   }
 }

@@ -22,6 +22,7 @@
 package com.safetyGame.desktop.logic;
 
 import com.safetyGame.desktop.condivisi.*;
+import com.safetyGame.desktop.view.Richiesta;
 
 /**
  * ConnBack.java
@@ -33,12 +34,24 @@ public class ConnBack {
     
   private static ConnBack singleton = null;
   private DatiLogin loggato;
+  private String server;
+  private Parser parser;
     
   /** 
    * Costrutture della classe ConnBack
    */
   private ConnBack() {
     loggato=null;
+    parser=new Parser();
+    if (!parser.isOpen()){
+       Richiesta domanda_server=new Richiesta();
+    }
+    else{
+      server=parser.leggi();
+      if (server.trim().equals("")){
+        Richiesta domanda_server=new Richiesta();
+      }
+    }
   }
     
   /**
@@ -53,17 +66,36 @@ public class ConnBack {
     }
     return singleton;
   }
+  
+  public boolean continua(String server_da_grafica){
+    boolean scritto= parser.scrivi(server_da_grafica);
+    if (scritto){
+      server=parser.leggi();
+      if (server.trim().equals("")){
+        System.out.println("Errore di lettura");
+        System.exit(4);
+      }
+      return true;
+    }
+    else{
+      return false;
+    }
+  } 
+  
+  public String getServer(){
+    return server;
+  }
     
   public boolean login(DatiLogin login){
     //back.login(login.getLogin());
     //chiama le funzioni del back - end
-      loggato=login;
-    return false;
+    loggato=login;
+    return true;
   }
   
   public boolean logout(){
     //chiama le funzioni del back - end
-      loggato=null;
+    loggato=null;
     return false;
   }
   

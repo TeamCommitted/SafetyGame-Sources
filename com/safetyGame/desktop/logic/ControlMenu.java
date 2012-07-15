@@ -16,22 +16,22 @@ public class ControlMenu{
   }
   
   public void richiediDomanda(){
-    browser.apri("https://www.google.it/");
+    browser.apri("nuovaDomanda.jsp");
     //apre il browser con la pagina di richiesta della domanda
   }
   
   public void visualizzaPunteggio(){
-    browser.apri("https://www.google.it/");
+    browser.apri("user_page.jsp");
     //apre il browser con la pagina di visualizzazione dei propri punteggi
   }
   
   public void visualizzaDati(){
-    browser.apri("https://www.google.it/");
+    browser.apri("visualizzaDatiD.jsp");
     //apre il browser con la pagina di visualizzazione dei dati personali
   }
   
   public void modificaDati(){
-    browser.apri("https://www.google.it/");
+    browser.apri("visualizzaDatiD.jsp");
     //apre il browser con la pagina della modifica dei dati
   }
   

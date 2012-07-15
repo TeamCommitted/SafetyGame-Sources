@@ -35,6 +35,7 @@ public class Browser {
   private static Browser singleton = null;
   private Desktop desktop;
   private URI link;
+  private String iniziouri;
   
   /**
    * Costrutture della classe Browser
@@ -44,6 +45,7 @@ public class Browser {
        desktop = Desktop.getDesktop();
     }     
     catch(UnsupportedOperationException e){System.out.println("Le funzionalità minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(1);}
+    iniziouri=ConnBack.getInstance().getServer();
   }
   
   /**
@@ -58,9 +60,9 @@ public class Browser {
     return singleton;
   }
     
-  public void apri(String uri){
+  public void apri(String pagina){
     try{
-      link = new URI(uri);
+      link = new URI(iniziouri+pagina);
       desktop.browse(link);
     }
     catch (URISyntaxException e){System.out.println("Errore nella sintassi dell'url. Contattare l'Installatore");}

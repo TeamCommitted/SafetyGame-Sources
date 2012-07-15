@@ -50,6 +50,11 @@ public class ControlLogin{
     return connessione.login(l);
   }
   
+/*  public void tryLogin(String username, String password){
+    Browser browser=Browser.getInstance();
+    browser.apri("visualizzaDatiD.jsp");
+  }*/
+  
   /**
    * metodo che prova a generare una password
    * 

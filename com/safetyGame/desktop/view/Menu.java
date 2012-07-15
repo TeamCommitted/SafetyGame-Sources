@@ -100,9 +100,11 @@ public class Menu implements ActionListener{
    * 
    */
   private void svuota(){
-    for (int i=0;i<menu.getComponentCount();i++){
-      menu.remove(1);
+      for (int i=0;i<menu.getComponentCount();i++){
+      menu.remove(1); //rimuove il componenete in posizione i
     }
+    menu.setVisible(false);
+    menu=new JPopupMenu();
   }
  
   /**

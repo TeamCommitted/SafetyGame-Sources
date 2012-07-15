@@ -33,7 +33,7 @@ import java.io.*;
 public class Parser{
   
   private File file=null;
-  private FileReader in;
+  private FileReader in=null;
   private boolean aperto;
 
   /**
@@ -41,7 +41,7 @@ public class Parser{
    * 
    */
   public Parser(){
-    file=new File("server.txt");
+    file=new File("com/safetyGame/desktop/logic/server.txt");
     apri();
   }
 
@@ -69,11 +69,12 @@ public class Parser{
    * @return percorso stringa che contiene il percorso
    */
   public String leggi(){
+    if(!aperto){apri();}
     int carattere;
     try{carattere=in.read();}
     catch(IOException e){carattere =-1;}
     String percorso="";
-    while(carattere==-1){
+    while(carattere!=-1){
       char c= (char) carattere;
       percorso+=c;
       try{carattere=in.read();}
@@ -91,7 +92,7 @@ public class Parser{
       in= new FileReader(file);
       aperto=true;
     }
-    catch (FileNotFoundException e){aperto=false;}
+    catch (FileNotFoundException e){aperto=false;in=null;}
   }
 
   /**
@@ -101,16 +102,19 @@ public class Parser{
    * @return true se l'operazione è stata effettuata con successo, false altrimenti
    */
   public boolean scrivi(String server){
-    if (file==null){
+    if (in==null){
       PrintWriter out=null;
       try{out=new PrintWriter(file);} 
-      catch(Exception e){return false;}    
-      out.println(server);
+      catch(Exception e){return false;} 
+      if(server.charAt(server.length()-1)!='/'){
+        server+='/';
+      }
+      out.print(server);
       out.flush();
       out.close();
       apri();
       return true;
     }
-    else return false;
+    else {return false;}
   }
 }
