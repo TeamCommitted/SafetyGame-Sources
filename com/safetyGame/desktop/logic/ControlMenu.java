@@ -33,6 +33,12 @@ public class ControlMenu{
   public void modificaDati(){
     browser.apri("visualizzaDatiD.jsp");
     //apre il browser con la pagina della modifica dei dati
+    
+    /*
+       index.jsp se ha cookie mostra i dati
+       se non ha coockie --> login
+       */
+    
   }
   
   public boolean isLogged(){

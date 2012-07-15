@@ -91,7 +91,7 @@ public class WebConnection{
    * @param l login del dipendente
    * @return informazioni sul dipendente
    */
-  public Dipendente getDatiD(Login l){
+  public Dipendente getDati(Login l){
     return dati.getDatiD(l); 
   }
   
