@@ -66,7 +66,7 @@ public class ApplicazioniConnection{
    * @return informazioni sul dipendente
    */
   public Dipendente getDati(Login l){
-    return dati.getDati(l);
+    return dati.getDatiD(l);
   }
    
    /**
