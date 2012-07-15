@@ -2,7 +2,7 @@
 /*
 	La pagina index.jsp serve esclusivamente a reindirizare l'utente verso la pagina corretta.
     Se non esiste il cookie relativo allo username (o all'ambito) si viene rimandati alla pagina di login.
-    Altrimenti, si fa un controllo sull'ambito e si viene reindirizzati alla pagina utente o alla paina amministratore.
+    Altrimenti, si fa un controllo sull'ambito e si viene reindirizzati alla pagina utente o alla pagina amministratore.
 */
 %>
 

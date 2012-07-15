@@ -1,5 +1,5 @@
 table {
-	width: 650px;
+	max-width:862px;
 	border-collapse:collapse;
 	border:1px solid #FFCA5E;
 }
@@ -29,4 +29,17 @@ tbody th,td {
 	border-top: 1px solid #FFCA5E;
 	border-right: 1px solid #DDDDDD;
 	text-align: left;
+}
+
+.elencoDip {
+	letter-spacing: 0em;
+}
+
+a {
+	font-weight:bold;
+	color:#F90;
+}
+
+a:hover {
+	text-decoration:none;
 }

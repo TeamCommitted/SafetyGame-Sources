@@ -9,6 +9,13 @@
 <%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
 <%@ page language="java" import="com.safetyGame.back.access.*" %>
 <%@ page language="java" import="com.safetyGame.back.*" %>
+
+<%@ include file="html/header_pre_title.html" %> 
+Pannello Amministratore
+<%@ include file="html/header_post_title.html" %> 
+<div class="voceMenu"><a href="index.jsp">Login</a></div>
+<%@ include file="html/menu_content.html" %> 
+
 <% 
 	String username = request.getParameter("account_username"); // Ottengo lo username dal post
 	String password = request.getParameter("account_password"); // Ottengo la psw dal post
@@ -24,19 +31,9 @@
 	boolean logged = false;
 	Inizializzatore i = new Inizializzatore();
 	WebConnection connection = i.getWeb();
-	//try {
-		if (ambito.equals("Dipendente")) {
-			logged = connection.loginDip(username, password);
-		}
-		else {
-			logged = connection.loginAdmin(username, password);
-		}
-	/*}
-	catch (Exception e) {
-		logged = true;
-	}
-	// boolean logged = true;*/
 	
+	if (ambito.equals("Dipendente")) logged = connection.loginDip(username, password);
+	else logged = connection.loginAdmin(username, password);
 	
 	// Imposto i cookie salvando username, password e ambito utente
 	// Purtroppo bisogna impostare un cookie per ogni dato
@@ -51,7 +48,7 @@
 		response.addCookie(passwordCookie);
 		response.addCookie(ambitoCookie);
 	}
-	else out.println("<h1>Errore</h1>I dati che hai inserito non corrispondono. Controlla che i dati inseriti siano corretti");
+	else out.println("<span class=\"fallimento\">I dati che hai inserito non corrispondono.</span><p>Controlla che i dati inseriti siano corretti<p>");
 
 	// Redirect alla pagina successiva
 	String redirectURL = "";
@@ -61,3 +58,5 @@
 	else redirectURL = "http://localhost/examples/admin_page.jsp";
     if (logged) response.sendRedirect(redirectURL);
 %>
+
+<%@ include file="html/footer.html" %>

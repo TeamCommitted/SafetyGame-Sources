@@ -11,31 +11,31 @@
 
 <body>
         
-        <% 
-			Cookie cookies [] = request.getCookies();
-			String cookieName = null;
-			String username = null;
-			String ambito = null;
-			
-			if (cookies != null){
-				cookieName = "username";
-				for (int i = 0; i < cookies.length; i++) {
-					if (cookies [i].getName().equals(cookieName)) {
-						username = cookies[i].getValue();
-						break;
-					}
-				}
-				cookieName = "ambito";
-				for (int i = 0; i < cookies.length; i++) {
-					if (cookies [i].getName().equals(cookieName)) {
-						ambito = cookies[i].getValue();
-						break;
-					}
-				}
-			}
-			
-			if ((username == null) || (ambito == null)) {
-	%>
+	<% 
+        Cookie cookies [] = request.getCookies();
+        String cookieName = null;
+        String username = null;
+        String ambito = null;
+        
+        if (cookies != null){
+            cookieName = "username";
+            for (int i = 0; i < cookies.length; i++) {
+                if (cookies [i].getName().equals(cookieName)) {
+                    username = cookies[i].getValue();
+                    break;
+                }
+            }
+            cookieName = "ambito";
+            for (int i = 0; i < cookies.length; i++) {
+                if (cookies [i].getName().equals(cookieName)) {
+                    ambito = cookies[i].getValue();
+                    break;
+                }
+            }
+        }
+        
+        if ((username == null) || (ambito == null)) {
+    %>
 		
 		<div id = "form_login">
 			<form id="form_box" title="Form per effettuare il login" action="checkLogin.jsp" onsubmit="" method="post">
@@ -74,7 +74,7 @@
 			
 
 			<p class ="form_info">
-				Password dimenticata? <a href="" tabindex="5" accesskey="p">Recupera l'accesso</a>
+				Password dimenticata? <a href="recuperaPass.jsp" tabindex="5" accesskey="p">Recupera l'accesso</a>
 			</p>
 			
 		</div>

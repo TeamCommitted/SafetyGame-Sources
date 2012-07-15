@@ -11,29 +11,31 @@
 <%@ page language="java" import="com.safetyGame.back.*" %>
 
 <%@ include file="html/header_pre_title.html" %> 
-Nuova Domanda
-<%@ include file="html/header_post_title.html" %> 
-<%@ include file="html/menud.html" %> 
+Recupero Password
+<%@ include file="html/header_post_title.html" %>
+<%@ include file="html/menu.html" %>
 <%@ include file="html/menu_content.html" %> 
 
-<%@ include file="getCookies.jsp" %>
 <%
+	String email = request.getParameter("email");
+	String codfis = request.getParameter("codfis");
+	String ambito = request.getParameter("radio");
+	boolean successo = false;
 	
 	Inizializzatore i = new Inizializzatore();
 	WebConnection connection = i.getWeb();
-	Login l = new Login(username,password);	
 	
-	try {
-		int risposta = Integer.parseInt(request.getParameter("group1")); 
-		Domanda domanda = (Domanda) session.getAttribute("oggetto_domanda");
-		domanda.setRispostaData(risposta);
-		boolean rispostoConSuccesso = connection.setRisposta(l, domanda);
-		out.println("<span class=\"successo\">La tua risposta &egrave; stata inviata con successo!</span>");
+	Recupero r = new Recupero(email, codfis);
+	if (ambito.equals("Amministratore")) {
+		successo = connection.resetPassA(r);
 	}
-	catch(Exception e) {
-		out.println("<span class=\"fallimento\">Errore - Impossibile recuperare la risposta dalla pagina precedente. Torna indietro e riprova</span>");
+	else {
+		successo = connection.resetPassD(r);
 	}
+	
+	if (successo) out.println("<span class=\"successo\">La tua password &egrave; stata cambiata!</span><p>Riceverai la nuova password all'indirizzo che hai specificato</p>");
+	else out.println("<span class=\"fallimento\">Errore nel cambio password!</span><p>Ritenta o contatta l'amministratore di sistema</p>");
 	
 %>
-
+	
 <%@ include file="html/footer.html" %> 

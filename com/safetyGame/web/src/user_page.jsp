@@ -9,104 +9,60 @@
 <%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
 <%@ page language="java" import="com.safetyGame.back.access.*" %>
 <%@ page language="java" import="com.safetyGame.back.*" %>
-<%
-	// WebConnection connection = new WebConnection
-%>
 
 <%@ include file="html/header_pre_title.html" %>
 SafetyGame - Pannello utente
 <%@ include file="html/header_post_title.html" %>
 <%@ include file="html/menud.html" %> 
 <%@ include file="html/menu_content.html" %> 
-        <% 
-			// Ottengo le informazioni dai cookies
-			Cookie usernameCookie = null;
-			Cookie passwordCookie = null;
-			Cookie ambitoCookie = null;
-			Cookie cookies [] = request.getCookies();
-			String cookieName = null;
-			String username = null;
-			String password = null;
-			String ambito = null;
-			
-			cookieName = "username";
-			if (cookies != null){
-				for (int i = 0; i < cookies.length; i++){
-					if (cookies [i].getName().equals(cookieName)){
-						usernameCookie = cookies[i];
-						break;
-					}
-				}
-				cookieName = "password";
-				for (int i = 0; i < cookies.length; i++){
-					if (cookies [i].getName().equals(cookieName)){
-						passwordCookie = cookies[i];
-						break;
-					}
-				}
-				cookieName = "ambito";
-				for (int i = 0; i < cookies.length; i++){
-					if (cookies [i].getName().equals(cookieName)){
-						ambitoCookie = cookies[i];
-						break;
-					}
-				}
-				try {
-					username = usernameCookie.getValue();
-					password = passwordCookie.getValue();
-					ambito = ambitoCookie.getValue();
-				}
-				catch (Exception e) { response.sendRedirect("login.jsp"); }
-			}
-			else response.sendRedirect("login.jsp");
-			if (!(ambito.equals("Dipendente"))) response.sendRedirect("admin_page.jsp");
-		%>
-        <h2>Informazioni sull'account</h2>
-        <%			
-			out.println("<p>Benvenuto ");
-			out.println(username);
-			out.println("</p><p>Hai effettuato il login come ");
-			out.println(ambito);
-			out.println("</p>");
-		%>
+
+<%@ include file="getCookies.jsp" %>
+<% if (!(ambito.equals("Dipendente"))) response.sendRedirect("index.jsp"); %>
+
+    <h2>Informazioni sull'account</h2>
+    <%			
+        out.println("<p>Benvenuto <em>");
+        out.println(username);
+        out.println("</em></p><p>Hai effettuato il login come <em>");
+        out.println(ambito);
+        out.println("</em></p>");
+    %>
+    
+    <h2>Punteggi</h2>
+    <%
+        Inizializzatore i = new Inizializzatore();
+        WebConnection connection = i.getWeb();
+        Login l = new Login(username ,password);
+        Punteggio p = connection.getPunteggio(l);
+        int punt = p.getPunti();
+                    
+        out.println("Il tuo punteggio &egrave; <em>");
+        out.println(punt+"</em>");
+    %>
+    
+    <h2>Trofei e Badge</h2>
+    <%
+        // Funzione per ottenere l'elenco dei trovei e dei badge
+        ArrayList<Badge> elencoTrofei = null;
+        elencoTrofei = connection.getBadge(l,10);
+        //
+        if (elencoTrofei == null) out.println("Non hai guadagnato nessun trofeo.");
+		else if (elencoTrofei.size() == 0) out.println("Non hai guadagnato nessun trofeo.");
+        else {
+            out.println("Segue l'elenco dei tuoi trofei:");
+            out.println("<dl>");
+            String nomebadge;
+            String descrbadge;
+            Badge trofeo;
+            for (int it = elencoTrofei.size()-1; it >= 0; it--) { 
+                trofeo = elencoTrofei.get(it);
+                nomebadge = trofeo.getNome();
+                descrbadge = trofeo.getDescrizione();
+                out.println("<dt>"+nomebadge+"</dt>");
+                out.println("<dd>"+descrbadge+"</dd>");
+            }
+            out.println("</dl>");
+        }
         
-        <h2>Punteggi</h2>
-        <%
-			Inizializzatore i = new Inizializzatore();
-			WebConnection connection = i.getWeb();
-			Login l = new Login(username ,password);
-			Punteggio p = connection.getPunteggio(l);
-			int punt = p.getPunti();
-						
-			out.println("Il tuo punteggio &egrave; ");
-			out.println(punt);
-		%>
-        
-        <h2>Trofei e Badge</h2>
-        <%
-			// Funzione per ottenere l'elenco dei trovei e dei badge
-			// getPunteggio(session.getAttribute("username"));
-			ArrayList elencoTrofei = null;
-			//elencoTrofei = connection.getBadge(l,10);
-			//
-			if (elencoTrofei == null) {
-				out.println("Non hai guadagnato nessun trofeo.");
-			}
-			else {
-				out.println("Segue l'elenco dei tuoi trofei:");
-				out.println("<dl>");
-				String nomebadge;
-				String descrbadge;
-				/*
-				for (int i = elencoTrofei.size()-1; i >= 0; i--) { 
-					nomebadge = elencoTrofei.get(i).getNome();
-					descrbadge = elencoTrofei.get(i).getDescrizione();
-					out.println("<dt>"+nomebadge+"</dt>");
-					out.println("<dd>"+descrbadge+"</dd>");
-				}
-				*/
-				out.println("</dl>");
-			}
-			
-		%>
+    %>
 <%@ include file="html/footer.html" %> 

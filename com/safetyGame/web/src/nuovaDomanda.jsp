@@ -16,40 +16,10 @@ Nuova Domanda
 <%@ include file="html/menud.html" %> 
 <%@ include file="html/menu_content.html" %> 
 
-<%
-	Cookie cookies [] = request.getCookies();
-	String cookieName = null;
-	String username = null;
-	String password = null;
-	String ambito = null;
-	boolean altreDomande = true;
-	
-	// Ottengo i dati dai cookies
-	if (cookies != null){
-		cookieName = "username";
-		for (int i = 0; i < cookies.length; i++) {
-			if (cookies [i].getName().equals(cookieName)) {
-				username = cookies[i].getValue();
-				break;
-			}
-		}
-		cookieName = "password";
-		for (int i = 0; i < cookies.length; i++) {
-			if (cookies [i].getName().equals(cookieName)) {
-				password = cookies[i].getValue();
-				break;
-			}
-		}
-		cookieName = "ambito";
-		for (int i = 0; i < cookies.length; i++) {
-			if (cookies [i].getName().equals(cookieName)) {
-				ambito = cookies[i].getValue();
-				break;
-			}
-		}
-		
-		if ((username == null) || (ambito == null)) response.sendRedirect("login.jsp");
-		else if (!(ambito.equals("Dipendente"))) response.sendRedirect("admin_page.jsp");
+<%@ include file="getCookies.jsp" %>
+        
+	<%
+		if (!(ambito.equals("Dipendente"))) response.sendRedirect("admin_page.jsp");
 		else { // I cookie ritornano correttamente username, psw e ambito
 			Inizializzatore i = new Inizializzatore();
 			WebConnection connection = i.getWeb();
@@ -71,8 +41,6 @@ Nuova Domanda
 			}
 			catch(Exception e) { out.println("<h3>Complimenti! Hai risposto a tutte le domande.</h3>"); }
 		}
-	}
-	else { response.sendRedirect("login.jsp"); }	
 %>
 
 <%@ include file="html/footer.html" %> 
