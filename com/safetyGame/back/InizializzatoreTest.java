@@ -26,7 +26,7 @@ public class InizializzatoreTest {
 	private Inizializzatore iniz;
 	
 	private void init() {
-	  iniz = new Inizializzatore();
+	  //iniz = new Inizializzatore();
 	}
 	@Test
 	public void test() {

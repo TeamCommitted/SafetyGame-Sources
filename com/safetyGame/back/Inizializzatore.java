@@ -65,7 +65,8 @@ public class Inizializzatore implements ActionListener{
   private GestioneBadgeAS gestioneBadgeAS;
   protected GestioneDati gestioneDati;
   private static WebConnection webConnection = null;
-  private static ApplicazioniConnection appConnection;
+  private static ApplicazioniConnection appConnection= null;
+  private static Inizializzatore inizializzatore=null;
 
   private JFrame frame;
   private Label label;
@@ -75,7 +76,7 @@ public class Inizializzatore implements ActionListener{
    * Costruttore della classe WebConnection
    *
    */
-   public Inizializzatore() {
+   private Inizializzatore() {
      indirizzoAz = new Indirizzo("localhost/ingAz","root","");
      indirizzoDom = new Indirizzo("localhost/ingDom","root","");
      daoDipendenti = new SqlDAODipendenti(indirizzoAz);
@@ -160,7 +161,9 @@ public class Inizializzatore implements ActionListener{
    * @return webConnection riferimento alla classe webConnection
    *
    */
-  public WebConnection getWeb() {
+  public static WebConnection getWeb() {
+    if (inizializzatore==null)
+      crea();
     return webConnection;
   }
 
@@ -171,9 +174,20 @@ public class Inizializzatore implements ActionListener{
    *
    */
   public static ApplicazioniConnection getApp() {
+    if (inizializzatore==null)
+      crea();
     return appConnection;
   }
-
+  
+  /**
+   * Metodo statico che crea l'inizializzatore
+   *
+   */
+  private static synchronized void crea(){
+    if (inizializzatore==null) 
+      inizializzatore=new Inizializzatore();
+  }
+  
   /**
    * Metodo per avviare l'applicazione
    *
