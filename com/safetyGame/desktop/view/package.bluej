@@ -2,10 +2,10 @@
 dependency1.from=Menu
 dependency1.to=Login
 dependency1.type=UsesDependency
-package.editor.height=698
-package.editor.width=1464
-package.editor.x=9
-package.editor.y=44
+package.editor.height=697
+package.editor.width=1462
+package.editor.x=-13
+package.editor.y=17
 package.numDependencies=1
 package.numTargets=4
 package.showExtends=true
