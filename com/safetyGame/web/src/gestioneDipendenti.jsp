@@ -38,8 +38,7 @@ Gestione Dipendenti
                     </thead>
                     <tbody class="elencoDip">
                     	<%
-							Inizializzatore i = new Inizializzatore();
-							WebConnection connection = i.getWeb();
+							WebConnection connection = Inizializzatore.getWeb();
 							ArrayList dipendenti = connection.getElencoDipendenti();
 							Dipendente d = null;
 							boolean alt = true;

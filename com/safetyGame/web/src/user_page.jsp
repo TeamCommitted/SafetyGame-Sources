@@ -30,8 +30,7 @@ SafetyGame - Pannello utente
     
     <h2>Punteggi</h2>
     <%
-        Inizializzatore i = new Inizializzatore();
-        WebConnection connection = i.getWeb();
+        WebConnection connection = Inizializzatore.getWeb();
         Login l = new Login(username ,password);
         Punteggio p = connection.getPunteggio(l);
         int punt = p.getPunti();

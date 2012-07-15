@@ -19,8 +19,7 @@ Nuova Domanda
 <%@ include file="getCookies.jsp" %>
 <%
 	
-	Inizializzatore i = new Inizializzatore();
-	WebConnection connection = i.getWeb();
+	WebConnection connection = Inizializzatore.getWeb();
 	Login l = new Login(username,password);	
 	
 	try {

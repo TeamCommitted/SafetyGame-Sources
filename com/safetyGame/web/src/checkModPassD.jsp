@@ -25,8 +25,7 @@ Modifica Password
 		if (!(nuovaPass.equals(confPass))) out.println("<span class=\"fallimento\">Attenzione! La nuova password non coincide con la sua conferma</span><p>Torna indietro ed inserisci i dati corretti</p>");
 		else if (!(vecchiaPass.equals(password))) out.println("<span class=\"fallimento\">Attenzione! La vecchia password non &egrave; corretta</span><p>Torna indietro ed inserisci i dati corretti</p>");
 		else {
-			Inizializzatore i = new Inizializzatore();
-			WebConnection connection = i.getWeb();
+			WebConnection connection = Inizializzatore.getWeb();
 			
 			Dipendente d = null;
 			Login l = new Login(username, password);

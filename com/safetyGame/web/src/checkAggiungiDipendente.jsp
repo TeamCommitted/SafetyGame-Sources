@@ -24,8 +24,7 @@ Aggiungi Dipendente
 	String email = request.getParameter("input_email");
 	String ruolo = request.getParameter("input_ruolo");
 	
-	Inizializzatore i = new Inizializzatore();
-	WebConnection connection = i.getWeb();
+	WebConnection connection = Inizializzatore.getWeb();
 	
 	Punteggio punt = new Punteggio(0);
 	Dipendente dip = new Dipendente();

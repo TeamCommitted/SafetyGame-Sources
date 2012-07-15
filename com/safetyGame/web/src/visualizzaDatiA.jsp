@@ -31,8 +31,7 @@ I tuoi dati
 
 	<h2>Dati Personali</h2>
     <%
-        Inizializzatore i = new Inizializzatore();
-        WebConnection connection = i.getWeb();
+        WebConnection connection = Inizializzatore.getWeb();
 		ArrayList dipendenti = connection.getElencoDipendenti();
 		Dipendente dip = null;
 		Dipendente d;
