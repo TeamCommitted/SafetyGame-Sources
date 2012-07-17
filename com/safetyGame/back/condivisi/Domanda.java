@@ -3,12 +3,17 @@
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: 2012/06/16
- * Version: 1.0
+ * Version: 1.1
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120717 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
  * +----------+---------------------+---------------------
  * | 20120527 |Alessandro Cornaglia | * Domanda
  * |          |                     | + isInternaAzienda
@@ -64,33 +69,32 @@ public class Domanda{
   /**
    * Costruttore con parametri della classe Domanda
    * 
-   * @param i id della domanda
-   * @param p punteggio della domanda
-   * @param ti tipologia della domanda
-   * @param r ArrayList di risposte
-   * @param c numero risposta corretta
-   * @param te testo della domanda
-   * @param rd risposta data dal dipendente alla domanda
-   * @param m identificativo per domande dispositivi fissi o mobili
-   * @param sec tempo eventuale per la risposta
-   * @param a ambito della domanda
-   * @param inA identificativo per domande interne o esterne all'azienda
+   * @param id id della domanda
+   * @param punteggio punteggio della domanda
+   * @param tipo tipologia della domanda
+   * @param risposte ArrayList di risposte
+   * @param corretta numero risposta corretta
+   * @param testo testo della domanda
+   * @param rispData risposta data dal dipendente alla domanda
+   * @param mobile identificativo per domande dispositivi fissi o mobili
+   * @param secondi tempo eventuale per la risposta
+   * @param ambito ambito della domanda
+   * @param internaAz identificativo per domande interne o esterne all'azienda
    */
-  public Domanda(int i, Punteggio p, String ti, ArrayList<String> r, int c, String te, int rd, boolean m, int sec, String a, boolean inA) {
-    this.id = i;
-    this.punteggio = p;
-    this.tipologia = ti;
-    this.risposte = r;
-    this.corretta = c;
-    this.testo = te;
-    this.rispostaData = rd;
-    this.mobile = m;
-    this.tempo = sec;//se mi viene passato 0 lo setto a -1 per indicare che la domanda non imposta tempo
+  public Domanda(int id, Punteggio punteggio, String tipo, ArrayList<String> risposte, int corretta, String testo, int rispData, boolean mobile, int secondi, String ambito, boolean internaAz) {
+    this.id = id;
+    this.punteggio = punteggio;
+    this.tipologia = tipo;
+    this.risposte = risposte;
+    this.corretta = corretta;
+    this.testo = testo;
+    this.rispostaData = rispData;
+    this.mobile = mobile;
+    this.tempo = secondi;//se mi viene passato 0 lo setto a -1 per indicare che la domanda non imposta tempo
     if (this.tempo == 0)
       this.tempo = -1;
-    this.ambito = a;
-    this.internaAzienda = inA;
-    
+    this.ambito = ambito;
+    this.internaAzienda = internaAz;
   }
   
   /**

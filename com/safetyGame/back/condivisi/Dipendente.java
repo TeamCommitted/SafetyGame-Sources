@@ -10,6 +10,11 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120717 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
+ * +----------+---------------------+---------------------
  * | 20120531 |Alessandro Cornaglia | +getTrofei
  * |          |                     | +setTrofei
  * |          |                     | *Dipendente         
@@ -100,29 +105,30 @@ public class Dipendente {
    * Costruttore della classe Dipendente con parametri
    * 
    * @param id id dipendente
-   * @param cf codice fiscale
-   * @param n nome
-   * @param c cognome
-   * @param e email
-   * @param nn nickname
-   * @param p password
-   * @param r ruolo 
-   * @param np nuova password impostata
-   * @param trf trofei del dipendente
+   * @param codFisc codice fiscale
+   * @param nome nome
+   * @param cognome cognome
+   * @param mail email
+   * @param nick nickname
+   * @param pass password
+   * @param ruolo ruolo 
+   * @param punti punteggio dipendente
+   * @param nuovaPass nuova password impostata
+   * @param nTrofei trofei del dipendente
    */
-  public Dipendente(int id,String cf, String n, String c, String e, String nn, String p, String r, int pu, String np, int trf) {
+  public Dipendente(int id,String codFisc, String nome, String cognome, String mail, String nick, String pass, String ruolo, int punti, String nuovaPass, int nTrofei) {
 	this.id = id;  
-    this.codFiscale = cf;
-    this.nome = n;
-    this.cognome = c;
-    this.email = e;
-    this.nickname = nn;
-    this.password = p;
-    this.ruolo = r;
+    this.codFiscale = codFisc;
+    this.nome = nome;
+    this.cognome = cognome;
+    this.email = mail;
+    this.nickname = nick;
+    this.password = pass;
+    this.ruolo = ruolo;
     this.badges = new ArrayList<Badge>();
-    this.punteggio = new Punteggio(pu);
-    this.nuovaPass = np;
-    this.trofei = trf;
+    this.punteggio = new Punteggio(punti);
+    this.nuovaPass = nuovaPass;
+    this.trofei = nTrofei;
     this.ammAA = false;
     this.dataModPass = null;
   }
@@ -130,17 +136,17 @@ public class Dipendente {
   /**
    * Costruttore con parametri per costruire Dipendenti-Amministratori
    * 
-   * @param aA identificativo booleano del tipo di amministratore, 0 se  amministratore sicurezza(AS), 1 se amministratore azienda(AA)
-   * @param dmp data di modifica della password
-   * @param np nuova password
+   * @param ammA identificativo booleano del tipo di amministratore, 0 se  amministratore sicurezza(AS), 1 se amministratore azienda(AA)
+   * @param dataModPass data di modifica della password
+   * @param nuovaPass nuova password
    * @param mail email dell'amministratore
    * @param nick nickname dell'amministratore
    * @param pass password dell'amministratore
    * @param codfisc codifce fiscale dell'amministratore
-   * @param i id dell'amministratore
+   * @param id id dell'amministratore
    */
-  public Dipendente(boolean aA, DataOra dmp, String np, String mail, String nick, String pass, String codfisc, int i) {
-    this.id = i;
+  public Dipendente(boolean ammA, DataOra dataModPass, String nuovaPass, String mail, String nick, String pass, String codfisc, int id) {
+    this.id = id;
     this.codFiscale = codfisc;
     this.nome = null;
     this.cognome = null;
@@ -150,13 +156,11 @@ public class Dipendente {
     this.ruolo = null;
     this.badges = new ArrayList<Badge>();
     this.punteggio = new Punteggio();
-    this.nuovaPass = np;
+    this.nuovaPass = nuovaPass;
     this.trofei = 0;
-    this.ammAA = aA;
-    this.dataModPass = dmp;
+    this.ammAA = ammA;
+    this.dataModPass = dataModPass;
   }
-  // ho bisogno di un costruttore Dipendente(ammAA dataModPass nuova pass email nick pass codfis id) per l'amministratore
-  //dal costruttore qu� sopra rimuovi i dati dell'amministratore (ammAA dataModPass) e aggiungi un altro campo trofei
   
   /**
    * metodo get per ricavare l'id del dipendente

@@ -10,6 +10,11 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120717 |Massimo Dalla Pieta' | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
+ * +----------+---------------------+---------------------
  * | 20120531 |Massimo Dalla Pieta' | * GestionePunteggiAA
  * |          |                     | * getPunteggi
  * |          |                     | * setTrofei

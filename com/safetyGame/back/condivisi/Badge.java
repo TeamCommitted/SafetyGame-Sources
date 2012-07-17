@@ -3,14 +3,19 @@
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: 2012/06/16
- * Version: 1.0
+ * Version: 1.1
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120607 |Alessandro Cornaglia | * Badge
+ * | 20120717 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
+ * +----------+---------------------+---------------------
+ * | 20120607 |Alessandro Cornaglia | * Badtutte ge
  * |          |                     | + getDataOra
  * |          |                     | + setData
  * +----------+---------------------+---------------------
@@ -52,14 +57,15 @@ public class Badge {
    * Costruttore con parametri della classe Badge
    * 
    * @param nome nome del badge
-   * @param d descrizione del badge
-   * @param s punteggio intero di soglia
+   * @param id id del badge
+   * @param descrizione descrizione del badge
+   * @param soglia punteggio intero di soglia
    */
-  public Badge(String nome,int i, String d, int s) {
+  public Badge(String nome,int id, String descrizione, int soglia) {
     this.nome = nome;
-    this.id  = i;
-    this.descrizione = d;
-    this.soglia = s;
+    this.id  = id;
+    this.descrizione = descrizione;
+    this.soglia = soglia;
     this.dataora = null;
   }
   
@@ -84,10 +90,10 @@ public class Badge {
   
   /**
    * Metodo che consente di impostare la data e l'ora di assegnazione del badge
-   * @param dora data e ora da impostare
+   * @param dataora data e ora da impostare
    */
-  public void setData(DataOra dora) {
-	this.dataora = dora;
+  public void setData(DataOra dataora) {
+	this.dataora = dataora;
   }
   /**
    * metodo che consente di recuperare il nome di un badge

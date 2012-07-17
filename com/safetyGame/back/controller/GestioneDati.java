@@ -10,6 +10,11 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120711 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
+ * +----------+---------------------+---------------------
  * | 20120708 |Alessandro Cornaglia | + getElencoRuoli
  * +----------+---------------------+---------------------
  * | 20120611 |Alessandro Cornaglia | + recupero
@@ -53,7 +58,7 @@ import com.safetyGame.back.condivisi.*;
 /**
  * Classe GestioneDati, facade del package controller del back-end
  * @author acornagl
- * @version = 1.0
+ * @version = 1.1
  */
 public class GestioneDati{
    
