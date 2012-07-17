@@ -10,15 +10,21 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120612 |Alessandro Cornaglia | Inizializzatore
+ * | 20120612 |Alessandro Cornaglia | + Inizializzatore
  * +----------+---------------------+----------------------
- * | 20120612 | Gabriele Facchin    | grafica
- * |          |                     | WebConnection
- * |          |                     | ApplicazioniConnection
- * |          |                     | main
- * |          |                     | actionPerformed
+ * | 20120612 | Gabriele Facchin    | + grafica
+ * |          |                     | + WebConnection
+ * |          |                     | + ApplicazioniConnection
+ * |          |                     | + main
+ * |          |                     | + actionPerformed
  * +----------+---------------------+----------------------
- * | 20120613 | Gabriele Facchin    | tastiera
+ * | 20120613 | Gabriele Facchin    | + tastiera
+ * +----------+---------------------+----------------------
+ * | 20120717 | Gabriele Facchin    | - tastiera
+ * |          |                     | - grafica
+ * |          |                     | - main
+ * |          |                     | - actionPerformed
+ * |          |                     | + crea
  * +----------+---------------------+----------------------
  *
  */
