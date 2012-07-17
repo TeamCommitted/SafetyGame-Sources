@@ -11,8 +11,8 @@ public class ControlMenu{
     browser=Browser.getInstance();
   }
 
-  public boolean logout(){
-    return connessione.logout();
+  public void logout(){
+    connessione.logout();
   }
   
   public void richiediDomanda(){

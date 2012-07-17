@@ -88,12 +88,15 @@ public class Richiesta implements ActionListener{
         errore("Inserire un Server");
       }
       else{
-        boolean salva=ConnBack.getInstance().continua(server.getText().trim());
+        boolean salva=ConnBack.getInstance().continuaParser(server.getText().trim());
         if (!salva){
           errore("Server non valido o errore nei files");
         }
-        frame.setVisible(false);
-        frame=null;
+        else{
+          frame.setVisible(false);
+          frame=null;
+          ConnBack.getInstance().continuaRMI();
+        }
       }
     }
     else{ //ok2

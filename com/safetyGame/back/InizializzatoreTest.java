@@ -32,7 +32,7 @@ public class InizializzatoreTest {
 	public void test() {
 		init();
 		Login login = new Login("nick","pass");
-		System.out.println(iniz.gestioneDati.loginUser(login));
+		//System.out.println(iniz.gestioneDati.loginUser(login));
 		System.out.println(iniz.getWeb().loginDip("nick", "passo"));
 		
 	}
