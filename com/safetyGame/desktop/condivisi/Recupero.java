@@ -3,7 +3,7 @@
  * Package: com.safetygame.dasktop.condivisi
  * Author: Alessandro Cornaglia
  * Date: 2012/06/16
- * Version: 1.0
+ * Version: 1.1
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -15,6 +15,10 @@
  * |          |                     | + setEmail
  * |          |                     | + getCodFiscale
  * |          |                     | + setCodFiscale
+ * +----------+---------------------|---------------------
+ * | 20120717 | Gabriele Facchin    | + propagati gli 
+ * |          |                     | + aggiornamenti del 
+ * |          |                     | + backend 
  * +----------+---------------------|---------------------
  *
  */

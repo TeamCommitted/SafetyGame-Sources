@@ -16,6 +16,10 @@
  * |          |                     | + classe nel 
  * |          |                     | + Back End
  * +----------+---------------------|---------------------
+ * | 20120717 | Gabriele Facchin    | + propagati gli 
+ * |          |                     | + aggiornamenti del 
+ * |          |                     | + backend 
+ * +----------+---------------------|---------------------
  *
  */
 package com.safetyGame.desktop.condivisi;
