@@ -3,12 +3,17 @@
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: 2012/06/16
- * Version: 1.0
+ * Version: 1.1
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120717 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
  * +----------+---------------------+---------------------
  * | 20120607 |Alessandro Cornaglia | *DataOra
  * +----------+---------------------+---------------------
@@ -65,21 +70,21 @@ public class DataOra {
    
    /**
     * Costruttore della classe DataOra
-    * @param a anno
-    * @param me mese
-    * @param g giorno
-    * @param o ora
-    * @param mi minuti
-    * @param s secondi
+    * @param anno anno
+    * @param mese mese
+    * @param giorno giorno
+    * @param ora ora
+    * @param minuti minuti
+    * @param secondi secondi
     * 
     */
-   public DataOra(int a,int me,int g,int o,int mi,int s){
-      anno = a;
-      mese = me;
-      giorno = g;
-      ora = o;
-      minuti = mi;
-      secondi = s;
+   public DataOra(int anno,int mese,int giorno,int ora,int minuti,int secondi){
+      this.anno = anno;
+      this.mese = mese;
+      this.giorno = giorno;
+      this.ora = ora;
+      this.minuti = minuti;
+      this.secondi = secondi;
    }
 
    //da fare costruttore che da una stringa costruisca un dataOra

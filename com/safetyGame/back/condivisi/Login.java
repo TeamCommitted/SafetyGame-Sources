@@ -3,12 +3,17 @@
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: 2012/06/16
- * Version: 1.0
+ * Version: 1.1
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120717 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
  * +----------+---------------------+---------------------
  * | 20120527 |Alessandro Cornaglia | + getUsername
  * |          |                     | + setUsername
@@ -49,12 +54,12 @@ public class Login {
   /**
    * Costruttore con parametri della classe Login
    * 
-   * @param u username utente
-   * @param p password utente
+   * @param user username utente
+   * @param pass password utente
    */
-  public Login(String u, String p) {
-    this.username = u;
-    this.password = p;
+  public Login(String user, String pass) {
+    this.username = user;
+    this.password = pass;
   }
   
   /**

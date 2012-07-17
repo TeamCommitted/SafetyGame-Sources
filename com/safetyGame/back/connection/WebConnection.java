@@ -3,12 +3,17 @@
  * Package: com.safetygame.back.connection
  * Author: Gabriele Facchin
  * Date: 2012/06/16
- * Version: 1.0
+ * Version: 1.1
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
+ * +----------+---------------------+---------------------
+ * | 20120717 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
  * +----------+---------------------+---------------------
  * | 20120708 | Alessandro Cornaglia| + getElencoRuoli
  * +----------+---------------------+---------------------
@@ -58,9 +63,9 @@ public class WebConnection{
   /**
    * Costruttore della classe WebConnection
    * 
-   * @param d riferimento al facade GestioneDati 
+   * @param gestDati riferimento al facade GestioneDati 
    */
-  public WebConnection(GestioneDati d){dati=d;}
+  public WebConnection(GestioneDati gestDati){dati=gestDati;}
     
   /**
    * Metodo per il login dei dipendenti
@@ -77,6 +82,7 @@ public class WebConnection{
    * Metodo per il login degli utenti amministratori
    * 
    * @param login oggetto contenente i dati di login inseriti dall'utente
+   * @param password password dell'amministratore
    * @return boolean che conferma il successo o meno dell'operazione
    */
   public boolean loginAdmin(String username, String password, boolean tipo){
@@ -88,32 +94,32 @@ public class WebConnection{
    * Metodo che consente di reperire le informazioni di un dipendente a partire
    * dal suo login
    * 
-   * @param l login del dipendente
+   * @param login login del dipendente
    * @return informazioni sul dipendente
    */
-  public Dipendente getDati(Login l){
-    return dati.getDatiD(l); 
+  public Dipendente getDati(Login login){
+    return dati.getDatiD(login); 
   }
   
   /**
    * Metodo che consente di reperire le informazioni di un amministratore a partire
    * dal suo login
    * 
-   * @param l login dell'amministratore
+   * @param login login dell'amministratore
    * @return informazioni sull'amministratore
    */
-  public Dipendente getDatiA(Login l){
-    return dati.getDatiA(l); 
+  public Dipendente getDatiA(Login login){
+    return dati.getDatiA(login); 
   }
    
    /**
     * Metodo che consente di recuperare le statistiche di un determinato dipendente
     * 
-    * @param l login del dipendente che richiede di conoscere le statistiche
+    * @param login login del dipendente che richiede di conoscere le statistiche
     * @return statistiche del dipendente
     */
-  public Punteggio getPunteggio(Login l){
-    return dati.getStatisticheD(l);
+  public Punteggio getPunteggio(Login login){
+    return dati.getStatisticheD(login);
   }
 
    /**
@@ -122,19 +128,19 @@ public class WebConnection{
     * @param l login del dipendente che richiede di conoscere le statistiche
     * @return statistiche globali
     */ 
-  public Punteggio getStat(Login l){
-    return dati.getStatisticheGlob(l);
+  public Punteggio getStat(Login login){
+    return dati.getStatisticheGlob(login);
   }
 
   /**
     * Metodo per ottenere i dati dei badge per un dato utente
     * 
     * @param login dati dell'utente che effettua la richiesta
-    * @param n numero di badge che si vuole selezionare
+    * @param num numero di badge che si vuole selezionare
     * @return un ArrayList<Badge> contenente n badge ottenuti dall'utente 
   */
-  public ArrayList<Badge> getBadge(Login l, int n){
-    return dati.getBadgeD(l,n);
+  public ArrayList<Badge> getBadge(Login login, int num){
+    return dati.getBadgeD(login,num);
   }
 
   /**
@@ -160,73 +166,73 @@ public class WebConnection{
   /**
    * Metodo che consente la modifica della mail da parte di un dipendente
    * 
-   * @param d Dipendente che chiede di modificare la mail
+   * @param dip Dipendente che chiede di modificare la mail
    * @param mail nuovo indirizzo mail da inserire
    * @return true se operazione riuscita con successo, false altrimenti
    */
-  public boolean modMail(Dipendente d, String mail){
-    return dati.modificaEmail(d,mail);
+  public boolean modMail(Dipendente dip, String mail){
+    return dati.modificaEmail(dip,mail);
   }
      
   /**
    * Metodo che consente la rigenerazione della password per un dipendente
    * 
-   * @param d Dipendente che chiede di modificare la mail
+   * @param recupero oggetto che contienee le informazioni utli al recupero
    * @return true se operazione riuscita con successo, false altrimenti
    */
-  public boolean resetPassD(Recupero r){
-    return dati.recuperoD(r);
+  public boolean resetPassD(Recupero recupero){
+    return dati.recuperoD(recupero);
   }
    
   /**
    * Metodo che consente la rigenerazione della password per un amministratore
    * 
-   * @param d Dipendente che chiede di modificare la mail
+   * @param recupero oggetto che contiene le informazioni utli al recupero
    * @return true se operazione riuscita con successo, false altrimenti
    */
-  public boolean resetPassA(Recupero r){
-    return dati.recuperoA(r);
+  public boolean resetPassA(Recupero recupero){
+    return dati.recuperoA(recupero);
   }
    
   /**
    * Metodo che consente di recuperare una domanda 
    * 
-   * @param l oggetto Login del dipendente che deve ricevere la domanda
+   * @param login oggetto Login del dipendente che deve ricevere la domanda
    * @return domanda per il login proposto
    */
-  public Domanda mostraDomanda(Login l){
-    return dati.getDomandaD(l);
+  public Domanda mostraDomanda(Login login){
+    return dati.getDomandaD(login);
   }
   
   /**
    * Metodo che si occupa di comunicare la risposta del Dipendente
    * 
-   * @param l Login del dipendente che ha risposto
+   * @param login Login del dipendente che ha risposto
    * @param risposta Domanda posta al dipendente contenente la risposta data
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    */
-  public boolean setRisposta(Login l,Domanda risposta) {
-	return dati.setRisposta(l, risposta);
+  public boolean setRisposta(Login login,Domanda risposta) {
+	return dati.setRisposta(login, risposta);
   }
    
    /**
     * Metodo per posticipare una domanda
     * 
-    * @param l login del dipendente
-    * @param d domanda posticipata
+    * @param login login del dipendente
+    * @param domPost domanda posticipata
     * @return true se la domanda è stata posticipata correttamente, false altrimenti
     */
-  public boolean posticipa(Login l, Domanda d){
-    return dati.posticipa(l, d);
+  public boolean posticipa(Login login, Domanda domPost){
+    return dati.posticipa(login, domPost);
   }
 
    /**
     * Metodo per segnalare al sistema il logout di un utente
     * 
-    * @param l login del dipendente che ha effettuato il logout
+    * @param login login del dipendente che ha effettuato il logout
     */
-  public void logout(Login l){
-    dati.logout(l);
+  public void logout(Login login){
+    dati.logout(login);
   }
    
   /**
@@ -241,19 +247,21 @@ public class WebConnection{
   /**
    * Metodo per inserire una domanda dal server domande al server dell'azienda
    * 
+   * @param dom domanda da aggiungere
    * @return true se l'operazione è stata completata, altrimenti false   
    */
-  public boolean aggiungiDomanda(Domanda d){
-    return dati.addDomanda(d);
+  public boolean aggiungiDomanda(Domanda dom){
+    return dati.addDomanda(dom);
   }
   
   /**
    * Metodo per eliminare una domanda dal server dell'azienda
    * 
+   * @param dom domanda da rimuovere
    * @return true se l'operazione è stata completata, altrimenti false       
    */   
-  public boolean cancellaDomanda(Domanda d){
-    return dati.remDomanda(d);
+  public boolean cancellaDomanda(Domanda dom){
+    return dati.remDomanda(dom);
   }
 
   /**
@@ -268,43 +276,43 @@ public class WebConnection{
   /**
    * Metodo per modificare i trofei di un dipendente
    * 
-   * @param Dip il dipendente che si vuole modificare
-   * @param n numero di trofei che si vuole assegnare
+   * @param dip il dipendente che si vuole modificare
+   * @param num numero di trofei che si vuole assegnare
    * @return true se l'operazione ha successo, altrimenti false  
    */
-  public boolean setTrofei(Dipendente d, int n){
-    return dati.setTrofei(d, n);
+  public boolean setTrofei(Dipendente dip, int num){
+    return dati.setTrofei(dip, num);
   }
    
   /**
    * Metodo per aggiungere un dipendente
    * 
-   * @param Dip oggetto contenente i dati del nuovo dipendente
+   * @param dip oggetto contenente i dati del nuovo dipendente
    * @return true se l'operazione viene completata con successo, altrimenti false    
    */
-  public boolean aggiungiDipendente(Dipendente d){
-    return dati.aggiungiDipendente(d);
+  public boolean aggiungiDipendente(Dipendente dip){
+    return dati.aggiungiDipendente(dip);
   }
    
   /**
    * Metodo per eliminare un Dipendente
    * 
-   * @param Dip oggetto contenente i dati del dipendente da eliminare
+   * @param dip oggetto contenente i dati del dipendente da eliminare
    * @return true se l'operazione viene completata con successo, altrimenti false    
    */
-  public boolean cancellaDipendente(Dipendente d){
-    return dati.cancellaDipendente(d);
+  public boolean cancellaDipendente(Dipendente dip){
+    return dati.cancellaDipendente(dip);
   }
 
   /**
    * Metodo per modificare i dati di un dipendente
    * 
-   * @param newDip oggetto contenente i nuovi dati del dipendente da modificare
-   * @param oldDip oggetto contenente i vecchi dati del dipendente da modificare
+   * @param dipNew oggetto contenente i nuovi dati del dipendente da modificare
+   * @param dipOld oggetto contenente i vecchi dati del dipendente da modificare
    * @return true se l'operazione viene completata con successo, altrimenti false
    */
-  public boolean modDipendente(Dipendente dOld, Dipendente dNew){
-    return dati.modDipendente(dNew, dOld);
+  public boolean modDipendente(Dipendente dipOld, Dipendente dipNew){
+    return dati.modDipendente(dipNew, dipOld);
   }
    
   /**
@@ -319,12 +327,12 @@ public class WebConnection{
   /**
    * Metodo per assegnare un badge
    * 
-   * @param l dati dell'utente che si deve controllare
-   * @param D domanda risposta dall'utente
+   * @param login dati dell'utente che si deve controllare
+   * @param dom domanda risposta dall'utente
    * @return true se l'utente ha ricevuto un badge, altrimenti false    
    */
-  public boolean assegnaBadge(Domanda D, Login l) {
-    return dati.assegnaBadge(D, l);
+  public boolean assegnaBadge(Domanda dom, Login login) {
+    return dati.assegnaBadge(dom, login);
   }
 
   /**
