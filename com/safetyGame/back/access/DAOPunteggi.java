@@ -10,6 +10,11 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120718 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
+ * +----------+---------------------+---------------------
  * | 20120512 | Gabriele Facchin    | + getStat
  * |          |                     | + getGlobalStat
  * +----------+---------------------|---------------------
@@ -31,16 +36,16 @@ public interface DAOPunteggi{
   /**
    * Metodo che prende il punteggio di un Dipendente dal database
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
    * @return l'oggetto Punteggio contenente il totale del punteggio del Dipendente
    * 
    */    
-  public Punteggio getStat(Dipendente d);
+  public Punteggio getStat(Dipendente dip);
   
   /**
    * Metodo che genera le statistiche dato un Dipendente
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
    * @return l'oggetto Punteggio contenente le statistiche dei dipendenti (e dell'azienda) a lui vicini
    * 
    */    

@@ -10,6 +10,11 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120718 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
+ * +----------+---------------------+---------------------
  * | 20120519 | Gabriele Facchin    | + SqlDAOPunteggi
  * |          |                     | + getStat
  * +----------+---------------------|---------------------
@@ -38,6 +43,8 @@ public class SqlDAOPunteggi implements DAOPunteggi{
   
   /**
    * Costruttore della classe SqlDAOPunteggi
+   * @param azienda indirizzo del server aziendale
+   * @param domade indirizzo del server domande
    * 
    */
   public SqlDAOPunteggi(Indirizzo azienda, Indirizzo domande){
@@ -48,12 +55,12 @@ public class SqlDAOPunteggi implements DAOPunteggi{
   /**
    * Metodo che prende il punteggio di un Dipendente dal database
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
    * @return l'oggetto Punteggio contenente il totale del punteggio del Dipendente
    * 
    */    
-  public Punteggio getStat(Dipendente d){//
-    ResultSet rs = serverAzienda.selezione("Storico","punteggio","IDDipendente="+d.getId(),"");
+  public Punteggio getStat(Dipendente dip){//
+    ResultSet rs = serverAzienda.selezione("Storico","punteggio","IDDipendente="+dip.getId(),"");
     int totale=0;
     boolean finito = false;
     while(!finito){
@@ -69,7 +76,7 @@ public class SqlDAOPunteggi implements DAOPunteggi{
   /**
    * Metodo che genera le statistiche dato un Dipendente
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
    * @return l'oggetto Punteggio contenente le statistiche dei dipendenti (e dell'azienda) a lui vicini
    * 
    */    

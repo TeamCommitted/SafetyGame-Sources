@@ -55,11 +55,11 @@ public class UpdateLog extends IOException {
   /**
    * Metodo che scrive una determinata frase all'interno dello stream aperto
    * 
-   * @param s stringa da scrivere
+   * @param log stringa da scrivere
    */  
-  public void scrivi(String s){
+  public void scrivi(String log){
     synchronized (out){
-      out.println(s);
+      out.println(log);
       out.flush();
     } 
   }
@@ -67,10 +67,10 @@ public class UpdateLog extends IOException {
   /**
     * Metodo che scrive una stringa sullo stream aperto e chiude il file
     * 
-    * @param s stringa da scrivere
+    * @param log stringa da scrivere
     */
-  public synchronized void scriviChiudi(String s){
-      out.println(s);
+  public synchronized void scriviChiudi(String log){
+      out.println(log);
       out.flush();
       out.close();
   }
