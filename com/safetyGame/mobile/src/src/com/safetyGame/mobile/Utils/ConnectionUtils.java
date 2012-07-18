@@ -104,6 +104,9 @@ public class ConnectionUtils
 				badges[0] = parseXML(xml, "testo", 0);
 				badges[1] = parseXML(xml, "testo", 1);
 				return new Punteggi(parseXML(xml, "rispostedate", 0), parseXML(xml, "rispostecorrette", 0), parseXML(xml, "risposteerrate", 0), parseXML(xml, "punti", 0), badges, 2);
+			} else if (url.contains("cambioPassw"))
+			{
+				return Boolean.valueOf(true);
 			}
 		}
 
