@@ -34,7 +34,7 @@ public class SqlDAOLogin implements DAOLogin{
   
   /**
    * Costruttore della classe SqlDAOLogin
-   * 
+   * @param azienda indirizzo del server aziendale
    */
   
   public SqlDAOLogin(Indirizzo azienda){
@@ -44,14 +44,14 @@ public class SqlDAOLogin implements DAOLogin{
   /**
    * Metodo che prova il login di un Amministratore
    * 
-   * @param l Oggetto Login da cui si prendono le informazioni
+   * @param login Oggetto Login da cui si prendono le informazioni
    * @param  tipo booleano: 1 se amministratore azienda(AA), 0 se amministratore sicurezza(AS) 
    * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */    
-  public boolean loginAmministratore(Login l, boolean tipo){
-    String username = l.getUsername();
-    String password = l.getPassword();
+  public boolean loginAmministratore(Login login, boolean tipo){
+    String username = login.getUsername();
+    String password = login.getPassword();
     ResultSet rs= serverAzienda.selezione("Amministratore","*", "nickname='"+username+"' AND (password='"+password+"' OR passmod='"+password+"') AND tipo_amministratore="+tipo,""); 
     try{
       int ID = rs.getInt("ID");
@@ -63,13 +63,13 @@ public class SqlDAOLogin implements DAOLogin{
   /**
    * Metodo che prova il login di un Dipendente
    * 
-   * @param l Oggetto Login da cui si prendono le informazioni
+   * @param login Oggetto Login da cui si prendono le informazioni
    * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */    
-  public boolean loginDipendente(Login l){
-    String username = l.getUsername();
-    String password = l.getPassword();
+  public boolean loginDipendente(Login login){
+    String username = login.getUsername();
+    String password = login.getPassword();
     ResultSet rs= serverAzienda.selezione("Dipendente","*", "nickname='"+username+"' AND (password='"+password+"' OR passmod='"+password+"')",""); 
     try{
       int ID = rs.getInt("ID");

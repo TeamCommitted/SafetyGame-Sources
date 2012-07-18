@@ -10,6 +10,11 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120718 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
+ * +----------+---------------------+---------------------
  * | 20120422 | Gabriele Facchin    | + Indirizzo
  * |          |                     | + finalize
  * |          |                     | + inserisciRiga
@@ -68,6 +73,8 @@ public class Indirizzo{
   /**
    * Metodo che inserisce una tupla di valori all'interno delle colonne della tabella selezionata 
    * 
+   * @param tabella nome della tabella dove eseguire la query
+   * @param colonne colonne della tabella dove saranno inseriti i dati
    * @param valori array di valori delle colonne della tupla
    * @return completamento o meno dell'inserimento
    * 

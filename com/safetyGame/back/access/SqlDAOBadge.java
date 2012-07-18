@@ -10,6 +10,11 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120712 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
+ * +----------+---------------------+---------------------
  * | 20120520 | Gabriele Facchin    | + SqlDAOBadge
  * |          |                     | + badgeD
  * +----------+---------------------|---------------------
@@ -38,6 +43,8 @@ public class SqlDAOBadge implements DAOBadge{
   /**
    * Costruttore della classe SqlDAOBadge
    * 
+   * @param azienda indirizzo del server aziendale
+   * 
    */
   
   public SqlDAOBadge(Indirizzo azienda){
@@ -47,13 +54,13 @@ public class SqlDAOBadge implements DAOBadge{
   /**
    * Metodo che prende i badge ottenute da un Dipendente dal database
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
    * @return un ArrayList di Badge che contiene i Badge di quel Dipendente
    * 
    */     
-  public ArrayList<Badge> badgeD(Dipendente d){ //
-    ResultSet rs = serverAzienda.selezione("Assegnato INNER JOIN Badge ON IDBadge=ID","ID, il, nome, descrizione, soglia","IDDipendente="+d.getId(),"");
-    ArrayList<Badge> b = new ArrayList<Badge>();
+  public ArrayList<Badge> badgeD(Dipendente dip){ //
+    ResultSet rs = serverAzienda.selezione("Assegnato INNER JOIN Badge ON IDBadge=ID","ID, il, nome, descrizione, soglia","IDDipendente="+dip.getId(),"");
+    ArrayList<Badge> ritorno = new ArrayList<Badge>();
     boolean trovato = false;
     String nomeB="";
     String descr="";
@@ -69,13 +76,13 @@ public class SqlDAOBadge implements DAOBadge{
         DataOra da = new DataOra(data);
         Badge temp=new Badge(nomeB, ID, descr,punti);
         temp.setData(da);
-        b.add(temp);      
+        ritorno.add(temp);      
         rs.next();
       }
       catch(SQLException e){trovato=true;}  
     }
     //if (b.size()==0){}//b=null;}
-    return b;
+    return ritorno;
   }
   
   /**
@@ -86,7 +93,7 @@ public class SqlDAOBadge implements DAOBadge{
    */     
   public ArrayList<Badge> badgeAS(){//
     ResultSet rs = serverAzienda.selezione("Badge","*","","");
-    ArrayList<Badge> b = new ArrayList<Badge>();
+    ArrayList<Badge> ritorno = new ArrayList<Badge>();
     boolean trovato = false;
     String nomeB="";
     String descr="";
@@ -98,27 +105,27 @@ public class SqlDAOBadge implements DAOBadge{
         descr = rs.getString("descrizione");
         punti = rs.getInt("soglia");
         Badge temp=new Badge(nomeB, ID, descr,punti);
-        b.add(temp);      
+        ritorno.add(temp);      
         rs.next();
       }
       catch(SQLException e){trovato=true;}  
     }
-    if (b.size()==0){b=null;}
-    return b;
+    if (ritorno.size()==0){ritorno=null;}
+    return ritorno;
   }
   
   /**
    * Metodo che assegna una Badge ad un Dipendente
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
-   * @param b Oggetto Badge che deve essere assegnato
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
+   * @param badge Oggetto Badge che deve essere assegnato
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */     
-  public boolean assegna(Dipendente d, Badge b){//DA TESTARE
+  public boolean assegna(Dipendente dip, Badge badge){//DA TESTARE
     String valori[]=new String [3];
-    valori[0]=""+d.getId();
-    valori[1]=""+b.getId();
+    valori[0]=""+dip.getId();
+    valori[1]=""+badge.getId();
     DataOra data=new DataOra();
     valori[2]="'"+data.toString()+"'";
     return serverAzienda.inserisciRiga("Assegnato","IDDipendente, IDBadge, il",valori);

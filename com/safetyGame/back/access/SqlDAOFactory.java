@@ -94,6 +94,7 @@ public class SqlDAOFactory extends DAOFactory
      * implementazione della classe interfaccia DAOPunteggi
      *
      * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
+     * @param domande oggetto Indirizzo contenente i recapiti per il server contenente le domande
      * @return l'oggetto SqlDAOPunteggi istanziato
      *
      */

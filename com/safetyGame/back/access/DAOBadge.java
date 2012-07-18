@@ -10,6 +10,11 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120712 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
+ * +----------+---------------------+---------------------
  * | 20120512 | Gabriele Facchin    |  + badgeD
  * +----------+---------------------|---------------------
  *
@@ -32,11 +37,11 @@ public interface DAOBadge{
   /**
    * Metodo che prende i badge ottenute da un Dipendente dal database
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
    * @return un ArrayList di Badge che contiene i Badge di quel Dipendente
    * 
    */    
-  public ArrayList<Badge> badgeD(Dipendente d);
+  public ArrayList<Badge> badgeD(Dipendente dip);
 
   /**
    * Metodo che prende i badge dal database
@@ -49,10 +54,10 @@ public interface DAOBadge{
   /**
    * Metodo che assegna una Badge ad un Dipendente
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
-   * @param b Oggetto Badge che deve essere assegnato
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
+   * @param badge Oggetto Badge che deve essere assegnato
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */         
-  public boolean assegna(Dipendente d, Badge b);
+  public boolean assegna(Dipendente dip, Badge badge);
 }
