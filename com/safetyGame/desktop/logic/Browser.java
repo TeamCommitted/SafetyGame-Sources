@@ -63,7 +63,7 @@ public class Browser {
   public void apri(String pagina){
     try{
       link = new URI(iniziouri+pagina);
-      desktop.browse(link);
+      desktop.browse(link);//desktop.browse(new URI("http://www.google.it"));--> cosi mi funziona --> corny
     }
     catch (URISyntaxException e){System.out.println("Errore nella sintassi dell'url. Contattare l'Installatore");}
     catch (SecurityException e){System.out.println("Occorre avere il permesso per aprire il browser. Contattare l'Installatore"); System.exit(3);}
