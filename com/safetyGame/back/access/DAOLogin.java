@@ -10,6 +10,11 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120718 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
+ * +----------+---------------------+---------------------
  * | 20120512 | Gabriele Facchin    | + loginAmministratore
  * |          |                     | + loginDipendente
  * +----------+---------------------|---------------------
@@ -31,12 +36,12 @@ public interface DAOLogin{
   /**
    * Metodo che prova il login di un Amministratore
    * 
-   * @param l Oggetto Login da cui si prendono le informazioni
+   * @param login Oggetto Login da cui si prendono le informazioni
    * @param  tipo booleano: 1 se amministratore azienda(AA), 0 se amministratore sicurezza(AS) 
    * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */  
-  public boolean loginAmministratore(Login l, boolean tipo);
+  public boolean loginAmministratore(Login login, boolean tipo);
   
   /**
    * Metodo che prova il login di un Dipendente
@@ -45,6 +50,6 @@ public interface DAOLogin{
    * @return un boolean che indica se il login e` avvenuto con successo o no
    * 
    */    
-  public boolean loginDipendente(Login l);
+  public boolean loginDipendente(Login login);
 
 }

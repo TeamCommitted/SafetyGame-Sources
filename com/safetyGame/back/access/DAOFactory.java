@@ -11,6 +11,11 @@ package com.safetyGame.back.access;
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120718 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
+ * +----------+---------------------+---------------------
  * | 20120512 | Gabriele Facchin    | + creaDAOLogin
  * |          |                     | + creaDAODipendenti
  * |          |                     | + creaDAODomande
@@ -63,6 +68,7 @@ public abstract class DAOFactory{
    * Prototipo del metodo che la Factory implementare per creare l'oggetto DAOPunteggi
    * 
    * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
+   * @param domande oggetto Indirizzo contenente i recapiti per il server contenente le domande
    * 
    */   
   public abstract DAOPunteggi creaDAOPunteggi(Indirizzo azienda, Indirizzo Domande);

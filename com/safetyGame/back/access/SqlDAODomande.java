@@ -10,6 +10,11 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120718 |Alessandro Cornaglia | Tutti i metodi sono
+ * |          |                     | stati aggiornati assegnado
+ * |          |                     | a alle variabili 
+ * |          |                     | nomi significativi
+ * +----------+---------------------+---------------------
  * | 20120528 | Gabriele Facchin    | + SqlDAODomande
  * |          |                     | + prendiCampiDomanda
  * |          |                     | + getDomanda
@@ -59,25 +64,25 @@ public class SqlDAODomande implements DAODomande{
    */   
   private Domanda prendiCampiDomanda(int id){//
     ResultSet rs=serverDomande.selezione("Domanda","*","ID="+id,"");
-    Domanda d=new Domanda();
+    Domanda dom=new Domanda();
     Punteggio p;
     String tipologia, testod, ambito;
     Boolean mobile;
     int tempo;
     try{
-      d.setId(id);
+      dom.setId(id);
       p=new Punteggio(rs.getInt("punteggio"));
-      d.setPunteggio(p);
+      dom.setPunteggio(p);
       tipologia= rs.getString("tipologia");
-      d.setTipologia(tipologia);
+      dom.setTipologia(tipologia);
       testod= rs.getString("testo_domanda");
-      d.setTesto(testod);
+      dom.setTesto(testod);
       mobile= rs.getBoolean("mobile");
-      d.setMobile(mobile);
+      dom.setMobile(mobile);
       tempo= rs.getInt("tempo");
-      d.setTempo(tempo);
+      dom.setTempo(tempo);
       ambito= rs.getString("ambito");
-      d.setAmbito(ambito);
+      dom.setAmbito(ambito);
     }
     catch(SQLException e){return null;}
     ResultSet rss=serverDomande.selezione("Risposta INNER JOIN Domanda_Risposta ON ID=IDr","*","IDd="+id,"ORDER BY IDr ASC");
@@ -101,20 +106,20 @@ public class SqlDAODomande implements DAODomande{
       }
       i++;
     }
-    d.setCorretta(contatoreCorretta);
-    d.setRisposte(risposte);
-    return d;
+    dom.setCorretta(contatoreCorretta);
+    dom.setRisposte(risposte);
+    return dom;
   }
   
   /**
    * Metodo che preleva una domanda per il Dipendente
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
    * @return l'oggetto Domanda che contiene una domanda
    * 
    */   
-  public Domanda getDomanda(Dipendente d){//
-    ResultSet rs=serverAzienda.selezione("Storico","IDdomanda","IDdipendente="+d.getId()+" AND punteggio=-1","");
+  public Domanda getDomanda(Dipendente dip){//
+    ResultSet rs=serverAzienda.selezione("Storico","IDdomanda","IDdipendente="+dip.getId()+" AND punteggio=-1","");
     int id=-1;
     boolean domanda=true;
     try{
@@ -122,7 +127,7 @@ public class SqlDAODomande implements DAODomande{
     }
     catch(SQLException e){domanda=false;}  
     if (!domanda){//non c'e' una domanda non risposta, devo prelevare una nuova domanda, mi costruisco un insieme di domande corrette per l'utente (errate + non risposte)
-      rs=serverAzienda.selezione("Storico as s RIGHT JOIN Domanda as d ON s.IDdomanda=d.ID","d.ID","s.IDdipendente="+d.getId()+" AND (s.punteggio=0 OR s.punteggio IS NULL)","");
+      rs=serverAzienda.selezione("Storico as s RIGHT JOIN Domanda as d ON s.IDdomanda=d.ID","d.ID","s.IDdipendente="+dip.getId()+" AND (s.punteggio=0 OR s.punteggio IS NULL)","");
       ArrayList<Integer> idQuery = new ArrayList<Integer>();
       boolean trovato=false;
       while(!trovato){
@@ -134,7 +139,7 @@ public class SqlDAODomande implements DAODomande{
         catch(SQLException e){trovato=true;}
       }
       if(idQuery.isEmpty()){
-          rs = serverAzienda.selezione("Domanda", "ID", "ID NOT IN (SELECT IDdomanda FROM Storico WHERE IDdipendente="+d.getId()+")", "");
+          rs = serverAzienda.selezione("Domanda", "ID", "ID NOT IN (SELECT IDdomanda FROM Storico WHERE IDdipendente="+dip.getId()+")", "");
           trovato=false;
           while(!trovato){
             try{
@@ -159,24 +164,24 @@ public class SqlDAODomande implements DAODomande{
   /**
    * Metodo che posticipa una domanda sottoposta ad un dipendente
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean posticipa(Dipendente d, Domanda dom){//
-    return serverAzienda.modificaRiga("Storico","punteggio=-1","IDdipendente="+d.getId()+" AND IDdomanda="+dom.getId());
+  public boolean posticipa(Dipendente dip, Domanda dom){//
+    return serverAzienda.modificaRiga("Storico","punteggio=-1","IDdipendente="+dip.getId()+" AND IDdomanda="+dom.getId());
   }
   
   /**
    * Metodo che imposta la risposta di una domanda sottoposta ad un dipendente
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean rispondi(Dipendente d, Domanda dom){//
+  public boolean rispondi(Dipendente dip, Domanda dom){//
     int punti;
     String corretta = "FALSE";
     if(dom.getRispostaData()==-1){
@@ -191,7 +196,7 @@ public class SqlDAODomande implements DAODomande{
         punti=(dom.getPunteggio().getPunti())/2;
       }
     }
-    return serverAzienda.modificaRiga("Storico","risposta=TRUE, corretta="+corretta+", punteggio="+punti,"IDdipendente="+d.getId()+" AND IDdomanda="+dom.getId());
+    return serverAzienda.modificaRiga("Storico","risposta=TRUE, corretta="+corretta+", punteggio="+punti,"IDdipendente="+dip.getId()+" AND IDdomanda="+dom.getId());
   }
 
   /**
@@ -247,13 +252,13 @@ public class SqlDAODomande implements DAODomande{
    * (eventualmente parziali per tipoin caso che venga 
    * specificata una domanda dom)
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
    * @param dom Oggetto Domanda per il controllo del parziale
    * @return ArrayList che contiene l'elenco di tutte le Domande
    * 
    */   
-  public ArrayList<Domanda> domande(Dipendente d, Domanda dom){//
-    ResultSet rs=serverAzienda.selezione("Storico","IDdomanda","IDdipendente="+d.getId(),"");
+  public ArrayList<Domanda> domande(Dipendente dip, Domanda dom){//
+    ResultSet rs=serverAzienda.selezione("Storico","IDdomanda","IDdipendente="+dip.getId(),"");
     ArrayList<Integer> id = new ArrayList<Integer>();
     boolean trovato = false;
     int ID;
@@ -293,9 +298,9 @@ public class SqlDAODomande implements DAODomande{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean addDomanda(Domanda d){//
+  public boolean addDomanda(Domanda dom){//
     String s[]=new String[1];
-    s[0]="'"+d.getId()+"'";
+    s[0]="'"+dom.getId()+"'";
     return serverAzienda.inserisciRiga("Domanda","ID",s);
   }
   
@@ -306,14 +311,14 @@ public class SqlDAODomande implements DAODomande{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean remDomanda(Domanda d){//
-    return serverAzienda.cancellaRiga("Domanda","ID="+d.getId());
+  public boolean remDomanda(Domanda dom){//
+    return serverAzienda.cancellaRiga("Domanda","ID="+dom.getId());
   }
   
   /**
    * Metodo che scrive sul database che una domanda e` stata proposta al Dipendente
    * 
-   * @param d Oggetto Dipendente da cui si prendono le informazioni
+   * @param dip Oggetto Dipendente da cui si prendono le informazioni
    * @param dom Oggetto Domanda da cui si prendono le informazioni della domanda
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
