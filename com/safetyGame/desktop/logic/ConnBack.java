@@ -22,6 +22,7 @@
 package com.safetyGame.desktop.logic;
 
 import com.safetyGame.desktop.condivisi.*;
+import com.safetyGame.desktop.view.Notifica;
 import com.safetyGame.desktop.view.Richiesta;
 import java.io.*;
 import java.rmi.*;
@@ -41,6 +42,11 @@ public class ConnBack {
   private Parser parser;
   private Pacchetto pack;
   private Domanda da_rispondere;
+  private Timer timer_proponi;
+  private Timer timer_chiedi;
+  private long tempo_proposta=120000; //2 minuti
+  private long tempo_richiesta=300000; //5 minuti
+  private boolean pop; // evita che si possa effettuare il logout quando vi sono finestre di nuova domanda aperte
     
   /** 
    * Costrutture della classe ConnBack
@@ -48,6 +54,11 @@ public class ConnBack {
   private ConnBack() {
     loggato=null;
     parser=new Parser();
+    timer_chiedi=new Timer(0,0);
+    timer_proponi=new Timer(0,1);
+    timer_proponi.start();
+    timer_chiedi.start();
+    pop=false;
     if (!parser.isOpen()){
        Richiesta domanda_server=new Richiesta();
     }
@@ -108,17 +119,24 @@ public class ConnBack {
       prova_login=pack.login(login.getUsername(), login.getPassword());
     }
     catch(RemoteException e){prova_login=false;}
-    if (prova_login)
+    if (prova_login){
       loggato=login;
+      resetTimerRichiesta();
+      resetTimerProposta();
+    }
     return prova_login;
   }
   
   public void logout(){
-    try{
-      pack.logout(loggato.getLogin());
-      loggato=null;
+    if (!pop){
+      try{
+        pack.logout(loggato.getLogin());
+        loggato=null;
+        timer_proponi.setTempo(0);
+        timer_chiedi.setTempo(0);
+      }
+      catch(RemoteException e){}
     }
-    catch(RemoteException e){}
   }
   
   private void preleva_domanda(){
@@ -150,6 +168,26 @@ public class ConnBack {
     }
     catch(RemoteException e){recuperata=false;}
     return recuperata;
+  }
+  
+  public void notificaDomanda(){
+    if (isLogged()){
+      Notifica n=new Notifica(new ControlNotifica());
+      pop=true;
+    }
+  }
+  
+  public boolean mayApplyForNewQuestion(){
+    return timer_chiedi.isFinito();
+  }
+  
+  public void resetTimerRichiesta(){
+    timer_chiedi.setTempo(tempo_richiesta);
+  }
+  
+  public void resetTimerProposta(){
+    timer_proponi.setTempo(tempo_proposta);
+    pop=false;
   }
   
   public boolean isLogged(){

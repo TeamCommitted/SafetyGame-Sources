@@ -8,7 +8,7 @@ public class TimerTest {
 
 	private Timer timer;
 	private void init() {
-	  timer =  new Timer(5000);
+	  timer =  new Timer(5000,0);
 	}
 	@Test
 	public void runTest() {

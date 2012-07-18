@@ -28,18 +28,20 @@ package com.safetyGame.desktop.logic;
  * @version 1.0
  */
 public class Timer extends Thread{
-  private int tempo;
+  private long tempo;
   private boolean finito;
   private boolean cambiato;
+  private int ID;
 
   /**
    * Costruttore della classe Timer
    * 
    */
-  public Timer(int t){
-    tempo = t;
+  public Timer(long tot_tempo, int id){
+    tempo = tot_tempo;
     finito=false;
     cambiato=false;
+    ID=id;
   }
 
   /**
@@ -49,8 +51,8 @@ public class Timer extends Thread{
   public void run(){
     while (true){
       while(!finito){
-        int tempocopia=tempo;
-        int attesa=tempocopia/10;
+        long tempocopia=tempo;
+        long attesa=tempocopia/10;
         while(tempocopia>0){
           try{sleep(attesa);}
           catch(InterruptedException e){tempocopia+=attesa-1;}
@@ -64,6 +66,11 @@ public class Timer extends Thread{
           finito=false;
           cambiato=false;
         }
+        if (finito){
+          if (ID==1){
+            ConnBack.getInstance().notificaDomanda();
+          }
+        }
       }
       //notifica al connback tramite metodo statico? :O
       try{sleep(10000);}
@@ -76,7 +83,7 @@ public class Timer extends Thread{
    * 
    * @param t nuovo tempo di attesa
    */
-  public void setTempo(int t){
+  public void setTempo(long t){
     tempo=t;
     cambiato=true;
     finito=false;
@@ -96,7 +103,7 @@ public class Timer extends Thread{
    * 
    * @return tempo
    */
-  public int getTempo(){
+  public long getTempo(){
     return tempo;
   }
 }

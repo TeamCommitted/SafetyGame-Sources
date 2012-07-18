@@ -45,7 +45,7 @@ public class Browser {
        desktop = Desktop.getDesktop();
     }     
     catch(UnsupportedOperationException e){System.out.println("Le funzionalita` minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(2);}
-    iniziouri="http://"+ConnBack.getInstance().getServer();
+    iniziouri="http://"+ConnBack.getInstance().getServer().trim();
   }
   
   /**
@@ -62,8 +62,7 @@ public class Browser {
     
   public void apri(String pagina){
     try{
-      link = new URI(iniziouri+pagina);
-      desktop.browse(link);//desktop.browse(new URI("http://www.google.it"));//--> cosi mi funziona --> corny
+      desktop.browse(new URI(iniziouri+pagina.trim()));
     }
     catch (URISyntaxException e){System.out.println("Errore nella sintassi dell'url. Contattare l'Installatore");}
     catch (SecurityException e){System.out.println("Occorre avere il permesso per aprire il browser. Contattare l'Installatore"); System.exit(3);}

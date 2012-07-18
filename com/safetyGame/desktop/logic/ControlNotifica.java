@@ -49,6 +49,7 @@ public class ControlNotifica{
     boolean b=false;
     for (int i=0; i<3 && !b; i++)
       b=connessione.posticipa();
+    connessione.resetTimerProposta();
   }
   
   /**
@@ -57,6 +58,7 @@ public class ControlNotifica{
    */  
   public void rispondi(){
     browser.apri("nuovaDomanda.jsp");
+    connessione.resetTimerProposta();
     //apre il browser con la domanda --> mostra domanda
   }
 }
