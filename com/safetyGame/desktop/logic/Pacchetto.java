@@ -29,7 +29,6 @@ import java.rmi.*;
  * @author gfacchin
  * @version 0.1
  */
-
 public interface Pacchetto extends Remote{
 
   /**
@@ -37,7 +36,7 @@ public interface Pacchetto extends Remote{
    * 
    * @param user lo username
    * @param pass la password
-   * @return true se il login è effettuato, false altrimenti
+   * @return true se il login e' effettuato, false altrimenti
    */
   public boolean login(String user, String pass) throws RemoteException;
 
@@ -61,7 +60,7 @@ public interface Pacchetto extends Remote{
    * 
    * @param login l'oggetto login che individua il dipendente loggato
    * @param domanda la domanda da posticipare
-   * @return true se la domanda è stata posticipata, false altrimenti
+   * @return true se la domanda e' stata posticipata, false altrimenti
    */
   public boolean posticipa(Login login,Domanda domanda) throws RemoteException;
 
@@ -69,7 +68,7 @@ public interface Pacchetto extends Remote{
    * metodo che consente di effettuare il ripristino della password
    * 
    * @param recupero l'oggetto recupero contenente i dati richiesti per il ripristino dela password
-   * @return true se la password è stata reimpostata, false altrimenti
+   * @return true se la password e' stata reimpostata, false altrimenti
    */
   public boolean recupera(Recupero recupero) throws RemoteException;
 }

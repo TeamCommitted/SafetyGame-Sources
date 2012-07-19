@@ -32,8 +32,8 @@ public class InizializzatoreTest {
 	
 	private void init() {
 	  //iniz = new Inizializzatore();
-		iniz = Inizializzatore.inizializzatore;	
-		iniz.crea();
+		//iniz = Inizializzatore.inizializzatore;	
+		//iniz.crea();
 	}
 	@Test
 	public void testCreazioneIniz() {
@@ -46,7 +46,7 @@ public class InizializzatoreTest {
 	public void testWebConnection(){
 	//test per verificare che il web connection all'interno di inizializzatore
 	//funzioni correttamente
-		init();
+		//init();
 		WebConnection webConn = iniz.getWeb();
 		
 		//testo login dipendente

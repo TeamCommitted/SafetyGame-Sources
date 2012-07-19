@@ -33,7 +33,6 @@ import java.io.*;
  * @author gfacchin
  * @version 0.1
  */
-// prima -->public class DesktopConnection implements Pacchetto{
 public class DesktopConnection extends UnicastRemoteObject implements Pacchetto{
   GestioneDati dati;
   

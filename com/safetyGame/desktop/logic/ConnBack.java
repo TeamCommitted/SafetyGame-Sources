@@ -106,7 +106,6 @@ public class ConnBack {
          pack= (Pacchetto) Naming.lookup("rmi://"+server.trim()+"/Pacchetto");
      }
      catch(Exception e){System.out.println("Errore nella creazione della connessione al server RMI"); System.exit(9);} //remote-bound-io-etc..
-//     catch(Exception e){System.out.println(e.getMessage());} --> così mi funziona perchè system exit 9?
      //il server dei dati e' aperto
   } 
   

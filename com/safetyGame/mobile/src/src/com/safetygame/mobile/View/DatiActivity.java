@@ -32,6 +32,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
@@ -43,6 +47,7 @@ import com.safetyGame.mobile.condivisi.Dati;
 public class DatiActivity extends SherlockActivity {
 
 	private Context context;
+	private EditText vecchiaPassw;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -52,6 +57,18 @@ public class DatiActivity extends SherlockActivity {
 		context = this;
 
 		new DatiTask().execute();
+
+		vecchiaPassw = (EditText) findViewById(R.id.vecchiaPass);
+		Button invia = (Button) findViewById(R.id.buttonInvia);
+		invia.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				new InviaDatiTask().execute();
+
+			}
+
+		});
 	}
 
 	@Override
@@ -103,6 +120,49 @@ public class DatiActivity extends SherlockActivity {
 
 				((TextView) findViewById(R.id.Nome)).setText(dati.getNome()
 						+ "\n" + dati.getCognome());
+
+			} else {
+
+				AlertDialog.Builder builder = new AlertDialog.Builder(context);
+				builder.setTitle("Errore");
+				builder.setMessage("C'è stato qualche problema nel download della domanda");
+				builder.show();
+			}
+		}
+
+	}
+
+	private class InviaDatiTask extends AsyncTask<Object, String, Boolean> {
+		ProgressDialog dialog;
+
+		@Override
+		protected void onPreExecute() {
+			dialog = ProgressDialog.show(DatiActivity.this, "",
+					"Loading. Please wait...", true);
+		}
+
+		@Override
+		protected Boolean doInBackground(Object... params) {
+
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+			SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
+
+			nameValuePairs.add(new BasicNameValuePair("username",
+					prefs.getString("user", "")));
+			nameValuePairs.add(new BasicNameValuePair("vecchiaPassword",
+					vecchiaPassw.getText().toString()));
+			Boolean dati = (Boolean) ConnectionUtils
+					.HttpCreateClient(
+							"http://monossido.ath.cx/teamcommitted/API/cambioPassw.jsp",
+							nameValuePairs);
+
+			return dati;
+		}
+
+		@Override
+		protected void onPostExecute(Boolean dati) {
+			dialog.dismiss();
+			if (dati) {
 
 			} else {
 
