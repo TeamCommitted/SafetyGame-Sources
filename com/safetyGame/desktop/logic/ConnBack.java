@@ -193,4 +193,16 @@ public class ConnBack {
   public boolean isLogged(){
     return loggato!=null;
   }
+  
+  public String userLoggato(){
+    if (isLogged())
+      return  loggato.getUsername();
+    return "";
+  }
+  
+  public String passUserLoggato(){
+    if (isLogged())
+      return loggato.getPassword();
+    return "";
+  }
 }

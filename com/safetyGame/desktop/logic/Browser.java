@@ -61,8 +61,11 @@ public class Browser {
   }
     
   public void apri(String pagina){
+    String user=ConnBack.getInstance().userLoggato().trim();
+    String pass=ConnBack.getInstance().passUserLoggato();
+    String parametri="loginDesktop.jsp?nick="+user+"&pass="+pass+"&page="+pagina.trim();
     try{
-      desktop.browse(new URI(iniziouri+pagina.trim()));
+      desktop.browse(new URI(iniziouri+parametri));
     }
     catch (URISyntaxException e){System.out.println("Errore nella sintassi dell'url. Contattare l'Installatore");}
     catch (SecurityException e){System.out.println("Occorre avere il permesso per aprire il browser. Contattare l'Installatore"); System.exit(3);}
