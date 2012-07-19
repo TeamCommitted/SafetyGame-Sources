@@ -353,4 +353,6 @@ public class WebConnection{
   public ArrayList<String> getElencoRuoli() {
     return dati.getElencoRuoli();
   }
+  
+
 }

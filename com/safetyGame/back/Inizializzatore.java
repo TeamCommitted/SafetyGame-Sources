@@ -71,17 +71,20 @@ public class Inizializzatore{
   private DesktopConnection deskConnection=null; 
   private static WebConnection webConnection = null;
   private static ApplicazioniConnection appConnection= null;
-  private static Inizializzatore inizializzatore=null;
+  //-->private static Inizializzatore inizializzatore=null; non deve esser protected??? altrimenti Ã¨ tutto privato
+  protected static Inizializzatore inizializzatore=null;
 
   private static String HOST ="localhost";
 
   /**
-   * Costruttore della classe WebConnection
+   * Costruttore della classe Inizializzatore
    *
    */
   private Inizializzatore() {
-    indirizzoAz = new Indirizzo("localhost/ingAz","root","");
-    indirizzoDom = new Indirizzo("localhost/ingDom","root","");
+    indirizzoAz = new Indirizzo("localhost/ingAz","root","");//corretto
+//	  indirizzoAz = new Indirizzo("localhost/ingAz","root","root");//per corny
+    indirizzoDom = new Indirizzo("localhost/ingDom","root","");//corretto
+//	  indirizzoDom = new Indirizzo("localhost/ingDom","root","root");//per corny
     daoDipendenti = new SqlDAODipendenti(indirizzoAz);
     daoPunteggi = new SqlDAOPunteggi(indirizzoAz,indirizzoDom);
     daoLogin = new SqlDAOLogin(indirizzoAz);
@@ -114,7 +117,8 @@ public class Inizializzatore{
       String rmiObjName="rmi://"+HOST+"/Pacchetto";
       Naming.rebind(rmiObjName,ref);
     }
-    catch (Exception e){System.out.println("Impossibile attivare il server RMI, il server verrà chiuso"); System.exit(1);} 
+    catch (Exception e){System.out.println(e.getMessage());
+    System.out.println("Impossibile attivare il server RMI, il server verra` chiuso"); System.exit(1);} 
   }
 
   /**
@@ -145,7 +149,8 @@ public class Inizializzatore{
    * Metodo statico che crea l'inizializzatore
    *
    */
-  private static synchronized void crea(){
+  //--->private static synchronized void crea(){ non deve essere protected anche questo?
+  protected static synchronized void crea(){
     if (inizializzatore==null) 
       inizializzatore=new Inizializzatore();
   }
