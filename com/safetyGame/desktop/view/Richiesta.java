@@ -11,7 +11,6 @@
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
  * | 20120714 | Gabriele Facchin    | + Richiesta
- * |          |                     | + errore
  * |          |                     | + actionPerformed
  * +----------+---------------------|---------------------
  *
@@ -32,9 +31,7 @@ import javax.swing.*;
 public class Richiesta implements ActionListener{
 
   private JFrame frame;
-  private JFrame frameerr;
   private JButton ok;
-  private JButton ok2;
   private Label testo;
   private TextField server;
   
@@ -59,25 +56,6 @@ public class Richiesta implements ActionListener{
   }
   
   /**
-   * metodo che crea una finestra di errore (alert)
-   * 
-   * @param err la stringa d'errore mostrata a video
-   */  
-  private void errore(String err){
-    frameerr=new JFrame("Errore");  
-    frameerr.setLayout(new GridLayout(2,1));
-    frameerr.setSize(150,70);
-    Label errore=new Label();
-    errore.setText(err);
-    frameerr.add(errore);
-    ok2=new JButton("Ok");
-    frameerr.add(ok2);
-    ok2.addActionListener(this);
-    frameerr.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-    frameerr.setVisible(true);
-  }
-
-  /**
    * metodo che gestisce le azioni che i pulsanti devono intraprendere
    * 
    * @param ActionEvent e l'evento scatenato dal click su un pulsante
@@ -85,12 +63,12 @@ public class Richiesta implements ActionListener{
   public void actionPerformed(ActionEvent e){
     if (e.getSource()==ok){
       if(server.getText().trim().equals("")){
-        errore("Inserire un Server");
+        new Error("Inserire un Server");
       }
       else{
         boolean salva=ConnBack.getInstance().continuaParser(server.getText().trim());
         if (!salva){
-          errore("Server non valido o errore nei files");
+          new Error("Server non valido o errore nei files");
         }
         else{
           frame.setVisible(false);
@@ -98,10 +76,6 @@ public class Richiesta implements ActionListener{
           ConnBack.getInstance().continuaRMI();
         }
       }
-    }
-    else{ //ok2
-        frameerr.setVisible(false);
-        frameerr=null;
     }
   }
 }

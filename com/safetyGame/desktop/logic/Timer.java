@@ -3,7 +3,7 @@
  * Package: com.safetygame.desktop.logic
  * Author: Gabriele Facchin
  * Date: 2012/06/16
- * Version: 1.0
+ * Version: 1.1
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -25,7 +25,7 @@ package com.safetyGame.desktop.logic;
  * Classe che gestisce il timer per le domande
  * 
  * @author gfacchin
- * @version 1.0
+ * @version 1.1
  */
 public class Timer extends Thread{
   private long tempo;

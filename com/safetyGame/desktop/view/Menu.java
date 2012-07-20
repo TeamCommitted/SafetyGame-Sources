@@ -16,7 +16,9 @@
  * |          |                     | + finalize
  * |          |                     | + actionPerformed
  * +----------+---------------------|---------------------
- *
+ * | 201207 | Gabriele Facchin    | + Main
+ * +----------+---------------------|---------------------
+ * 
  */
 
 package com.safetyGame.desktop.view;
@@ -54,8 +56,8 @@ public class Menu implements ActionListener{
    * Costruttore della classe Menu
    * 
    */
-  public Menu(){//ControlMenu controllo){
-    control=new ControlMenu();//controllo;
+  public Menu(ControlMenu controllo){
+    control =controllo;
     try{
       tray=SystemTray.getSystemTray();
       Image img=Toolkit.getDefaultToolkit().getImage("com/safetyGame/desktop/view/icona.jpg");
@@ -147,7 +149,6 @@ public class Menu implements ActionListener{
     }
     else
       if (e.getSource()==nascondi){
-        //System.exit(0);
         menu.setVisible(false);
       }
       else 

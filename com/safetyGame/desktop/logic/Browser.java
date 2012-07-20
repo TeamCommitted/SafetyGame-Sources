@@ -60,6 +60,11 @@ public class Browser {
     return singleton;
   }
     
+  /**
+   * Metodo che apre una pagina web
+   * 
+   * @param stringa contenente il nome della pagina da aprire
+   */
   public void apri(String pagina){
     String user=ConnBack.getInstance().userLoggato().trim();
     String pass=ConnBack.getInstance().passUserLoggato();

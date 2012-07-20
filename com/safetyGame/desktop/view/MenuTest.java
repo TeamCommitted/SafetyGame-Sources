@@ -17,7 +17,7 @@ public class MenuTest {
 	@Test
 	public void testMenu() {
 	  ControlMenu controlMenu = new ControlMenu();
-	  Menu menu = new Menu();
+	  Menu menu = new Menu(controlMenu);
 	  while(true){System.out.println("");}
 	}
 

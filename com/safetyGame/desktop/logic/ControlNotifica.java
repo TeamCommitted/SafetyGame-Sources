@@ -13,13 +13,13 @@
  * | 20120609 | Gabriele Facchin    | + ControlNotifica
  * |          |                     | + posticipa
  * +----------+---------------------|---------------------
- * | 201206 | Gabriele Facchin    | + rispondi
+ * | 20120715 | Gabriele Facchin    | + rispondi
  * +----------+---------------------|---------------------
  *
  */
 
 package com.safetyGame.desktop.logic;
-
+import com.safetyGame.desktop.view.Error;
 
 /**
  * Classe che gestisce i controlli sulla notifica
@@ -43,12 +43,14 @@ public class ControlNotifica{
   /**
    * metodo che fa posticipare la domanda
    * 
-   * @return boolean che indica il succeso o meno del rinvio
    */
   public void posticipa(){
     boolean b=false;
     for (int i=0; i<3 && !b; i++)
       b=connessione.posticipa();
+    if (!b) {
+      new Error ("Impossibile avvisare il server della modifica oppure le domande sono terminate");
+    }
     connessione.resetTimerProposta();
   }
   
@@ -59,6 +61,5 @@ public class ControlNotifica{
   public void rispondi(){
     browser.apri("nuovaDomanda.jsp");
     connessione.resetTimerProposta();
-    //apre il browser con la domanda --> mostra domanda
   }
 }
