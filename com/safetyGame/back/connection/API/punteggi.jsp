@@ -20,13 +20,13 @@
 <%@page import="com.safetygame.back.*" %>
 <%@page import="java.util.ArrayList" %>
 <% 
-Inizializzatore i = new Inizializzatore();
-ApplicazioniConnection appC = i.getApp();
+ApplicazioniConnection appC = Inizializzatore.getApp();
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
 boolean risposta = appC.login(user, passw);
 Login l = new Login(user, passw);
 Punteggio p = appC.getStat(l);
+Dipendente d = appC.getDati(l);
 ArrayList<Badge> b = appC.getBadge(l, 2);
 %>
 <response>
@@ -38,9 +38,10 @@ if(risposta)
 		<rispostedate><%=p.getnDomRisp()%></rispostedate>
 		<rispostecorrette><%=p.getnRispCorr()%></rispostecorrette>
 		<risposteerrate><%=p.getnDomRisp()-p.getnRispCorr()%></risposteerrate>
-		<punti><%=p.getPunti()%></punti>
+		<punti><%=d.getPunti()%></punti>
 	</punteggi>
-	<badges num="<%=b.size()%>">
+	<badges>
+ 		<badgesNum><%=b.size()%></badgesNum>
 	<% for(int z=0;z<b.size();z++)
 	{  %>
 		<badge id="<%=z%>">

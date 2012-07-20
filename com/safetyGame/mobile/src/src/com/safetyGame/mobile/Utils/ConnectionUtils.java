@@ -85,11 +85,13 @@ public class ConnectionUtils
 					return new Domanda(Integer.parseInt(parseXML(xml, "id", 0)), type, parseXML(xml, "testo", 0), Integer.parseInt(parseXML(xml, "punteggio", 0)), Integer.parseInt(parseXML(xml, "corretta", 0)));
 				else
 				{
-					String[] risposte = new String[3];
-					risposte[0] = parseXML(xml, "risposta", 0);
-					risposte[1] = parseXML(xml, "risposta", 1);
-					risposte[2] = parseXML(xml, "risposta", 2);
-					return new Domanda(Integer.parseInt(parseXML(xml, "id", 0)), type, parseXML(xml, "testo", 0), risposte, 3, Integer.parseInt(parseXML(xml, "punteggio", 0)), Integer.parseInt(parseXML(xml, "corretta", 0)));
+					int risposteNum = Integer.parseInt(parseXML(xml, "risposteNum", 0));
+					String[] risposte = new String[risposteNum];
+					for (int i = 0; i < risposteNum; i++)
+					{
+						risposte[i] = parseXML(xml, "risposta", i);
+					}
+					return new Domanda(Integer.parseInt(parseXML(xml, "id", 0)), type, parseXML(xml, "testo", 0), risposte, risposteNum, Integer.parseInt(parseXML(xml, "punteggio", 0)), Integer.parseInt(parseXML(xml, "corretta", 0)));
 				}
 
 			} else if (url.contains("quest"))
@@ -100,10 +102,11 @@ public class ConnectionUtils
 				return new Dati(parseXML(xml, "nome", 0), parseXML(xml, "cognome", 0));
 			} else if (url.contains("punteggi"))
 			{
-				String[] badges = new String[2];
-				badges[0] = parseXML(xml, "testo", 0);
-				badges[1] = parseXML(xml, "testo", 1);
-				return new Punteggi(parseXML(xml, "rispostedate", 0), parseXML(xml, "rispostecorrette", 0), parseXML(xml, "risposteerrate", 0), parseXML(xml, "punti", 0), badges, 2);
+				int badgesNum = Integer.parseInt(parseXML(xml, "badgesNum", 0));
+				String[] badges = new String[badgesNum];
+				for (int i = 0; i < badgesNum; i++)
+					badges[i] = parseXML(xml, "testo", i);
+				return new Punteggi(parseXML(xml, "rispostedate", 0), parseXML(xml, "rispostecorrette", 0), parseXML(xml, "risposteerrate", 0), parseXML(xml, "punti", 0), badges, badgesNum);
 			} else if (url.contains("cambioPassw"))
 			{
 				return Boolean.valueOf(true);

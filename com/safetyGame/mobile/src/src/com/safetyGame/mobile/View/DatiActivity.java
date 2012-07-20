@@ -48,15 +48,21 @@ public class DatiActivity extends SherlockActivity {
 
 	private Context context;
 	private EditText vecchiaPassw;
+	private EditText nuovaPassw;
+	private EditText nuovaPassw2;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.dati);
 
 		context = this;
 
 		new DatiTask().execute();
+
+		nuovaPassw = (EditText) findViewById(R.id.nuovaPassw);
+		nuovaPassw2 = (EditText) findViewById(R.id.nuovaPassw2);
 
 		vecchiaPassw = (EditText) findViewById(R.id.vecchiaPass);
 		Button invia = (Button) findViewById(R.id.buttonInvia);
@@ -116,7 +122,6 @@ public class DatiActivity extends SherlockActivity {
 		protected void onPostExecute(Dati dati) {
 			dialog.dismiss();
 			if (dati != null) {
-				setContentView(R.layout.dati);
 
 				((TextView) findViewById(R.id.Nome)).setText(dati.getNome()
 						+ "\n" + dati.getCognome());
@@ -144,31 +149,40 @@ public class DatiActivity extends SherlockActivity {
 		@Override
 		protected Boolean doInBackground(Object... params) {
 
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-			SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
+			if (nuovaPassw.getText().toString().equals(nuovaPassw2.getText().toString()))
+			{
+				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+				SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
 
-			nameValuePairs.add(new BasicNameValuePair("username",
-					prefs.getString("user", "")));
-			nameValuePairs.add(new BasicNameValuePair("vecchiaPassword",
-					vecchiaPassw.getText().toString()));
-			Boolean dati = (Boolean) ConnectionUtils
-					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/API/cambioPassw.jsp",
-							nameValuePairs);
+				nameValuePairs.add(new BasicNameValuePair("username",
+						prefs.getString("user", "")));
+				nameValuePairs.add(new BasicNameValuePair("vecchiaPassword",
+						vecchiaPassw.getText().toString()));
+				nameValuePairs.add(new BasicNameValuePair("nuovaPassword",
+						nuovaPassw.getText().toString()));
+				Boolean dati = (Boolean) ConnectionUtils
+						.HttpCreateClient(
+								"http://monossido.ath.cx/teamcommitted/API/cambioPassw.jsp",
+								nameValuePairs);
+				return dati;
 
-			return dati;
+			} else
+				return false;
 		}
 
 		@Override
 		protected void onPostExecute(Boolean dati) {
 			dialog.dismiss();
 			if (dati) {
-
+				AlertDialog.Builder builder = new AlertDialog.Builder(context);
+				builder.setTitle("OK");
+				builder.setMessage("Password cambiata correttamente");
+				builder.show();
 			} else {
 
 				AlertDialog.Builder builder = new AlertDialog.Builder(context);
 				builder.setTitle("Errore");
-				builder.setMessage("C'è stato qualche problema nel download della domanda");
+				builder.setMessage("C'è stato qualche problema");
 				builder.show();
 			}
 		}

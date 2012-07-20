@@ -18,8 +18,7 @@
 <%@ page contentType="text/xml" import="com.safetygame.back.connection.*"  %>
 <%@page import="com.safetygame.back.*"  %>
 <% 
-Inizializzatore i = new Inizializzatore();
-ApplicazioniConnection appC = i.getApp();
+ApplicazioniConnection appC = Inizializzatore.getApp();
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
 boolean risposta = appC.login(user, passw);

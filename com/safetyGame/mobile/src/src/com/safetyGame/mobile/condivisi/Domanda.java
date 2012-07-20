@@ -28,6 +28,7 @@ public class Domanda {
 	private String[] risposte;
 	private int punteggio;
 	private int corretta;
+	private int numeroRisposte;
 
 	public Domanda(int id, String type, String testo, int punteggio, int corretta)
 	{
@@ -47,6 +48,7 @@ public class Domanda {
 		this.id = id;
 		this.type = type;
 		this.testo = testo;
+		this.numeroRisposte = numeroRisposte;
 		this.risposte = new String[numeroRisposte];
 		for (int i = 0; i < numeroRisposte; i++)
 		{
@@ -84,5 +86,10 @@ public class Domanda {
 	public int getCorretta()
 	{
 		return corretta;
+	}
+
+	public int getNumR()
+	{
+		return numeroRisposte;
 	}
 }

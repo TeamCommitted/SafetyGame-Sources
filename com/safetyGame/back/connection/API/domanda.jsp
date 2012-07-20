@@ -20,8 +20,7 @@
 <%@page import="com.safetygame.back.*" %>
 <%@page import="java.util.ArrayList" %>
 <% 
-Inizializzatore i = new Inizializzatore();
-ApplicazioniConnection appC = i.getApp();
+ApplicazioniConnection appC = Inizializzatore.getApp();
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
 boolean risposta = appC.login(user, passw);
@@ -46,7 +45,8 @@ if(risposta)
 		   {
 			ArrayList<String> risposte = d.getRisposte(); 
 		%>
-		<risposte num="<%=risposte.size()%>">
+		<risposte>
+			 <risposteNum><%=risposte.size()%></risposteNum>
 		<%	for(int z=0;z<risposte.size();z++)
 			{	
 		%>

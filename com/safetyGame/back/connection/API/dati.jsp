@@ -19,8 +19,7 @@
 <%@page import="com.safetygame.back.condivisi.*" %>
 <%@page import="com.safetygame.back.*" %>
 <% 
-Inizializzatore i = new Inizializzatore();
-ApplicazioniConnection appC = i.getApp();
+ApplicazioniConnection appC = Inizializzatore.getApp();
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
 boolean risposta = appC.login(user, passw);

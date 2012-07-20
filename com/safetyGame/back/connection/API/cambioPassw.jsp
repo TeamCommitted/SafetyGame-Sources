@@ -19,17 +19,17 @@
 <%@page import="com.safetygame.back.condivisi.*" %>
 <%@page import="com.safetygame.back.*" %>
 <% 
-Inizializzatore i = new Inizializzatore();
-ApplicazioniConnection appC = i.getApp();
+ApplicazioniConnection appC = Inizializzatore.getApp();
 String user = request.getParameter("username");
 String passw = request.getParameter("vecchiaPassword");
-String nuovaPass = request.getParameter("nuovaPass");
+String nuovaPass = request.getParameter("nuovaPassword");
 boolean risposta = appC.login(user, passw);
 Login l = new Login(user, passw);
 Dipendente d = appC.getDati(l);
 boolean risposta2 = false;
-if(nuovaPass.lenght()>0)
-	risposta2 = d.setNuovaPass(nuovaPass);
+d.setNuovaPass(nuovaPass);
+if(nuovaPass.length()>0)
+	risposta2 = appC.modPass(d);
 %>
 <response>
 <%

@@ -20,8 +20,7 @@
 <%@page import="com.safetygame.back.*" %>
 <%@page import="java.util.ArrayList" %>
 <% 
-Inizializzatore i = new Inizializzatore();
-ApplicazioniConnection appC = i.getApp();
+ApplicazioniConnection appC = Inizializzatore.getApp();
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
 int id = Integer.parseInt(request.getParameter("id"));

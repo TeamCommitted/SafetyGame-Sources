@@ -143,8 +143,11 @@ public class DomandaActivity extends SherlockActivity {
 							.setText(risposte[0]);
 					((RadioButton) findViewById(R.id.radio1))
 							.setText(risposte[1]);
-					((RadioButton) findViewById(R.id.radio2))
-							.setText(risposte[2]);
+					if (domanda.getNumR() > 2)
+						((RadioButton) findViewById(R.id.radio2))
+								.setText(risposte[2]);
+					else
+						((RadioButton) findViewById(R.id.radio2)).setVisibility(8);
 
 					Button invia = (Button) findViewById(R.id.button2);
 					invia.setOnClickListener(new OnClickListener() {
@@ -250,9 +253,9 @@ public class DomandaActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			nameValuePairs.add(new BasicNameValuePair("id", domanda.getId() + ""));
 			nameValuePairs.add(new BasicNameValuePair("punti", domanda.getPunteggio() + ""));
-			nameValuePairs.add(new BasicNameValuePair("risposta1", domanda.getRisposte()[0]));
-			nameValuePairs.add(new BasicNameValuePair("risposta2", domanda.getRisposte()[1]));
-			nameValuePairs.add(new BasicNameValuePair("risposta3", domanda.getRisposte()[2]));
+			for (int i = 0; i < domanda.getNumR(); i++)
+				nameValuePairs.add(new BasicNameValuePair("risposta" + i + 1, domanda.getRisposte()[i]));
+
 			nameValuePairs.add(new BasicNameValuePair("corretta", domanda.getCorretta() + ""));
 			nameValuePairs.add(new BasicNameValuePair("rispostaData", arg0[0]));
 
@@ -266,6 +269,7 @@ public class DomandaActivity extends SherlockActivity {
 		@Override
 		protected void onPostExecute(Void arg0) {
 			dialog.dismiss();
+			finish();
 		}
 	}
 

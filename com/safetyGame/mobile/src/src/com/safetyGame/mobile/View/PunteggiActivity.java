@@ -32,6 +32,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
@@ -107,8 +108,14 @@ public class PunteggiActivity extends SherlockActivity {
 						+ punteggi.getRisposteerrate() + "\nPunti "
 						+ punteggi.getPunti());
 				String[] badges = punteggi.getBadge();
-				((TextView) findViewById(R.id.Badge1)).setText(badges[0]);
-				((TextView) findViewById(R.id.Badge2)).setText(badges[1]);
+				if (punteggi.getNumeroBadge() > 0)
+					((TextView) findViewById(R.id.Badge1)).setText(badges[0]);
+				else
+					((ImageView) findViewById(R.id.imageView1)).setVisibility(8);
+				if (punteggi.getNumeroBadge() > 1)
+					((TextView) findViewById(R.id.Badge2)).setText(badges[1]);
+				else
+					((ImageView) findViewById(R.id.imageView2)).setVisibility(8);
 			} else {
 
 				AlertDialog.Builder builder = new AlertDialog.Builder(context);
