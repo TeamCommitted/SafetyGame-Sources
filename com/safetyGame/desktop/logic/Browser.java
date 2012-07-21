@@ -46,6 +46,9 @@ public class Browser {
     }     
     catch(UnsupportedOperationException e){System.out.println("Le funzionalita` minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(2);}
     iniziouri="http://"+ConnBack.getInstance().getServer().trim();
+    if (ConnBack.getInstance().getServer().trim().toUpperCase().equals("LOCALHOST")){
+      iniziouri+="/examples/";
+    }
   }
   
   /**
