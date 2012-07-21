@@ -20,7 +20,7 @@
  *
  */
 
-package com.safetyGame.back.connection;
+package com.safetyGame.back;
 import com.safetyGame.back.condivisi.*;
 import com.safetyGame.back.controller.GestioneDati;
 import java.rmi.*;

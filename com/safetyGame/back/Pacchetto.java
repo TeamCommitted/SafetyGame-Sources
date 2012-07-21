@@ -18,7 +18,7 @@
  *
  */
 
-package com.safetyGame.back.connection;
+package com.safetyGame.back;
 import com.safetyGame.back.condivisi.*;
 import java.rmi.*;
 

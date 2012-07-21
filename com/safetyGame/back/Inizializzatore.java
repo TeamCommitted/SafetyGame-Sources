@@ -22,7 +22,6 @@
  * +----------+---------------------+----------------------
  * | 20120717 | Gabriele Facchin    | - tastiera
  * |          |                     | - grafica
- * |          |                     | - main
  * |          |                     | - actionPerformed
  * |          |                     | + crea
  * +----------+---------------------+----------------------
@@ -67,7 +66,7 @@ public class Inizializzatore{
   private GestioneDipendentiD gestioneDipendentiD;
   private GestioneDipendentiAA gestioneDipendentiAA;
   private GestioneBadgeAS gestioneBadgeAS;
-  private GestioneDati gestioneDati;
+  private static GestioneDati gestioneDati;
   private DesktopConnection deskConnection=null; 
   private static WebConnection webConnection = null;
   private static ApplicazioniConnection appConnection= null;
@@ -106,21 +105,6 @@ public class Inizializzatore{
     webConnection= new WebConnection(gestioneDati);
     appConnection= new ApplicazioniConnection(gestioneDati);
 
-    try {
-      Runtime.getRuntime().exec("rmiregistry");
-      Runtime.getRuntime().exec("rmid -J-Djava.security.policy=rmid.policy");
-    }
-    catch (IOException e) {System.out.println("Impossibile attivare il servizio rmiregistry");}
-    try{
-      DesktopConnection ref=new DesktopConnection(gestioneDati);  
-      String rmiObjName="rmi://"+HOST+"/Pacchetto";
-      Naming.rebind(rmiObjName,ref);
-    }
-    catch (Exception e){
-      System.out.println(e.getMessage());
-      System.out.println("Impossibile attivare il server RMI, il server verra` chiuso"); 
-      System.exit(9);
-    } 
   }
 
   /**
@@ -154,5 +138,25 @@ public class Inizializzatore{
   private static synchronized void crea(){ 
     if (inizializzatore==null) 
       inizializzatore=new Inizializzatore();
+  }
+  
+  public static void main(String args[]){
+    crea();
+    try {
+      Runtime.getRuntime().exec("rmiregistry");
+      Runtime.getRuntime().exec("rmid -J-Djava.security.policy=rmid.policy");
+    }
+    catch (IOException e) {System.out.println("Impossibile attivare il servizio rmiregistry");}
+    try{
+      DesktopConnection ref=new DesktopConnection(gestioneDati);  
+      String rmiObjName="rmi://localhost/Pacchetto";
+//      String rmiObjName="prova";
+      Naming.rebind(rmiObjName,ref);
+    }
+    catch (Exception e){
+      System.out.println(e.getMessage());
+      System.out.println("Impossibile attivare il server RMI, il server verra` chiuso"); 
+      System.exit(9);
+    }   
   }
 }
