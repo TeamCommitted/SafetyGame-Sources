@@ -130,7 +130,7 @@ public class ConnBack {
    */  
   public void continuaRMI(){
      try{
-         pack= (Pacchetto) Naming.lookup("rmi://"+server.trim()+"/Pacchetto");
+         pack= (Pacchetto) Naming.lookup("rmi://localhost/Pacchetto");
      }
      catch(Exception e){ //remote-bound-io-etc..
          System.out.println("Errore nella creazione della connessione al server RMI"); 
