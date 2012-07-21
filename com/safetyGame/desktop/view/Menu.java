@@ -177,7 +177,7 @@ public class Menu implements ActionListener{
              }
   }
   
-  public void main (String args []){
+  public static void main (String args []){
      new Menu(new ControlMenu());
   }
 }
