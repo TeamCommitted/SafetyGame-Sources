@@ -49,7 +49,7 @@ public class Login implements ActionListener{
   private TextField mail;
   private TextField codfis;
   private TextField username;
-  private TextField password;
+  private JPasswordField password;
   private ControlLogin controller;
   
   /**
@@ -69,7 +69,7 @@ public class Login implements ActionListener{
     passl = new Label();
     passl.setText("Password:");
     frame.add(passl);
-    password = new TextField();
+    password = new JPasswordField();
     frame.add(password);
     ok = new JButton("OK");
     frame.add(ok);
@@ -125,8 +125,9 @@ public class Login implements ActionListener{
    */
   public void actionPerformed(ActionEvent e){
     if (e.getSource()==ok){
-      if (!username.getText().trim().equals("") && !password.getText().trim().equals("")){
-        boolean login=controller.tryLogin(username.getText().trim(), password.getText().trim());
+      String pass= new String(password.getPassword());
+      if (!username.getText().trim().equals("") && !pass.equals("")){
+        boolean login=controller.tryLogin(username.getText().trim(), pass);
         if (login){
           frame.setVisible(false);
           errore.setText("");
