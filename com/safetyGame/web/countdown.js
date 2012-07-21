@@ -1,5 +1,3 @@
-
-
 function init(){
   var c=getCookie("tempo_rimasto");
   if (c==null){
@@ -8,10 +6,11 @@ function init(){
     setCookie("delta",tempo/10,80000);
     c=getCookie("tempo_rimasto");
   }
-  countdown(c)
+  countdown(c);
 }
 
 function countdown(tempo){
+	alert(tempo);
   if (tempo <=0){
     azzera();
     alert("tempo finito");
@@ -19,7 +18,8 @@ function countdown(tempo){
   else{
     setCookie("tempo_rimasto",tempo,80000);  
     var delta=getCookie("delta");
-    setTimeout("countdown(tempo-delta)",delta);
+    var delta2=tempo-delta;
+    setTimeout("countdown("+delta2+")",delta);
   }
 }
 
