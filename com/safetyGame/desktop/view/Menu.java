@@ -178,14 +178,6 @@ public class Menu implements ActionListener{
   }
   
   public void main (String args []){
-    //crea un oggetto menu
-    //recupera i dati dal file txt, se non esiste chiede all'utente di inserirli
-    //istanzia la connessione al back end
-    //istanzia la sistem tray
-    //chiede il login
-    //fa partire il timer
-    //quando il timer e` attivo:
-    //se timer = 0 chiedi domanda con una notifica
-    //invia posticipa al back-end oppure apri il browser con la domanda
+     new Menu(new ControlMenu());
   }
 }
