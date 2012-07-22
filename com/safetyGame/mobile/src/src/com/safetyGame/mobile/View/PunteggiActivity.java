@@ -94,7 +94,7 @@ public class PunteggiActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			Punteggi punteggi = (Punteggi) ConnectionUtils
 					.HttpCreateClient(
-							serverUrl + "/teamcommitted/API/punteggi.jsp",
+							serverUrl + "/API/punteggi.jsp",
 							nameValuePairs);
 
 			return punteggi;

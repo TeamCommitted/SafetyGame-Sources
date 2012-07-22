@@ -167,7 +167,7 @@ public class DatiActivity extends SherlockActivity {
 						nuovaPassw.getText().toString()));
 				Boolean dati = (Boolean) ConnectionUtils
 						.HttpCreateClient(
-								serverUrl + "/teamcommitted/API/cambioPassw.jsp",
+								serverUrl + "/API/cambioPassw.jsp",
 								nameValuePairs);
 				return dati;
 

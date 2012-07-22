@@ -106,7 +106,7 @@ public class DomandaActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			domanda = (Domanda) ConnectionUtils
 					.HttpCreateClient(
-							serverUrl + "/teamcommitted/API/domanda.jsp",
+							serverUrl + "/API/domanda.jsp",
 							nameValuePairs);
 
 			return domanda;
