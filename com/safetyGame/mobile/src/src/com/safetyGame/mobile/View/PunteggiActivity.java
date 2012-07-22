@@ -39,6 +39,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.safetyGame.mobile.R;
 import com.safetyGame.mobile.Utils.ConnectionUtils;
+import com.safetyGame.mobile.Utils.ServerUrl;
 import com.safetyGame.mobile.condivisi.Punteggi;
 
 public class PunteggiActivity extends SherlockActivity {
@@ -90,7 +91,7 @@ public class PunteggiActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			Punteggi punteggi = (Punteggi) ConnectionUtils
 					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/API/punteggi.jsp",
+							ServerUrl.serverUrl + "/teamcommitted/API/punteggi.jsp",
 							nameValuePairs);
 
 			return punteggi;

@@ -10,13 +10,15 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120611 | Lorenzo Braghetto   | Adeguamento backend
+ * +----------+---------------------+----------------------
  * | 20120611 | Lorenzo Braghetto   | 
  * +----------+---------------------+----------------------
  * 
  */
 <?xml version="1.0" encoding="UTF-8"?>
-<%@ page contentType="text/xml" import="com.safetygame.back.connection.*"  %>
-<%@page import="com.safetygame.back.*"  %>
+<%@ page contentType="text/xml" import="com.safetyGame.back.connection.*"  %>
+<%@page import="com.safetyGame.back.*"  %>
 <% 
 ApplicazioniConnection appC = Inizializzatore.getApp();
 String user = request.getParameter("username");

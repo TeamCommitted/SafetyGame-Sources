@@ -42,6 +42,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.safetyGame.mobile.R;
 import com.safetyGame.mobile.Utils.ConnectionUtils;
+import com.safetyGame.mobile.Utils.ServerUrl;
 import com.safetyGame.mobile.condivisi.Dati;
 
 public class DatiActivity extends SherlockActivity {
@@ -112,7 +113,7 @@ public class DatiActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			Dati dati = (Dati) ConnectionUtils
 					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/API/dati.jsp",
+							ServerUrl.serverUrl + "/teamcommitted/API/dati.jsp",
 							nameValuePairs);
 
 			return dati;
@@ -162,7 +163,7 @@ public class DatiActivity extends SherlockActivity {
 						nuovaPassw.getText().toString()));
 				Boolean dati = (Boolean) ConnectionUtils
 						.HttpCreateClient(
-								"http://monossido.ath.cx/teamcommitted/API/cambioPassw.jsp",
+								ServerUrl.serverUrl + "/teamcommitted/API/cambioPassw.jsp",
 								nameValuePairs);
 				return dati;
 

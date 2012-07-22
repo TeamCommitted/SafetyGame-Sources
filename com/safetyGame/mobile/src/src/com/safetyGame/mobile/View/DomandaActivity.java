@@ -21,6 +21,8 @@ package com.safetyGame.mobile.View;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -32,6 +34,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -45,13 +48,16 @@ import com.safetyGame.mobile.R;
 import com.safetyGame.mobile.Utils.ConnectionUtils;
 import com.safetyGame.mobile.Utils.IntentIntegrator;
 import com.safetyGame.mobile.Utils.IntentResult;
+import com.safetyGame.mobile.Utils.ServerUrl;
 import com.safetyGame.mobile.condivisi.Domanda;
-import com.safetyGame.mobile.condivisi.Quest;
 
 public class DomandaActivity extends SherlockActivity {
 
 	private Context context;
 	private Domanda domanda;
+	private Timer myTimer;
+	private int i;
+	public TextView timer;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -59,19 +65,8 @@ public class DomandaActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 
 		context = this;
-
-		if (getIntent().getExtras().getBoolean("Domanda", true)) {
-			/*
-			 * int x = (int)(2*Math.random()); if(x==1)
-			 * setContentView(R.layout.domanda_sino); else
-			 * setContentView(R.layout.domanda_rispostamultipla);
-			 */
-			new DomandaTask().execute();
-
-		} else {
-			new QuestTask().execute();
-
-		}
+		i = 0;
+		new DomandaTask().execute();
 
 	}
 
@@ -96,7 +91,7 @@ public class DomandaActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			domanda = (Domanda) ConnectionUtils
 					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/API/domanda.jsp",
+							ServerUrl.serverUrl + "/teamcommitted/API/domanda.jsp",
 							nameValuePairs);
 
 			return domanda;
@@ -133,7 +128,33 @@ public class DomandaActivity extends SherlockActivity {
 						}
 
 					});
+				} else if (domanda.isMobile())
+				{
+					setContentView(R.layout.quest);
+					timer = (TextView) findViewById(R.id.timer);
+					Button scan = (Button) findViewById(R.id.scanna);
+					scan.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							IntentIntegrator integrator = new IntentIntegrator(
+									DomandaActivity.this);
+							integrator.initiateScan();
+						}
+					});
+					((TextView) findViewById(R.id.Titolo))
+							.setText(domanda.getTesto());
+
+					myTimer = new Timer();
+					myTimer.schedule(new TimerTask() {
+						@Override
+						public void run() {
+							TimerMethod();
+						}
+
+					}, 0, 1000);
+
 				} else {
+
 					setContentView(R.layout.domanda_rispostamultipla);
 					((TextView) findViewById(R.id.Testo)).setText(domanda
 							.getTesto());
@@ -180,58 +201,17 @@ public class DomandaActivity extends SherlockActivity {
 		}
 	}
 
-	private class QuestTask extends AsyncTask<Object, String, Quest> {
-		ProgressDialog dialog;
-
-		@Override
-		protected void onPreExecute() {
-			dialog = ProgressDialog.show(DomandaActivity.this, "",
-					"Loading. Please wait...", true);
-		}
-
-		@Override
-		protected Quest doInBackground(Object... params) {
-
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-			// nameValuePairs.add(new BasicNameValuePair("username",
-			// user.getText().toString()));
-			// nameValuePairs.add(new BasicNameValuePair("password",
-			// passw.getText().toString()));
-			Quest quest = (Quest) ConnectionUtils
-					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/API/quest.jsp",
-							nameValuePairs);
-
-			return quest;
-		}
-
-		@Override
-		protected void onPostExecute(Quest quest) {
-			dialog.dismiss();
-			if (quest != null) {
-				setContentView(R.layout.quest);
-				Button scan = (Button) findViewById(R.id.scanna);
-				scan.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						IntentIntegrator integrator = new IntentIntegrator(
-								DomandaActivity.this);
-						integrator.initiateScan();
-					}
-				});
-				((TextView) findViewById(R.id.Titolo))
-						.setText(quest.getTitle());
-				((TextView) findViewById(R.id.Testo)).setText(quest.getTesto());
-			} else {
-
-				AlertDialog.Builder builder = new AlertDialog.Builder(context);
-				builder.setTitle("Errore");
-				builder.setMessage("C'è stato qualche problema nel download della domanda");
-				builder.show();
-			}
-		}
-
+	private void TimerMethod()
+	{
+		this.runOnUiThread(Timer_Tick);
 	}
+
+	private Runnable Timer_Tick = new Runnable() {
+		public void run() {
+
+			timer.setText(i++ + "");
+		}
+	};
 
 	private class RispostaTask extends AsyncTask<String, String, Void> {
 		ProgressDialog dialog;
@@ -257,11 +237,20 @@ public class DomandaActivity extends SherlockActivity {
 				nameValuePairs.add(new BasicNameValuePair("risposta" + i + 1, domanda.getRisposte()[i]));
 
 			nameValuePairs.add(new BasicNameValuePair("corretta", domanda.getCorretta() + ""));
-			nameValuePairs.add(new BasicNameValuePair("rispostaData", arg0[0]));
+			if (domanda.isMobile())
+			{
+				if (arg0[0].equals(domanda.getRisposte()[0]) && i < domanda.getTempo())
+					nameValuePairs.add(new BasicNameValuePair("rispostaData", domanda.getCorretta() + ""));
+				else
+					nameValuePairs.add(new BasicNameValuePair("rispostaData", "-1"));
+			}
+			else
+				nameValuePairs.add(new BasicNameValuePair("rispostaData", arg0[0]));
+			nameValuePairs.add(new BasicNameValuePair("mobile", domanda.isMobile() + ""));
 
 			ConnectionUtils
 					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/API/rispondi.jsp",
+							ServerUrl.serverUrl + "/teamcommitted/API/rispondi.jsp",
 							nameValuePairs);
 			return null;
 		}
@@ -277,7 +266,10 @@ public class DomandaActivity extends SherlockActivity {
 		IntentResult scanResult = IntentIntegrator.parseActivityResult(
 				requestCode, resultCode, intent);
 		if (scanResult != null) {
-			// handle scan result
+			Log.v("SAFETYGAME", "scanResult=" + scanResult.getContents());
+			String[] params = { scanResult.getContents() };
+
+			new RispostaTask().execute(params);
 		}
 		// else continue with any other code you need in the method
 	}
