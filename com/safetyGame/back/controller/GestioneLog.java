@@ -101,7 +101,10 @@ public class GestioneLog{
    * @param login oggetto Login dovuto dall'effettuazione del login da parte di un dipendente
    */
   public void scriviLogin(Login login) {
-    DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+	DataOra dataOra = new DataOra();
+	String nomeTabella = "LogLogin";
+    this.updateLog.scriviLogTre(nomeTabella,login,dataOra.toString());
+   /* DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
    	
     //creo path del file da scrivere e creo UpdateLog
     this.percorso = "/login.txt";
@@ -112,7 +115,7 @@ public class GestioneLog{
 	catch (IOException e) {System.out.println("non va"); }//bisogna decidere cosa fare se si verifica errore
     
     log = "LOGIN " + dataOra.toString() + " " + login.getUsername(); //stringa contenente il log
-    updateLog.scriviChiudi(log);//passo la stringa creata a updateLog
+    updateLog.scriviChiudi(log);//passo la stringa creata a updateLog*/
   }
   
   /**
@@ -122,7 +125,10 @@ public class GestioneLog{
    * @param login oggetto Login del dipendente che ha effettuato il logout
    */
   public void scriviLogout(Login login) {
-    DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+	DataOra dataOra = new DataOra();
+	String nomeTabella = "LogLogout";
+    this.updateLog.scriviLogTre(nomeTabella,login,dataOra.toString());
+    /*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/logout.txt";
@@ -134,6 +140,7 @@ public class GestioneLog{
 
     log = "LOGOUT " + dataOra.toString() + " " + login.getUsername(); //stringa contenente il log
     updateLog.scriviChiudi(log);//passo la stringa creata a updateLog
+    */
   }
   
   /**
@@ -144,7 +151,10 @@ public class GestioneLog{
    * @param dom domanda che viene ricevuta dall'utente
    */
   public void scriviDomRic(Login login, Domanda dom) {
-    DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+	DataOra dataOra = new DataOra();
+	String nomeTabella = "LogRicevuta";
+    this.updateLog.scriviLogQuattro(nomeTabella,login,dataOra.toString(),dom.getId());
+    /*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
     percorso =  "/dRic.txt";
@@ -155,7 +165,7 @@ public class GestioneLog{
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
     log = "DOMANDA RICEVUTA " + dataOra.toString() + " usr=" + login.getUsername() + " id dom=" + dom.getId();
-    updateLog.scriviChiudi(log);
+    updateLog.scriviChiudi(log);*/
   }
   
   /**
@@ -166,7 +176,10 @@ public class GestioneLog{
    * @param dom domanda che viene proposta all'utente
    */
   public void scriviDomProp(Login login, Domanda dom) {
-    DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+    DataOra dataOra = new DataOra();
+	String nomeTabella = "LogProposta";
+    this.updateLog.scriviLogQuattro(nomeTabella,login,dataOra.toString(),dom.getId());
+	/*  DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
 
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/dProp.txt";
@@ -178,6 +191,7 @@ public class GestioneLog{
     
 	log = "DOMANDA PROPOSTA " + dataOra.toString() + " usr=" + login.getUsername() + " id dom=" + dom.getId();
     updateLog.scriviChiudi(log);
+    */
   }
 
   /**
@@ -188,7 +202,10 @@ public class GestioneLog{
    * @param dom domanda che viene posticipata dall'utente
    */
   public void scriviDomPost(Login login, Domanda dom) {
-    DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+	DataOra dataOra = new DataOra();
+	String nomeTabella = "LogPosticipa";
+    this.updateLog.scriviLogQuattro(nomeTabella,login,dataOra.toString(),dom.getId());  
+  /*  DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
 
     //creo path del file da scrivere e creo UpdateLog
     percorso = "/dPost.txt";
@@ -199,7 +216,7 @@ public class GestioneLog{
 	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
     
 	log = "DOMANDA POSTICIPATA " + dataOra.toString() + " usr=" + login.getUsername() + " id dom=" + dom.getId();
-    updateLog.scriviChiudi(log);
+    updateLog.scriviChiudi(log);*/
   }
   
   /**
