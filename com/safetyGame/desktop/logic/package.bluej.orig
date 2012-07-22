@@ -38,12 +38,21 @@ dependency8.type=UsesDependency
 dependency9.from=ConnBack
 dependency9.to=Parser
 dependency9.type=UsesDependency
+<<<<<<< Updated upstream
+package.editor.height=616
+package.editor.width=1252
+package.editor.x=-70
+package.editor.y=50
+package.numDependencies=16
+package.numTargets=11
+=======
 package.editor.height=923
 package.editor.width=1800
-package.editor.x=145
-package.editor.y=285
+package.editor.x=-1883
+package.editor.y=52
 package.numDependencies=13
 package.numTargets=8
+>>>>>>> Stashed changes
 package.showExtends=true
 package.showUses=true
 target1.editor.height=886
@@ -56,8 +65,37 @@ target1.naviview.expanded=true
 target1.showInterface=false
 target1.type=ClassTarget
 target1.width=80
+<<<<<<< Updated upstream
+target1.x=450
+target1.y=260
+target10.editor.height=744
+target10.editor.width=1382
+target10.editor.x=-8
+target10.editor.y=-8
+target10.height=50
+target10.name=ConnBack
+target10.naviview.expanded=true
+target10.showInterface=false
+target10.type=ClassTarget
+target10.width=80
+target10.x=310
+target10.y=190
+target11.editor.height=744
+target11.editor.width=1382
+target11.editor.x=-8
+target11.editor.y=-8
+target11.height=50
+target11.name=ControlLogin
+target11.naviview.expanded=true
+target11.showInterface=false
+target11.type=ClassTarget
+target11.width=100
+target11.x=130
+target11.y=280
+=======
 target1.x=530
 target1.y=240
+>>>>>>> Stashed changes
 target2.editor.height=886
 target2.editor.width=1616
 target2.editor.x=-8
@@ -68,9 +106,15 @@ target2.naviview.expanded=true
 target2.showInterface=false
 target2.type=ClassTarget
 target2.width=80
+<<<<<<< Updated upstream
+target2.x=450
+target2.y=390
+target3.editor.height=788
+=======
 target2.x=320
 target2.y=350
 target3.editor.height=870
+>>>>>>> Stashed changes
 target3.editor.width=800
 target3.editor.x=800
 target3.editor.y=0
@@ -80,10 +124,17 @@ target3.naviview.expanded=true
 target3.showInterface=false
 target3.type=ClassTarget
 target3.width=80
+<<<<<<< Updated upstream
+target3.x=990
+target3.y=30
+target4.editor.height=788
+target4.editor.width=1386
+=======
 target3.x=300
 target3.y=100
 target4.editor.height=1096
 target4.editor.width=1936
+>>>>>>> Stashed changes
 target4.editor.x=-1928
 target4.editor.y=-8
 target4.height=50
@@ -92,10 +143,17 @@ target4.naviview.expanded=true
 target4.showInterface=false
 target4.type=ClassTarget
 target4.width=110
+<<<<<<< Updated upstream
+target4.x=420
+target4.y=120
+target5.editor.height=744
+target5.editor.width=1382
+=======
 target4.x=500
 target4.y=100
 target5.editor.height=886
 target5.editor.width=1616
+>>>>>>> Stashed changes
 target5.editor.x=-8
 target5.editor.y=-8
 target5.height=50
@@ -140,5 +198,22 @@ target8.naviview.expanded=true
 target8.showInterface=false
 target8.type=ClassTarget
 target8.width=100
+<<<<<<< Updated upstream
+target8.x=640
+target8.y=440
+target9.editor.height=744
+target9.editor.width=1382
+target9.editor.x=-8
+target9.editor.y=-8
+target9.height=50
+target9.name=ControlMenu
+target9.naviview.expanded=true
+target9.showInterface=false
+target9.type=ClassTarget
+target9.width=100
+target9.x=760
+target9.y=150
+=======
 target8.x=210
 target8.y=260
+>>>>>>> Stashed changes

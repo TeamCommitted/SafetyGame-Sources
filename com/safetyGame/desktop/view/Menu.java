@@ -117,9 +117,6 @@ public class Menu implements ActionListener{
   private void creaMenu(){
     svuota();
     boolean b=control.isLogged();
-    System.out.println("control is logged:"+b);
-    String usr=ConnBack.getInstance().userLoggato();
-    System.out.println("USER:"+usr);
     if (b){
       menu.add(richiedi_domanda);
       menu.add(visualizza_punteggio);
