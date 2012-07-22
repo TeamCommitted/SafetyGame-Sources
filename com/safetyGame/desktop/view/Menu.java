@@ -25,6 +25,7 @@ package com.safetyGame.desktop.view;
 import com.safetyGame.desktop.logic.ControlMenu;
 import com.safetyGame.desktop.logic.ControlLogin;
 import com.safetyGame.desktop.logic.ControlNotifica;
+import com.safetyGame.desktop.logic.ConnBack;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -115,15 +116,19 @@ public class Menu implements ActionListener{
    */
   private void creaMenu(){
     svuota();
-    if (!control.isLogged()){
-      menu.add(login);
-    }
-    else{
+    boolean b=control.isLogged();
+    System.out.println("control is logged:"+b);
+    String usr=ConnBack.getInstance().userLoggato();
+    System.out.println("USER:"+usr);
+    if (b){
       menu.add(richiedi_domanda);
       menu.add(visualizza_punteggio);
       menu.add(visualizza_dati);
       menu.add(modifica_dati);
       menu.add(logout);
+    }
+    else{
+      menu.add(login);
     }
     menu.add(nascondi);
   }

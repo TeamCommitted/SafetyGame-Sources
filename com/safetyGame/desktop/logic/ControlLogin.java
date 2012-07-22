@@ -49,7 +49,9 @@ public class ControlLogin{
     char c=browser.leggi(url);
     if(c=='s'){
       DatiLogin l=new DatiLogin(username,password);
-      ConnBack.getInstance().login(l);
+      System.out.println("login: "+l);
+
+      ConnBack.getInstance().login(username,password);
       return true;
     }
     return false;
