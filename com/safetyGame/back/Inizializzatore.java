@@ -34,9 +34,6 @@ import com.safetyGame.back.condivisi.*;
 import com.safetyGame.back.controller.*;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.connection.*;
-import java.rmi.*;
-import java.rmi.server.*;
-import java.io.*;
 
   /**
    * Classe che si occupa di gestire i log del sistema
@@ -46,7 +43,7 @@ import java.io.*;
    * @version v1.0
    */
 
-public class Inizializzatore extends UnicastRemoteObject{
+public class Inizializzatore{
   private Indirizzo indirizzoAz;
   private Indirizzo indirizzoDom;
   private DAODipendenti daoDipendenti;
@@ -73,13 +70,12 @@ public class Inizializzatore extends UnicastRemoteObject{
   private static ApplicazioniConnection appConnection= null;
   private static Inizializzatore inizializzatore=null;
 
-  private static String HOST ="localhost";
 
   /**
    * Costruttore della classe Inizializzatore
    *
    */
-  private Inizializzatore() throws RemoteException{
+  private Inizializzatore(){
     indirizzoAz = new Indirizzo("localhost/ingAz","root","");//corretto
     indirizzoDom = new Indirizzo("localhost/ingDom","root","");//corretto
     //indirizzoAz = new Indirizzo("localhost/ingAz","root","root");//per corny
@@ -93,7 +89,8 @@ public class Inizializzatore extends UnicastRemoteObject{
     gestioneRecupero = new GestioneRecupero(daoDipendenti);
     gestionePunteggiD = new GestionePunteggiD(daoPunteggi,daoDipendenti);
     gestionePunteggiAA = new GestionePunteggiAA(daoPunteggi,daoDipendenti);
-    gestioneLog = new GestioneLog();
+    updateLog = new UpdateLog(indirizzoAz);
+    gestioneLog = new GestioneLog(updateLog,daoDipendenti);
     gestioneLogin = new GestioneLogin(daoLogin,gestioneLog);
     gestioneBadgeD = new GestioneBadgeD(daoBadge,daoDipendenti,daoDomande, gestioneLog, gestioneLogin);
     gestioneDomandeD = new GestioneDomandeD(daoDomande,daoPunteggi,daoDipendenti,gestionePunteggiD, gestioneLog, gestioneBadgeD);
@@ -138,27 +135,6 @@ public class Inizializzatore extends UnicastRemoteObject{
    */
   private static synchronized void crea(){ 
     if (inizializzatore==null) 
-      try{
         inizializzatore=new Inizializzatore();
-      }
-      catch(RemoteException e){}
-  }
-  
-  public static void main(String args[])throws RemoteException{
-    crea();
-    try {
-      Runtime.getRuntime().exec("rmiregistry");
-      Runtime.getRuntime().exec("rmid -J-Djava.security.policy=rmid.policy");
-    }
-    catch (IOException e) {System.out.println("Impossibile attivare il servizio rmiregistry");}
-    try{
-      DesktopConnection ref=new DesktopConnection(gestioneDati);  
-      String rmiObjName="rmi://localhost/Pacchetto";
-      Naming.rebind(rmiObjName,ref);
-    }
-    catch (Exception e){
-      System.out.println("Impossibile attivare il server RMI, il server verra` chiuso"); 
-      System.exit(9);
-    }   
   }
 }

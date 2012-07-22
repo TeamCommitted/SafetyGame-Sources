@@ -10,14 +10,16 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120611 | Lorenzo Braghetto   | Adeguamento backend
+ * +----------+---------------------+----------------------
  * | 20120611 | Lorenzo Braghetto   | 
  * +----------+---------------------+----------------------
  * 
  */ 
 <?xml version="1.0" encoding="UTF-8"?>
-<%@ page contentType="text/xml" import="com.safetygame.back.connection.*"  %>
-<%@page import="com.safetygame.back.condivisi.*" %>
-<%@page import="com.safetygame.back.*" %>
+<%@ page contentType="text/xml" import="com.safetyGame.back.connection.*"  %>
+<%@page import="com.safetyGame.back.condivisi.*" %>
+<%@page import="com.safetyGame.back.*" %>
 <%@page import="java.util.ArrayList" %>
 <% 
 ApplicazioniConnection appC = Inizializzatore.getApp();
@@ -28,6 +30,7 @@ Login l = new Login(user, passw);
 Punteggio p = appC.getStat(l);
 Dipendente d = appC.getDati(l);
 ArrayList<Badge> b = appC.getBadge(l, 2);
+Punteggio pDip = d.getPunteggio();
 %>
 <response>
 <%
@@ -38,7 +41,7 @@ if(risposta)
 		<rispostedate><%=p.getnDomRisp()%></rispostedate>
 		<rispostecorrette><%=p.getnRispCorr()%></rispostecorrette>
 		<risposteerrate><%=p.getnDomRisp()-p.getnRispCorr()%></risposteerrate>
-		<punti><%=d.getPunti()%></punti>
+		<punti><%=pDip.getPunti()%></punti>
 	</punteggi>
 	<badges>
  		<badgesNum><%=b.size()%></badgesNum>

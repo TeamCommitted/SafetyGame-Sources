@@ -44,6 +44,7 @@ import com.safetyGame.mobile.condivisi.Punteggi;
 public class PunteggiActivity extends SherlockActivity {
 
 	private Context context;
+	private String serverUrl;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -51,6 +52,9 @@ public class PunteggiActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 
 		context = this;
+		SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
+
+		serverUrl = prefs.getString("server", "");
 
 		new PunteggiTask().execute();
 	}
@@ -90,7 +94,7 @@ public class PunteggiActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			Punteggi punteggi = (Punteggi) ConnectionUtils
 					.HttpCreateClient(
-							"http://monossido.ath.cx/teamcommitted/API/punteggi.jsp",
+							serverUrl + "/teamcommitted/API/punteggi.jsp",
 							nameValuePairs);
 
 			return punteggi;
