@@ -24,7 +24,6 @@
  *
  */
 package com.safetyGame.back.access;
-import java.io.*;
 import com.safetyGame.back.condivisi.*;
 
 /**
@@ -34,7 +33,7 @@ import com.safetyGame.back.condivisi.*;
  * @version 1.0
  */
 
-public class UpdateLog extends IOException {
+public class UpdateLog{
   //private PrintWriter out;
 	private Indirizzo serverAzienda;
   
@@ -118,4 +117,17 @@ public class UpdateLog extends IOException {
 	String[] values = {id,"'"+dataOra+"'",descrizione}; 
     serverAzienda.inserisciRiga(nomeTabella,"IDdipendente,Data,"+colonna,values);
   }
+  
+  /**
+   * Metodo che scrive un log specifico nella tabella data
+   * 
+   * @param nomeTabella il nome della tabella su cui scrivere
+   * 		dataOra la data in cui e' stata effettuata l'azione
+   * 		colonna1 la colonna contenente la descrizione1
+   * 		descrizione1 il valore contenuto nella colonna1 data
+   */
+ public void scriviLogDomande(String nomeTabella, String dataOra,String id, String operazione){
+	String[] values = {"'"+dataOra+"'",id,operazione}; 
+   serverAzienda.inserisciRiga(nomeTabella,"Data,IDdomanda,Operazione",values);
+ }
 }

@@ -45,8 +45,6 @@
  */ 
 package com.safetyGame.back.controller;
 
-import java.io.File;
-
 import com.safetyGame.back.condivisi.*;
 
 import static org.junit.Assert.*;
@@ -63,11 +61,6 @@ import org.junit.Test;
 public class GestioneLogTest {
 
 	private GestioneLog gestioneLog;
-	int idDip = -1;
-	int idDom = -1;
-	private final int fDip = 1; //id dip per test
-	private final int fDom = 10;//id dom per test
- 	private DataOra dataOra = new DataOra();
  	private Indirizzo indirizzoAz;
  	private DAODipendenti daoDip;
  	private UpdateLog updateLog;
@@ -84,21 +77,19 @@ public class GestioneLogTest {
 	    daoDip = new SqlDAODipendenti(indirizzoAz);
 	    
 	    gestioneLog = new GestioneLog(updateLog,daoDip);
-		idDip = fDip;
-		idDom = fDom;
 		
 	}
 
 
 	@Test
-	public void testLogin() { //verifico cosa succede quando uso scriviLogin()
+	public void testLoginD() { //verifico cosa succede quando uso scriviLoginD()
 		init(); //inizializzo il test
 
 		Login login = new Login();
 		login.setUsername("nick");
 		login.setPassword("pass");
 		
-		gestioneLog.scriviLogin(login);
+		gestioneLog.scriviLoginD(login);
 	/*	//File f = new File(".");
 		//System.out.println(f.getAbsolutePath());
 		gestioneLog.scriviLogin(login);
@@ -115,20 +106,41 @@ public class GestioneLogTest {
 		String logCorretto = "LOGIN "+ this.dataOra.toString()+ " " + login.getUsername();
 		assertTrue("log errato", log.equals(logCorretto));*/
 	}
-/*
+	
 	@Test
-	public void testLogout() { //verifico cosa succede quando uso scriviLogout()
-		init();//inizializzo il test
-		
-		Dipendente d = new Dipendente();
-		d.setId(idDip);
-		boolean b = false;
-		
+	public void testLoginA() { //verifico cosa succede quando uso scriviLoginA()
+		init(); //inizializzo il test
 
-		Login login = new Login(d,dataOra,b);
+		Login login = new Login();
+		login.setUsername("amministratoreAz");
+		login.setPassword("pass");
 		
-		gestioneLog.scriviLogout(login);
+		gestioneLog.scriviLoginA(login);
+	/*	//File f = new File(".");
+		//System.out.println(f.getAbsolutePath());
+		gestioneLog.scriviLogin(login);
+
+		//controllo percorso
+		String percorso = gestioneLog.getPercorso();
+		String percorsoCorretto = "/log/"+ login.getUsername() + "/login.txt";
+		System.out.println(percorsoCorretto);
+		System.out.println(percorso);
+		assertTrue("percorso errato", percorso.equals(percorsoCorretto));
+
+		//controllo log
+		String log = gestioneLog.getLog();
+		String logCorretto = "LOGIN "+ this.dataOra.toString()+ " " + login.getUsername();
+		assertTrue("log errato", log.equals(logCorretto));*/
+	}
+
+	@Test
+	public void testLogoutD() { //verifico cosa succede quando uso scriviLogoutD()
+		init();//inizializzo il test
+
+		Login login = new Login("nick","pass");
 		
+		gestioneLog.scriviLogoutD(login);
+		/*
 		//controllo percorso
 		String percorso = gestioneLog.getPercorso();
 		String percorsoCorretto = "/log/"+ login.getDipendente().getId() + "/logout.txt";
@@ -138,25 +150,39 @@ public class GestioneLogTest {
 		String log = gestioneLog.getLog();
 		String logCorretto = "LOGOUT "+ this.dataOra.toString()+ " " + d.toStringID();
 		
-		assertTrue("log errato", log.equals(logCorretto));
+		/*assertTrue("log errato", log.equals(logCorretto));*/
+	}
+	
+	@Test
+	public void testLogoutA() { //verifico cosa succede quando uso scriviLogoutA()
+		init();//inizializzo il test
+
+		Login login = new Login("amministratoreAz","pass");
+		
+		gestioneLog.scriviLogoutA(login);
+		/*
+		//controllo percorso
+		String percorso = gestioneLog.getPercorso();
+		String percorsoCorretto = "/log/"+ login.getDipendente().getId() + "/logout.txt";
+		assertTrue("percorso errato", percorso.equals(percorsoCorretto));
+		
+		//controllo log
+		String log = gestioneLog.getLog();
+		String logCorretto = "LOGOUT "+ this.dataOra.toString()+ " " + d.toStringID();
+		
+		/*assertTrue("log errato", log.equals(logCorretto));*/
 	}
 
 	@Test
 	public void testDomRic() { //verifico cosa succede quando uso scriviDomRic()
 	  init();//inizializzo il test
-		
-	  //inizializzo il dipendente fittizzio
-      Dipendente dip = new Dipendente();
-	  dip.setId(idDip);
-	  boolean b = false;
-
-	  Login login = new Login(dip,dataOra,b);
+	  Login login = new Login("nick","pass");
 		
 	  //inizializzo domanda fittizzia
 	  Domanda dom = new Domanda();
-	  dom.setId(idDom);
+	  dom.setId(1);
 	  gestioneLog.scriviDomRic(login,dom);
-		
+	/*	
 	  //controllo percorso
 	  String percorso = gestioneLog.getPercorso();
 	  String percorsoCorretto = "/log/"+ login.getDipendente().getId() + "/dRic.txt";
@@ -167,25 +193,20 @@ public class GestioneLogTest {
 	  //controllo log
 	  String log = gestioneLog.getLog();
 	  String logCorretto = "DOMANDA RICEVUTA "+ this.dataOra.toString()+ " id dip=" + dip.getId() + " id dom=" + dom.getId();	
-	  assertTrue("log errato", log.equals(logCorretto));
+	  assertTrue("log errato", log.equals(logCorretto));*/
 	}
-	
+
 	@Test
 	public void testDomProp() { //verifico cosa succede quando uso scriviDomRic()
-	  init();//inizializzo il test
-		
-	  //inizializzo il dipendente fittizzio
-      Dipendente dip = new Dipendente();
-	  dip.setId(idDip);
-	  boolean b = false;
+	  init();//inizializzo il test;
 
-	  Login login = new Login(dip,dataOra,b);
+	  Login login = new Login("nick","pass");
 		
 	  //inizializzo domanda fittizzia
 	  Domanda dom = new Domanda();
-	  dom.setId(idDom);
+	  dom.setId(1);
 	  gestioneLog.scriviDomProp(login,dom);
-		
+	/*	
 	  //controllo percorso
 	  String percorso = gestioneLog.getPercorso();
 	  String percorsoCorretto = "/log/"+ login.getDipendente().getId() + "/dProp.txt";	
@@ -194,25 +215,20 @@ public class GestioneLogTest {
 	  //controllo log
 	  String log = gestioneLog.getLog();
 	  String logCorretto = "DOMANDA PROPOSTA "+ this.dataOra.toString()+ " id dip=" + dip.getId() + " id dom=" + dom.getId();
-	  assertTrue("log errato", log.equals(logCorretto));
+	  assertTrue("log errato", log.equals(logCorretto));*/
 	}
 	
 	@Test
 	public void testDomPost() { //verifico cosa succede quando uso scriviDomRic()
 	  init();//inizializzo il test
-		
-	  //inizializzo il dipendente fittizzio
-      Dipendente dip = new Dipendente();
-	  dip.setId(idDip);
-	  boolean b = false;
 
-	  Login login = new Login(dip,dataOra,b);
+	  Login login = new Login("nick","pass");
 		
 	  //inizializzo domanda fittizzia
 	  Domanda dom = new Domanda();
-	  dom.setId(idDom);
+	  dom.setId(1);
 	  gestioneLog.scriviDomPost(login,dom);
-		
+	/*	
 	  //controllo percorso
 	  String percorso = gestioneLog.getPercorso();
 	  String percorsoCorretto = "/log/"+ login.getDipendente().getId() + "/dPost.txt";	
@@ -221,25 +237,20 @@ public class GestioneLogTest {
 	  //controllo log
 	  String log = gestioneLog.getLog();
 	  String logCorretto = "DOMANDA POSTICIPATA "+ this.dataOra.toString()+ " id dip=" + dip.getId() + " id dom=" + dom.getId();
-	  assertTrue("log errato", log.equals(logCorretto));
+	  assertTrue("log errato", log.equals(logCorretto));*/
 	}
 	
 	@Test
 	public void testDomRisp() { //verifico cosa succede quando uso scriviDomRic()
 	  init();//inizializzo il test
-		
-	  //inizializzo il dipendente fittizzio
-      Dipendente dip = new Dipendente();
-	  dip.setId(idDip);
-	  boolean b = false;
 
-	  Login login = new Login(dip,dataOra,b);
+	  Login login =new Login("nick","pass");
 		
 	  //inizializzo domanda fittizzia
 	  Domanda dom = new Domanda();
-	  dom.setId(idDom);
+	  dom.setId(1);
 	  gestioneLog.scriviDomRisp(login,dom);
-		
+	/*
 	  //controllo percorso
 	  String percorso = gestioneLog.getPercorso();
 	  String percorsoCorretto = "/log/"+ login.getDipendente().getId() + "/dRisp.txt";	
@@ -248,7 +259,7 @@ public class GestioneLogTest {
 	  //controllo log
 	  String log = gestioneLog.getLog();
 	  String logCorretto = "DOMANDA RISPOSTA "+ this.dataOra.toString()+ " id dip=" + dip.getId() + " id dom=" + dom.getId();
-	  assertTrue("log errato", log.equals(logCorretto));
+	  assertTrue("log errato", log.equals(logCorretto));*/
 	}
 
 	@Test
@@ -257,10 +268,10 @@ public class GestioneLogTest {
 		
 	  //inizializzo il dipendente fittizzio
       Dipendente dip = new Dipendente();
-	  dip.setId(idDip);
+	  dip.setId(1);
 
 	  gestioneLog.scriviModPassD(dip);
-
+	/*
 	  //controllo percorso
 	  String percorso = gestioneLog.getPercorso();
 	  String percorsoCorretto = "/log/"+ dip.getId() + "/modPassD.txt";
@@ -269,7 +280,7 @@ public class GestioneLogTest {
 	  //controllo log
 	  String log = gestioneLog.getLog();
 	  String logCorretto = "MODIFICA PASS D "+ this.dataOra.toString()+ " id dip=" + dip.getId();
-	  assertTrue("log errato", log.equals(logCorretto));
+	  assertTrue("log errato", log.equals(logCorretto));*/
 	}
 	
 	@Test
@@ -278,10 +289,10 @@ public class GestioneLogTest {
 		
 	  //inizializzo il dipendente fittizzio
       Dipendente dip = new Dipendente();
-	  dip.setId(idDip);
+	  dip.setId(1);
 
 	  gestioneLog.scriviModEmailD(dip);
-
+	/*
 	  //controllo percorso
 	  String percorso = gestioneLog.getPercorso();
 	  String percorsoCorretto = "/log/"+ dip.getId() + "/modEmailD.txt";
@@ -290,7 +301,7 @@ public class GestioneLogTest {
 	  //controllo log
 	  String log = gestioneLog.getLog();
 	  String logCorretto = "MODIFICA EMAIL D "+ this.dataOra.toString()+ " id dip=" + dip.getId();
-	  assertTrue("log errato", log.equals(logCorretto));
+	  assertTrue("log errato", log.equals(logCorretto));*/
 	}
 	
 	@Test
@@ -299,14 +310,14 @@ public class GestioneLogTest {
 		
 	  //inizializzo il dipendente fittizzio
       Dipendente dip = new Dipendente();
-	  dip.setId(idDip);
+	  dip.setId(1);
 	  
 	  //inizializzo badge fittizzio
 	  Badge b = new Badge();
-	  b.setNome("pompiere");
+	  b.setId(1);
 
 	  gestioneLog.scriviOttenimentoBadge(dip,b);
-
+	/*
 	  //controllo percorso
 	  String percorso = gestioneLog.getPercorso();
 	  String percorsoCorretto = "/log/"+ dip.getId() + "/modOttB.txt";
@@ -315,7 +326,7 @@ public class GestioneLogTest {
 	  //controllo log
 	  String log = gestioneLog.getLog();
 	  String logCorretto = "OTTENIMENTO BADGE "+ this.dataOra.toString()+ " id dip=" + dip.getId() + " badge=" + b.getNome();
-	  assertTrue("log errato", log.equals(logCorretto));
+	  assertTrue("log errato", log.equals(logCorretto));*/
 	}
 	
 	@Test
@@ -324,14 +335,14 @@ public class GestioneLogTest {
 		
 	  //inizializzo il dipendente fittizzio
       Dipendente dip = new Dipendente();
-	  dip.setId(idDip);
+	  dip.setId(1);
 
 	  gestioneLog.scriviAddDip(dip);
-	  
+	  /*
 	  //controllo log
 	  String log = gestioneLog.getLog();
 	  String logCorretto = "AGGIUNTO DIPENDENTE "+ this.dataOra.toString()+ " id dip=" + dip.getId();
-	  assertTrue("log errato", log.equals(logCorretto));
+	  assertTrue("log errato", log.equals(logCorretto));*/
 	}
 	
 	@Test
@@ -340,39 +351,67 @@ public class GestioneLogTest {
 		
 	  //inizializzo il dipendente fittizzio
       Dipendente dip = new Dipendente();
-	  dip.setId(idDip);
+	  dip.setId(1);
 
 	  gestioneLog.scriviDelDip(dip);
-	  
+	  /*
 	  //controllo log
 	  String log = gestioneLog.getLog();
 	  String logCorretto = "RIMOSSO DIPENDENTE "+ this.dataOra.toString()+ " id dip=" + dip.getId();
-	  assertTrue("log errato", log.equals(logCorretto));
+	  assertTrue("log errato", log.equals(logCorretto));*/
 	}
 	
 	@Test
-	public void testModDip() { //verifico cosa succede quando uso scriviDomRic()
+	public void testModDip() { //verifico cosa succede quando uso scriviModDip()
 	  init();//inizializzo il test
 		
 	  //inizializzo il dipendente fittizzio
       Dipendente dip = new Dipendente();
-	  dip.setId(idDip);
+	  dip.setId(1);
 
 	  gestioneLog.scriviModDip(dip);
-	  
+	  /*
 	  //controllo log
 	  String log = gestioneLog.getLog();
 	  String logCorretto = "MODIFICATO DIPENDENTE "+ this.dataOra.toString()+ " id dip=" + dip.getId();
 	  assertTrue("log errato", log.equals(logCorretto));
+	  */
 	}
 	
-*/
-}
+	@Test
+	public void testAddDom(){ //verifico cosa succede quando uso scriviAddDomande()
+		  init();//inizializzo il test
+		  
+		  Domanda[] d = {new Domanda(), new Domanda()};
+		  d[0].setId(1);
+		  d[1].setId(2);
 
-/*
- * 		System.out.println("percorso  = "+ percorso);
- 		System.out.println("percorsoc = "+ percorsoCorretto);		
- * 
- * 		System.out.println("log  = "+ log);
-		System.out.println("logc = "+ logCorretto);
- */
+		  gestioneLog.scriviAddDomande(d);
+		  /*
+		  //controllo log
+		  String log = gestioneLog.getLog();
+		  String logCorretto = "MODIFICATO DIPENDENTE "+ this.dataOra.toString()+ " id dip=" + dip.getId();
+		  assertTrue("log errato", log.equals(logCorretto));
+	  */
+		
+	}
+	
+	@Test
+	public void testDelDom(){ //verifico cosa succede quando uso scriviDelDomande()
+		  init();//inizializzo il test
+			
+		  Domanda[] d = {new Domanda(), new Domanda()};
+		  d[0].setId(1);
+		  d[1].setId(2);
+
+		  gestioneLog.scriviDelDomande(d);
+		  /*
+		  //controllo log
+		  String log = gestioneLog.getLog();
+		  String logCorretto = "MODIFICATO DIPENDENTE "+ this.dataOra.toString()+ " id dip=" + dip.getId();
+		  assertTrue("log errato", log.equals(logCorretto));
+	  */
+		
+	}
+	
+}
