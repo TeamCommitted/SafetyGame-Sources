@@ -50,6 +50,7 @@ public class ConnBack {
     
   private static ConnBack singleton = null;
   private DatiLogin loggato;
+  private static String logged;
   private String server;
   private Parser parser;
   private Timer timer_proponi;
@@ -63,6 +64,7 @@ public class ConnBack {
    */
   private ConnBack() {
     loggato=null;
+    logged="";
     parser=new Parser();
     timer_chiedi=new Timer(0,0);
     timer_proponi=new Timer(0,1);
@@ -131,8 +133,12 @@ public class ConnBack {
    * @param login i dati del login
    * 
    */  
-  public void login(DatiLogin login){
-    loggato=login;
+  public void login(String username, String password){
+    loggato=new DatiLogin(username,password);
+    logged=loggato.getUsername();
+    System.out.println("pass: "+loggato.getPassword());
+    System.out.println("logged: "+logged);
+    System.out.println("loggato: "+loggato);
     resetTimerRichiesta();
     resetTimerProposta();
   }
@@ -143,6 +149,7 @@ public class ConnBack {
    */   
   public void logout(){ 
     loggato=null;
+    logged="";
     timer_proponi.setTempo(0);
     timer_chiedi.setTempo(0);
   }
@@ -194,7 +201,9 @@ public class ConnBack {
    * 
    */  
   public boolean isLogged(){
-    return loggato!=null;
+      System.out.println("Logged equal ''"+logged.equals(""));
+      System.out.println("logged: "+logged);
+    return !(logged.equals(""));
   }
   
   /**
