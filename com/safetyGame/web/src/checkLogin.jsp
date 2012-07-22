@@ -54,12 +54,6 @@ Pannello Amministratore
 	}
 	else out.println("<span class=\"fallimento\">I dati che hai inserito non corrispondono.</span><p>Controlla che i dati inseriti siano corretti<p>");
 	
-	// Controllo obbligo password
-	if (ambito.equals("Dipendente")) {
-		Login l = new Login (username, password);
-		Dipendente dip = connection.getDati(l);
-		if (dip.getNuovaPass() != null) response.sendRedirect("modPassD.jsp");
-	}
 	// Redirect alla pagina successiva
 	String redirectURL = "";
 	// Se il login è di tipo Dipendente

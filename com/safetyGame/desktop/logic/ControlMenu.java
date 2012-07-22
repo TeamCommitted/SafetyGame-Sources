@@ -48,8 +48,8 @@ public class ControlMenu{
    * 
    */
   public void logout(){
-    connessione.logout();
     browser.apri("logout.jsp");
+    connessione.logout();
   }
   
   /**

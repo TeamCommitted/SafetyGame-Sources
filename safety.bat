@@ -1,0 +1,1 @@
+java com.safetyGame.desktop.view.Menu

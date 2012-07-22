@@ -136,9 +136,6 @@ public class ConnBack {
   public void login(String username, String password){
     loggato=new DatiLogin(username,password);
     logged=loggato.getUsername();
-    System.out.println("pass: "+loggato.getPassword());
-    System.out.println("logged: "+logged);
-    System.out.println("loggato: "+loggato);
     resetTimerRichiesta();
     resetTimerProposta();
   }
@@ -201,8 +198,6 @@ public class ConnBack {
    * 
    */  
   public boolean isLogged(){
-      System.out.println("Logged equal ''"+logged.equals(""));
-      System.out.println("logged: "+logged);
     return !(logged.equals(""));
   }
   
