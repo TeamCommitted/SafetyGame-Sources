@@ -10,6 +10,12 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120720 | Gabriele Facchin    | + scriviLogTre
+ * |          |                     | + scriviLogQuattro
+ * |          |                     | - finalize
+ * |          |                     | - scrivi
+ * |          |                     | - scrivichiudi
+ * +----------+---------------------|---------------------
  * | 20120422 | Gabriele Facchin    | + UpdateLog
  * |          |                     | + finalize
  * |          |                     | + scrivi
@@ -75,9 +81,11 @@ public class UpdateLog extends IOException {
   }*/
 
  /**
-   * Metodo che scrive una determinata frase all'interno dello stream aperto
+   * Metodo che scrive un log di login o logout nelle relative tabelle
    * 
-   * @param log stringa da scrivere
+   * @param nomeTabella il nome della tabella su cui scrivere
+   * 		dip il dipendente interessato
+   * 		dataOra la data in cui e' stata effettuata l'azione
    */  
   public void scriviLogTre(String nomeTabella, Dipendente dip, String dataOra){
 	String id = ""+dip.getId();
@@ -97,9 +105,13 @@ public class UpdateLog extends IOException {
   }*/
 
   /**
-    * Metodo che scrive una stringa sullo stream aperto e chiude il file
+    * Metodo che scrive un log specifico nella tabella data
     * 
-    * @param log stringa da scrivere
+    * @param nomeTabella il nome della tabella su cui scrivere
+    * 		dip il dipendente interessato
+    * 		dataOra la data in cui e' stata effettuata l'azione
+    * 		colonna la colonna contenente la descrizione
+	* 		descrizione il valore contenuto nella colonna data
     */
   public void scriviLogQuattro(String nomeTabella, Dipendente dip, String dataOra, String colonna, String descrizione){
     String id = ""+dip.getId();
