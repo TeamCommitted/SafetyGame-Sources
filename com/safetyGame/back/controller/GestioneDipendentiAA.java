@@ -111,17 +111,17 @@ public class GestioneDipendentiAA{
     */
    public boolean modDipendente(Dipendente newDip, Dipendente oldDip){ //
         boolean correct = true;
-        if(!newDip.getNome().equals(oldDip.getNome()))
+        if(!(newDip.getNome().equals(oldDip.getNome())))
             correct = accessDip.modNome(newDip, newDip.getNome());
-        if(!newDip.getCognome().equals(oldDip.getCognome()) && correct)
+        if((!(newDip.getCognome().equals(oldDip.getCognome()))) && correct)
             correct = accessDip.modCognome(newDip, newDip.getCognome());
-        if(!newDip.getEmail().equals(oldDip.getEmail()) && correct)
+        if((!(newDip.getEmail().equals(oldDip.getEmail()))) && correct)
             correct = accessDip.mailD(newDip, newDip.getEmail());
-        if(!newDip.getRuolo().equals(oldDip.getRuolo()) && correct)
+        if((!(newDip.getRuolo().equals(oldDip.getRuolo()))) && correct)
             correct = accessDip.modImpiego(newDip, newDip.getRuolo());
-        if(!newDip.getNickname().equals(oldDip.getNickname()) && correct)
+        if((!(newDip.getNickname().equals(oldDip.getNickname()))) && correct)
             correct = accessDip.modUsername(newDip, newDip.getNickname());
-        if(!newDip.getPassword().equals(oldDip.getPassword()) && correct)
+        if((!(newDip.getPassword().equals(oldDip.getPassword()))) && correct)
             correct = accessDip.passD(newDip, newDip.getPassword());
         return correct;
    }

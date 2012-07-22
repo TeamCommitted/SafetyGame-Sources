@@ -65,7 +65,7 @@ public class ConnBack {
   private boolean pop; // evita che si possa effettuare il logout quando vi sono finestre di nuova domanda aperte
     
   /** 
-   * Costrutture iniziale della classe ConnBack, chiede la stringa del server se non Ë stata impostata.
+   * Costrutture iniziale della classe ConnBack, chiede la stringa del server se non √® stata impostata.
    */
   private ConnBack() {
     loggato=null;
@@ -103,7 +103,7 @@ public class ConnBack {
   }
 
   /**
-   * Metodo fa continuare la costruzione dell'oggetto ConnBack (seconda parte) una volta che Ë stata ottenuta la stringa con l'indirizzo del server.
+   * Metodo fa continuare la costruzione dell'oggetto ConnBack (seconda parte) una volta che √® stata ottenuta la stringa con l'indirizzo del server.
    * Inserisce nel file server.txt l'indirizzo
    * 
    * @return booleano che indica la corretta scrittura nel file server (true)
@@ -152,7 +152,7 @@ public class ConnBack {
   /**
    * Metodo che effettua il login con il backend e istanzia le corrette variabili per l'applicazione
    * 
-   * @return boolean che indica se il login Ë stato o meno fatto
+   * @return boolean che indica se il login √® stato o meno fatto
    * 
    */  
   public boolean login(DatiLogin login){ 
@@ -172,7 +172,7 @@ public class ConnBack {
   /**
    * Metodo che effettua il logout con il backend e cambia i valori corretti delle variabili per l'applicazione
    * 
-   * @return boolean che indica se il logout Ë stato o meno fatto
+   * @return boolean che indica se il logout √® stato o meno fatto
    * 
    */   
   public void logout(){ 
@@ -184,7 +184,7 @@ public class ConnBack {
         timer_chiedi.setTempo(0);
       }
       catch(RemoteException e){
-        new Error ("Logout sul server non avvenuto, l'applicazione effettuer‡ comunque il logout");
+        new Error ("Logout sul server non avvenuto, l'applicazione effettuer√† comunque il logout");
       }
     }
   }
@@ -201,9 +201,9 @@ public class ConnBack {
   }
   
   /**
-   * Metodo che avvisa il backend che una domanda Ë stata posticipata
+   * Metodo che avvisa il backend che una domanda √® stata posticipata
    * 
-   * @return boolean che indica se il beckend Ë stato o meno avvisato della scelta di posticipare la domanda da parte del dipendente
+   * @return boolean che indica se il beckend √® stato o meno avvisato della scelta di posticipare la domanda da parte del dipendente
    * 
    */  
   public boolean posticipa(){
@@ -226,7 +226,7 @@ public class ConnBack {
   /**
    * Metodo che invia i dati per il recupero della password
    * 
-   * @return boolean che indica se la password Ë stata rigenerata correttamente o no
+   * @return boolean che indica se la password √® stata rigenerata correttamente o no
    * 
    */  
   public boolean recupera(Recupero rec){
@@ -250,9 +250,9 @@ public class ConnBack {
   }
   
   /**
-   * Metodo che verifica la possibilit‡ di richiedere una domanda
+   * Metodo che verifica la possibilit√† di richiedere una domanda
    * 
-   * @return boolean che indica se Ë possibile richiedere una domanda o no
+   * @return boolean che indica se √® possibile richiedere una domanda o no
    * 
    */  
   public boolean mayApplyForNewQuestion(){
@@ -280,9 +280,9 @@ public class ConnBack {
   }
   
   /**
-   * Metodo che indica se un dipendete Ë loggato o no
+   * Metodo che indica se un dipendete √® loggato o no
    * 
-   * @return boolean true se il dipendente Ë loggato, false altrimenti
+   * @return boolean true se il dipendente √® loggato, false altrimenti
    * 
    */  
   public boolean isLogged(){

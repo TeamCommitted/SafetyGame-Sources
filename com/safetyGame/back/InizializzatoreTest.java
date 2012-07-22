@@ -29,7 +29,7 @@ import org.junit.Test;
 public class InizializzatoreTest {
 
 	private Inizializzatore iniz;
-	
+
 	private void init() {
 	  //iniz = new Inizializzatore();
 		//iniz = Inizializzatore.inizializzatore;	
@@ -41,27 +41,27 @@ public class InizializzatoreTest {
 		init();		
 		//se non solleva eccezioni allora l'ha creato correttamente
 	}
-	
+
 	@Test
 	public void testWebConnection(){
 	//test per verificare che il web connection all'interno di inizializzatore
 	//funzioni correttamente
 		//init();
 		WebConnection webConn = iniz.getWeb();
-		
+
 		//testo login dipendente
 		String username = "nick";
 		String password = "pass";
 		boolean esitoLoginDip = webConn.loginDip(username, password);
 		assertTrue("Login dipendente non riuscito", esitoLoginDip == true);
-		
+
 		//testo login amministratore
 		String usernameA = "amministratoreAz";
 		String passwordA = "pass";
 		boolean tipo = true;
 		boolean esitoLoginAdmin = webConn.loginAdmin(usernameA, passwordA,tipo);
 		assertTrue("Login amministratore non riuscito", esitoLoginAdmin == true);
-		
+
 		//testo la modifica della password di un dipendente
 		Login login = new Login(username,password);
 		Dipendente dip = webConn.getDati(login);
@@ -69,7 +69,7 @@ public class InizializzatoreTest {
 		dip.setNuovaPass(nuovaPass);
 		boolean esitoModPass = webConn.modPassD(dip);
 		assertTrue("Resetpassword dipendente non riuscito", esitoModPass == true);
-		
+
 		//tutte queste funzionano --->funzioneranno anche le altre
 	}
 

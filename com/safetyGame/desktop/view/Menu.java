@@ -93,8 +93,8 @@ public class Menu implements ActionListener{
         }
       });
     }
-    catch(UnsupportedOperationException e){System.out.println("Le funzionalit‡ minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(1);}
-    catch(AWTException e){System.out.println("Le funzionalit‡ minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(1);}
+    catch(UnsupportedOperationException e){System.out.println("Le funzionalit√† minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(1);}
+    catch(AWTException e){System.out.println("Le funzionalit√† minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(1);}
   }
   
   /**

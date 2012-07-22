@@ -52,7 +52,7 @@ public class ControlMenu{
   }
   
   /**
-   * metodo che fa aprire il browser con una nuova domanda se è passato abbastanza tempo
+   * metodo che fa aprire il browser con una nuova domanda se Ã¨ passato abbastanza tempo
    * 
    */
   public void richiediDomanda(){
@@ -87,9 +87,9 @@ public class ControlMenu{
   }
   
   /**
-   * metodo che dice se vi è un utente loggato nell'applicazione
+   * metodo che dice se vi Ã¨ un utente loggato nell'applicazione
    * 
-   * @return booleano che indica se un utente è loggato nell'applicativo desktop
+   * @return booleano che indica se un utente Ã¨ loggato nell'applicativo desktop
    * 
    */
   public boolean isLogged(){
