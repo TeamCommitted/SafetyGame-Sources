@@ -34,13 +34,17 @@ import java.util.ArrayList;
 
 public class GestioneDipendentiAATest {
     private GestioneDipendentiAA gDipAA;
+    private UpdateLog updLog;
+    private GestioneLog gLog;
     private DAODipendenti dDip;
     private Indirizzo indAz;
 
     private void init(){
       indAz = new Indirizzo("127.0.0.1/ingAz","root","root");
       dDip = new SqlDAODipendenti(indAz);
-      gDipAA = new GestioneDipendentiAA(dDip);
+      updLog = new UpdateLog(indAz);
+      gLog = new GestioneLog(updLog, dDip);
+      gDipAA = new GestioneDipendentiAA(dDip,gLog);
     }
     
     

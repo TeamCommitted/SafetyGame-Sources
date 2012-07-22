@@ -471,13 +471,11 @@ public class GestioneLog{
    * 
    * @param dom domande aggiunte
    */
-  public void scriviAddDomande(Domanda [] dom) {
+  public void scriviAddDomande(Domanda dom) {
     DataOra dataOra = new DataOra();
 	String nomeTabella = "AddRemDomanda";
 	String operazione = "add";
-	for(int i = 0; i< dom.length; i++) {
-      this.updateLog.scriviLogDomande(nomeTabella,dataOra.toString(),""+dom[i].getId(),"'"+operazione+"'");
-	}
+    this.updateLog.scriviLogDomande(nomeTabella,dataOra.toString(),""+dom.getId(),"'"+operazione+"'");
 	/*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
@@ -500,13 +498,11 @@ public class GestioneLog{
    * 
    * @param dom domande rimosse
    */
-  public void scriviDelDomande(Domanda [] dom) {
+  public void scriviDelDomande(Domanda dom) {
 	DataOra dataOra = new DataOra();
 	String nomeTabella = "AddRemDomanda";
 	String operazione = "del";
-	for(int i = 0; i< dom.length; i++) {
-		this.updateLog.scriviLogDomande(nomeTabella,dataOra.toString(),""+dom[i].getId(),"'"+operazione+"'");
-	}
+	this.updateLog.scriviLogDomande(nomeTabella,dataOra.toString(),""+dom.getId(),"'"+operazione+"'");
 	/*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog

@@ -40,6 +40,7 @@ import java.util.ArrayList;
  */
 public class GestioneDipendentiAA{
    private DAODipendenti accessDip;
+   private GestioneLog gestLog;
    
    /**
     * Costruttore con parametri della classe GestioneDipendentiAA
@@ -47,8 +48,9 @@ public class GestioneDipendentiAA{
     * @param accessDip riferimento alla classe che implementa l'interfaccia DAODipendenti
     *        
     */
-   public GestioneDipendentiAA(DAODipendenti accessDip){
+   public GestioneDipendentiAA(DAODipendenti accessDip, GestioneLog gestLog){
        this.accessDip = accessDip;
+       this.gestLog = gestLog;
     }
    
     /**
@@ -88,6 +90,8 @@ public class GestioneDipendentiAA{
                       "\n\n "+"Password: " + supporto.getPassword() +
                       "\n\n "+"Codice fiscale: " + supporto.getCodFiscale() +
                       "\n\n "+"Ruolo aziendale: " + supporto.getRuolo();
+      Login log = new Login(supporto.getNickname(),supporto.getPassword());
+      gestLog.scriviAddDip(accessDip.getInfoD(log));
       GestioneRecupero.sendMailInserito(supporto.getEmail(), messaggio_mail);
       return true;
    }
@@ -99,6 +103,7 @@ public class GestioneDipendentiAA{
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
    public boolean cancellaDipendente(Dipendente dip){ //
+      gestLog.scriviDelDip(dip); 
       return accessDip.cancellaDipendente(dip);
    }
    
@@ -123,6 +128,8 @@ public class GestioneDipendentiAA{
             correct = accessDip.modUsername(newDip, newDip.getNickname());
         if((!(newDip.getPassword().equals(oldDip.getPassword()))) && correct)
             correct = accessDip.passD(newDip, newDip.getPassword());
+        if(correct)
+            gestLog.scriviModDip(newDip);
         return correct;
    }
    

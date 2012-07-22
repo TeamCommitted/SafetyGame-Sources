@@ -382,9 +382,8 @@ public class GestioneLogTest {
 	public void testAddDom(){ //verifico cosa succede quando uso scriviAddDomande()
 		  init();//inizializzo il test
 		  
-		  Domanda[] d = {new Domanda(), new Domanda()};
-		  d[0].setId(1);
-		  d[1].setId(2);
+		  Domanda d = new Domanda();
+		  d.setId(1);
 
 		  gestioneLog.scriviAddDomande(d);
 		  /*
@@ -400,9 +399,8 @@ public class GestioneLogTest {
 	public void testDelDom(){ //verifico cosa succede quando uso scriviDelDomande()
 		  init();//inizializzo il test
 			
-		  Domanda[] d = {new Domanda(), new Domanda()};
-		  d[0].setId(1);
-		  d[1].setId(2);
+		  Domanda d = new Domanda();
+		  d.setId(1);
 
 		  gestioneLog.scriviDelDomande(d);
 		  /*

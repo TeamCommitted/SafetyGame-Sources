@@ -36,6 +36,7 @@ import java.util.ArrayList;
  */
 public class GestioneDomandeAS{ 
    private DAODomande accessDom;
+   private GestioneLog gestLog;
    
    /**
     * Costruttore con parametri della classe GestioneDomandeAs
@@ -43,8 +44,9 @@ public class GestioneDomandeAS{
     * @param accessDom riferimento alla classe che implementa l'interfaccia DAODomande
     *        
     */
-   public GestioneDomandeAS(DAODomande accessDom){
-       this.accessDom=accessDom;
+   public GestioneDomandeAS(DAODomande accessDom, GestioneLog gestLog){
+       this.accessDom = accessDom;
+       this.gestLog = gestLog;
     }
    
     /**
@@ -60,6 +62,7 @@ public class GestioneDomandeAS{
     * @return true se l'operazione � stata completata, altrimenti false   
     */
    public boolean addDomanda(Domanda dom){
+      gestLog.scriviAddDomande(dom);
       return accessDom.addDomanda(dom);
    }
    
@@ -68,6 +71,7 @@ public class GestioneDomandeAS{
     * @return true se l'operazione � stata completata, altrimenti false       
     */
    public boolean remDomanda(Domanda dom){
+      gestLog.scriviDelDomande(dom);
       return accessDom.remDomanda(dom);
    }
 }
