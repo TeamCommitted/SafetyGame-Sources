@@ -227,12 +227,21 @@ public class WebConnection{
   }
 
    /**
-    * Metodo per segnalare al sistema il logout di un utente
+    * Metodo per segnalare al sistema il logout di un dipendente
     * 
     * @param login login del dipendente che ha effettuato il logout
     */
-  public void logout(Login login){
-    dati.logout(login);
+  public void logoutD(Login login){
+    dati.logoutD(login);
+  }
+  
+  /**
+    * Metodo per segnalare al sistema il logout di un amministratore
+    * 
+    * @param login login dell'amministratore che ha effettuato il logout
+    */
+  public void logoutA(Login login){
+    dati.logoutA(login);
   }
    
   /**

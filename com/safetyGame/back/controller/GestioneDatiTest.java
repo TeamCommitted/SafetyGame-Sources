@@ -307,10 +307,18 @@ public class GestioneDatiTest {
 	}
 	   
 	@Test
-	public void testlogout() {
+	public void testlogoutD() {
 		init();
 		Login l = new Login("nick","pass");
-		D.logout(l);
+		D.logoutD(l);
+		assertTrue("logout non effettuato", true); 
+	}
+	
+	@Test
+	public void testlogoutA() {
+		init();
+		Login l = new Login("amministratoreAz","pass");
+		D.logoutA(l);
 		assertTrue("logout non effettuato", true); 
 	}
 	   

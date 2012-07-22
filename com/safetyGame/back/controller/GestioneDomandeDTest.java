@@ -42,6 +42,7 @@ public class GestioneDomandeDTest {
 	private Indirizzo indirizzoDom;
 	private DAOLogin daoLogin;
 	private GestioneDomandeD gestioneDomandeD;
+	private UpdateLog updatelog;
 	
 	private void init() {
 	  indirizzoAz = new Indirizzo("127.0.0.1/ingAz","root","root");
@@ -50,7 +51,8 @@ public class GestioneDomandeDTest {
 	  daoPunteggi = new SqlDAOPunteggi(indirizzoAz,indirizzoDom);
 	  daoDipendenti = new SqlDAODipendenti(indirizzoAz);
 	  gestionePunteggiD = new GestionePunteggiD(daoPunteggi,daoDipendenti);
-	  gestioneLog = new GestioneLog();
+	  updatelog = new UpdateLog(indirizzoAz);
+	  gestioneLog = new GestioneLog(updatelog,daoDipendenti);
 	  daoBadge = new SqlDAOBadge(indirizzoAz);
 	  daoLogin = new SqlDAOLogin(indirizzoAz);
 	  gestioneLogin = new GestioneLogin(daoLogin,gestioneLog);

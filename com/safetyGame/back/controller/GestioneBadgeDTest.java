@@ -43,7 +43,8 @@ public class GestioneBadgeDTest {
 		  DAODipendenti daoDip = new SqlDAODipendenti(indirizzoAz);
 		  DAODomande daoDom = new SqlDAODomande(indirizzoAz,indirizzoDom);
 		  DAOLogin daoLog = new SqlDAOLogin(indirizzoAz);
-		  GestioneLog log = new GestioneLog();
+		  UpdateLog updlog = new UpdateLog(indirizzoAz);
+		  GestioneLog log = new GestioneLog(updlog,daoDip);
 		  GestioneLogin login = new GestioneLogin(daoLog,log);
 		  gb = new GestioneBadgeD(daoBadge,daoDip,daoDom,log,login);
 		}

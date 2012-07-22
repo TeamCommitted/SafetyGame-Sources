@@ -34,6 +34,7 @@ import com.safetyGame.back.access.SqlDAODipendenti;
 import com.safetyGame.back.access.SqlDAODomande;
 import com.safetyGame.back.access.SqlDAOLogin;
 import com.safetyGame.back.access.SqlDAOPunteggi;
+import com.safetyGame.back.access.UpdateLog;
 import com.safetyGame.back.condivisi.Badge;
 import com.safetyGame.back.controller.*;
 
@@ -52,6 +53,7 @@ public class WebConnectionTest {
     GestionePunteggiD gestionePunteggiD;
     GestionePunteggiAA gestionePunteggiAA;
     GestioneLog gestioneLog;
+    UpdateLog updatelog;
     DAODipendenti daoDipendenti;
     //GestioneDati gestioneDati;
     Indirizzo indirizzoAz;
@@ -73,7 +75,8 @@ public class WebConnectionTest {
 	  gestioneRecupero = new GestioneRecupero(daoDipendenti);
 	  gestionePunteggiD = new GestionePunteggiD(daoPunteggi,daoDipendenti);
 	  gestionePunteggiAA = new GestionePunteggiAA(daoPunteggi,daoDipendenti);
-	  gestioneLog = new GestioneLog();
+	  updatelog = new UpdateLog(indirizzoAz);
+	  gestioneLog = new GestioneLog(updatelog,daoDipendenti);
 	  gestioneLogin = new GestioneLogin(daoLogin,gestioneLog);
 	  gestioneBadgeD = new GestioneBadgeD(daoBadge,daoDipendenti,daoDomande, gestioneLog, gestioneLogin);
 	  gestioneDomandeD = new GestioneDomandeD(daoDomande,daoPunteggi,daoDipendenti,gestionePunteggiD, gestioneLog, gestioneBadgeD);

@@ -346,8 +346,17 @@ public class GestioneDati{
     * 
     * @param login login del dipendente che ha effettuato il logout
     */
-   public void logout(Login login) {
-	 this.gestioneLogin.logout(login);
+   public void logoutD(Login login) {
+	 this.gestioneLogin.logoutD(login);
+   }
+   
+   /**
+    * Metodo per segnalare al sistema il logout di un utente
+    * 
+    * @param login login del dipendente che ha effettuato il logout
+    */
+   public void logoutA(Login login) {
+	 this.gestioneLogin.logoutA(login);
    }
    
    /**

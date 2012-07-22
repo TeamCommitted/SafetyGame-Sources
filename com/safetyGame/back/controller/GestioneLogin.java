@@ -56,8 +56,8 @@ public class GestioneLogin{
     */
    public boolean loginAdmin(Login login, boolean tipo){
       boolean result = access.loginAmministratore(login,tipo);
-      //if(result) 
-		   //log.scriviLogin(login);
+      if(result) 
+		   log.scriviLoginA(login);
 	   return result;
    }
    
@@ -68,17 +68,26 @@ public class GestioneLogin{
     */
    public boolean loginUser(Login login){
 	   boolean result = access.loginDipendente(login);
-	   //if(result) 
-		   //log.scriviLogin(login);
+	   if(result) 
+		   log.scriviLoginD(login);
 	   return result; 
    }
    
    /**
-    * Metodo per segnalare al sistema il logout di un utente
+    * Metodo per segnalare al sistema il logout di un dipendente
     * 
     * @param l login del dipendente che ha effettuato il logout
     */
-   public void logout(Login l) {
-	 //this.log.scriviLogout(l);
+   public void logoutD(Login l) {
+	 this.log.scriviLogoutD(l);
+   }
+   
+   /**
+    * Metodo per segnalare al sistema il logout di un amministratore
+    * 
+    * @param l login dell'amministratore che ha effettuato il logout
+    */
+   public void logoutA(Login l) {
+	 this.log.scriviLogoutA(l);
    }
 }
