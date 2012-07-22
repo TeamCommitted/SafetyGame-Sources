@@ -48,7 +48,6 @@ import com.safetyGame.mobile.R;
 import com.safetyGame.mobile.Utils.ConnectionUtils;
 import com.safetyGame.mobile.Utils.IntentIntegrator;
 import com.safetyGame.mobile.Utils.IntentResult;
-import com.safetyGame.mobile.Utils.ServerUrl;
 import com.safetyGame.mobile.condivisi.Domanda;
 
 public class DomandaActivity extends SherlockActivity {
@@ -58,6 +57,7 @@ public class DomandaActivity extends SherlockActivity {
 	private Timer myTimer;
 	private int i;
 	public TextView timer;
+	private String serverUrl;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -65,6 +65,9 @@ public class DomandaActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 
 		context = this;
+		SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
+
+		serverUrl = prefs.getString("server", "");
 		i = 0;
 		new DomandaTask().execute();
 
@@ -91,7 +94,7 @@ public class DomandaActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			domanda = (Domanda) ConnectionUtils
 					.HttpCreateClient(
-							ServerUrl.serverUrl + "/teamcommitted/API/domanda.jsp",
+							serverUrl + "/teamcommitted/API/domanda.jsp",
 							nameValuePairs);
 
 			return domanda;
@@ -250,7 +253,7 @@ public class DomandaActivity extends SherlockActivity {
 
 			ConnectionUtils
 					.HttpCreateClient(
-							ServerUrl.serverUrl + "/teamcommitted/API/rispondi.jsp",
+							serverUrl + "/teamcommitted/API/rispondi.jsp",
 							nameValuePairs);
 			return null;
 		}

@@ -42,7 +42,6 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.safetyGame.mobile.R;
 import com.safetyGame.mobile.Utils.ConnectionUtils;
-import com.safetyGame.mobile.Utils.ServerUrl;
 import com.safetyGame.mobile.condivisi.Dati;
 
 public class DatiActivity extends SherlockActivity {
@@ -51,6 +50,7 @@ public class DatiActivity extends SherlockActivity {
 	private EditText vecchiaPassw;
 	private EditText nuovaPassw;
 	private EditText nuovaPassw2;
+	private String serverUrl;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -59,6 +59,10 @@ public class DatiActivity extends SherlockActivity {
 		setContentView(R.layout.dati);
 
 		context = this;
+
+		SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
+
+		serverUrl = prefs.getString("server", "");
 
 		new DatiTask().execute();
 
@@ -113,7 +117,7 @@ public class DatiActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			Dati dati = (Dati) ConnectionUtils
 					.HttpCreateClient(
-							ServerUrl.serverUrl + "/teamcommitted/API/dati.jsp",
+							serverUrl + "/teamcommitted/API/dati.jsp",
 							nameValuePairs);
 
 			return dati;
@@ -163,7 +167,7 @@ public class DatiActivity extends SherlockActivity {
 						nuovaPassw.getText().toString()));
 				Boolean dati = (Boolean) ConnectionUtils
 						.HttpCreateClient(
-								ServerUrl.serverUrl + "/teamcommitted/API/cambioPassw.jsp",
+								serverUrl + "/teamcommitted/API/cambioPassw.jsp",
 								nameValuePairs);
 				return dati;
 

@@ -27,6 +27,7 @@ import org.apache.http.message.BasicNameValuePair;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -40,11 +41,11 @@ import android.widget.EditText;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.safetyGame.mobile.R;
 import com.safetyGame.mobile.Utils.ConnectionUtils;
-import com.safetyGame.mobile.Utils.ServerUrl;
 
 public class LoginActivity extends SherlockActivity {
 
 	private Context context;
+	private SharedPreferences prefs;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,35 @@ public class LoginActivity extends SherlockActivity {
 
 		context = this;
 
-		// getSupportActionBar();
+		if (!checkServer())
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+			alert.setTitle("Inserire l'indirizzo del server compreso di http://");
+			alert.setMessage("Indirizzo");
+
+			// Set an EditText view to get user input 
+			final EditText input = new EditText(this);
+			alert.setView(input);
+
+			alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					String value = input.getText().toString();
+					SharedPreferences.Editor editor = prefs.edit();
+					editor.putString("server", value);
+					editor.commit();
+				}
+			});
+
+			alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					// Canceled.
+				}
+			});
+
+			alert.show();
+
+		}
 
 		Button login = (Button) findViewById(R.id.button1);
 		login.setOnClickListener(new OnClickListener() {
@@ -66,6 +95,17 @@ public class LoginActivity extends SherlockActivity {
 
 		});
 
+	}
+
+	private boolean checkServer()
+	{
+		prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
+
+		String server = prefs.getString("server", "");
+		if (server.length() > 0)
+			return true;
+		else
+			return false;
 	}
 
 	private class LoginTask extends AsyncTask<Object, String, String> {
@@ -85,6 +125,10 @@ public class LoginActivity extends SherlockActivity {
 		@Override
 		protected String doInBackground(Object... params) {
 
+			prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
+
+			String serverUrl = prefs.getString("server", "");
+
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 			nameValuePairs.add(new BasicNameValuePair("username", user
 					.getText().toString()));
@@ -92,7 +136,7 @@ public class LoginActivity extends SherlockActivity {
 					.getText().toString()));
 			String status = (String) ConnectionUtils
 					.HttpCreateClient(
-							ServerUrl.serverUrl + "/teamcommitted/API/login.jsp",
+							serverUrl + "/teamcommitted/API/login.jsp",
 							nameValuePairs);
 
 			SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
