@@ -8,17 +8,15 @@ dependency2.type=UsesDependency
 dependency3.from=Richiesta
 dependency3.to=Error
 dependency3.type=UsesDependency
-<<<<<<< Updated upstream
 package.editor.height=572
 package.editor.width=1248
-package.editor.x=-15
-package.editor.y=51
+<<<<<<< HEAD
+package.editor.x=88
+package.editor.y=305
 =======
-package.editor.height=697
-package.editor.width=1462
 package.editor.x=-1897
 package.editor.y=0
->>>>>>> Stashed changes
+>>>>>>> 177a61fc80c2b7098ad3f319806dfd80d95afe63
 package.numDependencies=3
 package.numTargets=6
 package.showExtends=true
