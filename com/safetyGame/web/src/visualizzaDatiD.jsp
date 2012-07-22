@@ -42,6 +42,7 @@ I tuoi dati
 			out.println("<p><a href=\"modEmailD.jsp\">Modifica l'indirizzo Email</a></p>");
 			out.println("<p><a href=\"modPassD.jsp\">Modifica password</a></p>");
 		}
+		%><%@ include file="forzaCambioPass.jsp" %><%
 	%>
         
 <%@ include file="html/footer.html" %> 

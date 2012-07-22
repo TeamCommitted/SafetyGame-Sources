@@ -4,7 +4,7 @@ function init(){
   if (loggedDesktop != "true") {
 	  var c=getCookie("tempo_rimasto");
 	  if (c==null){
-		var tempo=10000;
+		var tempo=120000;
 		setCookie("tempo_rimasto",tempo,80000);
 		setCookie("delta",tempo/10,80000);
 		c=getCookie("tempo_rimasto");

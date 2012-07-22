@@ -51,6 +51,14 @@
 				break;
 			}
 		}
+		cookieName = "dataUltimaDomanda";
+		for (int i = 0; i < cookies.length; i++) {
+			if (cookies [i].getName().equals(cookieName)) {
+				cookies[i].setMaxAge(0);
+				response.addCookie(cookies[i]);
+				break;
+			}
+		}
 	}
 	
 	connection.logout(l);

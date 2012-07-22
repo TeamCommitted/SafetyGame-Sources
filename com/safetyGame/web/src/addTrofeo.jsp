@@ -9,26 +9,31 @@
 <%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
 <%@ page language="java" import="com.safetyGame.back.access.*" %>
 <%@ page language="java" import="com.safetyGame.back.*" %>
+
 <%@ include file="html/header_pre_title.html" %> 
-Modifica Email
+SafetyGame - Dettagli Dipendente
 <%@ include file="html/header_post_title.html" %> 
-<%@ include file="html/menud.html" %> 
+<%@ include file="html/menuaa.html" %> 
 <%@ include file="html/menu_content.html" %> 
 
 <%@ include file="getCookies.jsp" %>
-<% if (!(ambito.equals("Dipendente"))) response.sendRedirect("index.jsp"); %>
-    
-    <h2>Modifica Email</h2>
-    <form id="modPassDForm" action="checkModEmailD.jsp" method="post">
-    	<fieldset>
-        	<p><label for="nuovaPass">Nuova email:</label><input type="email" name="nuovaEmail" /></p>
-            <p><label for="vecchiaPass">Password:</label><input type="password" name="password" /></p>
-            <input type="submit" class="button" value="Cambia Indirizzo Email"/>
-        </fieldset>
-    </form>
-<%
-	WebConnection connection = Inizializzatore.getWeb();
-	%><%@ include file="forzaCambioPass.jsp" %><%
-%>
-
+<% if (!(ambito.equals("Amministratore Azienda"))) response.sendRedirect("user_page.jsp"); %>
+			
+	<%
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        WebConnection connection = Inizializzatore.getWeb();
+        ArrayList<Dipendente> dipendenti = connection.getElencoDipendenti();
+        Dipendente d = null;
+        for (int it=0; it<dipendenti.size(); it++) {	
+            if 	(dipendenti.get(it).getId() == id) {	
+                d = dipendenti.get(it);
+                break;
+            }
+        }
+        int numTrofei = d.getTrofei();
+        connection.setTrofei(d,numTrofei+1);
+		response.sendRedirect("visualizzaDipendente.jsp?id="+id);
+    %>
+		
 <%@ include file="html/footer.html" %> 

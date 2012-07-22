@@ -31,7 +31,7 @@ Nuova Domanda
 				}
 			}
 			Long ultimaRisposta = null;
-			boolean puorispondere = false;
+			boolean puorispondere = true;
 			if (!(ultimaDomanda.equals(""))) {
 				ultimaRisposta = new Long(ultimaDomanda);
 				Date now = new Date();
@@ -39,7 +39,7 @@ Nuova Domanda
 				Long longDiffTempo = ora-ultimaRisposta;
 				String stringDiffTempo = longDiffTempo.toString();
 				int diffTempo = Integer.parseInt(stringDiffTempo);
-				if (diffTempo>=60000) puorispondere=true;
+				if (diffTempo<60000) puorispondere=false;
 			}
 			
 
@@ -64,6 +64,8 @@ Nuova Domanda
 				}
 				catch(Exception e) { out.println("<h3>Complimenti! Hai risposto a tutte le domande.</h3>"); }
 			}
+			WebConnection connection = Inizializzatore.getWeb();
+			%><%@ include file="forzaCambioPass.jsp" %><%
 		}
 %>
 
