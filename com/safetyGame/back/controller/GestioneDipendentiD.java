@@ -132,14 +132,15 @@ public class GestioneDipendentiD{
   public boolean modificaPass(Dipendente dip) {//
 	//dip contiene la nuova password (il web deve controllare che la pass sia ok
 	//scrivo la nuova password
-	boolean esito = this.daoDipendenti.passD(dip,dip.getNuovaPass());
-    if(esito) {// se tutto ok
+	boolean esito =this.daoDipendenti.resetPassD(dip);
+	if(esito)
+	esito = this.daoDipendenti.passD(dip,dip.getNuovaPass());
+    if(esito){// se tutto ok
 	  //scrivo il log
       //gestioneLog.scriviModPassD(dip);
       GestioneRecupero.sendMail(dip.getEmail(), dip.getNuovaPass());
-      return true;
     }
-    return false;//non sono riuscito a modificare la passwrod
+    return esito;//non sono riuscito a modificare la passwrod
   }
   
   /**

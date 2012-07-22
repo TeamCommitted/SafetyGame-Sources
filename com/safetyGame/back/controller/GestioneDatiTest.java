@@ -64,6 +64,7 @@ import com.safetyGame.back.access.SqlDAODipendenti;
 import com.safetyGame.back.access.SqlDAODomande;
 import com.safetyGame.back.access.SqlDAOLogin;
 import com.safetyGame.back.access.SqlDAOPunteggi;
+import com.safetyGame.back.access.UpdateLog;
 import com.safetyGame.back.condivisi.Badge;
 import com.safetyGame.back.condivisi.Dipendente;
 import com.safetyGame.back.condivisi.Domanda;
@@ -86,6 +87,7 @@ public class GestioneDatiTest {
 	  GestioneDati D;
 	  Indirizzo indirizzoAz;
 	  Indirizzo indirizzoDom;
+	  UpdateLog updatelog;
 	
 	private void init() {
 		  String indirizzo1 = "127.0.0.1/ingAz";
@@ -103,7 +105,8 @@ public class GestioneDatiTest {
 		  gestioneRecupero = new GestioneRecupero(daoDipendenti);
 		  gestionePunteggiD = new GestionePunteggiD(daoPunteggi,daoDipendenti);
 		  gestionePunteggiAA = new GestionePunteggiAA(daoPunteggi,daoDipendenti);
-		  gestioneLog = new GestioneLog();
+		  updatelog = new UpdateLog(indirizzoAz);
+		  gestioneLog = new GestioneLog(updatelog,daoDipendenti);
 		  gestioneLogin = new GestioneLogin(daoLogin,gestioneLog);
 		  gestioneBadgeD = new GestioneBadgeD(daoBadge,daoDipendenti,daoDomande, gestioneLog, gestioneLogin);
 		  gestioneDomandeD = new GestioneDomandeD(daoDomande,daoPunteggi,daoDipendenti,gestionePunteggiD, gestioneLog, gestioneBadgeD);
