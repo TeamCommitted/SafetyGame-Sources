@@ -3,23 +3,18 @@ dependency1.from=InizializzatoreTest
 dependency1.to=Inizializzatore
 dependency1.type=UsesDependency
 <<<<<<< HEAD
-package.editor.height=398
+package.editor.height=355
 package.editor.width=1240
-package.editor.x=-1612
-package.editor.y=181
-package.numDependencies=1
-package.numTargets=6
+package.editor.x=144
+package.editor.y=135
 =======
-dependency2.from=Inizializzatore
-dependency2.to=DesktopConnection
-dependency2.type=UsesDependency
 package.editor.height=399
 package.editor.width=1242
-package.editor.x=12
-package.editor.y=12
-package.numDependencies=2
-package.numTargets=8
->>>>>>> 0137503d09be94f009fb6f516d2a93bfd9d156b9
+package.editor.x=-1828
+package.editor.y=92
+>>>>>>> 4dbbea1c36fc789f6cac52e96dc019948e08991c
+package.numDependencies=1
+package.numTargets=6
 package.showExtends=true
 package.showUses=true
 target1.height=62
@@ -46,30 +41,28 @@ target4.type=PackageTarget
 target4.width=80
 target4.x=510
 target4.y=20
-target5.editor.height=1096
-target5.editor.width=1936
+<<<<<<< HEAD
+target5.editor.height=871
+target5.editor.width=1696
+target5.editor.x=22
+target5.editor.y=68
+=======
+target5.editor.height=788
+target5.editor.width=1386
 target5.editor.x=-1928
 target5.editor.y=-8
+>>>>>>> 4dbbea1c36fc789f6cac52e96dc019948e08991c
 target5.height=50
 target5.name=Inizializzatore
 target5.naviview.expanded=false
 target5.showInterface=false
 target5.type=ClassTarget
-<<<<<<< HEAD
 target5.width=100
 target5.x=390
 target5.y=150
 target6.editor.height=886
 target6.editor.width=1616
 target6.editor.x=-8
-=======
-target5.width=140
-target5.x=150
-target5.y=270
-target6.editor.height=788
-target6.editor.width=1386
-target6.editor.x=-1928
->>>>>>> 0137503d09be94f009fb6f516d2a93bfd9d156b9
 target6.editor.y=-8
 target6.height=50
 target6.name=InizializzatoreTest

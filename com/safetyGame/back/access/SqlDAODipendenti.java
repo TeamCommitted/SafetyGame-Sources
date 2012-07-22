@@ -143,7 +143,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    */   
   public boolean resetPassD(Dipendente dip){//
-    return serverAzienda.modificaRiga("Dipendente", "passmod=''","ID="+dip.getId());
+    return serverAzienda.modificaRiga("Dipendente", "passmod=NULL","ID="+dip.getId());
   }
   
   /**
@@ -154,7 +154,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    */   
   public boolean resetPassA(Dipendente dip){//
-    return serverAzienda.modificaRiga("Amministratore", "passmod=''","ID="+dip.getId());
+    return serverAzienda.modificaRiga("Amministratore", "passmod=NULL","ID="+dip.getId());
   }
   
   /**
