@@ -53,14 +53,20 @@ Pannello Amministratore
 		response.addCookie(ambitoCookie);
 	}
 	else out.println("<span class=\"fallimento\">I dati che hai inserito non corrispondono.</span><p>Controlla che i dati inseriti siano corretti<p>");
-
+	
+	// Controllo obbligo password
+	if (ambito.equals("Dipendente")) {
+		Login l = new Login (username, password);
+		Dipendente dip = connection.getDati(l);
+		if (dip.getNuovaPass() != null) response.sendRedirect("modPassD.jsp");
+	}
 	// Redirect alla pagina successiva
 	String redirectURL = "";
 	// Se il login è di tipo Dipendente
-    if (ambito.equals("Dipendente")) redirectURL = "http://localhost/examples/user_page.jsp";
+	if (ambito.equals("Dipendente")) redirectURL = "http://localhost/examples/user_page.jsp";
 	// Altrimenti, se è di tipo amministratore:
 	else redirectURL = "http://localhost/examples/admin_page.jsp";
-    if (logged) response.sendRedirect(redirectURL);
+	if (logged) response.sendRedirect(redirectURL);
 %>
 
 <%@ include file="html/footer.html" %>

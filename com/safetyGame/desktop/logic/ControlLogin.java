@@ -27,14 +27,13 @@ import com.safetyGame.desktop.condivisi.*;
  * @version 0.1
  */
 public class ControlLogin{
-  private ConnBack connessione;
-  
+  Browser browser;
   /**
    * Costruttore della classe ControlLogin
    * 
    */
   public ControlLogin(){
-    connessione=ConnBack.getInstance();
+    browser=Browser.getInstance();
   }
   
   /**
@@ -46,8 +45,14 @@ public class ControlLogin{
    * @return boolean che indica il succeso o meno del login
    */
   public boolean tryLogin(String username, String password){
-    DatiLogin l=new DatiLogin(username,password);
-    return connessione.login(l);
+    String url="desklogin.jsp?username="+username.trim()+"&password="+password;
+    char c=browser.leggi(url);
+    if(c=='s'){
+      DatiLogin l=new DatiLogin(username,password);
+      ConnBack.getInstance().login(l);
+      return true;
+    }
+    return false;
   }
   
   /**
@@ -59,7 +64,11 @@ public class ControlLogin{
    * @return boolean che indica il succeso o meno della generazione
    */
   public boolean recupera(String codfis, String mail){
-    Recupero r=new Recupero(mail,codfis);
-    return connessione.recupera(r);
+    String url="deskrecupero.jsp?email="+mail.trim()+"&codfis="+codfis.trim();
+    char c=browser.leggi(url);
+    if (c=='s'){
+      return true;
+    }
+    return false;
   }
 }
