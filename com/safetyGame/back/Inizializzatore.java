@@ -35,6 +35,7 @@ import com.safetyGame.back.controller.*;
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.connection.*;
 import java.rmi.*;
+import java.rmi.server.*;
 import java.io.*;
 
   /**
@@ -45,7 +46,7 @@ import java.io.*;
    * @version v1.0
    */
 
-public class Inizializzatore{
+public class Inizializzatore extends UnicastRemoteObject{
   private Indirizzo indirizzoAz;
   private Indirizzo indirizzoDom;
   private DAODipendenti daoDipendenti;
@@ -78,7 +79,7 @@ public class Inizializzatore{
    * Costruttore della classe Inizializzatore
    *
    */
-  private Inizializzatore() {
+  private Inizializzatore() throws RemoteException{
     indirizzoAz = new Indirizzo("localhost/ingAz","root","");//corretto
     indirizzoDom = new Indirizzo("localhost/ingDom","root","");//corretto
     //indirizzoAz = new Indirizzo("localhost/ingAz","root","root");//per corny
@@ -113,7 +114,7 @@ public class Inizializzatore{
    * @return webConnection riferimento alla classe webConnection
    *
    */
-  public static WebConnection getWeb() {
+  public static WebConnection getWeb(){
     if (inizializzatore==null)
       crea();
     return webConnection;
@@ -125,7 +126,7 @@ public class Inizializzatore{
    * @return appConnection riferimento alla classe ApplicazioniConnection
    *
    */
-  public static ApplicazioniConnection getApp() {
+  public static ApplicazioniConnection getApp(){
     if (inizializzatore==null)
       crea();
     return appConnection;
@@ -137,10 +138,13 @@ public class Inizializzatore{
    */
   private static synchronized void crea(){ 
     if (inizializzatore==null) 
-      inizializzatore=new Inizializzatore();
+      try{
+        inizializzatore=new Inizializzatore();
+      }
+      catch(RemoteException e){}
   }
   
-  public static void main(String args[]){
+  public static void main(String args[])throws RemoteException{
     crea();
     try {
       Runtime.getRuntime().exec("rmiregistry");
@@ -150,11 +154,9 @@ public class Inizializzatore{
     try{
       DesktopConnection ref=new DesktopConnection(gestioneDati);  
       String rmiObjName="rmi://localhost/Pacchetto";
-//      String rmiObjName="prova";
       Naming.rebind(rmiObjName,ref);
     }
     catch (Exception e){
-      System.out.println(e.getMessage());
       System.out.println("Impossibile attivare il server RMI, il server verra` chiuso"); 
       System.exit(9);
     }   
