@@ -13,6 +13,7 @@
  * | 20120713 | Gabriele Facchin    | + Browser
  * |          |                     | + getInstance
  * |          |                     | + apri
+ * |          |                     | + leggi
  * +----------+---------------------|---------------------
  *
  */
@@ -89,6 +90,13 @@ public class Browser {
     catch (UnsupportedOperationException e) {System.out.println("Le funzionalita` minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(1);}
   }      
   
+  /**
+   * Metodo che legge una pagina web
+   * 
+   * @param stringa contenente l'url della pagina web da leggere
+   * @return char che mostra il primo carattere letto, se esistente. se non esiste ritorna 'e'
+   * 
+   */
   public char leggi(String fineUrl){
     try{
       URL oracle = new URL(iniziouri+fineUrl);
