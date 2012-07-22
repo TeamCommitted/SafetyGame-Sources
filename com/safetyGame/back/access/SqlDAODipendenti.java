@@ -247,7 +247,7 @@ public class SqlDAODipendenti implements DAODipendenti{
     param[5]="'"+dip.getPassword()+"'";
     param[6]="'"+dip.getRuolo()+"'";
     param[7]=""+dip.getPunteggio().getPunti();
-    return serverAzienda.inserisciRiga("Dipendente","nome, cognome, codice_fiscale, email, nickname, password, ruolo, trofeo",param);
+    return serverAzienda.inserisciRiga("Dipendente","nome, cognome, codice_fiscale, email, nickname, passmod, ruolo, trofeo",param);
   }
   
   /**
