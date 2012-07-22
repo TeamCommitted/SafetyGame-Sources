@@ -45,12 +45,7 @@ public class ControlNotifica{
    * 
    */
   public void posticipa(){
-    boolean b=false;
-    for (int i=0; i<3 && !b; i++)
-      b=connessione.posticipa();
-    if (!b) {
-      new Error ("Impossibile avvisare il server della modifica oppure le domande sono terminate");
-    }
+    browser.apri("posticipa.jsp?page=");
     connessione.resetTimerProposta();
   }
   

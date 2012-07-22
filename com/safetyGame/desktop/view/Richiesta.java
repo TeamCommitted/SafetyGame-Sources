@@ -73,7 +73,6 @@ public class Richiesta implements ActionListener{
         else{
           frame.setVisible(false);
           frame=null;
-          ConnBack.getInstance().continuaRMI();
         }
       }
     }
