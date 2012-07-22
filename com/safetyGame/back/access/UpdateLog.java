@@ -89,7 +89,7 @@ public class UpdateLog extends IOException {
    */  
   public void scriviLogTre(String nomeTabella, Dipendente dip, String dataOra){
 	String id = ""+dip.getId();
-	String[] values = {id,dataOra}; 
+	String[] values = {id,"'"+dataOra+"'"}; 
     serverAzienda.inserisciRiga(nomeTabella,"IDdipendente,Data",values);
   }
   
@@ -115,7 +115,7 @@ public class UpdateLog extends IOException {
     */
   public void scriviLogQuattro(String nomeTabella, Dipendente dip, String dataOra, String colonna, String descrizione){
     String id = ""+dip.getId();
-	String[] values = {id,dataOra,descrizione}; 
+	String[] values = {id,"'"+dataOra+"'",descrizione}; 
     serverAzienda.inserisciRiga(nomeTabella,"IDdipendente,Data,"+colonna,values);
   }
 }
