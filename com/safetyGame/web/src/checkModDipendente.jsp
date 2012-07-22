@@ -47,7 +47,8 @@ Modifica Dipendente
 	if (matcher.matches()) {
 	
 		boolean operazioneRiuscita = false;
-		newDip = oldDip;
+		//newDip = oldDip;
+		newDip.setId(oldDip.getId());
 		newDip.setNome(nome);
 		newDip.setCognome(cognome);
 		newDip.setNickname(oldDip.getNickname());
@@ -60,10 +61,10 @@ Modifica Dipendente
 		
 		if (operazioneRiuscita) {
 			out.println("<span class=\"successo\">Dati dipendente aggiornati con successo!</span>");
-			out.println("<p>Nome: "+nome+"</p>");
-			out.println("<p>Cognome: "+cognome+"</p>");
-			out.println("<p>Codice Fiscale: "+codfis+"</p>");
-			out.println("<p>Email: "+email+"</p>");
+			out.println("<p>Nome: "+newDip.getNome()+oldDip.getNome()+"</p>");
+			out.println("<p>Cognome: "+newDip.getCognome()+oldDip.getCognome()+"</p>");
+			out.println("<p>Codice Fiscale: "+newDip.getCodFiscale()+oldDip.getCodFiscale()+"</p>");
+			out.println("<p>Email: "+newDip.getEmail()+oldDip.getEmail()+"</p>");
 			out.println("<p>Ruolo: "+ruolo+"</p>");
 		}
 		else out.println("<span class=\"fallimento\">Operazione fallita!</span><p>Ritentare o contattare l'Amministratore di sistema</p>");

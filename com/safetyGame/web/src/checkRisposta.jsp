@@ -28,6 +28,13 @@ Nuova Domanda
 		domanda.setRispostaData(risposta);
 		boolean rispostoConSuccesso = connection.setRisposta(l, domanda);
 		out.println("<span class=\"successo\">La tua risposta &egrave; stata inviata con successo!</span>");
+		
+		// Imposto il cookie per la data dell'ultima domanda
+		Date now = new Date();
+		String timestamp = ""+now.getTime();
+		Cookie dataUltimaDomanda = new Cookie("dataUltimaDomanda", timestamp);
+		dataUltimaDomanda.setMaxAge(24 * 60 * 60);
+		response.addCookie(dataUltimaDomanda);
 	}
 	catch(Exception e) {
 		out.println("<span class=\"fallimento\">Errore - Impossibile recuperare la risposta dalla pagina precedente. Torna indietro e riprova</span>");

@@ -19,15 +19,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <%@ page contentType="text/xml" import="com.safetyGame.back.connection.*"  %>
 <%@page import="com.safetyGame.back.*"  %>
+<%@page import="com.safetyGame.back.condivisi.*"  %>
 <% 
 ApplicazioniConnection appC = Inizializzatore.getApp();
 String user = request.getParameter("username");
 String passw = request.getParameter("password");
 boolean risposta = appC.login(user, passw);
+Login l = new Login(user, passw);
+Dipendente d = appC.getDati(l);
 %>
 <response>
 <%
-if(risposta)
+if(risposta && d.getNuovaPass()==null)
 { %>
 	<status>OK</status>
 <% }else{ %>

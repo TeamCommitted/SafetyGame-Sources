@@ -66,16 +66,16 @@ SafetyGame - Dettagli Dipendente
             out.println(punt+"</em>");
         %>
         
-    	<h2>Trofei e Badge</h2>
+    	<h2>Badge</h2>
         <%
             // Funzione per ottenere l'elenco dei trovei e dei badge
             ArrayList<Badge> elencoTrofei = null;
             elencoTrofei = connection.getBadge(l,10);
             //
-            if (elencoTrofei == null) out.println("Questo dipendente non ha guadagnato nessun trofeo.");
-            else if (elencoTrofei.size() == 0) out.println("Questo dipendente non ha guadagnato nessun trofeo.");
+            if (elencoTrofei == null) out.println("Questo dipendente non ha guadagnato nessun badge.");
+            else if (elencoTrofei.size() == 0) out.println("Questo dipendente non ha guadagnato nessun badge.");
             else {
-                out.println("Questo dipendente ha guadagnato i seguenti trofei:");
+                out.println("Questo dipendente ha guadagnato i seguenti Badge:");
                 out.println("<dl>");
                 String nomebadge;
                 String descrbadge;
@@ -89,6 +89,15 @@ SafetyGame - Dettagli Dipendente
                 }
                 out.println("</dl>");
             }
-        %>
+		%>
+			
+        <h2>Trofei</h2>
+		<%
+			Dipendente dip = connection.getDati(l);
+			int numTrofei = dip.getTrofei();
+			out.println("Questo dipendente ha guadagnato <em>"+numTrofei+"</em> Trofei");
+			out.println("<a href=\"addTrofeo.jsp?id="+id+"\" title=\"Aggiungi un trofeo\">+</a>");
+			out.println("<a href=\"subTrofeo.jsp?id="+id+"\" title=\"Rimuovi un trofeo\">-</a>");
+		%>
         
 <%@ include file="html/footer.html" %> 

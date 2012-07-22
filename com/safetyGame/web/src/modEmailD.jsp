@@ -26,5 +26,9 @@ Modifica Email
             <input type="submit" class="button" value="Cambia Indirizzo Email"/>
         </fieldset>
     </form>
+<%
+	WebConnection connection = Inizializzatore.getWeb();
+	%><%@ include file="forzaCambioPass.jsp" %><%
+%>
 
 <%@ include file="html/footer.html" %> 

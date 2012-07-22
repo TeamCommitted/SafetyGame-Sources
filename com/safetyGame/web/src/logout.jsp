@@ -3,11 +3,20 @@
 <%@ page import= "java.lang.*"%>
 <%@ page import= "javax.servlet.*"%>
 <%@ page import= "java.io.*"%>
-<%@ page language= "java" import= "java.util.Date"%>
+<%@ page language="java" import="java.util.Date"%>
+<%@ page language="java" import="com.safetyGame.back.connection.*" %>
+<%@ page language="java" import="com.safetyGame.back.controller.*" %>
+<%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
+<%@ page language="java" import="com.safetyGame.back.access.*" %>
+<%@ page language="java" import="com.safetyGame.back.*" %>
+<%@ include file="getCookies.jsp" %>
 
 <% 
-	Cookie cookies [] = request.getCookies();
-	String cookieName = null;
+	WebConnection connection = Inizializzatore.getWeb();
+	Login l = new Login(username, password);
+	
+	cookies = request.getCookies();
+	cookieName = null;
 	
 	if (cookies != null){
 		cookieName = "username";
@@ -34,12 +43,25 @@
 				break;
 			}
 		}
+		cookieName = "loggedDesktop";
+		for (int i = 0; i < cookies.length; i++) {
+			if (cookies [i].getName().equals(cookieName)) {
+				cookies[i].setMaxAge(0);
+				response.addCookie(cookies[i]);
+				break;
+			}
+		}
+		cookieName = "dataUltimaDomanda";
+		for (int i = 0; i < cookies.length; i++) {
+			if (cookies [i].getName().equals(cookieName)) {
+				cookies[i].setMaxAge(0);
+				response.addCookie(cookies[i]);
+				break;
+			}
+		}
 	}
 	
-	//
-	// Qua va richiamata la funziona che avvisa il back-end di un avvenuto Logout
-	// logout(username);
-	//
+	connection.logout(l);
 	
 	response.sendRedirect("index.jsp");
 %>

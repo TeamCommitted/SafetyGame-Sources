@@ -14,13 +14,9 @@
  * |          |                     | + getIstance
  * +----------+---------------------|---------------------
  * | 20120720 | Gabriele Facchin    | + continuaParser
- * |          |                     | + continuaRMI
  * |          |                     | + getServer
  * |          |                     | + login
  * |          |                     | + logout
- * |          |                     | + preleva_domanda
- * |          |                     | + posticipa
- * |          |                     | + recupera
  * |          |                     | + notificaDomanda
  * |          |                     | + mayApplyForNewQuestion
  * |          |                     | + resetTimerRichiesta
@@ -56,8 +52,6 @@ public class ConnBack {
   private DatiLogin loggato;
   private String server;
   private Parser parser;
-  private Pacchetto pack;
-  private Domanda da_rispondere;
   private Timer timer_proponi;
   private Timer timer_chiedi;
   private long tempo_proposta=120000; //2 minuti
@@ -82,9 +76,6 @@ public class ConnBack {
       server=parser.leggi();
       if (server.trim().equals("")){
         Richiesta domanda_server=new Richiesta();
-      }
-      else{
-        continuaRMI();
       }
     }
   }
@@ -125,21 +116,6 @@ public class ConnBack {
   } 
   
   /**
-   * Metodo che continua la creazione dell'oggetto ConnBack creando la connessione al server RMI
-   * 
-   */  
-  public void continuaRMI(){
-     try{
-         pack= (Pacchetto) Naming.lookup("rmi://localhost/Pacchetto");
-     }
-     catch(Exception e){ //remote-bound-io-etc..
-         System.out.println("Errore nella creazione della connessione al server RMI"); 
-         System.exit(9);
-     }
-     //il server dei dati e' aperto
-  } 
-  
-  /**
    * Metodo che ritorna il server
    * 
    * @return string contenente l'indirizzo del server
@@ -152,90 +128,23 @@ public class ConnBack {
   /**
    * Metodo che effettua il login con il backend e istanzia le corrette variabili per l'applicazione
    * 
-   * @return boolean che indica se il login è stato o meno fatto
+   * @param login i dati del login
    * 
    */  
-  public boolean login(DatiLogin login){ 
-    boolean prova_login;
-    try{
-      prova_login=pack.login(login.getUsername(), login.getPassword());
-    }
-    catch(RemoteException e){prova_login=false;}
-    if (prova_login){
-      loggato=login;
-      resetTimerRichiesta();
-      resetTimerProposta();
-    }
-    return prova_login;
+  public void login(DatiLogin login){
+    loggato=login;
+    resetTimerRichiesta();
+    resetTimerProposta();
   }
   
   /**
    * Metodo che effettua il logout con il backend e cambia i valori corretti delle variabili per l'applicazione
    * 
-   * @return boolean che indica se il logout è stato o meno fatto
-   * 
    */   
   public void logout(){ 
-    if (!pop){
-      try{
-        pack.logout(loggato.getLogin());
-        loggato=null;
-        timer_proponi.setTempo(0);
-        timer_chiedi.setTempo(0);
-      }
-      catch(RemoteException e){
-        new Error ("Logout sul server non avvenuto, l'applicazione effettuerà comunque il logout");
-      }
-    }
-  }
-  
-  /**
-   * Metodo che richiede una domanda al backend
-   * 
-   */  
-  private void preleva_domanda(){
-    try{
-      da_rispondere=pack.mostra_domanda(loggato.getLogin());
-    }
-    catch(RemoteException e){da_rispondere=null;}
-  }
-  
-  /**
-   * Metodo che avvisa il backend che una domanda è stata posticipata
-   * 
-   * @return boolean che indica se il beckend è stato o meno avvisato della scelta di posticipare la domanda da parte del dipendente
-   * 
-   */  
-  public boolean posticipa(){
-    if (da_rispondere==null){
-      preleva_domanda();
-    }
-    if (da_rispondere==null){
-      return false;
-    }
-    else{
-      boolean posticipata;
-      try{
-        posticipata=pack.posticipa(loggato.getLogin(),da_rispondere);
-      }
-      catch(RemoteException e){posticipata=false;}
-      return posticipata;
-    }
-  }
-  
-  /**
-   * Metodo che invia i dati per il recupero della password
-   * 
-   * @return boolean che indica se la password è stata rigenerata correttamente o no
-   * 
-   */  
-  public boolean recupera(Recupero rec){
-    boolean recuperata;
-    try{
-      recuperata=pack.recupera(rec);
-    }
-    catch(RemoteException e){recuperata=false;}
-    return recuperata;
+    loggato=null;
+    timer_proponi.setTempo(0);
+    timer_chiedi.setTempo(0);
   }
   
   /**
@@ -275,7 +184,6 @@ public class ConnBack {
    */  
   public void resetTimerProposta(){
     timer_proponi.setTempo(tempo_proposta);
-    da_rispondere=null;
     pop=false;
   }
   

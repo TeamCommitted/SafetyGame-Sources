@@ -136,7 +136,7 @@ public class LoginActivity extends SherlockActivity {
 					.getText().toString()));
 			String status = (String) ConnectionUtils
 					.HttpCreateClient(
-							serverUrl + "/teamcommitted/API/login.jsp",
+							serverUrl + "/API/login.jsp",
 							nameValuePairs);
 
 			SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);

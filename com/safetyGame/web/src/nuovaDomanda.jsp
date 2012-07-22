@@ -18,27 +18,54 @@ Nuova Domanda
 
 <%@ include file="getCookies.jsp" %>
         
-	<%
-		if (!(ambito.equals("Dipendente"))) response.sendRedirect("admin_page.jsp");
+	<%		
+		if (!(ambito.equals("Dipendente"))) response.sendRedirect("admin_page.jsp");		
 		else { // I cookie ritornano correttamente username, psw e ambito
-			WebConnection connection = Inizializzatore.getWeb();
-			Login l = new Login(username,password);
-			try {
-                Domanda nuovadomanda = connection.mostraDomanda(l);
-                String testo = nuovadomanda.getTesto();
-				out.println("<h2>Stai rispondendo ad una nuova domanda</h2>");
-				out.println("<p>"+testo+"</p>");
-				out.println("<form id=\"form_domanda\" title=\"Form per rispondere a una domanda\" action=\"checkRisposta.jsp\" method=\"post\"><fieldset><ul>");
-				ArrayList risposte = nuovadomanda.getRisposte();
-				session.setAttribute("oggetto_domanda", nuovadomanda);
-				String risposta;
-				for (int j=0; j<risposte.size(); j++) {
-					risposta = risposte.get(j).toString();
-					out.println("<li><input type=\"radio\" name=\"group1\" value=\"" +(j+1)+ "\" />" +risposta+ "</li>");
+			// Prendo la data dell'ultima risposta data
+			String ultimaDomanda = "";
+			cookieName = "dataUltimaDomanda";
+			for (int i = 0; i < cookies.length; i++) {
+				if (cookies [i].getName().equals(cookieName)) {
+					ultimaDomanda=cookies[i].getValue();
+					break;
 				}
-				out.println("</ul><input class=\"button\" type=\"submit\" name=\"rispondi_domanda\" value=\"Invia la risposta\" /></fieldset></form>");
 			}
-			catch(Exception e) { out.println("<h3>Complimenti! Hai risposto a tutte le domande.</h3>"); }
+			Long ultimaRisposta = null;
+			boolean puorispondere = true;
+			if (!(ultimaDomanda.equals(""))) {
+				ultimaRisposta = new Long(ultimaDomanda);
+				Date now = new Date();
+				Long ora = now.getTime();
+				Long longDiffTempo = ora-ultimaRisposta;
+				String stringDiffTempo = longDiffTempo.toString();
+				int diffTempo = Integer.parseInt(stringDiffTempo);
+				if (diffTempo<60000) puorispondere=false;
+			}
+			
+
+			if (!(puorispondere)) out.println("<h3>Non &egrave; passato abbastanza tempo dall'ultima risposta. Riprova pi&ugrave; tardi.</h3>");
+			else {
+				WebConnection connection = Inizializzatore.getWeb();
+				Login l = new Login(username,password);
+				try {
+					Domanda nuovadomanda = connection.mostraDomanda(l);
+					String testo = nuovadomanda.getTesto();
+					out.println("<h2>Stai rispondendo ad una nuova domanda</h2>");
+					out.println("<p>"+testo+"</p>");
+					out.println("<form id=\"form_domanda\" title=\"Form per rispondere a una domanda\" action=\"checkRisposta.jsp\" method=\"post\"><fieldset><ul>");
+					ArrayList risposte = nuovadomanda.getRisposte();
+					session.setAttribute("oggetto_domanda", nuovadomanda);
+					String risposta;
+					for (int j=0; j<risposte.size(); j++) {
+						risposta = risposte.get(j).toString();
+						out.println("<li><input type=\"radio\" name=\"group1\" value=\"" +(j+1)+ "\" />" +risposta+ "</li>");
+					}
+					out.println("</ul><input class=\"button\" type=\"submit\" name=\"rispondi_domanda\" value=\"Invia la risposta\" /></fieldset></form>");
+				}
+				catch(Exception e) { out.println("<h3>Complimenti! Hai risposto a tutte le domande.</h3>"); }
+			}
+			WebConnection connection = Inizializzatore.getWeb();
+			%><%@ include file="forzaCambioPass.jsp" %><%
 		}
 %>
 

@@ -37,18 +37,19 @@ SafetyGame - Pannello utente
                     
         out.println("Il tuo punteggio &egrave; <em>");
         out.println(punt+"</em>");
+		%><%@ include file="forzaCambioPass.jsp" %><%
     %>
     
-    <h2>Trofei e Badge</h2>
+    <h2>Badge</h2>
     <%
         // Funzione per ottenere l'elenco dei trovei e dei badge
         ArrayList<Badge> elencoTrofei = null;
         elencoTrofei = connection.getBadge(l,10);
         //
-        if (elencoTrofei == null) out.println("Non hai guadagnato nessun trofeo.");
-		else if (elencoTrofei.size() == 0) out.println("Non hai guadagnato nessun trofeo.");
+        if (elencoTrofei == null) out.println("Non hai guadagnato nessun badge.");
+		else if (elencoTrofei.size() == 0) out.println("Non hai guadagnato nessun badge.");
         else {
-            out.println("Segue l'elenco dei tuoi trofei:");
+            out.println("Segue l'elenco dei tuoi badge:");
             out.println("<dl>");
             String nomebadge;
             String descrbadge;
@@ -64,4 +65,10 @@ SafetyGame - Pannello utente
         }
         
     %>
+    <h2>Trofei</h2>
+    <%
+		Dipendente dip = connection.getDati(l);
+		int numTrofei = dip.getTrofei();
+		out.println("Hai guadagnato <em>"+numTrofei+"</em> Trofei");
+	%>
 <%@ include file="html/footer.html" %> 

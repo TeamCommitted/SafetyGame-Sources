@@ -13,8 +13,8 @@
  * | 20120612 |Alessandro Cornaglia | + Inizializzatore
  * +----------+---------------------+----------------------
  * | 20120612 | Gabriele Facchin    | + grafica
- * |          |                     | + WebConnection
- * |          |                     | + ApplicazioniConnection
+ * |          |                     | + getWeb
+ * |          |                     | + getApp
  * |          |                     | + main
  * |          |                     | + actionPerformed
  * +----------+---------------------+----------------------
@@ -23,6 +23,7 @@
  * | 20120717 | Gabriele Facchin    | - tastiera
  * |          |                     | - grafica
  * |          |                     | - actionPerformed
+ * |          |                     | - main
  * |          |                     | + crea
  * +----------+---------------------+----------------------
  *
@@ -65,7 +66,6 @@ public class Inizializzatore{
   private GestioneDipendentiAA gestioneDipendentiAA;
   private GestioneBadgeAS gestioneBadgeAS;
   private static GestioneDati gestioneDati;
-  private DesktopConnection deskConnection=null; 
   private static WebConnection webConnection = null;
   private static ApplicazioniConnection appConnection= null;
   private static Inizializzatore inizializzatore=null;

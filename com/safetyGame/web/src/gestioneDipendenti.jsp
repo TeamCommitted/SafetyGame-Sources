@@ -26,15 +26,17 @@ Gestione Dipendenti
             	<legend>Modifica Dipendente</legend>
                 <table>
                 	<thead>
-                    	<th>Id</th>
-                        <th>Nickname</th>
-                        <th>Nome</th>
-                        <th>Cognome</th>
-                        <th>Codice Fiscale</th>
-                        <th>Email</th>
-                        <th>Ruolo</th>
-                        <th>Mod</th>
-                        <th>Del</th>
+                    	<tr>
+                            <th>Id</th>
+                            <th>Nickname</th>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Codice Fiscale</th>
+                            <th>Email</th>
+                            <th>Ruolo</th>
+                            <th>Mod</th>
+                            <th>Del</th>
+                        </tr>
                     </thead>
                     <tbody class="elencoDip">
                     	<%
