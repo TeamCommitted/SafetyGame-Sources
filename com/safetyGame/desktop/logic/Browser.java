@@ -14,8 +14,6 @@
  * |          |                     | + getInstance
  * |          |                     | + apri
  * +----------+---------------------|---------------------
- * | 20120721 | Gabriele Facchin    | + toMd5
- * +----------+---------------------|---------------------
  *
  */
 
@@ -51,10 +49,10 @@ public class Browser {
        desktop = Desktop.getDesktop();
     }     
     catch(UnsupportedOperationException e){System.out.println("Le funzionalita` minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(2);}
-    iniziouri="http://"+ConnBack.getInstance().getServer().trim();
+    /* iniziouri="http://"+ConnBack.getInstance().getServer().trim();
     if (ConnBack.getInstance().getServer().trim().toUpperCase().equals("LOCALHOST")){
       iniziouri+="/examples/";
-    }
+    }*/
   }
   
   /**
@@ -88,20 +86,4 @@ public class Browser {
     catch (IOException e){System.out.println("Occorre avere almeno un browser predefinito nel sistema. Contattare l'Installatore"); System.exit(4);}
     catch (UnsupportedOperationException e) {System.out.println("Le funzionalita` minime, non sono disponibili. L'applicazione verra' chiusa"); System.exit(1);}
   }      
-  
-  /**
-   * Metodo che coverte una stringa nel corrispettivo in md5
-   * 
-   * @param stringa contenente la frase da cifrare 
-   * @return stringa che contiene la frase cifrata
-   * 
-   */
-  private String toMd5(String frase){
-    try{
-      MessageDigest digest = MessageDigest.getInstance("MD5");
-      return new String(digest.digest(frase.getBytes("UTF-8")));
-    }
-    catch(NoSuchAlgorithmException e){System.out.println("errore codifica"); return "";}
-    catch(UnsupportedEncodingException e){System.out.println("errore codifica"); return "";}
-  }
 }

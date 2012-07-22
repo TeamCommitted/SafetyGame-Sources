@@ -10,14 +10,16 @@
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
+ * | 20120722 | Lorenzo Braghetto   | Adeguamento backend
+ * +----------+---------------------+----------------------
  * | 20120611 | Lorenzo Braghetto   | 
  * +----------+---------------------+----------------------
  * 
  */ 
 <?xml version="1.0" encoding="UTF-8"?>
-<%@ page contentType="text/xml" import="com.safetygame.back.connection.*"  %>
-<%@page import="com.safetygame.back.condivisi.*" %>
-<%@page import="com.safetygame.back.*" %>
+<%@ page contentType="text/xml" import="com.safetyGame.back.connection.*"  %>
+<%@page import="com.safetyGame.back.condivisi.*" %>
+<%@page import="com.safetyGame.back.*" %>
 <%@page import="java.util.ArrayList" %>
 <% 
 ApplicazioniConnection appC = Inizializzatore.getApp();
@@ -31,13 +33,14 @@ String risposta2 = request.getParameter("risposta2");
 String risposta3 = request.getParameter("risposta3");
 int corretta = Integer.parseInt(request.getParameter("corretta"));
 int rispostaData = Integer.parseInt(request.getParameter("rispostaData"));
+boolean mobile = Boolean.parseBoolean(request.getParameter("mobile")));
 boolean risposta = appC.login(user, passw);
 Login l = new Login(user, passw);
 ArrayList<String> r = new ArrayList<String>();
 r.add(risposta1);
 r.add(risposta2);
 r.add(risposta3);
-Domanda d = new Domanda(id, p, "Multipla", r, corretta, null, rispostaData, true, -1, null, false);
+Domanda d = new Domanda(id, p, "Multipla", r, corretta, null, rispostaData, true, -1, null, mobile);
 
 boolean risposto = appC.rispondi(l, d);
 %>

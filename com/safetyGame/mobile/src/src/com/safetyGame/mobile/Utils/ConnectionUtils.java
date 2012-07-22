@@ -41,7 +41,6 @@ import org.xml.sax.SAXException;
 import com.safetyGame.mobile.condivisi.Dati;
 import com.safetyGame.mobile.condivisi.Domanda;
 import com.safetyGame.mobile.condivisi.Punteggi;
-import com.safetyGame.mobile.condivisi.Quest;
 
 public class ConnectionUtils
 {
@@ -91,12 +90,9 @@ public class ConnectionUtils
 					{
 						risposte[i] = parseXML(xml, "risposta", i);
 					}
-					return new Domanda(Integer.parseInt(parseXML(xml, "id", 0)), type, parseXML(xml, "testo", 0), risposte, risposteNum, Integer.parseInt(parseXML(xml, "punteggio", 0)), Integer.parseInt(parseXML(xml, "corretta", 0)));
+					return new Domanda(Integer.parseInt(parseXML(xml, "id", 0)), type, parseXML(xml, "testo", 0), risposte, risposteNum, Integer.parseInt(parseXML(xml, "punteggio", 0)), Integer.parseInt(parseXML(xml, "corretta", 0)), Integer.parseInt(parseXML(xml, "tempo", 0)), Boolean.parseBoolean(parseXML(xml, "mobile", 0)));
 				}
 
-			} else if (url.contains("quest"))
-			{
-				return new Quest(parseXML(xml, "title", 0), parseXML(xml, "testo", 0));
 			} else if (url.contains("dati"))
 			{
 				return new Dati(parseXML(xml, "nome", 0), parseXML(xml, "cognome", 0));

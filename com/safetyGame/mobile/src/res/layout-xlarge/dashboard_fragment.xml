@@ -10,13 +10,6 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/Quest"
-        style="@style/DashboardButton"
-        android:drawableTop="@android:drawable/ic_dialog_dialer"
-        android:text="Nuova quest"
-        android:textSize="20sp" />
-
-    <Button
         android:id="@+id/Punteggi"
         style="@style/DashboardButton"
         android:drawableTop="@android:drawable/ic_dialog_info"
@@ -29,9 +22,5 @@
         android:drawableTop="@android:drawable/ic_lock_power_off"
         android:text="Dati personali"
         android:textSize="20sp" />
-
-    <Button style="@style/DashboardButton" />
-
-    <Button style="@style/DashboardButton" />
 
 </com.safetyGame.mobile.View.DashboardLayout>
