@@ -3,20 +3,11 @@
 <%@ page import= "java.lang.*"%>
 <%@ page import= "javax.servlet.*"%>
 <%@ page import= "java.io.*"%>
-<%@ page language="java" import="java.util.Date"%>
-<%@ page language="java" import="com.safetyGame.back.connection.*" %>
-<%@ page language="java" import="com.safetyGame.back.controller.*" %>
-<%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
-<%@ page language="java" import="com.safetyGame.back.access.*" %>
-<%@ page language="java" import="com.safetyGame.back.*" %>
-<%@ include file="getCookies.jsp" %>
+<%@ page language= "java" import= "java.util.Date"%>
 
 <% 
-	WebConnection connection = Inizializzatore.getWeb();
-	Login l = new Login(username, password);
-	
-	cookies = request.getCookies();
-	cookieName = null;
+	Cookie cookies [] = request.getCookies();
+	String cookieName = null;
 	
 	if (cookies != null){
 		cookieName = "username";
@@ -53,7 +44,10 @@
 		}
 	}
 	
-	connection.logout(l);
+	//
+	// Qua va richiamata la funziona che avvisa il back-end di un avvenuto Logout
+	// logout(username);
+	//
 	
 	response.sendRedirect("index.jsp");
 %>

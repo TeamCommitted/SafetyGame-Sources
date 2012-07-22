@@ -19,6 +19,7 @@
 	Cookie usernameCookie = null;
 	Cookie passwordCookie = null;
 	Cookie ambitoCookie = null;
+	Cookie loggedDesktop = null;
 	Cookie cookies [] = request.getCookies();
 	String cookieName = null;
 	String username = "";
@@ -63,12 +64,15 @@
 		usernameCookie = new Cookie ("username",getUsername);
 		passwordCookie = new Cookie ("password",getPassword);
 		ambitoCookie = new Cookie ("ambito","Dipendente");
+		loggedDesktop = new Cookie ("loggedDesktop", "true");
 		usernameCookie.setMaxAge(24 * 60 * 60); // 24h di validità
 		passwordCookie.setMaxAge(24 * 60 * 60);
 		ambitoCookie.setMaxAge(24 * 60 * 60);
+		loggedDesktop.setMaxAge(24 * 60 * 60);
 		response.addCookie(usernameCookie);
 		response.addCookie(passwordCookie);
 		response.addCookie(ambitoCookie);
+		response.addCookie(loggedDesktop);
 		response.sendRedirect(nextPage);
 	}
 	
