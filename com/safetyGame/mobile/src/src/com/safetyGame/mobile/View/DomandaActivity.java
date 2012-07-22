@@ -68,8 +68,20 @@ public class DomandaActivity extends SherlockActivity {
 		SharedPreferences prefs = getSharedPreferences("SafetyGame", Context.MODE_PRIVATE);
 
 		serverUrl = prefs.getString("server", "");
-		i = 0;
-		new DomandaTask().execute();
+		long data = prefs.getLong("data", 0);
+		long time = System.currentTimeMillis();
+		if (time - data > 30000)
+		{
+			i = 0;
+			new DomandaTask().execute();
+			prefs.edit().putLong("data", time).commit();
+		} else
+		{
+			AlertDialog.Builder builder = new AlertDialog.Builder(context);
+			builder.setTitle("Errore");
+			builder.setMessage("Devi aspettare prima di richiedere una nuova domanda");
+			builder.show();
+		}
 
 	}
 
