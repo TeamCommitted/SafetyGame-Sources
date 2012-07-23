@@ -3,7 +3,7 @@
  * Package: com.safetygame.back.controller
  * Author: Lorenzo Braghetto
  * Date: 2012/06/16
- * Version: 1.0
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -56,7 +56,7 @@ import org.junit.Test;
  * Classe di test per oggetti di tipo GestioneLog
  * 
  * @author lbragh
- *
+ * @version v2.0
  */
 public class GestioneLogTest {
 

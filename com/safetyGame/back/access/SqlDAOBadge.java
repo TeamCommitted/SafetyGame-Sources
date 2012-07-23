@@ -2,8 +2,8 @@
  * Name: SqlDAOBadge.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -34,7 +34,7 @@ import java.util.List;
  * Classe che gestisce le Badge, implementa i metodi pubblici dell'interfaccia
  * 
  * @author gfacchin
- * @version 0.1
+ * @version 2.0
  */
 
 public class SqlDAOBadge implements DAOBadge{
@@ -58,7 +58,7 @@ public class SqlDAOBadge implements DAOBadge{
    * @return un ArrayList di Badge che contiene i Badge di quel Dipendente
    * 
    */     
-  public ArrayList<Badge> badgeD(Dipendente dip){ //
+  public ArrayList<Badge> badgeD(Dipendente dip){ 
     ResultSet rs = serverAzienda.selezione("Assegnato INNER JOIN Badge ON IDBadge=ID","ID, il, nome, descrizione, soglia","IDDipendente="+dip.getId(),"");
     ArrayList<Badge> ritorno = new ArrayList<Badge>();
     boolean trovato = false;
@@ -81,7 +81,6 @@ public class SqlDAOBadge implements DAOBadge{
       }
       catch(SQLException e){trovato=true;}  
     }
-    //if (b.size()==0){}//b=null;}
     return ritorno;
   }
   
@@ -122,7 +121,7 @@ public class SqlDAOBadge implements DAOBadge{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */     
-  public boolean assegna(Dipendente dip, Badge badge){//DA TESTARE
+  public boolean assegna(Dipendente dip, Badge badge){
     String valori[]=new String [3];
     valori[0]=""+dip.getId();
     valori[1]=""+badge.getId();

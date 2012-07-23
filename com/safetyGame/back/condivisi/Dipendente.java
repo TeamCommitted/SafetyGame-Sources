@@ -2,8 +2,8 @@
  * Name: Dipendente.java
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -60,7 +60,7 @@ import java.util.ArrayList;
  * Classe che rappresenta un dipendente dell'azienda
  * 
  * @author acornagl 
- * @version 1.0
+ * @version 2.0
  * 
  */
 
@@ -219,7 +219,7 @@ public class Dipendente {
    * metodo che consente di aggiungere un badge ad un dipendente
    *  
    * @param badge badge da aggiungere
-   * @throws ErrDipendente
+   * 
    */
   public void addBadge(Badge badge) {
     this.badges.add(badge);

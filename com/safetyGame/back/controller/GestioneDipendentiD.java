@@ -2,8 +2,8 @@
  * Name: GestioneDipendentiD.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: 2012/06/16
- * Version: 1.1
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -43,7 +43,7 @@ import com.safetyGame.back.condivisi.*;
  * puo' avere con il sistema
  * 
  * @author acornagl
- * @version 1.0
+ * @version 2.0
  *
  */
 public class GestioneDipendentiD{
@@ -117,7 +117,7 @@ public class GestioneDipendentiD{
    * @param login login del dipendente
    * @return informazioni sul dipendente
    */
-  public Dipendente getDatiD(Login login) {//
+  public Dipendente getDatiD(Login login) {
     Dipendente ritorno = this.daoDipendenti.getInfoD(login);
 	return ritorno;    
   }
@@ -129,7 +129,7 @@ public class GestioneDipendentiD{
    * 
    * @return true se operazione riuscita con successo, false altrimenti
    */
-  public boolean modificaPass(Dipendente dip) {//
+  public boolean modificaPass(Dipendente dip) {
 	//dip contiene la nuova password (il web deve controllare che la pass sia ok
 	//scrivo la nuova password
 	boolean esito =this.daoDipendenti.resetPassD(dip);
@@ -151,7 +151,7 @@ public class GestioneDipendentiD{
    * 
    * @return true se operazione riuscita con successo, false altrimenti
    */
-  public boolean modificaEmail(Dipendente dip, String nEmail) {//
+  public boolean modificaEmail(Dipendente dip, String nEmail) {
     boolean esito = this.daoDipendenti.mailD(dip,nEmail);
     if (esito) {// se tutto ok
       //scrivo il log

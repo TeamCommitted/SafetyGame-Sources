@@ -2,8 +2,8 @@
  * Name: DataOra.java
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
- * Date: 2012/06/16
- * Version: 1.1
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -44,7 +44,7 @@
  * Classe che rappresenta una data ed un'orario nella seguente formato: aaaa/mm/gg hh:mm:ss
  * 
  * @author TeamCommitted
- * @version 1.0
+ * @version 2.0
  * 
  */
 public class DataOra {
@@ -113,6 +113,7 @@ public class DataOra {
    }
    /**
     * metodo per impostare l'anno
+    * @param anno anno da impostare
     * 
     */
    public void setAnno(int anno) {
@@ -127,7 +128,7 @@ public class DataOra {
    }
    /**
     * metodo per impostare il mese
-    *  
+    * @param mese mese da impostare 
     */
    public void setMese(int mese) {
       this.mese = mese;
@@ -141,6 +142,7 @@ public class DataOra {
    }
    /**
     * metodo per impostare il giorno
+    * @param giorno giorno da impostare
     *  
     */
    public void setGiorno(int giorno) {
@@ -155,7 +157,7 @@ public class DataOra {
    }
    /**
     * metodo per impostare l'ora
-    * 
+    * @param ora da impostare
     */
    public void setOra(int ora) {
       this.ora = ora;
@@ -169,7 +171,7 @@ public class DataOra {
    }
    /**
     * metodo per impostare i minuti
-    * 
+    * @param minuti minuti da impostare
     */
    public void setMinuti(int minuti) {
       this.minuti = minuti;
@@ -183,7 +185,7 @@ public class DataOra {
    }
    /**
     * metodo per impostare i secondi
-    * 
+    * @param secondi secondi da impostare
     */
    public void setSecondi(int secondi) {
       this.secondi = secondi;

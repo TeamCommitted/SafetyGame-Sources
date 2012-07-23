@@ -2,8 +2,8 @@
  * Name: GestioneDomandeD.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: 2012/06/16
- * Version: 1.1
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -50,7 +50,7 @@ import com.safetyGame.back.condivisi.*;
  * Classe che si occupa di gestire tutte le azioni dovute dall'interazione 
  * fra un dipendente ed una domanda del sistema
  * @author acornagl
- * @version 1.0
+ * @version 2.0
  */
 public class GestioneDomandeD{
   private DAODomande daoDomande;
@@ -104,7 +104,7 @@ public class GestioneDomandeD{
   /**
    * metodo che consente di impostare il riferimento all'oggetto DAODomande
    * 
-   * @param daoFactory oggetto di tipo statico DAODomande
+   * @param daoDom oggetto di tipo statico DAODomande
    */
   public void setDaoDomande(DAODomande daoDom) {
     this.daoDomande = daoDom;

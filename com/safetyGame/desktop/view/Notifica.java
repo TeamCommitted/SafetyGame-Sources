@@ -40,16 +40,16 @@ public class Notifica implements ActionListener{
    * Costruttore della classe Notifica
    * 
    */
-  public Notifica(ControlNotifica controllore){
-    controller=controllore;
+  public Notifica(){//ControlNotifica controllore){
+    controller=new ControlNotifica();//controllore;
     frame=new JFrame("Notifica Domanda");
-    frame.setSize(200,200);
-    frame.setLayout(new GridLayout(2,2));
+    frame.setSize(300,120);
+    frame.setLayout(new GridLayout(4,1));
     testo= new Label();
-    testo.setText("Ti e` stata proposta una domanda, vuoi rispondere?");
+    testo.setText("Nuova domanda!!!!");
     frame.add(testo);
     Label vuoto=new Label();
-    vuoto.setText("");
+    vuoto.setText("Vuoi rispondere?");
     frame.add(vuoto);
     si = new JButton("OK!");
     frame.add(si);

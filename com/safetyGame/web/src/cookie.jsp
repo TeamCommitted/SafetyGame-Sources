@@ -13,35 +13,35 @@
 		cookieName = "username";
 		for (int i = 0; i < cookies.length; i++) {
 			if (cookies [i].getName().equals(cookieName)) {
-				out.println(cookies[i].getValue());
+				out.println("<br>User: "+cookies[i].getValue());
 				break;
 			}
 		}
 		cookieName = "password";
 		for (int i = 0; i < cookies.length; i++) {
 			if (cookies [i].getName().equals(cookieName)) {
-				out.println(cookies[i].getValue());
+				out.println("<br>Pass: "+cookies[i].getValue());
 				break;
 			}
 		}
 		cookieName = "ambito";
 		for (int i = 0; i < cookies.length; i++) {
 			if (cookies [i].getName().equals(cookieName)) {
-				out.println(cookies[i].getValue());
+				out.println("<br>Ambito: "+cookies[i].getValue());
 				break;
 			}
 		}
 		cookieName = "loggedDesktop";
 		for (int i = 0; i < cookies.length; i++) {
 			if (cookies [i].getName().equals(cookieName)) {
-				out.println(cookies[i].getValue());
+				out.println("<br>Desk: "+cookies[i].getValue());
 				break;
 			}
 		}
 		cookieName = "dataUltimaDomanda";
 		for (int i = 0; i < cookies.length; i++) {
 			if (cookies [i].getName().equals(cookieName)) {
-				out.println(cookies[i].getValue());
+				out.println("<br>Ultima dom: "+cookies[i].getValue());
 				break;
 			}
 		}

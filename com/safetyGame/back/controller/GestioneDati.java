@@ -2,8 +2,8 @@
  * Name: GestioneDati.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -58,7 +58,7 @@ import com.safetyGame.back.condivisi.*;
 /**
  * Classe GestioneDati, facade del package controller del back-end
  * @author acornagl
- * @version = 1.1
+ * @version v2.0
  */
 public class GestioneDati{
    
@@ -240,6 +240,7 @@ public class GestioneDati{
   
   /**
    * Metodo per inserire una domanda dal server domande al server dell'azienda
+   * @param dom domanda da aggiungere
    * @return true se l'operazione è stata completata, altrimenti false   
    */
   public boolean addDomanda(Domanda dom) {
@@ -273,6 +274,7 @@ public class GestioneDati{
    * 
    * @param login Login del dipendente che ha risposto
    * @param risposta Domanda posta al dipendente contenente la risposta data
+   * @return booleano che indica l'esito operazione
    */
   public boolean setRisposta(Login login,Domanda risposta) {
 	return this.gestioneDomandeD.setRisposta(login, risposta);
@@ -282,6 +284,9 @@ public class GestioneDati{
    * Metodo per il login degli utenti amministratori
    * 
    * @param login oggetto contenente i dati di login inseriti dall'utente
+   * @param tipo tipo di amministratore che effettua il login
+   * 
+   * @return booleano che indica l'esito dell'operazione
    */
   public boolean loginAdmin(Login login, boolean tipo){
 	return this.gestioneLogin.loginAdmin(login,tipo);

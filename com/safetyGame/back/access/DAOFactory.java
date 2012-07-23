@@ -3,8 +3,8 @@ package com.safetyGame.back.access;
  * Name: DAOFactory.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -29,14 +29,14 @@ package com.safetyGame.back.access;
  * Classe che definisce i metodi che tutte le implementazioni del Factory dovranno implementare
  * 
  * @author gfacchin
- * @version 0.1
+ * @version 2.0
  */
 public abstract class DAOFactory{
   /**
    * Prototipo del metodo che la Factory implementare per creare l'oggetto DAOLogin
    * 
    * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
-   * 
+   * @return l'oggetto SqlDAOLogin istanziato
    */   
   public abstract DAOLogin creaDAOLogin(Indirizzo azienda);
 
@@ -44,7 +44,7 @@ public abstract class DAOFactory{
    * Prototipo del metodo che la Factory implementare per creare l'oggetto DAODipendenti
    * 
    * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
-   * 
+   * @return l'oggetto SqlDAODipendenti istanziato
    */   
   public abstract DAODipendenti creaDAODipendenti(Indirizzo azienda);
   
@@ -52,7 +52,8 @@ public abstract class DAOFactory{
    * Prototipo del metodo che la Factory implementare per creare l'oggetto DAODomande
    * 
    * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
-   * 
+   * @param domande oggetto Indirizzo contenente i recapiti per il server contenente le domande
+   * @return l'oggetto SqlDAODomande istanziato
    */   
   public abstract DAODomande creaDAODomande(Indirizzo azienda, Indirizzo domande);
   
@@ -60,7 +61,7 @@ public abstract class DAOFactory{
    * Prototipo del metodo che la Factory implementare per creare l'oggetto DAOBadge
    * 
    * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
-   * 
+   * @return l'oggetto SqlDAOBadge istanziato
    */   
   public abstract DAOBadge creaDAOBadge(Indirizzo azienda);
   
@@ -69,7 +70,7 @@ public abstract class DAOFactory{
    * 
    * @param azienda oggetto Indirizzo contenente i recapiti per il server dell'azienda
    * @param domande oggetto Indirizzo contenente i recapiti per il server contenente le domande
-   * 
+   * @return l'oggetto SqlDAOPunteggi istanziato
    */   
   public abstract DAOPunteggi creaDAOPunteggi(Indirizzo azienda, Indirizzo Domande);
 }

@@ -2,8 +2,8 @@
  * Name: DAODipendenti.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -48,7 +48,7 @@ import java.util.List;
  * Interfaccia che contiene i prototipi dei metodi per gestire un dipendente
  * 
  * @author gfacchin
- * @version 1.0
+ * @version 2.0
  */
 
 public interface DAODipendenti{
@@ -173,7 +173,7 @@ public interface DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean modCodFis(Dipendente d, String codfis);
+  public boolean modCodFis(Dipendente dip, String codfis);
 
   /**
    * Metodo che modifica lo username di un Dipendente al database

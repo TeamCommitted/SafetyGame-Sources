@@ -2,8 +2,8 @@
  * Name: DAOBadge.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -29,7 +29,7 @@ import java.util.List;
  * Interfaccia che contiene i prototipi dei metodi per gestire le Badge
  * 
  * @author gfacchin
- * @version 0.1
+ * @version 2.0
  */
 
 public interface DAOBadge{

@@ -2,8 +2,8 @@
  * Name: GestioneDipendentiDTest.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -55,8 +55,8 @@ public class GestioneDipendentiDTest {
 	
 	private void init() {
 	  indAz = "127.0.0.1/ingAz";
-	  utente = "root";//"teamcommitted";//"aziendasafetygam";//"teamcommitted";
-	  pass = "root";//"team";//"gifgiresmo40";//""team";
+	  utente = "root";
+	  pass = "root";
 	  indirizzoAz = new Indirizzo(indAz,utente,pass);
 	  sqlDip = new SqlDAODipendenti(indirizzoAz);
 	  

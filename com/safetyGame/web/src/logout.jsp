@@ -14,7 +14,7 @@
 <% 
 	WebConnection connection = Inizializzatore.getWeb();
 	Login l = new Login(username, password);
-	
+	boolean isAdmin = (!(ambito.equals("Dipendente")));
 	cookies = request.getCookies();
 	cookieName = null;
 	
@@ -61,7 +61,8 @@
 		}
 	}
 	
-	connection.logout(l);
+	if (isAdmin) connection.logoutA(l);
+	else connection.logoutD(l);
 	
 	response.sendRedirect("index.jsp");
 %>

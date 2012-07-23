@@ -30,6 +30,7 @@ Nuova Domanda
 					break;
 				}
 			}
+			// Ottengo la differenza di tempo fra l'ultima risposta e l'ora attuale
 			Long ultimaRisposta = null;
 			boolean puorispondere = true;
 			if (!(ultimaDomanda.equals(""))) {
@@ -42,7 +43,6 @@ Nuova Domanda
 				if (diffTempo<60000) puorispondere=false;
 			}
 			
-
 			if (!(puorispondere)) out.println("<h3>Non &egrave; passato abbastanza tempo dall'ultima risposta. Riprova pi&ugrave; tardi.</h3>");
 			else {
 				WebConnection connection = Inizializzatore.getWeb();

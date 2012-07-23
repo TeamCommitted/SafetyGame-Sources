@@ -1,16 +1,16 @@
 /*
  * Name: GestioneLoginTest.java
  * Package: com.safetygame.back.controller
- * Author: Massimo Dalla Pieta'
- * Date: 2012/06/16
- * Version: 1.0
+ * Author: Alessandro Cornaglia
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
  * +----------+---------------------+---------------------
  * |   Date   | Programmer          | Changes
  * +----------+---------------------+---------------------
- * | 20120602 |Massimo Dalla Pieta' | + testLoginD
+ * | 20120602 |Alessandro Cornaglia | + testLoginD
  * |          |                     | + testLoginA
  * |          |                     | + testLogout
  * +----------+---------------------|---------------------

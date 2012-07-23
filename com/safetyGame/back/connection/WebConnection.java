@@ -2,8 +2,8 @@
  * Name: WebConnection.java
  * Package: com.safetygame.back.connection
  * Author: Gabriele Facchin
- * Date: 2012/06/16
- * Version: 1.1
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -56,7 +56,7 @@ import java.util.ArrayList;
    * Classe che si occupa di gestire la connessione da parte del web
    * 
    * @author gfacchin 
-   * @version v0.1
+   * @version v2.0
    */
 public class WebConnection{
   private GestioneDati dati;
@@ -70,7 +70,8 @@ public class WebConnection{
   /**
    * Metodo per il login dei dipendenti
    * 
-   * @param login oggetto contenente i dati di login inseriti dall'utente
+   * @param username username del dipendente che effettua il login
+   * @param password password del dipendente che effettua il login
    * @return boolean che conferma il successo o meno dell'operazione
    */
   public boolean loginDip(String username, String password){
@@ -83,6 +84,7 @@ public class WebConnection{
    * 
    * @param login oggetto contenente i dati di login inseriti dall'utente
    * @param password password dell'amministratore
+   * @param tipo boolean che indica il tipo di login amministratore
    * @return boolean che conferma il successo o meno dell'operazione
    */
   public boolean loginAdmin(String username, String password, boolean tipo){

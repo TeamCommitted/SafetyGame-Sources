@@ -21,6 +21,7 @@ Rimuovi Domande
         
         <% //Recupero le domande dal database ingDom
 			WebConnection connection = Inizializzatore.getWeb();
+			%><%@ include file="forzaCambioPassA.jsp" %><%
 			ArrayList elencoDomande = null;
 			elencoDomande = connection.getElencoDomande();
 			int numeroDomInterne = 0;
@@ -51,7 +52,7 @@ Rimuovi Domande
 						String ambitoDom;
 						boolean alt = true;
 						Domanda domanda;
-						for (int j = elencoDomande.size()-1; j >= 0; j--) { 
+						for (int j = 0; j < elencoDomande.size(); j++) { 
 							domanda = (Domanda) elencoDomande.get(j);
 							if ((domanda.isInternaAzienda())) {
 								if (alt) out.println("<tr>");

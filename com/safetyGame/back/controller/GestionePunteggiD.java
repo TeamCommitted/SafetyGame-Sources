@@ -2,8 +2,8 @@
  * Name: GestionePunteggiD.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: 2012/06/16
- * Version: 1.1
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -34,7 +34,7 @@ import com.safetyGame.back.condivisi.*;
 /**
  * Classe che si occupa di gestire i punteggi dei dipendenti
  * @author acornagl
- * @version 1.0
+ * @version 2.0
  *
  */
 public class GestionePunteggiD{ 
