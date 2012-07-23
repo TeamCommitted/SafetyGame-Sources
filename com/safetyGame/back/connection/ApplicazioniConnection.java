@@ -2,8 +2,8 @@
  * Name: ApplicazioniConnection.java
  * Package: com.safetygame.back.connection
  * Author: Lorenzo Braghetto
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -39,7 +39,7 @@ import java.util.ArrayList;
    * Classe che si occupa di gestire la connessione da parte delle applicazioni
    * 
    * @author lbraghetto 
-   * @version v1.0
+   * @version v2.0
    */
 public class ApplicazioniConnection{
   private GestioneDati dati;
