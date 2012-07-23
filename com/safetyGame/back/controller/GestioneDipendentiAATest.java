@@ -40,7 +40,7 @@ public class GestioneDipendentiAATest {
     private Indirizzo indAz;
 
     private void init(){
-      indAz = new Indirizzo("127.0.0.1/ingAz","root","root");
+      indAz = new Indirizzo("127.0.0.1/ingAz","root","");
       dDip = new SqlDAODipendenti(indAz);
       updLog = new UpdateLog(indAz);
       gLog = new GestioneLog(updLog, dDip);
@@ -52,7 +52,13 @@ public class GestioneDipendentiAATest {
 	public void aggiungiDipTest() {
 	//test che verifica che venga aggiunto un dipendente al DB
 		init();
-		Dipendente dip = new Dipendente(50,"ewdrftygyh","Vario","Quadrio","xxx@xxx.xxx","Ted","pass","pompiere",0,"",0);
+		Dipendente dip = new Dipendente();
+		dip.setNome("pasdfaewrq");
+		dip.setCognome("gfadfa");
+		dip.setCodFiscale("sfdgsfgsrtgs");
+		dip.setEmail("dfgjhkgd@sdfgjhk.it");
+		dip.setRuolo("Pompiere");
+		dip.setPunteggio(new Punteggio(0));
 		boolean risultato = gDipAA.aggiungiDipendente(dip);
 		assertTrue("dipendente non aggiunto",risultato == true);
 	}

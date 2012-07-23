@@ -77,7 +77,6 @@ public class GestioneDipendentiAA{
       supporto.setPassword(pass);
       
       boolean inserito = accessDip.aggiungiDipendente(supporto);
-      System.out.println(inserito);
       int conta = 0;
       while(!inserito) {
         conta++;
