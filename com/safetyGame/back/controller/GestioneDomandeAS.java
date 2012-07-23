@@ -2,8 +2,8 @@
  * Name: GestioneDomandeAS.java
  * Package: com.safetygame.back.controller
  * Author: Massimo Dalla Pieta'
- * Date: 2012/06/16
- * Version: 1.1
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -32,7 +32,7 @@ import java.util.ArrayList;
  * Classe che si occupa di gestire tutte le azioni dovute dall'interazione 
  * fra un AmministratoreSicurezza ed una domanda del sistema
  * @author mdallapi 
- * @version v1.0
+ * @version v2.0
  */
 public class GestioneDomandeAS{ 
    private DAODomande accessDom;
@@ -42,7 +42,7 @@ public class GestioneDomandeAS{
     * Costruttore con parametri della classe GestioneDomandeAs
     * 
     * @param accessDom riferimento alla classe che implementa l'interfaccia DAODomande
-    *        
+    * @param gestLog riferimento alla classe GestioneLog      
     */
    public GestioneDomandeAS(DAODomande accessDom, GestioneLog gestLog){
        this.accessDom = accessDom;
@@ -59,7 +59,9 @@ public class GestioneDomandeAS{
    
    /**
     * Metodo per inserire una domanda dal server domande al server dell'azienda
-    * @return true se l'operazione � stata completata, altrimenti false   
+    * 
+    * @param dom domanda da aggiungere
+    * @return true se l'operazione e` stata completata, altrimenti false   
     */
    public boolean addDomanda(Domanda dom){
       gestLog.scriviAddDomande(dom);
@@ -68,7 +70,8 @@ public class GestioneDomandeAS{
    
    /**
     * Metodo per eliminare una domanda dal server dell'azienda
-    * @return true se l'operazione � stata completata, altrimenti false       
+    * @param dom domanda da rimuovere
+    * @return true se l'operazione e` stata completata, altrimenti false       
     */
    public boolean remDomanda(Domanda dom){
       gestLog.scriviDelDomande(dom);

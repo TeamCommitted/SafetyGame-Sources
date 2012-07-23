@@ -3,7 +3,7 @@
  * Package: com.safetygame.back.controller
  * Author: Massimo Dalla Pieta' & Alessandro Cornaglia
  * Date: 2012/06/16
- * Version: 1.1
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -43,7 +43,7 @@ import java.util.Properties;
  * 
  * @author acornagl
  * @author mdallapi
- * @version 1.0
+ * @version 2.0
  *
  */
 public class GestioneRecupero{ 
@@ -126,9 +126,9 @@ public class GestioneRecupero{
    }
    
    /**
-    * Metodo che si occupa di inviare una mail all'utente che ha richiesto il ripristino della password
+    * Metodo che si occupa di inviare una mail all'utente che ha modificato almeno uno dei propri dati
     * @param destinatario indirizzo email del dipendente che ha richiesto il recupero
-    * @param nuovaPass nuova password
+    * @param messaggio messaggio indicante le modifiche apportate
     */
    public static void sendMailInserito(String destinatario, String messaggio){
      final String username = "teamcommitted@gmail.com";

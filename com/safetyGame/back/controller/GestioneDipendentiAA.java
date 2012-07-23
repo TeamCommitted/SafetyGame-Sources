@@ -2,8 +2,8 @@
  * Name: GestioneDipendentiAA.java
  * Package: com.safetygame.back.controller
  * Author: Massimo Dalla Pieta'
- * Date: 2012/06/16
- * Version: 1.1
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -36,7 +36,7 @@ import java.util.ArrayList;
  * Classe che si occupa di gestire le modifiche dati dei Dipendenti da parte di un Amministratore Azienda
  * 
  * @author mdallapi 
- * @version v1.0
+ * @version v2.0
  */
 public class GestioneDipendentiAA{
    private DAODipendenti accessDip;
@@ -46,7 +46,7 @@ public class GestioneDipendentiAA{
     * Costruttore con parametri della classe GestioneDipendentiAA
     * 
     * @param accessDip riferimento alla classe che implementa l'interfaccia DAODipendenti
-    *        
+    * @param gestLog iferimento alla classe GestioneLog      
     */
    public GestioneDipendentiAA(DAODipendenti accessDip, GestioneLog gestLog){
        this.accessDip = accessDip;
@@ -57,17 +57,17 @@ public class GestioneDipendentiAA{
     * Metodo per ottenere i dati dei dipendenti dell'azienda
     * @return un ArrayList<Dipendente> contenente i dipendenti dell'azienda      
     */
-   public ArrayList<Dipendente> getElencoDipendenti(){//
+   public ArrayList<Dipendente> getElencoDipendenti(){
       return accessDip.elencoDipendenti(); 
    }
    
    /**
     * Metodo per aggiungere un dipendente
     * 
-    * @param Dip oggetto contenente i dati del nuovo dipendente
+    * @param dip oggetto contenente i dati del nuovo dipendente
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
-   public boolean aggiungiDipendente(Dipendente dip){//
+   public boolean aggiungiDipendente(Dipendente dip){
       Dipendente supporto = dip;
       String nome = supporto.getNome();
       String cognome = supporto.getCognome();
@@ -96,12 +96,12 @@ public class GestioneDipendentiAA{
    }
    
    /**
-    * Metodo per eliminare
+    * Metodo per eliminare un dipendente
     * 
-    * @param Dip oggetto contenente i dati del dipendente da eliminare
+    * @param dip oggetto contenente i dati del dipendente da eliminare
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
-   public boolean cancellaDipendente(Dipendente dip){ //
+   public boolean cancellaDipendente(Dipendente dip){ 
       gestLog.scriviDelDip(dip); 
       return accessDip.cancellaDipendente(dip);
    }
@@ -113,7 +113,7 @@ public class GestioneDipendentiAA{
     * @param oldDip oggetto contenente i vecchi dati del dipendente da modificare
     * @return true se l'operazione viene completata con successo, altrimenti false
     */
-   public boolean modDipendente(Dipendente newDip, Dipendente oldDip){ //
+   public boolean modDipendente(Dipendente newDip, Dipendente oldDip){ 
         boolean correct = true;
         if(!(newDip.getNome().equals(oldDip.getNome())))
             correct = accessDip.modNome(newDip, newDip.getNome());
@@ -138,7 +138,7 @@ public class GestioneDipendentiAA{
     * @param admin oggetto contenente i dati dell'amministratore
     * @return true se l'operazione viene completata con successo, altrimenti false
     */
-   public boolean modPassA(Dipendente admin){ //
+   public boolean modPassA(Dipendente admin){ 
        boolean risultato = accessDip.resetPassA(admin);
        if(risultato)
        risultato = accessDip.passA(admin,admin.getNuovaPass());
@@ -156,7 +156,7 @@ public class GestioneDipendentiAA{
    * @param login login dell'amministratore
    * @return informazioni sull'amministratore
    */
-  public Dipendente getDatiA(Login login) {//
+  public Dipendente getDatiA(Login login) {
     Dipendente ritorno = this.accessDip.getInfoA(login);
     return ritorno;    
   }

@@ -2,8 +2,8 @@
  * Name: GestioneBadgeASTest.java
  * Package: com.safetygame.back.controller
  * Author: Giorgio Maggiolo
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
