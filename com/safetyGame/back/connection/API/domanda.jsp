@@ -45,6 +45,7 @@ if(risposta)
 			<corretta><%=d.getCorretta()%></corretta>
 			<tempo><%=d.getTempo()%></tempo>
 			<mobile><%=d.isMobile()%></mobile>
+			<ambito><%=d.getAmbito()%></ambito>
 		<% if(!tipo.equals("sino"))
 		   {
 			ArrayList<String> risposte = d.getRisposte(); 
