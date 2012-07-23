@@ -31,8 +31,8 @@ import com.safetyGame.desktop.condivisi.*;
  * @version 0.1
  */
 public class ControlMenu{
-  ConnBack connessione;
-  Browser browser;
+  private ConnBack connessione;
+  private Browser browser;
   
   /**
    * Costruttore della classe ControlMenu

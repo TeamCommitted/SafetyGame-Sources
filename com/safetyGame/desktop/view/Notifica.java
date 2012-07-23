@@ -40,8 +40,8 @@ public class Notifica implements ActionListener{
    * Costruttore della classe Notifica
    * 
    */
-  public Notifica(){//ControlNotifica controllore){
-    controller=new ControlNotifica();//controllore;
+  public Notifica(ControlNotifica controllore){
+    controller=controllore;
     frame=new JFrame("Notifica Domanda");
     frame.setSize(300,120);
     frame.setLayout(new GridLayout(4,1));

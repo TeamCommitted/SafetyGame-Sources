@@ -28,8 +28,8 @@ import com.safetyGame.desktop.view.Error;
  * @version 0.1
  */
 public class ControlNotifica{
-  ConnBack connessione;
-  Browser browser;
+  private ConnBack connessione;
+  private Browser browser;
   
   /**
    * Costruttore della classe ControlNotifica

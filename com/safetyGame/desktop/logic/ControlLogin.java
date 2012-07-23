@@ -27,7 +27,7 @@ import com.safetyGame.desktop.condivisi.*;
  * @version 0.1
  */
 public class ControlLogin{
-  Browser browser;
+  private Browser browser;
   /**
    * Costruttore della classe ControlLogin
    * 
