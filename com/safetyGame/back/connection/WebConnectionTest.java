@@ -80,9 +80,9 @@ public class WebConnectionTest {
 	  gestioneLogin = new GestioneLogin(daoLogin,gestioneLog);
 	  gestioneBadgeD = new GestioneBadgeD(daoBadge,daoDipendenti,daoDomande, gestioneLog, gestioneLogin);
 	  gestioneDomandeD = new GestioneDomandeD(daoDomande,daoPunteggi,daoDipendenti,gestionePunteggiD, gestioneLog, gestioneBadgeD);
-	  gestioneDomandeAS = new GestioneDomandeAS(daoDomande);
+	  gestioneDomandeAS = new GestioneDomandeAS(daoDomande,gestioneLog);
 	  gestioneDipendentiD = new GestioneDipendentiD(daoDipendenti, gestioneLog);
-	  gestioneDipendentiAA = new GestioneDipendentiAA(daoDipendenti);
+	  gestioneDipendentiAA = new GestioneDipendentiAA(daoDipendenti,gestioneLog);
 	  gestioneBadgeAS = new GestioneBadgeAS(daoBadge);
 	  gestioneDati = new GestioneDati(gestioneRecupero,gestioneLogin,gestioneDomandeD,gestioneDomandeAS,gestioneDipendentiD,gestioneDipendentiAA,gestioneBadgeD, gestioneBadgeAS,gestionePunteggiD, gestionePunteggiAA);
 	  
