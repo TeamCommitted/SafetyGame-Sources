@@ -96,6 +96,7 @@ public class GestioneBadgeD{
     */
    public boolean assegnaBadge(Domanda domanda, Login login){
        Dipendente dip = accessDip.getInfoD(login);
+       System.out.println(dip.getPunteggio().getPunti());
        ArrayList<Domanda> risposte = accessDom.domande(dip,null);
        ArrayList<Badge> badge = accessBadge.badgeAS();
        boolean trovato = false;
