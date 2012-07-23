@@ -31,6 +31,7 @@ public class Domanda {
 	private int numeroRisposte;
 	private int tempo;
 	private boolean mobile;
+	private String ambito;
 
 	public Domanda(int id, String type, String testo, int punteggio, int corretta)
 	{
@@ -45,7 +46,7 @@ public class Domanda {
 		this.corretta = corretta;
 	}
 
-	public Domanda(int id, String type, String testo, String[] risposte, int numeroRisposte, int punteggio, int corretta, int tempo, boolean mobile)
+	public Domanda(int id, String type, String testo, String[] risposte, int numeroRisposte, int punteggio, int corretta, int tempo, boolean mobile, String ambito)
 	{
 		this.id = id;
 		this.type = type;
@@ -60,6 +61,7 @@ public class Domanda {
 		this.corretta = corretta;
 		this.mobile = mobile;
 		this.tempo = tempo;
+		this.ambito = ambito;
 	}
 
 	public int getId()
@@ -103,5 +105,10 @@ public class Domanda {
 
 	public int getTempo() {
 		return tempo;
+	}
+
+	public String getAmbito()
+	{
+		return ambito;
 	}
 }

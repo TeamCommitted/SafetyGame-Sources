@@ -90,7 +90,7 @@ public class ConnectionUtils
 					{
 						risposte[i] = parseXML(xml, "risposta", i);
 					}
-					return new Domanda(Integer.parseInt(parseXML(xml, "id", 0)), type, parseXML(xml, "testo", 0), risposte, risposteNum, Integer.parseInt(parseXML(xml, "punteggio", 0)), Integer.parseInt(parseXML(xml, "corretta", 0)), Integer.parseInt(parseXML(xml, "tempo", 0)), Boolean.parseBoolean(parseXML(xml, "mobile", 0)));
+					return new Domanda(Integer.parseInt(parseXML(xml, "id", 0)), type, parseXML(xml, "testo", 0), risposte, risposteNum, Integer.parseInt(parseXML(xml, "punteggio", 0)), Integer.parseInt(parseXML(xml, "corretta", 0)), Integer.parseInt(parseXML(xml, "tempo", 0)), Boolean.parseBoolean(parseXML(xml, "mobile", 0)), parseXML(xml, "ambito", 0));
 				}
 
 			} else if (url.contains("dati"))

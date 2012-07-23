@@ -34,7 +34,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -191,14 +190,13 @@ public class DomandaActivity extends SherlockActivity {
 						@Override
 						public void onClick(View arg0) {
 							int checked = -1;
-							switch (rg.getCheckedRadioButtonId()) {
-							case R.id.radio0:
+							int checkeId = rg.getCheckedRadioButtonId();
+							if (checkeId == R.id.radio0)
 								checked = 0;
-							case R.id.radio1:
+							else if (checkeId == R.id.radio1)
 								checked = 1;
-							case R.id.radio2:
+							else
 								checked = 2;
-							}
 							String[] params = { checked + "" };
 							new RispostaTask().execute(params);
 						}
@@ -248,8 +246,6 @@ public class DomandaActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			nameValuePairs.add(new BasicNameValuePair("id", domanda.getId() + ""));
 			nameValuePairs.add(new BasicNameValuePair("punti", domanda.getPunteggio() + ""));
-			for (int i = 0; i < domanda.getNumR(); i++)
-				nameValuePairs.add(new BasicNameValuePair("risposta" + i + 1, domanda.getRisposte()[i]));
 
 			nameValuePairs.add(new BasicNameValuePair("corretta", domanda.getCorretta() + ""));
 			if (domanda.isMobile())
@@ -261,11 +257,10 @@ public class DomandaActivity extends SherlockActivity {
 			}
 			else
 				nameValuePairs.add(new BasicNameValuePair("rispostaData", arg0[0]));
-			nameValuePairs.add(new BasicNameValuePair("mobile", domanda.isMobile() + ""));
-
+			nameValuePairs.add(new BasicNameValuePair("ambito", domanda.getAmbito()));
 			ConnectionUtils
 					.HttpCreateClient(
-							serverUrl + "/teamcommitted/API/rispondi.jsp",
+							serverUrl + "/API/rispondi.jsp",
 							nameValuePairs);
 			return null;
 		}
@@ -281,7 +276,6 @@ public class DomandaActivity extends SherlockActivity {
 		IntentResult scanResult = IntentIntegrator.parseActivityResult(
 				requestCode, resultCode, intent);
 		if (scanResult != null) {
-			Log.v("SAFETYGAME", "scanResult=" + scanResult.getContents());
 			String[] params = { scanResult.getContents() };
 
 			new RispostaTask().execute(params);

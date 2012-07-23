@@ -2,8 +2,8 @@
  * Name: GestionePunteggiAA.java
  * Package: com.safetygame.back.controller
  * Author: Massimo Dalla Pietà
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -30,7 +30,7 @@ import java.util.ArrayList;
  * Classe che si occupa di gestire la visione dei punteggi in un'azienda
  * 
  * @author mdallapi 
- * @version v1.0
+ * @version v2.0
  */
 public class GestionePunteggiAA{ 
    private DAOPunteggi accessPunti;
@@ -40,7 +40,7 @@ public class GestionePunteggiAA{
     * Costruttore con parametri della classe GestionePunteggiAA
     * 
     * @param accessP riferimento alla classe che implementa l'interfaccia DAOPunteggi
-    *        accessDip riferimento alla classe che implementa l'interfaccia DAODipendenti
+    * @param accessDip riferimento alla classe che implementa l'interfaccia DAODipendenti
     */
    public GestionePunteggiAA(DAOPunteggi accessPunti, DAODipendenti accessDip){
        this.accessPunti = accessPunti;
@@ -78,8 +78,8 @@ public class GestionePunteggiAA{
     /**
     * Metodo per modificare i trofei di un dipendente
     * 
-    * @param Dip il dipendente che si vuole modificare
-    *        n numero di trofei che si vuole assegnare
+    * @param dip il dipendente che si vuole modificare
+    * @param num numero di trofei che si vuole assegnare
     * @return true se l'operazione ha successo, altrimenti false  
     */
     public boolean setTrofei(Dipendente dip, int num){

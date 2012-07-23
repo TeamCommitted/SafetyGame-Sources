@@ -2,8 +2,8 @@
  * Name: GestioneBadgeD.java
  * Package: com.safetygame.back.controller
  * Author: Massimo Dalla Pieta'
- * Date: 2012/06/16
- * Version: 1.1
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -32,7 +32,7 @@ import java.util.ArrayList;
  * Classe che si occupa di gestire il recupero di badge di un dipendente 
  * 
  * @author mdallapi 
- * @version v1.0
+ * @version v2.0
  */
 public class GestioneBadgeD{
    private DAOBadge accessBadge;
@@ -45,10 +45,10 @@ public class GestioneBadgeD{
     * Costruttore con parametri della classe GestioneBadgeD
     * 
     * @param accessB riferimento alla classe che implementa l'interfaccia DAOBadge
-    *        accessDip riferimento alla classe che implementa l'interfaccia DAODipendenti
-    *        accessDom riferimento alla classe che implementa l'interfaccia DAODomande
-    *        log riferimento alla classe GestioneLog
-    *        login riferimento alla classe GestioneLogin
+    * @param accessDip riferimento alla classe che implementa l'interfaccia DAODipendenti
+    * @param accessDom riferimento alla classe che implementa l'interfaccia DAODomande
+    * @param gestioneLog riferimento alla classe GestioneLog
+    * @param gestioneLogin riferimento alla classe GestioneLogin
     */
    public GestioneBadgeD(DAOBadge accessBadge,DAODipendenti accessDip, DAODomande accessDom, GestioneLog gestLog, GestioneLogin gestLogin){
        this.accessBadge = accessBadge;
@@ -62,7 +62,7 @@ public class GestioneBadgeD{
     * Metodo per ottenere i dati delle badge per un dato utente
     * 
     * @param login dati dell'utente che effettua la richiesta
-    * @param n numero di badge che si vuole selezionare
+    * @param num numero di badge che si vuole selezionare
     * @return un ArrayList<Badge> contenente n badge ottenute dall'utente        
     */
    public ArrayList<Badge> getBadgeD(Login login, int num){
@@ -70,7 +70,7 @@ public class GestioneBadgeD{
           Dipendente d = accessDip.getInfoD(login);
           ArrayList<Badge> list = accessBadge.badgeD(d);
           if(list.isEmpty())
-              return list;//return null;
+              return list;
           else{
         	  if(num==0){
         		  return list;
@@ -90,8 +90,8 @@ public class GestioneBadgeD{
    /**
     * Metodo per controllare se l'utente ha soddisfatto dei requisiti per ottenere un badge
     * 
-    * @param l dati dell'utente che si deve controllare
-    * @param D domanda risposta dall'utente
+    * @param login dati dell'utente che si deve controllare
+    * @param domanda domanda risposta dall'utente
     * @return true se l'utente ha ricevuto un badge, altrimenti false    
     */
    public boolean assegnaBadge(Domanda domanda, Login login){

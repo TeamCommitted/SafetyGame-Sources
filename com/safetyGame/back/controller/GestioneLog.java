@@ -2,8 +2,8 @@
  * Name: GestioneLog.java
  * Package: com.safetygame.back.controller
  * Author: Alessandro Cornaglia
- * Date: 2012/06/16
- * Version: 1.1
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -57,7 +57,7 @@ import com.safetyGame.back.condivisi.*;
  * Classe che si occupa di gestire i log del sistema
  * 
  * @author acornagl 
- * @version v1.0
+ * @version v2.0
  */
 public class GestioneLog{
 
@@ -65,8 +65,9 @@ public class GestioneLog{
   private DAODipendenti daoDipendenti;
     
   /**
-   * Costruttore senza parametri della classe GestioneLog
-   * 
+   * Costruttore della classe GestioneLog
+   * @param upLog riferimento alla classe UpdateLog
+   * @param daoDip riferimento all'oggetto di tipo statico DAODipendenti
    */
   public GestioneLog(UpdateLog upLog, DAODipendenti daoDip) {
    updateLog= upLog;
@@ -100,18 +101,6 @@ public class GestioneLog{
 	String nomeTabella = "LogLoginD";
 	Dipendente dip = daoDipendenti.getInfoD(login);
     this.updateLog.scriviLogTre(nomeTabella,dip,dataOra.toString());
-   /* DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-   	
-    //creo path del file da scrivere e creo UpdateLog
-    this.percorso = "/login.txt";
-   
-	try {
-	  this.updateLog = new UpdateLog("/"+login.getUsername(),this.percorso);
-	}
-	catch (IOException e) {System.out.println("non va"); }//bisogna decidere cosa fare se si verifica errore
-    
-    log = "LOGIN " + dataOra.toString() + " " + login.getUsername(); //stringa contenente il log
-    updateLog.scriviChiudi(log);//passo la stringa creata a updateLog*/
   }
   
   /**
@@ -125,18 +114,6 @@ public class GestioneLog{
 	String nomeTabella = "LogLoginA";
 	Dipendente dip = daoDipendenti.getInfoA(login);
     this.updateLog.scriviLogTre(nomeTabella,dip,dataOra.toString());
-   /* DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-   	
-    //creo path del file da scrivere e creo UpdateLog
-    this.percorso = "/login.txt";
-   
-	try {
-	  this.updateLog = new UpdateLog("/"+login.getUsername(),this.percorso);
-	}
-	catch (IOException e) {System.out.println("non va"); }//bisogna decidere cosa fare se si verifica errore
-    
-    log = "LOGIN " + dataOra.toString() + " " + login.getUsername(); //stringa contenente il log
-    updateLog.scriviChiudi(log);//passo la stringa creata a updateLog*/
   }
   
   /**
@@ -150,19 +127,6 @@ public class GestioneLog{
 	String nomeTabella = "LogLogoutD";
 	Dipendente dip = daoDipendenti.getInfoD(login);
     this.updateLog.scriviLogTre(nomeTabella,dip,dataOra.toString());
-    /*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-    
-    //creo path del file da scrivere e creo UpdateLog
-    percorso = "/logout.txt";
-
-    try {
-	  this.updateLog = new UpdateLog("/"+login.getUsername(),percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-
-    log = "LOGOUT " + dataOra.toString() + " " + login.getUsername(); //stringa contenente il log
-    updateLog.scriviChiudi(log);//passo la stringa creata a updateLog
-    */
   }
   
   /**
@@ -176,19 +140,6 @@ public class GestioneLog{
 	String nomeTabella = "LogLogoutA";
 	Dipendente dip = daoDipendenti.getInfoA(login);
     this.updateLog.scriviLogTre(nomeTabella,dip,dataOra.toString());
-    /*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-    
-    //creo path del file da scrivere e creo UpdateLog
-    percorso = "/logout.txt";
-
-    try {
-	  this.updateLog = new UpdateLog("/"+login.getUsername(),percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-
-    log = "LOGOUT " + dataOra.toString() + " " + login.getUsername(); //stringa contenente il log
-    updateLog.scriviChiudi(log);//passo la stringa creata a updateLog
-    */
   }
   
   /**
@@ -204,18 +155,6 @@ public class GestioneLog{
 	Dipendente dip = daoDipendenti.getInfoD(login);
 	String colonna = "IDdomanda";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,""+dom.getId());
-    /*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-    
-    //creo path del file da scrivere e creo UpdateLog
-    percorso =  "/dRic.txt";
-
-    try {
-	  this.updateLog = new UpdateLog("/"+login.getUsername(),percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-
-    log = "DOMANDA RICEVUTA " + dataOra.toString() + " usr=" + login.getUsername() + " id dom=" + dom.getId();
-    updateLog.scriviChiudi(log);*/
   }
   
   /**
@@ -231,23 +170,6 @@ public class GestioneLog{
 	Dipendente dip = daoDipendenti.getInfoD(login);
 	String colonna = "IDdomanda";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,""+dom.getId());  
-	  /*
-    DataOra dataOra = new DataOra();
-	String nomeTabella = "LogProposta";
-    this.updateLog.scriviLogQuattro(nomeTabella,login,dataOra.toString(),dom.getId());
-	/*  DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-
-    //creo path del file da scrivere e creo UpdateLog
-    percorso = "/dProp.txt";
-
-    try {
-	  this.updateLog = new UpdateLog("/"+login.getUsername(),percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-    
-	log = "DOMANDA PROPOSTA " + dataOra.toString() + " usr=" + login.getUsername() + " id dom=" + dom.getId();
-    updateLog.scriviChiudi(log);
-    */
   }
 
   /**
@@ -263,21 +185,6 @@ public class GestioneLog{
 	Dipendente dip = daoDipendenti.getInfoD(login);
 	String colonna = "IDdomanda";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,""+dom.getId());
-/*	DataOra dataOra = new DataOra();
-	String nomeTabella = "LogPosticipa";
-    this.updateLog.scriviLogQuattro(nomeTabella,login,dataOra.toString(),dom.getId());  
-  /*  DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-
-    //creo path del file da scrivere e creo UpdateLog
-    percorso = "/dPost.txt";
-    
-	try {
-	  this.updateLog = new UpdateLog("/"+login.getUsername(),percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-    
-	log = "DOMANDA POSTICIPATA " + dataOra.toString() + " usr=" + login.getUsername() + " id dom=" + dom.getId();
-    updateLog.scriviChiudi(log);*/
   }
   
   /**
@@ -293,18 +200,6 @@ public class GestioneLog{
 	Dipendente dip = daoDipendenti.getInfoD(login);
 	String colonna = "IDdomanda";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,""+dom.getId());
-   /* DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-
-    //creo path del file da scrivere e creo UpdateLog
-    percorso = "/dRisp.txt";
-
-    try {
-	  this.updateLog = new UpdateLog("/"+login.getUsername(),percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-    
-	log = "DOMANDA RISPOSTA " + dataOra.toString() + " usr=" + login.getUsername() + " id dom=" + dom.getId();
-    updateLog.scriviChiudi(log);*/
   }
   
   /**
@@ -319,19 +214,6 @@ public class GestioneLog{
 	String operazione = "pass";
 	String colonna = "TipoModifica";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,"'"+operazione+"'");
-/*    DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-    
-    //creo path del file da scrivere e creo UpdateLog
-    String usr = dip.getNickname(); //ricavo il nick del dipendente, utile per il path
-    percorso = "/modPassD.txt";
-
-    try {
-	  this.updateLog = new UpdateLog("/"+dip.getNickname(),percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-
-	log = "MODIFICA PASS D " + dataOra.toString() + " id dip=" + dip.getId();
-    updateLog.scriviChiudi(log);*/
   }
   
   /**
@@ -346,20 +228,7 @@ public class GestioneLog{
 	String operazione = "mail";
 	String colonna = "TipoModifica";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,"'"+operazione+"'");
-	  /*
-    DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-    
-    //creo path del file da scrivere e creo UpdateLog
-    String usr = dip.getNickname(); //ricavo il nick del dipendente, utile per il path
-    percorso = "/modEmailD.txt";
-    
-	try {
-	  this.updateLog = new UpdateLog("/"+dip.getNickname(),percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
 
-    log = "MODIFICA EMAIL D " + dataOra.toString() + " id dip=" + dip.getId();
-    updateLog.scriviChiudi(log);*/
   }
 
   /**
@@ -374,18 +243,6 @@ public class GestioneLog{
 	String nomeTabella = "OttenimentoBadge";
 	String colonna = "IdBadge";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,""+badge.getId());
-	/*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-    
-    //creo path del file da scrivere e creo UpdateLog
-    String usr = dip.getNickname(); //ricavo il nick del dipendente, utile per il path
-    percorso = "/modOttB.txt";
-	try {
-	  this.updateLog = new UpdateLog("/"+dip.getNickname(),percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-
-	log = "OTTENIMENTO BADGE " + dataOra.toString() + " id dip=" + dip.getId() + " badge=" + badge.getNome();
-    updateLog.scriviChiudi(log);*/
   }
   
   /**
@@ -400,18 +257,6 @@ public class GestioneLog{
 	String operazione = "aggiungi";
 	String colonna = "Operazione";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,"'"+operazione+"'");
-	/*  
-	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-    
-    //creo path del file da scrivere e creo UpdateLog
-    percorso = "/AA.txt";
-	try {
-	  this.updateLog = new UpdateLog("/AA",percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-
-	log = "AGGIUNTO DIPENDENTE " + dataOra.toString() + " id dip=" + dip.getId();
-    updateLog.scriviChiudi(log);*/
   }
   
   /**
@@ -426,18 +271,6 @@ public class GestioneLog{
 	String operazione = "elimina";
 	String colonna = "Operazione";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,"'"+operazione+"'");
-	  /*
-	DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-    
-    //creo path del file da scrivere e creo UpdateLog
-    percorso = "/AA.txt";
-	try {
-	  this.updateLog = new UpdateLog("/AA",percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-
-	log = "RIMOSSO DIPENDENTE " + dataOra.toString() + " id dip=" + dip.getId();
-    updateLog.scriviChiudi(log);*/
   }
   
   /**
@@ -452,17 +285,6 @@ public class GestioneLog{
 	String operazione = "modifica";
 	String colonna = "Operazione";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,"'"+operazione+"'");
-	/*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-    
-    //creo path del file da scrivere e creo UpdateLog
-    percorso = "/AA.txt";
-	try {
-	  this.updateLog = new UpdateLog("/AA",percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-
-	log = "MODIFICATO DIPENDENTE " + dataOra.toString() + " id dip=" + dip.getId();
-    updateLog.scriviChiudi(log);*/
   }
   
   /**
@@ -476,20 +298,6 @@ public class GestioneLog{
 	String nomeTabella = "AddRemDomanda";
 	String operazione = "add";
     this.updateLog.scriviLogDomande(nomeTabella,dataOra.toString(),""+dom.getId(),"'"+operazione+"'");
-	/*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-    
-    //creo path del file da scrivere e creo UpdateLog
-    percorso = "/AS.txt";
-	try {
-	  this.updateLog = new UpdateLog("/AS",percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-
-	//scrivo una riga per ogni domanda aggiunta
-	for (int i = 0; i < dom.length; i++) {
-	  log = "AGGIUNTA DOMANDA " + dataOra.toString() + " id dom=" + dom[i].getId();
-	  updateLog.scriviChiudi(log);
-	}*/
   }
   
   /**
@@ -503,20 +311,6 @@ public class GestioneLog{
 	String nomeTabella = "AddRemDomanda";
 	String operazione = "del";
 	this.updateLog.scriviLogDomande(nomeTabella,dataOra.toString(),""+dom.getId(),"'"+operazione+"'");
-	/*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
-    
-    //creo path del file da scrivere e creo UpdateLog
-    percorso = "/AS.txt";
-	try {
-	  this.updateLog = new UpdateLog("/AS",percorso);
-	}
-	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
-
-	//scrivo una riga per ogni domanda aggiunta
-	for (int i = 0; i < dom.length; i++) {
-	  log = "RIMOSSA DOMANDA " + dataOra.toString() + " id dom=" + dom[i].getId();
-	  updateLog.scriviChiudi(log);
-	}*/
   }
 
 }
