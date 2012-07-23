@@ -55,8 +55,8 @@ public class ConnBack {
   private Parser parser;
   private Timer timer_proponi;
   private Timer timer_chiedi;
-  private long tempo_proposta=120000; //2 minuti
-  private long tempo_richiesta=300000; //5 minuti
+  private long tempo_proposta=60000; //1 minuto
+  private long tempo_richiesta=120000; //2 minuti
   private boolean pop; // evita che si possa effettuare il logout quando vi sono finestre di nuova domanda aperte
     
   /** 
