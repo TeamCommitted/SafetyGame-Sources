@@ -67,7 +67,7 @@ public class GestioneBadgeDTest {
 		Domanda d = new Domanda();
 		d.setId(1);
 		d.setTipologia("Pompiere");
-		Login l = new Login("nick","pass");
+		Login l = new Login("andrea.marton","pass");
 		assertTrue("badge non assegnata", gb.assegnaBadge(d,l)); 
 		//devo verificare se nella tabella OttenimentoBadge e` presente la riga 1 - 1 - 5 - data e ora correnti
 	}
