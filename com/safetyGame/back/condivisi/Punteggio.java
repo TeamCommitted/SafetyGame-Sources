@@ -3,7 +3,7 @@
  * Package: com.safetygame.back.condivisi
  * Author: Alessandro Cornaglia
  * Date: 2012/06/16
- * Version: 1.1
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -41,7 +41,7 @@ package com.safetyGame.back.condivisi;
  * sia ad una domanda che ad un dipendente
  * 
  * @author acornagl 
- * @version 1.0
+ * @version 2.0
  */
 public class Punteggio {
   private int punti;

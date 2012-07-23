@@ -23,8 +23,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 /**
  * Classe di test per oggetti di tipo DataOra
- * @author ale
- *
+ * @author acornagl
+ * @version v2.0
  */
 public class DataOraTest {
 	
