@@ -2,8 +2,8 @@
  * Name: SqlDAODipendenti.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -55,7 +55,7 @@ import java.util.Random;
  * Classe che gestisce i dipendenti, implementa i metodi pubblici dell'interfaccia
  * 
  * @author gfacchin
- * @version 0.1
+ * @version 2.0
  */
 
 public class SqlDAODipendenti implements DAODipendenti{
@@ -78,7 +78,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return l'oggetto Dipendente istanziato se presente nel db, altrimenti null
    * 
    */     
-  public Dipendente getInfoD(Login login){//
+  public Dipendente getInfoD(Login login){
     String username = login.getUsername();
     String password = login.getPassword();
     ResultSet rs = serverAzienda.selezione("Dipendente as dip INNER JOIN Ruolo as r ON dip.ruolo=r.ruolo ","*", "nickname='"+username+"'",""); 
@@ -115,7 +115,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return l'oggetto Dipendente (amministratore) istanziato se presente nel db, altrimenti null
    * 
    */   
-  public Dipendente getInfoA(Login login){//
+  public Dipendente getInfoA(Login login){
     String username = login.getUsername();
     String password = login.getPassword();
     ResultSet rs = serverAzienda.selezione("Amministratore","*", "nickname='"+username+"'",""); 
@@ -142,7 +142,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean resetPassD(Dipendente dip){//
+  public boolean resetPassD(Dipendente dip){
     return serverAzienda.modificaRiga("Dipendente", "passmod=NULL","ID="+dip.getId());
   }
   
@@ -153,7 +153,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean resetPassA(Dipendente dip){//
+  public boolean resetPassA(Dipendente dip){
     return serverAzienda.modificaRiga("Amministratore", "passmod=NULL","ID="+dip.getId());
   }
   
@@ -165,7 +165,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean passD(Dipendente dip, String pass){//
+  public boolean passD(Dipendente dip, String pass){
     return serverAzienda.modificaRiga("Dipendente", "password='"+pass+"'","ID="+dip.getId());
   }
 
@@ -177,7 +177,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean passA(Dipendente dip, String pass){//
+  public boolean passA(Dipendente dip, String pass){
     DataOra data=new DataOra();
     boolean b = serverAzienda.modificaRiga("Amministratore", "password='"+pass+"'","ID="+dip.getId());
     if (b){
@@ -197,7 +197,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean mailD(Dipendente dip, String mail){//
+  public boolean mailD(Dipendente dip, String mail){
     return serverAzienda.modificaRiga("Dipendente", "email='"+mail+"'","ID="+dip.getId());
   }
 
@@ -207,7 +207,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return un ArrayList che contiene tutti i dipendenti
    * 
    */   
-  public ArrayList<Dipendente> elencoDipendenti(){//
+  public ArrayList<Dipendente> elencoDipendenti(){
     ResultSet rs=serverAzienda.selezione("Dipendente","*","","");
     ArrayList<Dipendente> dipendenti = new ArrayList<Dipendente>();
     ArrayList<Login> supporto = new ArrayList<Login>();
@@ -237,7 +237,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean aggiungiDipendente(Dipendente dip){//
+  public boolean aggiungiDipendente(Dipendente dip){
     String param[]=new String[9];
     param[0]="'"+dip.getNome()+"'";
     param[1]="'"+dip.getCognome()+"'";
@@ -258,7 +258,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    * 
    */   
-  public boolean cancellaDipendente(Dipendente dip){//
+  public boolean cancellaDipendente(Dipendente dip){
     return serverAzienda.cancellaRiga("Dipendente","ID="+dip.getId()+" AND nickname='"+dip.getNickname()+"' AND password ='"+dip.getPassword()+"';");
   }
   
@@ -270,7 +270,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean modNome(Dipendente dip, String nome){//
+  public boolean modNome(Dipendente dip, String nome){
     return serverAzienda.modificaRiga("Dipendente","nome='"+nome+"'","ID="+dip.getId());
   }
   
@@ -282,7 +282,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean modCognome(Dipendente dip, String cognome){//
+  public boolean modCognome(Dipendente dip, String cognome){
     return serverAzienda.modificaRiga("Dipendente","cognome='"+cognome+"'","ID="+dip.getId());
   }
   
@@ -294,7 +294,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean modCodFis(Dipendente dip, String codfis){//
+  public boolean modCodFis(Dipendente dip, String codfis){
     return serverAzienda.modificaRiga("Dipendente","codice_fiscale='"+codfis+"'","ID="+dip.getId());
   }
 
@@ -306,7 +306,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean modUsername(Dipendente dip, String username){//
+  public boolean modUsername(Dipendente dip, String username){
     return serverAzienda.modificaRiga("Dipendente","nickname='"+username+"'","ID="+dip.getId());
   }
 
@@ -318,7 +318,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean modImpiego(Dipendente dip, String impiego){//
+  public boolean modImpiego(Dipendente dip, String impiego){
     return serverAzienda.modificaRiga("Dipendente","ruolo='"+impiego+"'","ID="+dip.getId());
   }
   
@@ -330,7 +330,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean setTrofei(Dipendente dip, int numTrofei){//
+  public boolean setTrofei(Dipendente dip, int numTrofei){
     return serverAzienda.modificaRiga("Dipendente","trofeo="+numTrofei,"ID="+dip.getId());
   }
   
@@ -342,7 +342,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean resetD(Recupero rec, String pass){//
+  public boolean resetD(Recupero rec, String pass){
     boolean ritorno = serverAzienda.modificaRiga("Dipendente","passmod='"+pass+"'","email='"+rec.getEmail()+"'"+" AND codice_fiscale='"+rec.getCodFiscale()+"'");
     if (ritorno){
       ResultSet rs= serverAzienda.selezione("Dipendente","passmod","email='"+rec.getEmail()+"'"+" AND codice_fiscale='"+rec.getCodFiscale()+"'","");
@@ -366,7 +366,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean resetA(Recupero rec, String pass){//
+  public boolean resetA(Recupero rec, String pass){
     boolean ritorno =serverAzienda.modificaRiga("Amministratore","passmod='"+pass+"'","email='"+rec.getEmail()+"' AND codice_fiscale='"+rec.getCodFiscale()+"'");
     System.out.println(ritorno); 
     if (ritorno){

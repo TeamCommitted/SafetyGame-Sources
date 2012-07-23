@@ -2,8 +2,8 @@
  * Name: DAODomande.java
  * Package: com.safetygame.back.access
  * Author: Gabriele Facchin
- * Date: 2012/06/16
- * Version: 1.0
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
@@ -40,7 +40,7 @@ import java.util.Random;
  * Classe che gestisce le Domande, implementa i metodi pubblici dell'interfaccia
  * 
  * @author gfacchin
- * @version 1.0
+ * @version 2.0
  */
 
 public class SqlDAODomande implements DAODomande{
@@ -49,6 +49,8 @@ public class SqlDAODomande implements DAODomande{
   
   /**
    * Costruttore della classe SqlDAODomande
+   * @param azienda indirizzo del server aziendale
+   * @param domande indirizzo del server delle domande
    */
   public SqlDAODomande(Indirizzo azienda, Indirizzo domande){
     serverAzienda=azienda;
@@ -62,7 +64,7 @@ public class SqlDAODomande implements DAODomande{
    * @return l'oggetto Domanda con i campi corretti
    * 
    */   
-  private Domanda prendiCampiDomanda(int id){//
+  private Domanda prendiCampiDomanda(int id){
     ResultSet rs=serverDomande.selezione("Domanda","*","ID="+id,"");
     Domanda dom=new Domanda();
     Punteggio p;
@@ -118,7 +120,7 @@ public class SqlDAODomande implements DAODomande{
    * @return l'oggetto Domanda che contiene una domanda
    * 
    */   
-  public Domanda getDomanda(Dipendente dip){//
+  public Domanda getDomanda(Dipendente dip){
     ResultSet rs=serverAzienda.selezione("Storico","IDdomanda","IDdipendente="+dip.getId()+" AND punteggio=-1","");
     int id=-1;
     boolean domanda=true;
@@ -169,7 +171,7 @@ public class SqlDAODomande implements DAODomande{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean posticipa(Dipendente dip, Domanda dom){//
+  public boolean posticipa(Dipendente dip, Domanda dom){
     return serverAzienda.modificaRiga("Storico","punteggio=-1","IDdipendente="+dip.getId()+" AND IDdomanda="+dom.getId());
   }
   
@@ -181,7 +183,7 @@ public class SqlDAODomande implements DAODomande{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean rispondi(Dipendente dip, Domanda dom){//
+  public boolean rispondi(Dipendente dip, Domanda dom){
     int punti;
     String corretta = "FALSE";
     if(dom.getRispostaData()==-1){
@@ -205,7 +207,7 @@ public class SqlDAODomande implements DAODomande{
    * @return ArrayList che contiene l'elenco di tutte le Domande
    * 
    */   
-  public ArrayList<Domanda> domandeA(){//
+  public ArrayList<Domanda> domandeA(){
     ResultSet rs=serverAzienda.selezione("Domanda","ID","","ORDER BY ID ASC");
     ArrayList<Integer> id = new ArrayList<Integer>();
     boolean trovato = false;
@@ -280,7 +282,7 @@ public class SqlDAODomande implements DAODomande{
     if (dom!=null){
       i=0;
       while(i<domande.size()){
-        if (domande.get(i).getAmbito().equals(dom.getAmbito())){ //TEST NEED OMFG
+        if (domande.get(i).getAmbito().equals(dom.getAmbito())){ 
           i++;
         }
         else{
@@ -298,7 +300,7 @@ public class SqlDAODomande implements DAODomande{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean addDomanda(Domanda dom){//
+  public boolean addDomanda(Domanda dom){
     String s[]=new String[1];
     s[0]="'"+dom.getId()+"'";
     return serverAzienda.inserisciRiga("Domanda","ID",s);
@@ -311,7 +313,7 @@ public class SqlDAODomande implements DAODomande{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean remDomanda(Domanda dom){//
+  public boolean remDomanda(Domanda dom){
     return serverAzienda.cancellaRiga("Domanda","ID="+dom.getId());
   }
   
@@ -323,7 +325,7 @@ public class SqlDAODomande implements DAODomande{
    * @return boolean che indica se l'operazione e` andata o meno a buon fine
    * 
    */   
-  public boolean scriviSottoposta(Dipendente dip, Domanda dom){//
+  public boolean scriviSottoposta(Dipendente dip, Domanda dom){
     String[] s = {""+0,""+dip.getId(),""+dom.getId()};
     boolean risposta = serverAzienda.inserisciRiga("Storico","punteggio, IDdipendente, IDdomanda",s);
     if(!risposta){
