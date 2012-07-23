@@ -21,6 +21,7 @@ Rimuovi Domande
         
         <% //Recupero le domande dal database ingDom
 			WebConnection connection = Inizializzatore.getWeb();
+			%><%@ include file="forzaCambioPassA.jsp" %><%
 			ArrayList elencoDomande = null;
 			elencoDomande = connection.getElencoDomande();
 			int numeroDomInterne = 0;

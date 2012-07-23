@@ -29,6 +29,7 @@ I tuoi dati
 	<h2>Dati Personali</h2>
     <%
         WebConnection connection = Inizializzatore.getWeb();
+		%><%@ include file="forzaCambioPassA.jsp" %><%
 		Login loginA = new Login(username, password);
 		Dipendente adm = connection.getDatiA(loginA);
 		if (adm == null) out.println("<span class=\"fallimento\">Impossibile recuperare i dati personali</span><p>Contattare l'amministratore di sistema</p>");

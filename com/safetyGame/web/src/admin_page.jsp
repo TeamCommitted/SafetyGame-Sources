@@ -4,6 +4,12 @@
 <%@ page import= "javax.servlet.*"%>
 <%@ page import= "java.io.*"%>
 <%@ page language="java" import="java.util.Date"%>
+<%@ page language="java" import="java.util.regex.*"%>
+<%@ page language="java" import="com.safetyGame.back.connection.*" %>
+<%@ page language="java" import="com.safetyGame.back.controller.*" %>
+<%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
+<%@ page language="java" import="com.safetyGame.back.access.*" %>
+<%@ page language="java" import="com.safetyGame.back.*" %>
 
 <%@ include file="html/header_pre_title.html" %> 
 Pannello Amministratore
@@ -29,5 +35,6 @@ Pannello Amministratore
         out.println(ambito);
         out.println("</p>");
     %>
-        
+<% WebConnection connection = Inizializzatore.getWeb(); %>
+<%@ include file="forzaCambioPassA.jsp" %>
 <%@ include file="html/footer.html" %>

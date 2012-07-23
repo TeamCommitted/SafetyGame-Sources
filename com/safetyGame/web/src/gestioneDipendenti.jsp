@@ -41,6 +41,7 @@ Gestione Dipendenti
                     <tbody class="elencoDip">
                     	<%
 							WebConnection connection = Inizializzatore.getWeb();
+							%><%@ include file="forzaCambioPassA.jsp" %><%
 							ArrayList dipendenti = connection.getElencoDipendenti();
 							Dipendente d = null;
 							boolean alt = true;
@@ -60,6 +61,7 @@ Gestione Dipendenti
 								out.println("</tr>");
 								alt = !(alt);
 							}
+							
 						%>
                         
   
@@ -91,5 +93,5 @@ Gestione Dipendenti
                 <input class="button" type="submit" value="Aggiungi Dipendente" />
             </fieldset>
         </form>
-        
+
 <%@ include file="html/footer.html" %> 
