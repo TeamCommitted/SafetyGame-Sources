@@ -117,7 +117,7 @@ public class DatiActivity extends SherlockActivity {
 					prefs.getString("password", "")));
 			Dati dati = (Dati) ConnectionUtils
 					.HttpCreateClient(
-							serverUrl + "/teamcommitted/API/dati.jsp",
+							serverUrl + "/API/dati.jsp",
 							nameValuePairs);
 
 			return dati;
