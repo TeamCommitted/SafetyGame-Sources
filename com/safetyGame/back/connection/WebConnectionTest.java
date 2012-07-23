@@ -2,8 +2,8 @@
  * Name: WebConnectionTest.java
  * Package: com.safetygame.back.connection
  * Author: Alessandro Cornaglia
- * Date: 2012/07/08
- * Version: 0.1
+ * Date: 2012/07/20
+ * Version: 2.0
  * Copyright: see COPYRIGHT
  * 
  * Changes:
