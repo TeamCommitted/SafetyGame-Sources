@@ -143,7 +143,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    */   
   public boolean resetPassD(Dipendente dip){//
-    return serverAzienda.modificaRiga("Dipendente", "passmod=''","ID="+dip.getId());
+    return serverAzienda.modificaRiga("Dipendente", "passmod=NULL","ID="+dip.getId());
   }
   
   /**
@@ -154,7 +154,7 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    */   
   public boolean resetPassA(Dipendente dip){//
-    return serverAzienda.modificaRiga("Amministratore", "passmod=''","ID="+dip.getId());
+    return serverAzienda.modificaRiga("Amministratore", "passmod=NULL","ID="+dip.getId());
   }
   
   /**
@@ -238,16 +238,17 @@ public class SqlDAODipendenti implements DAODipendenti{
    * 
    */   
   public boolean aggiungiDipendente(Dipendente dip){//
-    String param[]=new String[8];
+    String param[]=new String[9];
     param[0]="'"+dip.getNome()+"'";
     param[1]="'"+dip.getCognome()+"'";
     param[2]="'"+dip.getCodFiscale()+"'";
     param[3]="'"+dip.getEmail()+"'";
     param[4]="'"+dip.getNickname()+"'";
-    param[5]="'"+dip.getPassword()+"'";
-    param[6]="'"+dip.getRuolo()+"'";
-    param[7]=""+dip.getPunteggio().getPunti();
-    return serverAzienda.inserisciRiga("Dipendente","nome, cognome, codice_fiscale, email, nickname, passmod, ruolo, trofeo",param);
+    param[5]="''";
+    param[6]="'"+dip.getPassword()+"'";
+    param[7]="'"+dip.getRuolo()+"'";
+    param[8]=""+dip.getPunteggio().getPunti();
+    return serverAzienda.inserisciRiga("Dipendente","nome, cognome, codice_fiscale, email, nickname, password,  passmod, ruolo, trofeo",param);
   }
   
   /**

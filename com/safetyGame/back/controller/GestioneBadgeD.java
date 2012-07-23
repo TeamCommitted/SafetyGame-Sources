@@ -107,7 +107,7 @@ public class GestioneBadgeD{
                if(test.getSoglia() == risposte.size()){
                    accessBadge.assegna(dip,test);
                    gestLog.scriviOttenimentoBadge(dip, test);
-                   //log.scriviOttenimentoBadge(dip, test);
+                   gestLog.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }
@@ -120,7 +120,7 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals("TotalePunti"))
                if(test.getSoglia() == dip.getPunteggio().getPunti()){
                    accessBadge.assegna(dip,test);
-                   //log.scriviOttenimentoBadge(dip, test);
+                   gestLog.scriviOttenimentoBadge(dip, test);
                    gestLog.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
@@ -135,7 +135,7 @@ public class GestioneBadgeD{
            if(test.getDescrizione().equals(domanda.getAmbito()))
                if(test.getSoglia() == risposte.size()){
                    accessBadge.assegna(dip,test);
-                   //gestLog.scriviOttenimentoBadge(dip, test);
+                   gestLog.scriviOttenimentoBadge(dip, test);
                    trovato = true;
                    result = true;
                }

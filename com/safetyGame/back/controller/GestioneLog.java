@@ -49,7 +49,6 @@
  *
  */ 
 package com.safetyGame.back.controller;
-import java.io.IOException;
 
 import com.safetyGame.back.access.*;
 import com.safetyGame.back.condivisi.*;
@@ -64,8 +63,6 @@ public class GestioneLog{
 
   private UpdateLog updateLog;
   private DAODipendenti daoDipendenti;
-  private String percorso;
-  private String log;
     
   /**
    * Costruttore senza parametri della classe GestioneLog
@@ -98,10 +95,35 @@ public class GestioneLog{
    * 
    * @param login oggetto Login dovuto dall'effettuazione del login da parte di un dipendente
    */
-  public void scriviLogin(Login login) {
+  public void scriviLoginD(Login login) {
 	DataOra dataOra = new DataOra();
-	String nomeTabella = "LogLogin";
+	String nomeTabella = "LogLoginD";
 	Dipendente dip = daoDipendenti.getInfoD(login);
+    this.updateLog.scriviLogTre(nomeTabella,dip,dataOra.toString());
+   /* DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+   	
+    //creo path del file da scrivere e creo UpdateLog
+    this.percorso = "/login.txt";
+   
+	try {
+	  this.updateLog = new UpdateLog("/"+login.getUsername(),this.percorso);
+	}
+	catch (IOException e) {System.out.println("non va"); }//bisogna decidere cosa fare se si verifica errore
+    
+    log = "LOGIN " + dataOra.toString() + " " + login.getUsername(); //stringa contenente il log
+    updateLog.scriviChiudi(log);//passo la stringa creata a updateLog*/
+  }
+  
+  /**
+   * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
+   * nel file di log dopo un login amministratore
+   * 
+   * @param login oggetto Login dovuto dall'effettuazione del login da parte di un dipendente
+   */
+  public void scriviLoginA(Login login) {
+	DataOra dataOra = new DataOra();
+	String nomeTabella = "LogLoginA";
+	Dipendente dip = daoDipendenti.getInfoA(login);
     this.updateLog.scriviLogTre(nomeTabella,dip,dataOra.toString());
    /* DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
    	
@@ -123,10 +145,36 @@ public class GestioneLog{
    * 
    * @param login oggetto Login del dipendente che ha effettuato il logout
    */
-  public void scriviLogout(Login login) {
+  public void scriviLogoutD(Login login) {
 	DataOra dataOra = new DataOra();
-	String nomeTabella = "LogLogout";
+	String nomeTabella = "LogLogoutD";
 	Dipendente dip = daoDipendenti.getInfoD(login);
+    this.updateLog.scriviLogTre(nomeTabella,dip,dataOra.toString());
+    /*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
+    
+    //creo path del file da scrivere e creo UpdateLog
+    percorso = "/logout.txt";
+
+    try {
+	  this.updateLog = new UpdateLog("/"+login.getUsername(),percorso);
+	}
+	catch (IOException e) { }//bisogna decidere cosa fare se si verifica errore
+
+    log = "LOGOUT " + dataOra.toString() + " " + login.getUsername(); //stringa contenente il log
+    updateLog.scriviChiudi(log);//passo la stringa creata a updateLog
+    */
+  }
+  
+  /**
+   * metodo che si occupa di inviare alla classe UpdateLog la stringa da inserire
+   * nel file di log dopo un logout amministratore
+   * 
+   * @param login oggetto Login dell'amministratore che ha effettuato il logout
+   */
+  public void scriviLogoutA(Login login) {
+	DataOra dataOra = new DataOra();
+	String nomeTabella = "LogLogoutA";
+	Dipendente dip = daoDipendenti.getInfoA(login);
     this.updateLog.scriviLogTre(nomeTabella,dip,dataOra.toString());
     /*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
@@ -348,8 +396,8 @@ public class GestioneLog{
    */
   public void scriviAddDip(Dipendente dip) {
     DataOra dataOra = new DataOra();
-	String nomeTabella = "AddRemDipendente";
-	String operazione = "add";
+	String nomeTabella = "ModDipendente";
+	String operazione = "aggiungi";
 	String colonna = "Operazione";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,"'"+operazione+"'");
 	/*  
@@ -374,8 +422,8 @@ public class GestioneLog{
    */
   public void scriviDelDip(Dipendente dip) {
     DataOra dataOra = new DataOra();
-	String nomeTabella = "AddRemDipendente";
-	String operazione = "del";
+	String nomeTabella = "ModDipendente";
+	String operazione = "elimina";
 	String colonna = "Operazione";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,"'"+operazione+"'");
 	  /*
@@ -400,8 +448,8 @@ public class GestioneLog{
    */
   public void scriviModDip(Dipendente dip) {
     DataOra dataOra = new DataOra();
-	String nomeTabella = "LogAmmAz";
-	String operazione = "mod dip";
+	String nomeTabella = "ModDipendente";
+	String operazione = "modifica";
 	String colonna = "Operazione";
     this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,"'"+operazione+"'");
 	/*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
@@ -423,16 +471,11 @@ public class GestioneLog{
    * 
    * @param dom domande aggiunte
    */
-  public void scriviAddDomande(Domanda [] dom) {
+  public void scriviAddDomande(Domanda dom) {
     DataOra dataOra = new DataOra();
 	String nomeTabella = "AddRemDomanda";
-	Dipendente dip = new Dipendente();
-	dip.setId(1);
 	String operazione = "add";
-	String colonna = "Operazione";
-	for(int i = 0; i< dom.length; i++) {
-      this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,"'"+operazione+"'");
-	}
+    this.updateLog.scriviLogDomande(nomeTabella,dataOra.toString(),""+dom.getId(),"'"+operazione+"'");
 	/*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
@@ -455,16 +498,11 @@ public class GestioneLog{
    * 
    * @param dom domande rimosse
    */
-  public void scriviDelDomande(Domanda [] dom) {
+  public void scriviDelDomande(Domanda dom) {
 	DataOra dataOra = new DataOra();
 	String nomeTabella = "AddRemDomanda";
-	Dipendente dip = new Dipendente();
-	dip.setId(1);
 	String operazione = "del";
-	String colonna = "Operazione";
-	for(int i = 0; i< dom.length; i++) {
-      this.updateLog.scriviLogQuattro(nomeTabella,dip,dataOra.toString(),colonna,"'"+operazione+"'");
-	}
+	this.updateLog.scriviLogDomande(nomeTabella,dataOra.toString(),""+dom.getId(),"'"+operazione+"'");
 	/*DataOra dataOra = new DataOra(); // ricavo data ed ora attuali
     
     //creo path del file da scrivere e creo UpdateLog
@@ -479,25 +517,6 @@ public class GestioneLog{
 	  log = "RIMOSSA DOMANDA " + dataOra.toString() + " id dom=" + dom[i].getId();
 	  updateLog.scriviChiudi(log);
 	}*/
-  }
-  
-  /**
-   * metodo che consente di visualizzare il path su cui si andrà a scrivere
-   * un log
-   * 
-   * @return percorso
-   */
-  public String getPercorso() { //utile per i test
-    return this.percorso;
-  }
-  
-  /**
-   * metodo che consente di visualizzare il log si andrà a scrivere
-   * 
-   * @return log
-   */
-  public String getLog() { //utile per i test
-    return this.log;	
   }
 
 }

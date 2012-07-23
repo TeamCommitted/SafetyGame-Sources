@@ -38,6 +38,7 @@ import org.junit.Test;
 import com.safetyGame.back.access.DAODipendenti;
 import com.safetyGame.back.access.Indirizzo;
 import com.safetyGame.back.access.SqlDAODipendenti;
+import com.safetyGame.back.access.UpdateLog;
 import com.safetyGame.back.condivisi.Dipendente;
 import com.safetyGame.back.condivisi.Login;
 
@@ -45,6 +46,7 @@ public class GestioneDipendentiDTest {
 
 	private GestioneDipendentiD gestDipD;
 	private DAODipendenti sqlDip;
+	private UpdateLog updlog;
 	private GestioneLog gestLog;
 	private Indirizzo indirizzoAz;
 	private String indAz;
@@ -58,7 +60,8 @@ public class GestioneDipendentiDTest {
 	  indirizzoAz = new Indirizzo(indAz,utente,pass);
 	  sqlDip = new SqlDAODipendenti(indirizzoAz);
 	  
-	  gestLog = new GestioneLog();
+	  updlog = new UpdateLog(indirizzoAz);
+	  gestLog = new GestioneLog(updlog,sqlDip);
 	  gestDipD = new GestioneDipendentiD(sqlDip,gestLog);
 	}
 	

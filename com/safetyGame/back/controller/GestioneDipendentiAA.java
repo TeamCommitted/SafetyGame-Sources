@@ -40,6 +40,7 @@ import java.util.ArrayList;
  */
 public class GestioneDipendentiAA{
    private DAODipendenti accessDip;
+   private GestioneLog gestLog;
    
    /**
     * Costruttore con parametri della classe GestioneDipendentiAA
@@ -47,8 +48,9 @@ public class GestioneDipendentiAA{
     * @param accessDip riferimento alla classe che implementa l'interfaccia DAODipendenti
     *        
     */
-   public GestioneDipendentiAA(DAODipendenti accessDip){
+   public GestioneDipendentiAA(DAODipendenti accessDip, GestioneLog gestLog){
        this.accessDip = accessDip;
+       this.gestLog = gestLog;
     }
    
     /**
@@ -66,30 +68,31 @@ public class GestioneDipendentiAA{
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
    public boolean aggiungiDipendente(Dipendente dip){//
-	  Dipendente supporto = dip;
-	  String nome = supporto.getNome();
-	  String cognome = supporto.getCognome();
-	  String pass = GestioneRecupero.generaPassCasuale();
+      Dipendente supporto = dip;
+      String nome = supporto.getNome();
+      String cognome = supporto.getCognome();
+      String pass = GestioneRecupero.generaPassCasuale();
       String username = nome +"."+ cognome;
-	  supporto.setNickname(username);
-	  supporto.setPassword(pass);
+      supporto.setNickname(username);
+      supporto.setPassword(pass);
       
-	  boolean inserito = accessDip.aggiungiDipendente(supporto);
-	  System.out.println(inserito);
-	  int conta = 0;
-	  while(!inserito) {
-		conta++;
-		supporto.setNickname(username+conta);
-		inserito =  accessDip.aggiungiDipendente(supporto);
-	  }
-	  String messaggio_mail = "Nome: "+ supporto.getNome()+
-			          "\n\n "+"Cognome: " + supporto.getCognome() +
-			          "\n\n "+"Nickname: " + supporto.getNickname() +
-			          "\n\n "+"Password: " + supporto.getPassword() +
-			          "\n\n "+"Codice fiscale: " + supporto.getCodFiscale() +
-			          "\n\n "+"Ruolo aziendale: " + supporto.getRuolo();
-	  GestioneRecupero.sendMailInserito(supporto.getEmail(), messaggio_mail);
-	  return true;
+      boolean inserito = accessDip.aggiungiDipendente(supporto);
+      int conta = 0;
+      while(!inserito) {
+        conta++;
+        supporto.setNickname(username+conta);
+        inserito =  accessDip.aggiungiDipendente(supporto);
+      }
+      String messaggio_mail = "Nome: "+ supporto.getNome()+
+                      "\n\n "+"Cognome: " + supporto.getCognome() +
+                      "\n\n "+"Nickname: " + supporto.getNickname() +
+                      "\n\n "+"Password: " + supporto.getPassword() +
+                      "\n\n "+"Codice fiscale: " + supporto.getCodFiscale() +
+                      "\n\n "+"Ruolo aziendale: " + supporto.getRuolo();
+      Login log = new Login(supporto.getNickname(),supporto.getPassword());
+      gestLog.scriviAddDip(accessDip.getInfoD(log));
+      GestioneRecupero.sendMailInserito(supporto.getEmail(), messaggio_mail);
+      return true;
    }
    
    /**
@@ -99,6 +102,7 @@ public class GestioneDipendentiAA{
     * @return true se l'operazione viene completata con successo, altrimenti false    
     */
    public boolean cancellaDipendente(Dipendente dip){ //
+      gestLog.scriviDelDip(dip); 
       return accessDip.cancellaDipendente(dip);
    }
    
@@ -123,6 +127,8 @@ public class GestioneDipendentiAA{
             correct = accessDip.modUsername(newDip, newDip.getNickname());
         if((!(newDip.getPassword().equals(oldDip.getPassword()))) && correct)
             correct = accessDip.passD(newDip, newDip.getPassword());
+        if(correct)
+            gestLog.scriviModDip(newDip);
         return correct;
    }
    
@@ -133,11 +139,13 @@ public class GestioneDipendentiAA{
     * @return true se l'operazione viene completata con successo, altrimenti false
     */
    public boolean modPassA(Dipendente admin){ //
-       boolean risultato = accessDip.passA(admin,admin.getNuovaPass());
-       
+       boolean risultato = accessDip.resetPassA(admin);
        if(risultato)
-    	 GestioneRecupero.sendMail(admin.getEmail(), admin.getNuovaPass());
+       risultato = accessDip.passA(admin,admin.getNuovaPass());
        
+       if(risultato){
+         GestioneRecupero.sendMail(admin.getEmail(), admin.getNuovaPass());
+        }
        return risultato;
     }
     
@@ -150,7 +158,7 @@ public class GestioneDipendentiAA{
    */
   public Dipendente getDatiA(Login login) {//
     Dipendente ritorno = this.accessDip.getInfoA(login);
-	return ritorno;    
+    return ritorno;    
   }
    
    /**

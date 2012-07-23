@@ -36,14 +36,15 @@ public class GestioneBadgeDTest {
 		  String indirizzo1 = "127.0.0.1/ingAz";
 		  String indirizzo2 = "127.0.0.1/ingDom";
 		  String utente = "root";
-		  String pass = "root";
+		  String pass = "";
 		  Indirizzo indirizzoAz = new Indirizzo(indirizzo1,utente,pass);
 		  Indirizzo indirizzoDom = new Indirizzo(indirizzo2,utente,pass);
 		  DAOBadge daoBadge = new SqlDAOBadge(indirizzoAz);
 		  DAODipendenti daoDip = new SqlDAODipendenti(indirizzoAz);
 		  DAODomande daoDom = new SqlDAODomande(indirizzoAz,indirizzoDom);
 		  DAOLogin daoLog = new SqlDAOLogin(indirizzoAz);
-		  GestioneLog log = new GestioneLog();
+		  UpdateLog updlog = new UpdateLog(indirizzoAz);
+		  GestioneLog log = new GestioneLog(updlog,daoDip);
 		  GestioneLogin login = new GestioneLogin(daoLog,log);
 		  gb = new GestioneBadgeD(daoBadge,daoDip,daoDom,log,login);
 		}
@@ -65,9 +66,10 @@ public class GestioneBadgeDTest {
 		init();
 		Domanda d = new Domanda();
 		d.setId(1);
-		d.setTipologia("Pompiere");
-		Login l = new Login("nick","pass");
+		d.setAmbito("Pompiere");
+		Login l = new Login("andrea.marton","pass");
 		assertTrue("badge non assegnata", gb.assegnaBadge(d,l)); 
+		//devo verificare se nella tabella OttenimentoBadge e` presente la riga 1 - 1 - 5 - data e ora correnti
 	}
 	
 	@Test

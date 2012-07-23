@@ -8,17 +8,13 @@
 <%@ page language="java" import="com.safetyGame.back.controller.*" %>
 <%@ page language="java" import="com.safetyGame.back.condivisi.*" %>
 <%@ page language="java" import="com.safetyGame.back.access.*" %>
-<%@ page language="java" import="com.safetyGame.back.*" %> 
-
-<% 
-	String username = request.getParameter("username"); // Ottengo lo username dal post
-	String password = request.getParameter("password"); // Ottengo la psw dal post
-	
-	boolean logged = false;
-	WebConnection connection = Inizializzatore.getWeb();
-	
-	logged = connection.loginDip(username, password);
-	
-	if (logged) out.println("s");
-	else out.println("n");
+<%@ page language="java" import="com.safetyGame.back.*" %>
+<%
+String username = request.getParameter("username"); // Ottengo lo username dal post
+String password = request.getParameter("password"); // Ottengo la psw dal post
+boolean logged = false;
+WebConnection connection = Inizializzatore.getWeb();
+logged = connection.loginDip(username, password);
+if (logged) out.println("s");
+else out.println("n");
 %>

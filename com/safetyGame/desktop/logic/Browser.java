@@ -103,6 +103,9 @@ public class Browser {
       BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
       String inputLine;
       inputLine = in.readLine();
+      while (inputLine.equals("")){
+        inputLine = in.readLine();
+      }
       in.close();
       return inputLine.charAt(0);
     }

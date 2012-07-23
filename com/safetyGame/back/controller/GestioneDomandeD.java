@@ -206,7 +206,7 @@ public class GestioneDomandeD{
     boolean controllo = this.daoDomande.scriviSottoposta(dip,ritorno);
     if (controllo) {
       //è andato tutto bene
-      //this.gestioneLog.scriviDomRic(l, ritorno); // scrivo il log
+      this.gestioneLog.scriviDomRic(login, ritorno); // scrivo il log
       return ritorno;
     }
     return null;//non sono riuscito a scrivere sul DB che la domanda è stata sottoposta
@@ -236,7 +236,7 @@ public class GestioneDomandeD{
 	  }
 	}
 	//scrivoil log che l'utente ha risposto
-	//gestioneLog.scriviDomRisp(l, risposta);
+	gestioneLog.scriviDomRisp(login, risposta);
 	return true;//andato tutto correttamente
   }
   
@@ -249,8 +249,8 @@ public class GestioneDomandeD{
   public boolean posticipa(Login login, Domanda dom) {
 	Dipendente dip = this.daoDipendenti.getInfoD(login);
 	boolean eseguito = this.daoDomande.posticipa(dip, dom);
-	//if (eseguito)
-      //this.gestioneLog.scriviDomPost(l, d);
+	if (eseguito)
+      this.gestioneLog.scriviDomPost(login, dom);
 	return eseguito;
   }
   

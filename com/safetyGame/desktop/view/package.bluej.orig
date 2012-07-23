@@ -10,8 +10,13 @@ dependency3.to=Error
 dependency3.type=UsesDependency
 package.editor.height=572
 package.editor.width=1248
-package.editor.x=189
-package.editor.y=238
+<<<<<<< HEAD
+package.editor.x=88
+package.editor.y=305
+=======
+package.editor.x=-1897
+package.editor.y=0
+>>>>>>> 177a61fc80c2b7098ad3f319806dfd80d95afe63
 package.numDependencies=3
 package.numTargets=6
 package.showExtends=true

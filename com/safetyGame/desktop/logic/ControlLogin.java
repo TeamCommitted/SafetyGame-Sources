@@ -48,8 +48,7 @@ public class ControlLogin{
     String url="desklogin.jsp?username="+username.trim()+"&password="+password;
     char c=browser.leggi(url);
     if(c=='s'){
-      DatiLogin l=new DatiLogin(username,password);
-      ConnBack.getInstance().login(l);
+      ConnBack.getInstance().login(username,password);
       return true;
     }
     return false;

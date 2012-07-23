@@ -33,6 +33,7 @@ import com.safetyGame.back.access.SqlDAOBadge;
 import com.safetyGame.back.access.SqlDAODipendenti;
 import com.safetyGame.back.access.SqlDAODomande;
 import com.safetyGame.back.access.SqlDAOLogin;
+import com.safetyGame.back.access.UpdateLog;
 import com.safetyGame.back.condivisi.Domanda;
 
 public class GestioneDomandeASTest {
@@ -45,8 +46,11 @@ public class GestioneDomandeASTest {
 		  String pass = "root";
 		  Indirizzo indirizzoAz = new Indirizzo(indirizzo1,utente,pass);
 		  Indirizzo indirizzoDom = new Indirizzo(indirizzo2,utente,pass);
+		  DAODipendenti daoDip = new SqlDAODipendenti(indirizzoAz);
 		  DAODomande daoDom = new SqlDAODomande(indirizzoAz,indirizzoDom);
-		  as = new GestioneDomandeAS(daoDom);
+		  UpdateLog updLog = new UpdateLog(indirizzoAz);
+		  GestioneLog gestLog= new GestioneLog(updLog, daoDip);
+		  as = new GestioneDomandeAS(daoDom,gestLog);
 		}
 	
 	@Test
