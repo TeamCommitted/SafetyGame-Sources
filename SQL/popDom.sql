@@ -1,5 +1,5 @@
 INSERT INTO Tipologia VALUES 
-('Multipla');
+('Multipla'),('Quest');
 
 INSERT INTO Domanda
 (ID,testo_domanda,tipologia,linkV,linkF,punteggio,tempo,ambito,mobile)
@@ -27,7 +27,7 @@ INSERT INTO Domanda
 (21,'Nel caso di una forte scossa di terremoto, quale fra i seguenti e` il comportamento corretto da seguire?','Multipla','','',80,20,'Dirigente',0),
 (22,'Nel caso di una forte scossa di terremoto, quale fra i seguenti e` il comportamento corretto da seguire?','Multipla','','',80,20,'Mulettista',0),
 (23,'Nel caso di una forte scossa di terremoto, quale fra i seguenti e` il comportamento corretto da seguire?','Multipla','','',80,20,'Magazziniere',0),
-(24,'Raggiungi l\' estintore piu` vicino!','Multipla','','',150,30,'Operaio',1);
+(24,'Raggiungi l\' estintore piu` vicino!','Quest','','',150,30,'Operaio',1);
 
 INSERT INTO Risposta VALUES
 (1,'si'), (2,'no'),(3,'1'),(4,'5'),(5,'3'),(6,'112'),(7,'113'),(8,'115'),(9,'118'),(10,'911'),(11,'Assolutamente no'),(12,'Dipende da quanto tempo le utilizzo'),(13,'Non sempre'),(14,'Si se a chiamarmi e` il capo'),(15,'Si e se vedo un poliziotto riattacco'),(16,'Si se utilizzo gli appositi strumenti come un auricolare'),(17,'Si perche` e` il capo'),(18,'Una volta ogni tanto'),(19,'Solo se sono sicuro'),(20,'Solo se faccio attenzione'),(21,'Si perchè nessuno mi vede'),(22,'Solo se sono solo'),(23,'Assolutamente si'),(24,'Proseguo tranquillamente con il mio lavoro'),(25,'Mi faccio prendere dal panico e faccio la prima cosa che mi passa per la testa'),(26,'Mantengo la clama e mi accingo ad uscire dall\'edificio'),(27,'Resto impassibile, l\'edificio e` solido!'),(28,'Estintore');
