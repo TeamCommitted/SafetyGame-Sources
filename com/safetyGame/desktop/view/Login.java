@@ -155,6 +155,7 @@ public class Login implements ActionListener{
             if (!mail.getText().trim().equals("") && !codfis.getText().trim().equals("")){
               boolean rigenera=controller.recupera(codfis.getText().trim(), mail.getText().trim());
               frame_recupero.setVisible(false);
+              frame_recupero.setVisible(false);
               if (rigenera){
                 errore.setText("Nuova password generata, si prega di controllare l'email");
               }
